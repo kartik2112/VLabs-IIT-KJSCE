@@ -1,0 +1,4 @@
+* Template for developing =New Labs=
+*** This repository contains the following:
++ New Lab Template =vlabs_template.zip=
++ Documentation on using the Template =Vlabs_Templat_Tutorial.pdf=
