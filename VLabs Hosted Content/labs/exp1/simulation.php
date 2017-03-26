@@ -101,9 +101,13 @@
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
                     <svg width="600" height="600">
-                        <line class="animatedLine" x1="50" y1="50" x2="250" y2="50" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
-                        <circle cx="50" cy="50" r="20" style="fill: #00b8ff"/>
-                        <circle cx="250" cy="50" r="20" style="fill: #00b8ff"/>
+                        <line id="inputX-lay1neuron1" class="animatedLine" x1="50" y1="50" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
+                        <line id="inputY-lay1neuron1" class="animatedLine" x1="50" y1="250" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
+                        <line id="lay1neuron1-oplay_neuron1" class="animatedLine" x1="250" y1="150" x2="450" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
+                        <circle id="inputX" cx="50" cy="50" r="20" style="fill: #00b8ff"/>
+                        <circle id="inputY" cx="50" cy="250" r="20" style="fill: #00b8ff"/>
+                        <circle id="lay1_neuron1" cx="250" cy="150" r="20" style="fill: #00b8ff"/>
+                        <circle id="oplay_neuron1" cx="450" cy="150" r="20" style="fill: #00b8ff"/>
                     </svg>
                 </section>
                 <!-- /.content -->
