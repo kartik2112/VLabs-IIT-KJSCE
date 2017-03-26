@@ -19,6 +19,21 @@
         <script src="../src/canvasjschart.ob.js"></script>
         <script src="../src/bracket.ob.js"></script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
+        <style type="text/css">
+            .animatedLine{
+                stroke-dasharray: 100;
+                animation: dash 2s linear infinite;
+            }
+
+            @keyframes dash {
+                from {
+                    stroke-dashoffset: 1000;
+                }
+                to{
+  	                stroke-dashoffset: 0;
+                }
+            }
+        </style>
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -85,13 +100,13 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
+                    <svg width="600" height="600">
+                        <line class="animatedLine" x1="50" y1="50" x2="250" y2="50" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
+                        <circle cx="50" cy="50" r="20" style="fill: #00b8ff"/>
+                        <circle cx="250" cy="50" r="20" style="fill: #00b8ff"/>
+                    </svg>
                 </section>
                 <!-- /.content -->
-                <div>
-                    <h1>Experiment 1</h1>
-                    <svg width="600" height="600">
-                    </svg>
-                </div>
             </div>
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
@@ -111,4 +126,5 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
+
 
