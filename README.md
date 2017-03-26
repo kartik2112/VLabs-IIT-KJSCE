@@ -13,6 +13,6 @@ Host [this folder](https://github.com/kartik2112/VLabs-IIT-KJSCE/blob/master/VLa
 ## References
 [Ref 1](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
 
-[Ref 2](vlabs.iitb.ac.in/vlabs-dev/labs/labs.html)
+[Ref 2](http://vlabs.iitb.ac.in/vlabs-dev/labs/labs.html)
 
-[Ref 3](vlabs.iitb.ac.in/vlab_tool/main_index.php)
+[Ref 3](http://vlabs.iitb.ac.in/vlab_tool/main_index.php)
