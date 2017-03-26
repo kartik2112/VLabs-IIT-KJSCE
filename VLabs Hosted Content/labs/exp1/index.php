@@ -17,54 +17,57 @@
 
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-        include '../../common/header.html';
-        include 'lab_name.php';
-        $lab_name = $_SESSION['lab_name'];
-        $exp_name = $_SESSION['exp_name'];
+            include '../../common/header.html';
+            include 'lab_name.php';
+            $lab_name = $_SESSION['lab_name'];
+            $exp_name = $_SESSION['exp_name'];
         ?>
 
         <div class="wrapper">
         	<header class="main-header">
-        <!-- Logo -->
-        <a href="../explist.php" class="logo">
-        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
-    </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-          <section class="content-header">
-            <ol class="breadcrumb">
-              <li>
-                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
-              </li>
-              <li>
-                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
-              </li>
-              <li class="active">Aim</li>
-            </ol>
-          </section>
-        </nav>
-      </header>
+                <!-- Logo -->
+                <a href="../explist.php" class="logo">
+                    <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <section class="content-header">
+                        <ol class="breadcrumb">
+                        <li>
+                            <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+                        </li>
+                        <li>
+                            <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+                        </li>
+                        <li class="active">Aim</li>
+                        </ol>
+                    </section>
+                </nav>
+            </header>
             <?php include 'pane.html'; ?>
             <div class="content-wrapper">
             <!-- Content Header (Page header) -->
                 <section class="content-header">
-                <h1 align="center">
-                    <?php echo $exp_name?> 
-                </h1>
+                    <h1 align="center">
+                        <?php echo $exp_name?> 
+                    </h1>
                 </section>
-                    <!-- Main content -->
-                    <section class="content">
+                <!-- Main content -->
+                <section class="content">
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
 
                     <!--Aim of experiment -->
-                    </p>
-                </section>
-            <!-- /.content -->
+                </p>
+            </section>
+            <div>
+                <svg width="600" height="600">
+                </svg>
+            </div>
             </div>
             <?php include 'footer.html'; ?>
         </div>
