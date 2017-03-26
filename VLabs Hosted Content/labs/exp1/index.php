@@ -14,43 +14,49 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     </head>
-
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
             include '../../common/header.html';
             include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
             $exp_name = $_SESSION['exp_name'];
-        ?>
-
+            ?>
         <div class="wrapper">
-        	<header class="main-header">
+            <header class="main-header">
                 <!-- Logo -->
                 <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+                    <p align="center" style="font-size:1em;">
+                        <b>
+                            <?php echo $lab_name?><!-- Write your lab name -->
+                        </b>
+                    </p>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">Toggle navigation</span>
                     </a>
                     <section class="content-header">
                         <ol class="breadcrumb">
-                        <li>
-                            <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
-                        </li>
-                        <li>
-                            <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
-                        </li>
-                        <li class="active">Aim</li>
+                            <li>
+                                <a href="../explist.php">
+                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <?php echo $exp_name?><!-- Write your experiment name -->
+                                </a>
+                            </li>
+                            <li class="active">Aim</li>
                         </ol>
                     </section>
                 </nav>
             </header>
             <?php include 'pane.html'; ?>
             <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+                <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1 align="center">
                         <?php echo $exp_name?> 
@@ -60,20 +66,14 @@
                 <section class="content">
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
-
-                    <!--Aim of experiment -->
-                </p>
-            </section>
-            <div>
-                <svg width="600" height="600">
-                </svg>
+                        <!--Aim of experiment -->
+                    </p>
+                </section>
+                <?php include 'footer.html'; ?>
             </div>
-            </div>
-            <?php include 'footer.html'; ?>
         </div>
     </body>
 </html>
-
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
