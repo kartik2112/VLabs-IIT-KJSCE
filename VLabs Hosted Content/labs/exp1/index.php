@@ -68,9 +68,9 @@
                     <p style="font-size:130%; margin-top:2%">
                         <!--Aim of experiment -->
                     </p>
-                </section>
-                <?php include 'footer.html'; ?>
+                </section>                
             </div>
+            <?php include 'footer.html'; ?>
         </div>
     </body>
 </html>
