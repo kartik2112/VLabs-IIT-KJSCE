@@ -100,7 +100,7 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-                    <svg width="600" height="600">
+                    <svg width="900" height="600">
                         <line id="inputX-lay1neuron1" class="animatedLine" x1="50" y1="50" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
                         <line id="inputY-lay1neuron1" class="animatedLine" x1="50" y1="250" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
                         <line id="lay1neuron1-oplay_neuron1" class="animatedLine" x1="250" y1="150" x2="450" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
