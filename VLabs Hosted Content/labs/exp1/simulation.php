@@ -70,8 +70,8 @@
                 resetCompleteSimulation();
                 $("#AND_Gate_Threshold_slider").slider("enable");
                 $("#startSimButton").removeClass("disabled");
+                $("#selGate").prop("disabled",false);
                 $("#stopSimButton").addClass("disabled");
-                verifyANDOutputs();
                 window.clearInterval(timer);
                 window.clearTimeout(timer1);
                 window.clearTimeout(timer2);
@@ -160,6 +160,7 @@
 
                 $("#AND_Gate_Threshold_slider").slider("disable");
                 $("#startSimButton").addClass("disabled");
+                $("#selGate").prop("disabled",true);
                 $("#stopSimButton").removeClass("disabled");
 
                 simulationPart(iterationNo, inputX.join(","), inputY.join(","), w1, w2, parseFloat(AND_threshold), interval);
@@ -181,6 +182,9 @@
                 });
 
             }
+            
+            /* 
+            This code is making webpage unresponsives
             function verifyANDOutputs() {
                 var correctANDOPs = [0, 0, 0, 1];
                 if (correctANDOPs.length == calcOP.length) {
@@ -192,8 +196,8 @@
                     }
                     alert("Correct Output values found! This threshold value works for this neural network.");
                 }
-
             }
+            */
         </script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
         <link href="../Styles.css" rel="stylesheet" />
@@ -264,15 +268,15 @@
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
                     <div class="form-group" style="display: inline-block;">
-                        <label for="sel1">Select gate:</label>
-                        <select class="form-control" id="sel1" onchange="displayDiv(this.value)" style="width: 150px">
+                        <label for="selGate">Select gate:</label>
+                        <select class="form-control" id="selGate" onchange="displayDiv(this.value)" style="width: 150px">
                             <option value="AND">AND Gate</option>
                             <option value="OR">OR Gate</option>
                             <option value="NOT">NOT Gate</option>
                         </select>
                     </div>
-                    <button id="startSimButton" class="btn" onclick="startSimulation(1000)">Start Simulation</button>
-                    <button id="stopSimButton" class="btn disabled">Stop Simulation</button><br/>
+                    <button id="startSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
+                    <button id="stopSimButton" class="btn btn-danger disabled">Stop Simulation</button><br/>
                     Threshold Value : 
                     <div id="AND_Gate_Threshold_slider" style="width: 200px;display: inline-block;"></div>
                     <br/>
