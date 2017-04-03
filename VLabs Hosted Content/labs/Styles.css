@@ -3,6 +3,18 @@
     animation: dash 2s linear infinite;
 }
 
+.animatedLineGreen{
+    stroke: #00d404;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLinePurple{
+    stroke: #7100d5;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
 @keyframes dash {
     from {
         stroke-dashoffset: 1000;
@@ -14,13 +26,27 @@
 
 .StdLine{
     stroke: #ff6a00; 
-    stroke-width:7; 
+    stroke-width:5; 
 }
 
 .StdCircle{
-    
+    fill: #00b8ff;
 }
 
-.truthTable{
-    
+table.truthTable{
+  	border-collapse: collapse;
+}
+
+table.truthTable tr:nth-child(even){
+  	background-color: #b8f6ff;
+	color: #000;
+}
+
+table.truthTable th{
+  	background-color: #004bd4;
+	color: #fff;
+}
+
+table.truthTable td,th{
+    text-align: center;
 }

@@ -18,6 +18,11 @@
         <script src="../src/numcheck.ob.js"></script>
         <script src="../src/canvasjschart.ob.js"></script>
         <script src="../src/bracket.ob.js"></script>
+        <script type="text/javascript">
+            function startSimulation(interval){
+                
+            }
+        </script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
         <link href="../Styles.css" rel="stylesheet" />
         <!-- Simulation scripts end-->
@@ -86,25 +91,35 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-                    <svg width="900" height="600">
+                    <svg width="650" height="300" style="">
                         <line id="inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                         <line id="inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
                         <line id="oplay_neuron1-oplay_thrshld" class="StdLine" x1="250" y1="150" x2="450" y2="150" style=""/>
-                        <circle id="inputX" class="StdCircle" cx="50" cy="50" r="20" style="fill: #00b8ff"/>
-                        <circle id="inputY" class="StdCircle"x cx="50" cy="250" r="20" style="fill: #00b8ff"/>
-                        <circle id="oplay_neuron1" class="StdCircle" cx="250" cy="150" r="20" style="fill: #00b8ff"/>
-                        <image id="oplay_thrshld" x="425" y="125"  height="50" width="50" xlink:href="../images/threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                        <text x="240" y="157" font-size="25">∑</text>
-                        <text id="inputX-oplay_neuron1-weight" x="220" y="120">1</text>
-                        <text id="inputX-oplay_neuron1-weight" x="220" y="185">1</text>
+                        <circle id="inputX" class="StdCircle" cx="50" cy="50" r="20" style=""/>
+                        <circle id="inputY" class="StdCircle" cx="50" cy="250" r="20" style=""/>
+                        <circle id="oplay_neuron1" class="StdCircle" cx="250" cy="150" r="20" style=""/>
+                        <image id="oplay_thrshld" x="425" y="125"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                        <text font-size="20" x="242" y="155" font-size="25">∑</text>
+                        <text font-size="20" x="15" y="55">X</text>
+                        <text font-size="20" x="15" y="255">Y</text>
+                        <text font-size="20" id="inputX-oplay_neuron1-weight" x="220" y="120">1</text>
+                        <text font-size="20" id="inputX-oplay_neuron1-weight" x="220" y="185">1</text>
+                        <text font-size="20" x="280" y="140">u(x)</text>
+                        <text font-size="20" x="485" y="150">y(x)</text>
                     </svg>
-                    <table class="truthTable">
-                        <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
-                        <tr><td>0</td><td>0</td><td>0</td><td></td></tr>
-                        <tr><td>0</td><td>1</td><td>0</td><td></td></tr>
-                        <tr><td>1</td><td>0</td><td>0</td><td></td></tr>
-                        <tr><td>1</td><td>1</td><td>1</td><td></td></tr>
-                    </table>
+                    <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">
+                        <div>
+                            <p id="u(x)-wrapper">u(x) = 1*X + 1*Y = <span style="font-weight: bolder" id="u(x)-value"></span></p>
+                            <p id="u(x)-wrapper">y(x) = <span style="font-weight: bolder" id="y(x)-value"></span></p>
+                        </div>
+                        <table class="table-condensed truthTable" style="">
+                            <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
+                            <tr><td>0</td><td>0</td><td>0</td><td></td></tr>
+                            <tr><td>0</td><td>1</td><td>0</td><td></td></tr>
+                            <tr><td>1</td><td>0</td><td>0</td><td></td></tr>
+                            <tr><td>1</td><td>1</td><td>1</td><td></td></tr>
+                        </table>
+                    </div>                    
                 </section>                
                 <!-- /.content -->
             </div>
