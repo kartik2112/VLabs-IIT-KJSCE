@@ -19,21 +19,7 @@
         <script src="../src/canvasjschart.ob.js"></script>
         <script src="../src/bracket.ob.js"></script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
-        <style type="text/css">
-            .animatedLine{
-                stroke-dasharray: 100;
-                animation: dash 2s linear infinite;
-            }
-
-            @keyframes dash {
-                from {
-                    stroke-dashoffset: 1000;
-                }
-                to{
-  	                stroke-dashoffset: 0;
-                }
-            }
-        </style>
+        <link href="../Styles.css" rel="stylesheet" />
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -101,15 +87,25 @@
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
                     <svg width="900" height="600">
-                        <line id="inputX-lay1neuron1" class="animatedLine" x1="50" y1="50" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
-                        <line id="inputY-lay1neuron1" class="animatedLine" x1="50" y1="250" x2="250" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
-                        <line id="lay1neuron1-oplay_neuron1" class="animatedLine" x1="250" y1="150" x2="450" y2="150" style="stroke: #ff6a00; stroke-width:7; border: 1px solid #ffd800"/>
-                        <circle id="inputX" cx="50" cy="50" r="20" style="fill: #00b8ff"/>
-                        <circle id="inputY" cx="50" cy="250" r="20" style="fill: #00b8ff"/>
-                        <circle id="lay1_neuron1" cx="250" cy="150" r="20" style="fill: #00b8ff"/>
-                        <circle id="oplay_neuron1" cx="450" cy="150" r="20" style="fill: #00b8ff"/>
+                        <line id="inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
+                        <line id="inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
+                        <line id="oplay_neuron1-oplay_thrshld" class="StdLine" x1="250" y1="150" x2="450" y2="150" style=""/>
+                        <circle id="inputX" class="StdCircle" cx="50" cy="50" r="20" style="fill: #00b8ff"/>
+                        <circle id="inputY" class="StdCircle"x cx="50" cy="250" r="20" style="fill: #00b8ff"/>
+                        <circle id="oplay_neuron1" class="StdCircle" cx="250" cy="150" r="20" style="fill: #00b8ff"/>
+                        <image id="oplay_thrshld" x="425" y="125"  height="50" width="50" xlink:href="../images/threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                        <text x="240" y="157" font-size="25">∑</text>
+                        <text id="inputX-oplay_neuron1-weight" x="220" y="120">1</text>
+                        <text id="inputX-oplay_neuron1-weight" x="220" y="185">1</text>
                     </svg>
-                </section>
+                    <table class="truthTable">
+                        <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
+                        <tr><td>0</td><td>0</td><td>0</td><td></td></tr>
+                        <tr><td>0</td><td>1</td><td>0</td><td></td></tr>
+                        <tr><td>1</td><td>0</td><td>0</td><td></td></tr>
+                        <tr><td>1</td><td>1</td><td>1</td><td></td></tr>
+                    </table>
+                </section>                
                 <!-- /.content -->
             </div>
             <?php include 'footer.html'; ?>
