@@ -18,7 +18,35 @@
         <script src="../src/numcheck.ob.js"></script>
         <script src="../src/canvasjschart.ob.js"></script>
         <script src="../src/bracket.ob.js"></script>
+
+        <!-- jQuery 2.2.3 -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
         <script type="text/javascript">
+            var AND_threshold = 0;
+            var calcOP;
+            $(document).ready(function () {
+                $("#AND_Gate_Threshold_slider").slider({
+                    max: 2.5,
+                    min: -0.5,
+                    step: 0.05,
+                    slide: function (event, ui) {
+                        $("#AND-threshold-value").text("Threshold: " + ui.value);
+                        AND_threshold = ui.value;
+                    }
+                });
+
+                $("#AND-threshold-value").text("Threshold: " + $("#AND_Gate_Threshold_slider").slider("value"));
+                AND_threshold = $("#AND_Gate_Threshold_slider").slider("value");
+
+                $("#AND_Gate_Threshold_slider").change(function () {
+
+                });
+            });
+            var timer1, timer2, timer3;
             function displayDiv(val) {
                 if (val == "AND") {
                     $("#OR-gate-sim").slideUp(400);
@@ -39,7 +67,13 @@
             }
 
             function stopSimulation(timer) {
-                window.clearTimeout(timer);
+                $("#AND_Gate_Threshold_slider").slider("enable");
+                $("#startSimButton").removeClass("disabled");
+                $("#stopSimButton").addClass("disabled");
+                window.clearInterval(timer);
+                window.clearTimeout(timer1);
+                window.clearTimeout(timer2);
+                window.clearTimeout(timer3);
                 resetCompleteSimulation();
             }
 
@@ -78,11 +112,11 @@
                 $("#inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
                 var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo];
 
-                window.setTimeout(function () {
+                timer1 = window.setTimeout(function () {
                     $("#ux-wrapper").addClass("highlightDiv");
                     $("#ux-value").text("= " + ux);
 
-                    window.setTimeout(function () {
+                    timer2 = window.setTimeout(function () {
                         $("#ux-wrapper").removeClass("highlightDiv");
                         $("#yx-wrapper").addClass("highlightDiv");
 
@@ -95,16 +129,18 @@
                             $("#yx-value-expln").text("u(x) = " + ux + " < " + threshold);
                         }
 
-                        window.setTimeout(function () {
+                        timer3 = window.setTimeout(function () {
                             if (ux > threshold) {
                                 $("#yx-value-expln").text("u(x) = " + ux + " > " + threshold + " => y(x) = 1");
-                                $("#AND-TT-OP-row-" + (iterationNo+1)).text(1);
+                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1);
                                 $("#yx-value").text("= " + 1);
+                                calcOP.push(1);
                             }
                             else {
                                 $("#yx-value-expln").text("u(x) = " + ux + " < " + threshold + " => y(x) = 0");
-                                $("#AND-TT-OP-row-" + (iterationNo+1)).text(0);
+                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0);
                                 $("#yx-value").text("= " + 0);
+                                calcOP.push(0);
                             }
                         }, interval * 6);
                     }, interval * 4);
@@ -117,19 +153,24 @@
                 var inputY = [0, 1, 0, 1];
                 var w1 = 1;
                 var w2 = 1;
-                var threshold = 1.5;
                 var iterationNo = 0;
+                calcOP = new Array();
 
-                simulationPart(iterationNo, inputX.join(","), inputY.join(","), w1, w2, threshold, interval);
+                $("#AND_Gate_Threshold_slider").slider("disable");
+                $("#startSimButton").addClass("disabled");
+                $("#stopSimButton").removeClass("disabled");
+
+                simulationPart(iterationNo, inputX.join(","), inputY.join(","), w1, w2, parseFloat(AND_threshold), interval);
 
                 iterationNo++;
 
                 var timer = window.setInterval(function () {
-                    simulationPart(iterationNo, inputX.join(","), inputY.join(","), w1, w2, threshold, interval, timer);
+                    simulationPart(iterationNo, inputX.join(","), inputY.join(","), w1, w2, parseFloat(AND_threshold), interval, timer);
 
                     iterationNo++;
                     if (iterationNo == 4) {
                         window.clearInterval(timer);
+                        verifyANDOutputs();
                     }
                 }, interval * 17);
 
@@ -137,6 +178,16 @@
                     stopSimulation(timer);
                 });
 
+            }
+            function verifyANDOutputs() {
+                var correctANDOPs = [0, 0, 0, 1];
+                for (var i = 0; calcOP.length; i++) {
+                    if (correctANDOPs[i] != calcOP[i]) {
+                        alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
+                        return;
+                    }
+                }
+                alert("Correct Output values found! This threshold value works for this neural network.");
             }
         </script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
@@ -207,13 +258,18 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-                    <select onchange="displayDiv(this.value)">
-                        <option value="AND">AND Gate</option>
-                        <option value="OR">OR Gate</option>
-                        <option value="NOT">NOT Gate</option>
-                    </select>
-                    <button onclick="startSimulation(1000)">Start Simulation</button>
-                    <button id="stopSimButton">Stop Simulation</button>
+                    <div class="form-group" style="display: inline-block;">
+                        <label for="sel1">Select gate:</label>
+                        <select class="form-control" id="sel1" onchange="displayDiv(this.value)" style="width: 150px">
+                            <option value="AND">AND Gate</option>
+                            <option value="OR">OR Gate</option>
+                            <option value="NOT">NOT Gate</option>
+                        </select>
+                    </div>
+                    <button id="startSimButton" class="btn" onclick="startSimulation(1000)">Start Simulation</button>
+                    <button id="stopSimButton" class="btn disabled">Stop Simulation</button><br/>
+                    Threshold Value : 
+                    <div id="AND_Gate_Threshold_slider" style="width: 200px;display: inline-block;"></div>
                     <br/>
                     <div id="AND-gate-sim">
                             <svg width="650" height="300">
@@ -242,14 +298,15 @@
 
                                 <text font-size="20" x="485" y="150">y(x)</text>
                                 <text class="changingTextStyle" id="yx-value" font-size="20" x="485" y="170"></text>
+                                <text class="" id="AND-threshold-value" font-size="20" x="405" y="220">Threshold: 0</text>
 
                                 <text class="changingTextStyle" id="yx-value-expln" font-size="20" x="415" y="70"></text>
                             </svg>
                             <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">
                                 <div>
                                     <!--<p id="ux-wrapper">u(x) = 1*X + 1*Y = <span style="font-weight: bolder" id="ux-value"></span></p>-->
-                                    <p id="ux-wrapper">y(x) = 1 , u(x) > <span class="AND-gate-threshold">1.5</span><br/>
-                                        &emsp;&emsp;= 0 , u(x) < <span class="AND-gate-threshold">1.5</span></p>
+                                    <p id="ux-wrapper">y(x) = 1 , u(x) > threshold<br/>
+                                        &emsp;&emsp;= 0 , u(x) < threshold</p>
                                 </div>
                                 <!--<button id="ANDNextButton" onclick="startSimulation(1000,0)" disabled>Move to next set of values</button><br/><br/>-->
                                 <table class="table-condensed truthTable" style="">
@@ -259,7 +316,11 @@
                                     <tr class="AND-TT-rows" id="AND-TT-row-3"><td>1</td><td>0</td><td>0</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-3"></td></tr>
                                     <tr class="AND-TT-rows" id="AND-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-4"></td></tr>
                                 </table>
-                            </div>                    
+                            </div> 
+                            <br/><br/><br/>
+                            <p>
+                                Hint: Use 1.5 as threshold
+                            </p>                   
                     </div>
 
                     <div id="OR-gate-sim">
@@ -276,11 +337,9 @@
         </div>
     </body>
 </html>
-<!-- ./wrapper -->
-<!-- jQuery 2.2.3 -->
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+
+
 <!-- Bootstrap 3.3.6 -->
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
@@ -289,5 +348,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-
-
