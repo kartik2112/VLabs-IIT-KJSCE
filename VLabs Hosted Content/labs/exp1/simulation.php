@@ -63,18 +63,19 @@
                     $("#AND-gate-sim").slideUp(400);
                     $("#NOT-gate-sim").slideDown(400);
                 }
-                resetCompleteSimulation();
+                stopSimulation();
             }
 
             function stopSimulation(timer) {
+                resetCompleteSimulation();
                 $("#AND_Gate_Threshold_slider").slider("enable");
                 $("#startSimButton").removeClass("disabled");
                 $("#stopSimButton").addClass("disabled");
+                verifyANDOutputs();
                 window.clearInterval(timer);
                 window.clearTimeout(timer1);
                 window.clearTimeout(timer2);
                 window.clearTimeout(timer3);
-                resetCompleteSimulation();
             }
 
             function resetCompleteSimulation() {
@@ -123,25 +124,26 @@
                         $("#oplay_neuron1-oplay_thrshld").addClass("animatedLine");
 
                         if (ux > threshold) {
-                            $("#yx-value-expln").text("u(x) = " + ux + " > " + threshold);
+                            $("#yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
                         }
                         else {
                             $("#yx-value-expln").text("u(x) = " + ux + " < " + threshold);
                         }
 
                         timer3 = window.setTimeout(function () {
-                            if (ux > threshold) {
-                                $("#yx-value-expln").text("u(x) = " + ux + " > " + threshold + " => y(x) = 1");
+                            if (ux >= threshold) {
+                                $("#yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1");
                                 $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1);
                                 $("#yx-value").text("= " + 1);
                                 calcOP.push(1);
                             }
                             else {
-                                $("#yx-value-expln").text("u(x) = " + ux + " < " + threshold + " => y(x) = 0");
+                                $("#yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0");
                                 $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0);
                                 $("#yx-value").text("= " + 0);
                                 calcOP.push(0);
                             }
+
                         }, interval * 6);
                     }, interval * 4);
 
@@ -170,9 +172,9 @@
                     iterationNo++;
                     if (iterationNo == 4) {
                         window.clearInterval(timer);
-                        verifyANDOutputs();
                     }
                 }, interval * 17);
+
 
                 $("#stopSimButton").click(function () {
                     stopSimulation(timer);
@@ -181,13 +183,16 @@
             }
             function verifyANDOutputs() {
                 var correctANDOPs = [0, 0, 0, 1];
-                for (var i = 0; calcOP.length; i++) {
-                    if (correctANDOPs[i] != calcOP[i]) {
-                        alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
-                        return;
+                if (correctANDOPs.length == calcOP.length) {
+                    for (var i = 0; calcOP.length; i++) {
+                        if (correctANDOPs[i] != calcOP[i]) {
+                            alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
+                            return;
+                        }
                     }
+                    alert("Correct Output values found! This threshold value works for this neural network.");
                 }
-                alert("Correct Output values found! This threshold value works for this neural network.");
+
             }
         </script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
@@ -304,9 +309,8 @@
                             </svg>
                             <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">
                                 <div>
-                                    <!--<p id="ux-wrapper">u(x) = 1*X + 1*Y = <span style="font-weight: bolder" id="ux-value"></span></p>-->
-                                    <p id="ux-wrapper">y(x) = 1 , u(x) > threshold<br/>
-                                        &emsp;&emsp;= 0 , u(x) < threshold</p>
+                                    <p id="ux-wrapper">y(x) = 1 , u(x) >= Threshold<br/>
+                                        &emsp;&emsp;= 0 , u(x) < Threshold</p>
                                 </div>
                                 <!--<button id="ANDNextButton" onclick="startSimulation(1000,0)" disabled>Move to next set of values</button><br/><br/>-->
                                 <table class="table-condensed truthTable" style="">
