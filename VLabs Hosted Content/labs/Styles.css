@@ -4,13 +4,13 @@
 }
 
 .animatedLineGreen{
-    stroke: #00d404;
+    stroke: #00d404!important;
     stroke-dasharray: 100;
     animation: dash 2s linear infinite;
 }
 
 .animatedLinePurple{
-    stroke: #7100d5;
+    stroke: #7100d5!important;
     stroke-dasharray: 100;
     animation: dash 2s linear infinite;
 }
@@ -49,4 +49,18 @@ table.truthTable th{
 
 table.truthTable td,th{
     text-align: center;
+}
+
+div.highlightDiv{
+    background-color: #06baf4
+}
+
+table.truthTable tr.highlightTTRow{
+    background-color: #ff4600;
+    color: #fff;
+}
+
+.changingTextStyle{
+    stroke: #000264; 
+    stroke-width:1; 
 }
