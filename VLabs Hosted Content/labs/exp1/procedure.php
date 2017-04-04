@@ -85,10 +85,18 @@
                     </ol>
                     <p>After the entire simulation is completed, you will get a popup indicating this completion. 
                         Now you may select another Gate and run the simulation.</p>
+                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
                     <p>The correct outputs will be obtained by the neural network only for certain ranges of inputs.<br/>
                         You can easily visualize this using the graph.
                         When the line (decision boundary) is such that points that look same are on the same side of line, then correct output has been obtained.</p>
-                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
+                    <p>
+                        <b>E.g.</b> In the following plot, <b>similar points are not on the same side of the line</b>. 
+                        Hence, the weights and threshold chosen provide an <b>incorrect output</b> for the corresponding Gate.<br/>
+                        <img src="images/SS2.PNG" alt="SS2"/><br/>
+                        <b>E.g.</b> In the following plot, <b>similar points are on the same side of the line</b>. 
+                        Hence, the weights and threshold chosen provide a <b>correct output</b> for the corresponding Gate.<br/>
+                        <img src="images/SS1.PNG" alt="SS1"/><br/>
+                    </p>                    
                 </section>
                 <!-- /.content -->
             </div>
