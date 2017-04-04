@@ -84,3 +84,7 @@ button.displayActivatedButton{
         box-shadow: inset 0px 0px 0px 0px #fff;
     }
 }
+
+.jxgbox{
+    background-color: rgba(236, 240, 245, 0.85)!important;
+}
