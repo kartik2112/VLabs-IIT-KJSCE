@@ -29,347 +29,19 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-        <script type="text/javascript">
-            var AND_threshold = 0,OR_threshold=0;
-            var AND_w1 = 1,OR_w1=0;
-            var AND_w2 = 1,OR_w2=0;
-            var AND_calcOP,OR_calcOP;
-            var timer1, timer2, timer3,timer4;
-            var gate_id=1;
-            $(document).ready(function () {
-                /*
-                Initialize sliders and add listeners
-                */
-                $("#AND_Gate_Threshold_slider").slider({
-                    max: 6.5,
-                    min: -0.5,
-                    step: 0.1,
-                    slide: function (event, ui) {
-                        $("#AND-threshold-value").text("Threshold: " + ui.value);
-                        AND_threshold = ui.value;
-                    }
-                });
-                $("#AND-threshold-value").text("Threshold: " + $("#AND_Gate_Threshold_slider").slider("value"));
-                AND_threshold = $("#AND_Gate_Threshold_slider").slider("value");
-
-
-
-                $("#AND_Gate_w1_slider").slider({
-                    max: 3,
-                    min: 0,
-                    value: 1,
-                    step: 0.05,
-                    slide: function (event, ui) {
-                        $(".AND-inputX-oplay_neuron1-weight").text(ui.value);
-                        AND_w1 = ui.value;
-                    }
-                });
-
-                $(".AND-inputX-oplay_neuron1-weight").text($("#AND_Gate_w1_slider").slider("value"));
-                AND_w1 = $("#AND_Gate_w1_slider").slider("value");
-
-
-                $("#AND_Gate_w2_slider").slider({
-                    max: 3,
-                    min: 0,
-                    value: 1,
-                    step: 0.05,
-                    slide: function (event, ui) {
-                        $(".AND-inputY-oplay_neuron1-weight").text(ui.value);
-                        AND_w2 = ui.value;
-                    }
-                });
-
-                $(".AND-inputY-oplay_neuron1-weight").text($("#AND_Gate_w2_slider").slider("value"));
-                AND_w2 = $("#AND_Gate_w2_slider").slider("value");
-                
-                //OR gate values
-                    $("#OR_Gate_Threshold_slider").slider({
-                    max: 6.5,
-                    min: -0.5,
-                    step: 0.1,
-                    slide: function (event, ui) {
-                        $("#OR-threshold-value").text("Threshold: " + ui.value);
-                        OR_threshold = ui.value;
-                    }
-                });
-                $("#OR-threshold-value").text("Threshold: " + $("#OR_Gate_Threshold_slider").slider("value"));
-                OR_threshold = $("#OR_Gate_Threshold_slider").slider("value");
-
-
-
-                $("#OR_Gate_w1_slider").slider({
-                    max: 3,
-                    min: 0,
-                    value: 1,
-                    step: 0.05,
-                    slide: function (event, ui) {
-                        $(".OR-inputX-oplay_neuron1-weight").text(ui.value);
-                        OR_w1 = ui.value;
-                    }
-                });
-
-                $(".OR-inputX-oplay_neuron1-weight").text($("#OR_Gate_w1_slider").slider("value"));
-                OR_w1 = $("#OR_Gate_w1_slider").slider("value");
-
-
-                $("#OR_Gate_w2_slider").slider({
-                    max: 3,
-                    min: 0,
-                    value: 1,
-                    step: 0.05,
-                    slide: function (event, ui) {
-                        $(".OR-inputY-oplay_neuron1-weight").text(ui.value);
-                        OR_w2 = ui.value;
-                    }
-                });
-
-                $(".OR-inputY-oplay_neuron1-weight").text($("#OR_Gate_w2_slider").slider("value"));
-                OR_w2 = $("#OR_Gate_w2_slider").slider("value");
-
-
-
-            });
-
-
-            function displayDiv(val) {
-                if (val == "AND") {
-                    gate_id=1;
-                    $("#OR-gate-sim").slideUp(400);
-                    $("#NOT-gate-sim").slideUp(400);
-                    $("#AND-gate-sim").slideDown(400);
-                }
-                else if (val == "OR") {
-                    gate_id=2;
-                    $("#NOT-gate-sim").slideUp(400);
-                    $("#AND-gate-sim").slideUp(400);
-                    $("#OR-gate-sim").slideDown(400);
-                }
-                else {
-                    $("#OR-gate-sim").slideUp(400);
-                    $("#AND-gate-sim").slideUp(400);
-                    $("#NOT-gate-sim").slideDown(400);
-                }
-                stopSimulation();
-            }
-
-            function stopSimulation(timer) {
-                resetCompleteSimulation();
-                $(".sliders").slider("enable");
-                $("#startSimButton").removeClass("disabled");
-                $("#selGate").prop("disabled", false);
-                $("#stopSimButton").addClass("disabled");
-                window.clearInterval(timer);
-                window.clearTimeout(timer1);
-                window.clearTimeout(timer2);
-                window.clearTimeout(timer3);
-                window.clearTimeout(timer4);
-            }
-
-            function resetCompleteSimulation() {
-                resetSimulationPart();
-                $(".AND-TT-rows").removeClass("highlightTTRow");
-                $(".AND-TT-OP-rows").text("");
-                $(".OR-TT-rows").removeClass("highlightTTRow");
-                $(".OR-TT-OP-rows").text("");
-            }
-
-            function resetSimulationPart() {
-                $(".changingTextStyle").text("");
-
-                $(".StdLine").removeClass("animatedLineGreen");
-                $(".StdLine").removeClass("animatedLinePurple");
-                $(".StdLine").removeClass("animatedLine");
-            }
-
-            function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interval, timer) {
-                /* This is the way arrays were getting passed as String */
-                inputX = inputX.split(",");
-                inputY = inputY.split(",");
-
-                resetSimulationPart();
-
-                /*
-                Remove all highlights from truth table and highlight current truth table row
-                */
-                $(".AND-TT-rows").removeClass("highlightTTRow");
-                $("#AND-TT-row-" + (iterationNo + 1)).addClass("highlightTTRow");
-
-                /*
-                Set animations on lines
-                */
-                $(".AND-XVal").text(inputX[iterationNo]);
-                $(".AND-YVal").text(inputY[iterationNo]);
-                $("#AND-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-                $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-                var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, u(x) */
-                //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
-
-                timer1 = window.setTimeout(function () {
-                    /* Display u(x) and pause */
-                    $("#AND-ux-value").text("= " + ux);
-
-                    timer2 = window.setTimeout(function () {
-                        /* Display threshold calculation and pause */
-                        $("#AND-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
-                        if (ux >= threshold) {
-                            $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
-                        }
-                        else {
-                            $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold);
-                        }
-
-                        timer3 = window.setTimeout(function () {
-                            /* Display calculation output as y(x) and add to truth table */
-                            if (ux >= threshold) {
-                                $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
-                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
-                                $("#AND-yx-value").text("= " + 1);
-                                AND_calcOP.push(1);
-                            }
-                            else {
-                                $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
-                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
-                                $("#AND-yx-value").text("= " + 0);
-                                AND_calcOP.push(0);
-                            }
-
-                        }, interval * 6);
-                    }, interval * 4);
-
-                }, interval * 2);
-            }
-
-            function simulateORGate(iterationNo, inputX, inputY, w1, w2, threshold, interval, timer) {
-                /* This is the way arrays were getting passed as String */
-                inputX = inputX.split(",");
-                inputY = inputY.split(",");
-
-                resetSimulationPart();
-
-                /*
-                Remove all highlights from truth table OR highlight current truth table row
-                */
-                $(".OR-TT-rows").removeClass("highlightTTRow");
-                $("#OR-TT-row-" + (iterationNo + 1)).addClass("highlightTTRow");
-
-                /*
-                Set animations on lines
-                */
-                $(".OR-XVal").text(inputX[iterationNo]);
-                $(".OR-YVal").text(inputY[iterationNo]);
-                $("#OR-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-                $("#OR-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-                var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, u(x) */
-                //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
-
-                timer1 = window.setTimeout(function () {
-                    /* Display u(x) OR pause */
-                    $("#OR-ux-value").text("= " + ux);
-
-                    timer2 = window.setTimeout(function () {
-                        /* Display threshold calculation OR pause */
-                        $("#OR-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
-                        if (ux >= threshold) {
-                            $("#OR-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
-                        }
-                        else {
-                            $("#OR-yx-value-expln").text("u(x) = " + ux + " < " + threshold);
-                        }
-
-                        timer3 = window.setTimeout(function () {
-                            /* Display calculation output as y(x) OR add to truth table */
-                            if (ux >= threshold) {
-                                $("#OR-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
-                                $("#OR-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
-                                $("#OR-yx-value").text("= " + 1);
-                                OR_calcOP.push(1);
-                            }
-                            else {
-                                $("#OR-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
-                                $("#OR-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
-                                $("#OR-yx-value").text("= " + 0);
-                                OR_calcOP.push(0);
-                            }
-
-                        }, interval * 6);
-                    }, interval * 4);
-
-                }, interval * 2);
-            }
-
-
-            function startSimulation(interval) {
-                resetCompleteSimulation();
-
-                var inputXofAND = [0, 0, 1, 1];
-                var inputYofAND = [0, 1, 0, 1];
-                var iterationNo = 0;
-                AND_calcOP = new Array();
-
-                $(".sliders").slider("disable");
-                $("#startSimButton").addClass("disabled");
-                $("#selGate").prop("disabled", true);
-                $("#stopSimButton").removeClass("disabled");
-                $('html, body').animate({
-                    scrollTop: $("#AND-gate-svg").offset().top
-                }, 500);
-                $('html, body').animate({
-                    scrollTop: $("#OR-gate-svg").offset().top
-                }, 500);
-
-                /* The first simulation iteration call is done immediately and then later iterations are called in intervals */
-                if(gate_id==1)
-                simulateANDGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(AND_w1), parseFloat(AND_w2), parseFloat(AND_threshold), interval);
-                else
-                simulateORGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(OR_w1), parseFloat(OR_w2), parseFloat(OR_threshold), interval);
-                iterationNo++;
-
-                var timer = window.setInterval(function () {
-                    if(gate_id==1)
-                    simulateANDGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(AND_w1), parseFloat(AND_w2), parseFloat(AND_threshold), interval, timer);
-                    else if(gate_id==2)
-                    simulateORGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(OR_w1), parseFloat(OR_w2), parseFloat(OR_threshold), interval,timer);
-                    iterationNo++;
-                    if (iterationNo == 4) {
-                        window.clearInterval(timer);
-                    }
-                }, interval * 17);
-
-                timer4=window.setTimeout(function () {
-                    resetSimulationPart();                    
-                    $(".sliders").slider("enable");
-                    $("#startSimButton").removeClass("disabled");
-                    $("#selGate").prop("disabled", false);
-                    $("#stopSimButton").addClass("disabled");
-                    alert("Simulation Complete!");
-                }, interval * 17 * 4);
-
-
-                $("#stopSimButton").click(function () {
-                    stopSimulation(timer);
-                });
-
-            }
-
-            /* 
-            This code is making webpage unresponsives
-            function verifyANDOutputs() {
-            var correctANDOPs = [0, 0, 0, 1];
-            if (correctANDOPs.length == AND_calcOP.length) {
-            for (var i = 0; AND_calcOP.length; i++) {
-            if (correctANDOPs[i] != AND_calcOP[i]) {
-            alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
-            return;
-            }
-            }
-            alert("Correct Output values found! This threshold value works for this neural network.");
-            }
-            }
-            */
-        </script>
         <link href="../src/StyleSheet1.css" rel="stylesheet" />
+
+
+        <!--Here is the main script that handles the simulation-->
+        <script type="text/javascript" src="exp1Simulation.js"></script>    
+        <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
         <link href="../Styles.css" rel="stylesheet" />
+
+
+        <!--These are used for plotting the graphs-->
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+ 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -439,28 +111,30 @@
                     <div class="form-group" style="display: inline-block;">
                         <label for="selGate">Select gate:</label>
                         <select class="form-control" id="selGate" onchange="displayDiv(this.value)" style="width: 150px">
-                            <option value="AND">AND Gate</option>
+                            <option value="AND" selected>AND Gate</option>
                             <option value="OR">OR Gate</option>
                             <option value="NOT">NOT Gate</option>
                         </select>
                     </div>
                     <button id="startSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
-                    <button id="stopSimButton" class="btn btn-danger disabled">Stop Simulation</button><br/>
+                    <button id="stopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button><br/>
                     <div>
                         <p id="ux-wrapper">y(x) = 1 , u(x) >= Threshold<br/>
                             &emsp;&emsp;= 0 , u(x) < Threshold</p>
                     </div>
                     <br/>
                     <div id="AND-gate-sim">
-                            w<sub>1</sub> : 
-                            <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
+                            <h3>AND Gate Neural Network (NN)</h3>
+                            <b>w<sub>1</sub> : </b>
+                            <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputX-oplay_neuron1-weight"></span><br/>
 
-                            w<sub>2</sub> : 
-                            <div id="AND_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
+                            <b>w<sub>2</sub> : </b>
+                            <div id="AND_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputY-oplay_neuron1-weight"></span><br/>
 
-                            Threshold Value : 
-                            <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
-                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;">
+                            <b>Threshold : </b>
+                            <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-threshold-value"></span><br/>
+
+                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="AND-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="AND-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -492,12 +166,15 @@
                                 <!--y(x) related texts-->
                                 <text font-size="20" x="535" y="150">y(x)</text>
                                 <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="535" y="170"></text>
-                                <text class="" id="AND-threshold-value" font-size="20" x="455" y="220">Threshold: 0</text>
+                                <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="AND-threshold-value" ></tspan></text>
 
                                 <text class="changingTextStyle" id="AND-yx-value-expln" font-size="20" x="415" y="70"></text>
                             </svg>
+                            <div id="AND-output">
+			                    <div id="AND-box" class="jxgbox" style="width:200px; height:200px;"></div>
+		                    </div><br/>
                             <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">                                
-                                <!--<button id="ANDNextButton" onclick="startSimulation(1000,0)" disabled>Move to next set of values</button><br/><br/>-->
+                                <button class="btn btn-warning disabled" id="ANDNextButton" disabled>Apply next set of I/P values</button><br/>
                                 <h3>Truth Table of AND Gate</h3>
                                 <table class="table-condensed truthTable" style="">
                                     <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
@@ -507,22 +184,24 @@
                                     <tr class="AND-TT-rows" id="AND-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-4"></td></tr>
                                 </table>
                             </div> 
-                            <br/><br/><br/>
+                            <br/><br/><br/>                            
                             <p>
                                 <b>Hint:</b> Try using 1.5 as threshold and 1 as weights
                             </p>                   
                     </div>
-                    <hr>
-                    <div id="OR-gate-sim">
-                                                    w<sub>1</sub> : 
-                            <div id="OR_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
 
-                            w<sub>2</sub> : 
-                            <div id="OR_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
+                    <div id="OR-gate-sim" style="display: none;">
+                            <h3>OR Gate Neural Network (NN)</h3>
+                            <b>w<sub>1</sub> : </b>
+                            <div id="OR_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputX-oplay_neuron1-weight"></span><br/>
 
-                            Threshold Value : 
-                            <div id="OR_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
-                            <svg id="OR-gate-svg" width="700" height="300" style="float: left;">
+                            <b>w<sub>2</sub> : </b>
+                            <div id="OR_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputY-oplay_neuron1-weight"></span><br/>
+
+                            <b>Threshold : </b>
+                            <div id="OR_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-threshold-value"></span><br/>
+
+                            <svg id="OR-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="OR-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="OR-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -554,12 +233,15 @@
                                 <!--y(x) related texts-->
                                 <text font-size="20" x="535" y="150">y(x)</text>
                                 <text class="changingTextStyle" id="OR-yx-value" font-size="20" x="535" y="170"></text>
-                                <text class="" id="OR-threshold-value" font-size="20" x="455" y="220">Threshold: 0</text>
+                                <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="OR-threshold-value" ></tspan></text>
 
                                 <text class="changingTextStyle" id="OR-yx-value-expln" font-size="20" x="415" y="70"></text>
                             </svg>
+                            <div id="OR-output">
+			                    <div id="OR-box" class="jxgbox" style="width:200px; height:200px;"></div>
+		                    </div><br/>
                             <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">                                
-                                <!--<button id="ORNextButton" onclick="startSimulation(1000,0)" disabled>Move to next set of values</button><br/><br/>-->
+                                <button class="btn btn-warning disabled" id="ORNextButton" disabled>Apply next set of I/P values</button><br/>
                                 <h3>Truth Table of OR Gate</h3>
                                 <table class="table-condensed truthTable" style="">
                                     <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
@@ -569,14 +251,63 @@
                                     <tr class="OR-TT-rows" id="OR-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-4"></td></tr>
                                 </table>
                             </div> 
-                            <br/><br/><br/>
+                            <br/><br/><br/>                            
                             <p>
-                                <b>Hint:</b> Try using 1.0 as threshold OR 1 as weights
-                            </p>                   
-
+                                <b>Hint:</b> Try using 0.5 as threshold and 1 as weights
+                            </p> 
                     </div>
 
-                    <div id="NOT-gate-sim">
+                    <div id="NOT-gate-sim" style="display: none;">
+                                                    <h3>NOT  Gate Neural Network (NN)</h3>
+                            <b>w<sub>1</sub> : </b>
+                            <div id="NOT_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-inputX-oplay_neuron1-weight"></span><br/>
+                        
+                            <b>Threshold : </b>
+                            <div id="NOT_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-threshold-value"></span><br/>
+                        
+                            <svg id="NOT-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
+                                <line id="NOT-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
+                                <line id="NOT-oplay_neuron1-oplay_thrshld" class="StdLine" x1="250" y1="150" x2="500" y2="150" style=""/>
+                                
+                                <circle id="NOT-inputX" class="StdCircle" cx="50" cy="50" r="20"/>
+                                <circle id="NOT-oplay_neuron1" class="StdCircle" cx="250" cy="150" r="20"/>
+                                <image id="NOT-oplay_thrshld" x="475" y="125"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                
+                                <text font-size="20" x="242" y="155" font-size="25">∑</text>
+                                
+                                <text font-size="20" x="15" y="55">X</text>
+                                <text class="changingTextStyle NOT-XVal" font-size="20" x="45" y="55"></text>
+                                
+                                <text font-size="20" x="170" y="90">w<tspan baseline-shift="sub">1</tspan>=<tspan class="NOT-inputX-oplay_neuron1-weight">1</tspan></text>
+                                
+                                <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X</text>
+                                <text font-size="20" x="270" y="180"> = <tspan class="NOT-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle NOT-XVal"> </tspan>)</text>
+                                
+                                <text font-size="20" x="535" y="150">y(x)</text>
+                                <text class="changingTextStyle" id="NOT-yx-value" font-size="20" x="535" y="170"></text>
+                                <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="NOT-threshold-value" ></tspan></text>
+
+                                <text class="changingTextStyle" id="NOT-yx-value-expln" font-size="20" x="415" y="70"></text>
+
+                        </svg>
+                            <div id="NOT-output">
+			                    <div id="NOT-box" class="jxgbox" style="width:200px; height:200px;"></div>
+		                    </div><br/>
+                            <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">                                
+                                <button class="btn btn-warning disabled" id="NOTNextButton" disabled>Apply next set of I/P values</button><br/>
+                                <h3>Truth Table of OR Gate</h3>
+                                <table class="table-condensed truthTable" style="">
+                                    <tr><th>X</th><th>Expected O/P</th><th>O/P from NN</th></tr>
+                                    <tr class="NOT-TT-rows" id="NOT-TT-row-1"><td>0</td><td>1</td><td class="NOT-TT-OP-rows" id="NOT-TT-OP-row-1"></td></tr>
+                                    <tr class="NOT-TT-rows" id="NOT-TT-row-2"><td>0</td><td>0</td><td class="NOT-TT-OP-rows" id="NOT-TT-OP-row-2"></td></tr>
+                                   
+                                </table>
+                            </div> 
+                            <br/><br/><br/>                            
+                            <p>
+                                <b>Hint:</b> Try using 1 as threshold and 1 as weights
+                            </p> 
+
                     </div>
                     
                 </section>                
