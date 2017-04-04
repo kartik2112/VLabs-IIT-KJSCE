@@ -39,6 +39,14 @@
                 $("#t"+sel).html(ui.value);
               }
             });
+            $(".tsliders").slider({
+              step: 0.1,
+              max: 2,
+              min: -2,
+              slide: function(event,ui){
+                $("#thresh").html(ui.value);
+              }
+            });
           });
         </script> 
 
@@ -111,9 +119,9 @@
         </section>
         <script type="text/javascript">
           // Popup window code
-                                function newPopup(url) {
-                                  popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
-                                }
+          function newPopup(url) {
+            popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+          }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
           <a href="JavaScript:newPopup('procedure.php');" style="color:green;font-size: 16px"><img src="../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
@@ -130,7 +138,7 @@
            
             <!--Simulation content goes here -->
 
-            <svg height="300" width="700">
+            <svg height="300" width="800">
 
             <!-- The weights connecting input and hidden layer -->
 
@@ -154,6 +162,8 @@
               <line class="not_sel" id="w6" x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(6)"/>
               <text id="t6" x="330" y="205" font-size="17">0</text>
 
+              <line x1="470" y1="150" x2="570" y2="150" stroke="#ff6a00" stroke-width="5" />
+
               <circle class="neuron" cx="470" cy="150" r="20" fill="#00b8ff" style="z-index: 10"><title>Output Neuron</title></circle>
 
             <!-- The input layer -->
@@ -166,6 +176,14 @@
               <circle class="neuron" cx="270" cy="50" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 1</title></circle>
               <circle class="neuron" cx="270" cy="250" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 2</title></circle>
 
+            <!-- Threshold. Use #thresh to set value of threshold -->
+
+              <text x="570" y="115" font-size="15">Threshold = <tspan id="thresh">0</tspan></text>
+              <image x="570" y="125" height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff" onclick="editThreshold()"/>
+
+            <!-- The output. Use #op to set value of output -->
+
+              <text x="640" y="150" font-size="17">y(x) = <tspan id="op">0</tspan></text>
             </svg>
 
             <h3>Truth Table</h3>
@@ -217,10 +235,15 @@
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
-        <div id="edit" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;display: none;">
+        <div id="edit" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;">
             <p style="text-align: center;color: white;padding: 5px;">Slide to change weight</p>
             <div id="wslider" class="sliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
             <button onclick="set(sel)" style="margin: 15px 0;border: none;outline: none;">Set</button>
+        </div>
+        <div id="edit_th" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;z-index: 99">
+            <p style="text-align: center;color: white;padding: 5px;">Slide to change Threshold</p>
+            <div id="tslider" class="tsliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
+            <button onclick="set_th()" style="margin: 15px 0;border: none;outline: none;">Set</button>
         </div>
     </body>
 </html>
@@ -241,7 +264,16 @@
 <!-- Editing weights -->
 <script type="text/javascript">
   var sel=1;
+  $("#edit").hide();
+  $("#edit_th").hide();
+
+  var changing = 0;
   function editWeights(id){
+      if(changing==1){
+        alert('Set the threshold value first');
+        return;
+      }
+      changing=1;
       sel=id;
       id = "w" + id;
       $("#"+id).removeClass("not_sel");
@@ -250,11 +282,28 @@
       var e = document.getElementById('edit');
 
       var l,t;
-      l = 850;
+      l = 750;
       e.style.left = l+"px";
-      t = 420;
+      t = 270;
       e.style.top = t+"px";
-      e.style.display = "block";
+      $("#edit").show();
+  }
+
+  function editThreshold(){
+    if(changing==1){
+        alert('Set the weight value first');
+        return;
+      }
+      changing=1;
+      var x = document.getElementById('thresh');
+      var e = document.getElementById('edit_th');
+
+      var l,t;
+      l = 750;
+      e.style.left = l+"px";
+      t = 270;
+      e.style.top = t+"px";
+      $("#edit_th").show();
   }
 
   function set(id){
@@ -262,7 +311,14 @@
 
       $("#w"+id).removeClass("selected");
       $("#w"+id).addClass("not_sel");
-      e.style.display = "none";
+      $("#edit").hide();
       $(".sliders").slider("value",0,0);
+      changing=0;
+  }
+
+  function set_th(){
+      changing=0;
+      $("#edit_th").hide();
+      $(".tsliders").slider("value",0,0);
   }
 </script>
