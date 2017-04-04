@@ -13,6 +13,9 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <!-- JSX Graph links -->
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
         <!-- Simulation scripts start-->
           <script src="../src/math.ob.js"></script>
 
@@ -47,7 +50,117 @@
                 $("#thresh").html(ui.value);
               }
             });
+            $(".bsliders").slider({
+              step: 0.1,
+              max: 2,
+              min: -2,
+              slide: function(event,ui){
+                $("#b"+sel).html(ui.value);
+              }
+            });
           });
+
+          var counter,board,constPointSize,OP1,OP2,OP3,OP4,x1,x2,z,testOneX,testOneY,testTwoX,testTwoY,w11,w12,w21,w22,v1,v2,b1,b2,b3,theta,flag,erroneousCount,errorRate;
+
+          $(document).ready(function(){
+            counter=0;
+            board = JXG.JSXGraph.initBoard('box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+            constPointSize=5;
+            OP1 = board.create('point',[0,0], {size:constPointSize,face:'x',fixed:true});
+            OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
+            OP3 = board.create('point',[1,0], {size:constPointSize,face:'^',fixed:true});
+            OP4 = board.create('point',[1,1], {size:constPointSize,face:'x',fixed:true});
+            x1=[0,0,1,1];
+            x2=[0,1,0,1];
+            z=[0,1,1,0];
+            testOneX=0;
+            testOneY=0;
+
+            testTwoX=1;
+            testTwoY=0;
+            
+            flag=true;
+            erroneousCount = 0;
+
+            errorRate=(erroneousCount/4)*100;
+          });
+
+          function start(){
+
+            document.getElementById('grph').style.display = "block";
+
+            w11=document.getElementById('t1').innerHTML;
+            w12=document.getElementById('t2').innerHTML;
+            b1=document.getElementById('b1').innerHTML;
+
+            w21=document.getElementById('t3').innerHTML;
+            w22=document.getElementById('t4').innerHTML;
+            b2=document.getElementById('b2').innerHTML;
+
+            v1=document.getElementById('t5').innerHTML;
+            v2=document.getElementById('t6').innerHTML;
+            b3=document.getElementById('b3').innerHTML;
+            theta=document.getElementById('thresh').innerHTML;
+
+            if(counter==3) {
+              document.getElementById('start').innerHTML = "Restart simulation";
+            }
+            else if(counter==4) counter=0;
+            else  document.getElementById('start').innerHTML = "Test next input";
+
+            if(counter!=0) document.getElementById('r'+(counter)).style.background = "transparent";
+            else document.getElementById('r4').style.background = "transparent";
+
+            document.getElementById('r'+(counter+1)).style.background = "#ff9595";
+
+            var i;
+            for(i=1;i<=6;i++){
+              $("#w"+i).addClass('StdLine animatedLinePurple');
+            }
+
+            setTimeout(mlp(counter),1000);
+
+            for(i=1;i<=6;i++){
+              $("#w"+i).removeClass('animatedLine');
+            }
+          }
+
+          function mlp(index){
+            counter++;
+
+            z1=x1[index]*w11+x2[index]*w21+b1;
+            z2=x1[index]*w12+x2[index]*w22+b2;
+
+            if(z1>=theta)
+                y1=1;
+            else
+                y1=0;
+            if(z2>=theta)
+                y2=1;
+            else
+                y2=0;
+
+            yin=y1*v1+y2*v2+b3;
+
+            if(yin>=theta)
+              y=1;
+            else
+              y=0;
+
+            var flagger=false;
+
+            if(y!=z[index])
+            {
+              erroneousCount++;
+              flagger=true;
+            }
+
+            decisionBoundary1 = board.create('line', [b1*-1, Number(w11), Number(w21)]);
+            decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+
+            document.getElementById('op').innerHTML = y;
+            z1=z2=y=y1=y2=0;
+          }
         </script> 
 
         <style type="text/css">
@@ -69,6 +182,18 @@
           .not_sel{
             stroke: #ff6a00;
             stroke-dasharray: 0px;
+          }
+
+          .neuron_sel{
+            fill: #ff6a00;
+          }
+
+          .opneuron{
+            fill: #00b8ff;
+          }
+
+          .hneuron{
+            fill: #222d32;
           }
         </style>
     <!-- Simulation scripts end-->
@@ -131,14 +256,15 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <button id="start" class="btn btn-success">Start simulation</button>
           <h3 style="margin-top:5%">Simulation</h3>
 
-          <p>Click on any line to change its weight</p>
+          <p>--> Click on any line to change its weight</p>
+          <p>--> Click on the threshold graph to change threshold value</p>
+          <p>--> Click on any hidden/output neuron to change its bias</p>
            
             <!--Simulation content goes here -->
 
-            <svg height="300" width="800">
+            <svg height="350" width="900">
 
             <!-- The weights connecting input and hidden layer -->
 
@@ -164,7 +290,7 @@
 
               <line x1="470" y1="150" x2="570" y2="150" stroke="#ff6a00" stroke-width="5" />
 
-              <circle class="neuron" cx="470" cy="150" r="20" fill="#00b8ff" style="z-index: 10"><title>Output Neuron</title></circle>
+              <circle id="c3" class="opneuron" cx="470" cy="150" r="20" fill="#00b8ff" onclick="editBias(3)" style="z-index: 10"><title>Output Neuron</title></circle>
 
             <!-- The input layer -->
 
@@ -173,8 +299,14 @@
 
             <!-- The hidden layer -->
 
-              <circle class="neuron" cx="270" cy="50" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 1</title></circle>
-              <circle class="neuron" cx="270" cy="250" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 2</title></circle>
+              <circle id="c1" class="hneuron" cx="270" cy="50" r="20" onclick="editBias(1)" style="z-index: 10"><title>Hidden Neuron 1</title></circle>
+              <circle id="c2" class="hneuron" cx="270" cy="250" r="20" onclick="editBias(2)" style="z-index: 10"><title>Hidden Neuron 2</title></circle>
+
+            <!-- Biases  -->
+
+              <text x="250" y="30">b1 = <tspan id="b1">0</tspan></text>
+              <text x="250" y="280">b2 = <tspan id="b2">0</tspan></text>
+              <text x="450" y="130">b3 = <tspan id="b3">0</tspan></text>
 
             <!-- Threshold. Use #thresh to set value of threshold -->
 
@@ -186,49 +318,62 @@
               <text x="640" y="150" font-size="17">y(x) = <tspan id="op">0</tspan></text>
             </svg>
 
-            <h3>Truth Table</h3>
-            <br/>
-            <table id="truth" border="2" style="text-align: center;">
-              <tr>
-                <th colspan="2" style="text-align: center;">Input</th>
-                <th colspan="2" style="text-align: center;">Output</th>
-              </tr>
-              <tr>
-                <th>X1</th>
-                <th>X2</th>
-                <th>Expected Output</th>
-                <th>Network's output</th>
-              </tr>
+            <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
 
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td id="out1">-</td>
-              </tr>
+            <div style="width: 100%;height: 300px;">
+              <div style="width: 45%;float: left;">
+                <h3>Truth Table</h3>
+                <br/>
+                <table id="truth" border="2" style="text-align: center;">
+                  <tr>
+                    <th colspan="2" style="text-align: center;">Input</th>
+                    <th colspan="2" style="text-align: center;">Output</th>
+                  </tr>
+                  <tr>
+                    <th>X1</th>
+                    <th>X2</th>
+                    <th>Expected Output</th>
+                    <th>Network's output</th>
+                  </tr>
 
-              <tr>
-                <td>0</td>
-                <td>1</td>
-                <td>1</td>
-                <td id="out2">-</td>
-              </tr>
+                  <tr id="r1">
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td id="out1">-</td>
+                  </tr>
 
-              <tr>
-                <td>1</td>
-                <td>0</td>
-                <td>1</td>
-                <td id="out3">-</td>
-              </tr>
+                  <tr id="r2">
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td id="out2">-</td>
+                  </tr>
 
-              <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td id="out4">-</td>
-              </tr>
-            </table>
+                  <tr id="r3">
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td id="out3">-</td>
+                  </tr>
 
+                  <tr id="r4">
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td id="out4">-</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div id="grph" style="width: 45%;float: right;display: none;">
+                <h3>Decision Boundaries</h3>
+                <div id="output">
+                  <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
+                </div>
+              </div>
+
+            </div>
         </section>
         <!-- /.content -->
       </div>
@@ -241,9 +386,14 @@
             <button onclick="set(sel)" style="margin: 15px 0;border: none;outline: none;">Set</button>
         </div>
         <div id="edit_th" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;z-index: 99">
-            <p style="text-align: center;color: white;padding: 5px;">Slide to change Threshold</p>
+            <p style="text-align: center;color: white;padding: 5px;">Slide to change threshold</p>
             <div id="tslider" class="tsliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
             <button onclick="set_th()" style="margin: 15px 0;border: none;outline: none;">Set</button>
+        </div>
+        <div id="edit_b" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;z-index: 99">
+            <p style="text-align: center;color: white;padding: 5px;">Slide to change bias</p>
+            <div id="tslider" class="bsliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
+            <button onclick="set_b()" style="margin: 15px 0;border: none;outline: none;">Set</button>
         </div>
     </body>
 </html>
@@ -266,11 +416,12 @@
   var sel=1;
   $("#edit").hide();
   $("#edit_th").hide();
+  $("#edit_b").hide();
 
   var changing = 0;
   function editWeights(id){
       if(changing==1){
-        alert('Set the threshold value first');
+        alert('Save the value first');
         return;
       }
       changing=1;
@@ -291,11 +442,10 @@
 
   function editThreshold(){
     if(changing==1){
-        alert('Set the weight value first');
+        alert('Save the value first');
         return;
       }
       changing=1;
-      var x = document.getElementById('thresh');
       var e = document.getElementById('edit_th');
 
       var l,t;
@@ -304,6 +454,28 @@
       t = 270;
       e.style.top = t+"px";
       $("#edit_th").show();
+  }
+
+  function editBias(id){
+    if(changing==1){
+        alert('Save the value first');
+        return;
+      }
+      sel=id;
+
+      if(sel<3) $("#c"+id).removeClass("hneuron");
+      else $("#c"+id).removeClass("opneuron");
+      $("#c"+id).addClass("neuron_sel");
+
+      changing=1;
+      var e = document.getElementById('edit_b');
+
+      var l,t;
+      l = 750;
+      e.style.left = l+"px";
+      t = 270;
+      e.style.top = t+"px";
+      $("#edit_b").show();
   }
 
   function set(id){
@@ -320,5 +492,14 @@
       changing=0;
       $("#edit_th").hide();
       $(".tsliders").slider("value",0,0);
+  }
+
+  function set_b(){
+      changing=0;
+      $("#c"+sel).removeClass("neuron_sel");
+      if(sel<3) $("#c"+sel).addClass("hneuron");
+      else $("#c"+sel).addClass("opneuron");
+      $("#edit_b").hide();
+      $(".bsliders").slider("value",0,0);
   }
 </script>
