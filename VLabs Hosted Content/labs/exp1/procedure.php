@@ -85,6 +85,9 @@
                     </ol>
                     <p>After the entire simulation is completed, you will get a popup indicating this completion. 
                         Now you may select another Gate and run the simulation.</p>
+                    <p>The correct outputs will be obtained by the neural network only for certain ranges of inputs.<br/>
+                        You can easily visualize this using the graph.
+                        When the line (decision boundary) is such that points that look same are on the same side of line, then correct output has been obtained.</p>
                     <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
                 </section>
                 <!-- /.content -->

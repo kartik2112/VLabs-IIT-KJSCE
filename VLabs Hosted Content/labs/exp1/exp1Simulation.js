@@ -15,11 +15,12 @@ $(document).ready(function () {
         slide: function (event, ui) {
             $(".AND-threshold-value").text(ui.value);
             AND_threshold = ui.value;
+            plotANDGraph();
         }
     });
     $(".AND-threshold-value").text($("#AND_Gate_Threshold_slider").slider("value"));
     AND_threshold = $("#AND_Gate_Threshold_slider").slider("value");
-    
+
 
     $("#AND_Gate_w1_slider").slider({
         max: 3,
@@ -29,6 +30,7 @@ $(document).ready(function () {
         slide: function (event, ui) {
             $(".AND-inputX-oplay_neuron1-weight").text(ui.value);
             AND_w1 = ui.value;
+            plotANDGraph();
         }
     });
     $(".AND-inputX-oplay_neuron1-weight").text($("#AND_Gate_w1_slider").slider("value"));
@@ -43,12 +45,13 @@ $(document).ready(function () {
         slide: function (event, ui) {
             $(".AND-inputY-oplay_neuron1-weight").text(ui.value);
             AND_w2 = ui.value;
+            plotANDGraph();
         }
     });
     $(".AND-inputY-oplay_neuron1-weight").text($("#AND_Gate_w2_slider").slider("value"));
     AND_w2 = $("#AND_Gate_w2_slider").slider("value");
 
-
+    plotANDGraph();
 
 });
 
@@ -167,15 +170,18 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
                         simulateANDGate(iterationNo + 1, inputX.join(","), inputY.join(","), w1, w2, threshold, interval);
                     });
                 }
-                else{
-                    resetSimulationPart();                    
+                else {
+                    $(".StdLine").removeClass("animatedLineGreen");
+                    $(".StdLine").removeClass("animatedLinePurple");
+                    $(".StdLine").removeClass("animatedLine");
                     $(".sliders").slider("enable");
                     $("#startSimButton").removeClass("disabled");
                     $("#startSimButton").removeAttr("disabled");
                     $("#selGate").prop("disabled", false);
                     $("#stopSimButton").addClass("disabled");
-                    $("#stopSimButton").attr("disabled","disabled");
+                    $("#stopSimButton").attr("disabled", "disabled");
                     alert("Simulation Complete!");
+                    verifyANDOutputs();
                 }
 
             }, interval * 6);
@@ -190,7 +196,7 @@ function startANDSimulation(interval) {
     var inputXofAND = [0, 0, 1, 1];
     var inputYofAND = [0, 1, 0, 1];
     var iterationNo = 0;
-    AND_calcOP = new Array();
+    AND_calcOP = [];
 
     $(".sliders").slider("disable");
 
@@ -232,17 +238,30 @@ function startANDSimulation(interval) {
 }
 
 /* 
-This code is making webpage unresponsives
+This code is making webpage unresponsives*/
 function verifyANDOutputs() {
-var correctANDOPs = [0, 0, 0, 1];
-if (correctANDOPs.length == AND_calcOP.length) {
-for (var i = 0; AND_calcOP.length; i++) {
-if (correctANDOPs[i] != AND_calcOP[i]) {
-alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
-return;
+    var correctANDOPs = [0, 0, 0, 1];
+    if (correctANDOPs.length == AND_calcOP.length) {
+        for (var i = 0; i<AND_calcOP.length; i++) {
+            if (correctANDOPs[i] != AND_calcOP[i]) {
+                alert("Incorrect Output values found!!! This threshold value does not work for this neural network.");
+                return;
+            }
+        }
+        alert("Correct Output values found! This threshold value works for this neural network.");
+    }
 }
+
+
+
+function plotANDGraph()
+{
+	var board = JXG.JSXGraph.initBoard('AND-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+	var constPointSize=5;
+	var OP1 = board.create('point',[0,0], {size:constPointSize,face:'^',fixed:true});
+	var OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
+	var OP3 = board.create('point',[1,0], {size:constPointSize,face:'^',fixed:true});
+	var OP4 = board.create('point',[1,1], {size:constPointSize,face:'x',fixed:true});
+
+    decisionBoundary1 = board.create('line', [AND_threshold*-1, Number(AND_w1), Number(AND_w2)], {fixed:true});
 }
-alert("Correct Output values found! This threshold value works for this neural network.");
-}
-}
-*/
