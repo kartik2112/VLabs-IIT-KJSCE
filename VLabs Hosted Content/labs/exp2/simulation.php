@@ -73,6 +73,7 @@
             x1=[0,0,1,1];
             x2=[0,1,0,1];
             z=[0,1,1,0];
+
             testOneX=0;
             testOneY=0;
 
@@ -82,30 +83,40 @@
             flag=true;
             erroneousCount = 0;
 
-            errorRate=(erroneousCount/4)*100;
+            var i;
+            for(i=1;i<=7;i++){
+              $("#w"+i).addClass('StdLine');
+            }
+
           });
 
           function start(){
 
             document.getElementById('grph').style.display = "block";
 
-            w11=document.getElementById('t1').innerHTML;
-            w12=document.getElementById('t2').innerHTML;
-            b1=document.getElementById('b1').innerHTML;
+            w11=Number(document.getElementById('t1').innerHTML);
+            w12=Number(document.getElementById('t2').innerHTML);
+            b1=Number(document.getElementById('b1').innerHTML);
 
-            w21=document.getElementById('t3').innerHTML;
-            w22=document.getElementById('t4').innerHTML;
-            b2=document.getElementById('b2').innerHTML;
+            w21=Number(document.getElementById('t3').innerHTML);
+            w22=Number(document.getElementById('t4').innerHTML);
+            b2=Number(document.getElementById('b2').innerHTML);
 
-            v1=document.getElementById('t5').innerHTML;
-            v2=document.getElementById('t6').innerHTML;
-            b3=document.getElementById('b3').innerHTML;
-            theta=document.getElementById('thresh').innerHTML;
+            v1=Number(document.getElementById('t5').innerHTML);
+            v2=Number(document.getElementById('t6').innerHTML);
+            b3=Number(document.getElementById('b3').innerHTML);
+            theta=Number(document.getElementById('thresh').innerHTML);
+            z1=z2=y=y1=y2=yin=0;
 
+            document.getElementById('acc').style.display = "none";
             if(counter==3) {
               document.getElementById('start').innerHTML = "Restart simulation";
             }
-            else if(counter==4) counter=0;
+            else if(counter==4){
+              counter=0;
+              document.getElementById('start').innerHTML = "Test next input";
+              board = JXG.JSXGraph.initBoard('box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});
+            }
             else  document.getElementById('start').innerHTML = "Test next input";
 
             if(counter!=0) document.getElementById('r'+(counter)).style.background = "transparent";
@@ -115,21 +126,47 @@
 
             var i;
             for(i=1;i<=6;i++){
-              $("#w"+i).addClass('StdLine animatedLinePurple');
+              $("#w"+i).addClass('animatedLinePurple');
             }
+            $("#w"+i).addClass('animatedLineGreen');
 
-            setTimeout(mlp(counter),1000);
+            document.getElementById('start').setAttribute("disabled","disabled");
 
-            for(i=1;i<=6;i++){
-              $("#w"+i).removeClass('animatedLine');
-            }
+            setTimeout(function(){
+              mlp(counter);
+              for(i=1;i<=6;i++){
+                $("#w"+i).removeClass('animatedLinePurple');
+              }
+              document.getElementById('start').removeAttribute("disabled");
+              $("#w"+i).removeClass('animatedLineGreen');
+              if(counter==4){
+                document.getElementById('acc').style.display = "block";
+
+                errorRate = erroneousCount / 4;
+                errorRate = 1 - errorRate;
+
+                errorRate = errorRate * 100;
+
+                document.getElementById('acc_val').innerHTML = errorRate+"%";
+                erroneousCount=0;
+              }
+            },2000);
+
+              
           }
 
           function mlp(index){
+            document.getElementById('bef_thresh_op_txt').style.display = "block";
+            document.getElementById('after_threshold_op').style.display = "block";
             counter++;
 
-            z1=x1[index]*w11+x2[index]*w21+b1;
-            z2=x1[index]*w12+x2[index]*w22+b2;
+            var z11=x1[index]*w11+x2[index]*w21+b1;
+            var z22=x1[index]*w12+x2[index]*w22+b2;
+
+            z1=z11;z2=z22;
+
+            z1 = Number(z1);
+            z2 = Number(z2);
 
             if(z1>=theta)
                 y1=1;
@@ -140,7 +177,11 @@
             else
                 y2=0;
 
-            yin=y1*v1+y2*v2+b3;
+            var yin1=y1*v1+y2*v2+b3;
+            yin=yin1;
+
+            yin = Number(yin);
+            document.getElementById('bef_thresh_op').innerHTML = yin;
 
             if(yin>=theta)
               y=1;
@@ -152,13 +193,13 @@
             if(y!=z[index])
             {
               erroneousCount++;
-              flagger=true;
             }
 
             decisionBoundary1 = board.create('line', [b1*-1, Number(w11), Number(w21)]);
             decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
 
             document.getElementById('op').innerHTML = y;
+            document.getElementById('out'+(index+1)).innerHTML = y;
             z1=z2=y=y1=y2=0;
           }
         </script> 
@@ -176,12 +217,10 @@
 
           .selected{
             stroke: #00b8ff;
-            stroke-dasharray: 7px;
           }
 
           .not_sel{
             stroke: #ff6a00;
-            stroke-dasharray: 0px;
           }
 
           .neuron_sel{
@@ -268,29 +307,30 @@
 
             <!-- The weights connecting input and hidden layer -->
 
-              <line class="not_sel" id="w1" x1="70" y1="50" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(1)"/>
+              <line class="not_sel" id="w1" x1="70" y1="50" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(1)"><title>W11</title></line>
               <text id="t1" x="110" y="40" font-size="17">0</text>
 
-              <line class="not_sel" id="w2" x1="70" y1="50" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(2)"/>
+              <line class="not_sel" id="w2" x1="70" y1="50" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(2)"><title>W12</title></line>
               <text id="t2" x="130" y="100" font-size="17">0</text>
 
-              <line class="not_sel" id="w3" x1="70" y1="250" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(3)"/>
+              <line class="not_sel" id="w3" x1="70" y1="250" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(3)"><title>W21</title></line>
               <text id="t3" x="120" y="170" font-size="17">0</text>
 
-              <line class="not_sel" id="w4" x1="70" y1="250" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(4)"/>
+              <line class="not_sel" id="w4" x1="70" y1="250" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(4)"><title>W22</title></line>
               <text id="t4" x="110" y="240" font-size="17">0</text>
 
             <!-- Ouput neuron and its weights -->
 
-              <line class="not_sel" id="w5" x1="270" y1="50" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(5)"/>
+              <line class="not_sel" id="w5" x1="270" y1="50" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(5)"><title>V1</title></line>
               <text id="t5" x="340" y="80" font-size="17">0</text>
 
-              <line class="not_sel" id="w6" x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(6)"/>
+              <line class="not_sel" id="w6" x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(6)"><title>V2</title></line>
               <text id="t6" x="330" y="205" font-size="17">0</text>
 
-              <line x1="470" y1="150" x2="570" y2="150" stroke="#ff6a00" stroke-width="5" />
+              <line id="w7" x1="470" y1="150" x2="570" y2="150" stroke="#ff6a00" stroke-width="5" ><title>y</title></line>
 
               <circle id="c3" class="opneuron" cx="470" cy="150" r="20" fill="#00b8ff" onclick="editBias(3)" style="z-index: 10"><title>Output Neuron</title></circle>
+              <text id="bef_thresh_op_txt" style="display: none;" x="450" y="190" font-size="17">y(x) = <tspan id="bef_thresh_op">0</tspan></text>
 
             <!-- The input layer -->
 
@@ -315,7 +355,7 @@
 
             <!-- The output. Use #op to set value of output -->
 
-              <text x="640" y="150" font-size="17">y(x) = <tspan id="op">0</tspan></text>
+              <text id="after_threshold_op" style="display: none;" x="640" y="150" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
 
             <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
@@ -360,10 +400,11 @@
                   <tr id="r4">
                     <td>1</td>
                     <td>1</td>
-                    <td>1</td>
+                    <td>0</td>
                     <td id="out4">-</td>
                   </tr>
                 </table>
+                <h4 id="acc" style="display: none;">Accuracy of network: <span id="acc_val">0%</span></h5>
               </div>
 
               <div id="grph" style="width: 45%;float: right;display: none;">
