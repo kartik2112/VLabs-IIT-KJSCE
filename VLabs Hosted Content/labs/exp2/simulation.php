@@ -114,8 +114,14 @@
             }
             else if(counter==4){
               counter=0;
+              document.getElementById('bef_thresh_op_txt').style.display = "none";
+              document.getElementById('after_threshold_op').style.display = "none";
               document.getElementById('start').innerHTML = "Test next input";
               board = JXG.JSXGraph.initBoard('box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});
+              OP1 = board.create('point',[0,0], {size:constPointSize,face:'x',fixed:true});
+              OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
+              OP3 = board.create('point',[1,0], {size:constPointSize,face:'^',fixed:true});
+              OP4 = board.create('point',[1,1], {size:constPointSize,face:'x',fixed:true});
             }
             else  document.getElementById('start').innerHTML = "Test next input";
 
@@ -165,17 +171,17 @@
 
             z1=z11;z2=z22;
 
-            z1 = Number(z1);
-            z2 = Number(z2);
+            y1 = Number(z1);
+            y2 = Number(z2);
 
-            if(z1>=theta)
+            /*if(z1>=theta)
                 y1=1;
             else
                 y1=0;
             if(z2>=theta)
                 y2=1;
             else
-                y2=0;
+                y2=0;*/
 
             var yin1=y1*v1+y2*v2+b3;
             yin=yin1;
@@ -473,6 +479,8 @@
       var x = document.getElementById(id);
       var e = document.getElementById('edit');
 
+      var val = $("#t"+sel).html();
+      $(".sliders").slider("value",val);
       var l,t;
       l = 750;
       e.style.left = l+"px";
@@ -489,6 +497,8 @@
       changing=1;
       var e = document.getElementById('edit_th');
 
+      var val = $("#thresh").html();
+      $(".tsliders").slider("value",val);
       var l,t;
       l = 750;
       e.style.left = l+"px";
@@ -508,6 +518,8 @@
       else $("#c"+id).removeClass("opneuron");
       $("#c"+id).addClass("neuron_sel");
 
+      var val = $("#b"+id).html();
+      $(".bsliders").slider("value",val);
       changing=1;
       var e = document.getElementById('edit_b');
 
