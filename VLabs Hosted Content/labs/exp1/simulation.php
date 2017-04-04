@@ -116,14 +116,15 @@
                             <option value="NOT">NOT Gate</option>
                         </select>
                     </div>
-                    <button id="startSimButton" class="btn btn-success" onclick="startANDSimulation(1000)">Start Simulation</button>
-                    <button id="stopSimButton" class="btn btn-danger disabled" onclick="stopANDSimulation()" disabled>Stop Simulation</button><br/>
+                    <button id="startSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
+                    <button id="stopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button><br/>
                     <div>
                         <p id="ux-wrapper">y(x) = 1 , u(x) >= Threshold<br/>
                             &emsp;&emsp;= 0 , u(x) < Threshold</p>
                     </div>
                     <br/>
                     <div id="AND-gate-sim">
+                            <h3>AND Gate Neural Network (NN)</h3>
                             <b>w<sub>1</sub> : </b>
                             <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputX-oplay_neuron1-weight"></span><br/>
 
@@ -189,10 +190,74 @@
                             </p>                   
                     </div>
 
-                    <div id="OR-gate-sim">
+                    <div id="OR-gate-sim" style="display: none;">
+                            <h3>OR Gate Neural Network (NN)</h3>
+                            <b>w<sub>1</sub> : </b>
+                            <div id="OR_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputX-oplay_neuron1-weight"></span><br/>
+
+                            <b>w<sub>2</sub> : </b>
+                            <div id="OR_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputY-oplay_neuron1-weight"></span><br/>
+
+                            <b>Threshold : </b>
+                            <div id="OR_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-threshold-value"></span><br/>
+
+                            <svg id="OR-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
+                                <!--Neural Network connections-->
+                                <line id="OR-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
+                                <line id="OR-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
+                                <line id="OR-oplay_neuron1-oplay_thrshld" class="StdLine" x1="250" y1="150" x2="500" y2="150" style=""/>
+
+                                <!--Neural Network nodes-->
+                                <circle id="OR-inputX" class="StdCircle" cx="50" cy="50" r="20"/>
+                                <circle id="OR-inputY" class="StdCircle" cx="50" cy="250" r="20"/>
+                                <circle id="OR-oplay_neuron1" class="StdCircle" cx="250" cy="150" r="20"/>
+                                <image id="OR-oplay_thrshld" x="475" y="125"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+
+                                <text font-size="20" x="242" y="155" font-size="25">∑</text>
+
+                                <!--Input texts-->
+                                <text font-size="20" x="15" y="55">X</text>
+                                <text class="changingTextStyle OR-XVal" font-size="20" x="45" y="55"></text>
+                                <text font-size="20" x="15" y="255">Y</text>
+                                <text class="changingTextStyle OR-YVal" font-size="20" x="45" y="255"></text>
+
+                                <!--Weights text-->
+                                <text font-size="20" x="170" y="90">w<tspan baseline-shift="sub">1</tspan>=<tspan class="OR-inputX-oplay_neuron1-weight">1</tspan></text>
+                                <text font-size="20" x="170" y="215">w<tspan baseline-shift="sub">2</tspan>=<tspan class="OR-inputY-oplay_neuron1-weight">1</tspan></text>
+
+                                <!--u(x) related texts-->
+                                <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
+                                <text font-size="20" x="270" y="180"> = <tspan class="OR-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle OR-XVal"> </tspan>) + <tspan class="OR-inputY-oplay_neuron1-weight">1</tspan>*(Y=<tspan class="changingTextStyle OR-YVal"> </tspan>)</text>
+                                <text class="changingTextStyle" id="OR-ux-value" font-size="20" x="270" y="200"></text>
+
+                                <!--y(x) related texts-->
+                                <text font-size="20" x="535" y="150">y(x)</text>
+                                <text class="changingTextStyle" id="OR-yx-value" font-size="20" x="535" y="170"></text>
+                                <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="OR-threshold-value" ></tspan></text>
+
+                                <text class="changingTextStyle" id="OR-yx-value-expln" font-size="20" x="415" y="70"></text>
+                            </svg>
+                            <div id="OR-output">
+			                    <div id="OR-box" class="jxgbox" style="width:200px; height:200px;"></div>
+		                    </div><br/>
+                            <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">                                
+                                <button class="btn btn-warning disabled" id="ORNextButton" disabled>Apply next set of I/P values</button><br/>
+                                <h3>Truth Table of OR Gate</h3>
+                                <table class="table-condensed truthTable" style="">
+                                    <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
+                                    <tr class="OR-TT-rows" id="OR-TT-row-1"><td>0</td><td>0</td><td>0</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-1"></td></tr>
+                                    <tr class="OR-TT-rows" id="OR-TT-row-2"><td>0</td><td>1</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-2"></td></tr>
+                                    <tr class="OR-TT-rows" id="OR-TT-row-3"><td>1</td><td>0</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-3"></td></tr>
+                                    <tr class="OR-TT-rows" id="OR-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-4"></td></tr>
+                                </table>
+                            </div> 
+                            <br/><br/><br/>                            
+                            <p>
+                                <b>Hint:</b> Try using 0.5 as threshold and 1 as weights
+                            </p> 
                     </div>
 
-                    <div id="NOT-gate-sim">
+                    <div id="NOT-gate-sim" style="display: none;">
                     </div>
                     
                 </section>                
