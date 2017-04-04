@@ -334,13 +334,13 @@
                     </div>
                     <br/>
                     <div id="AND-gate-sim">
-                            w<sub>1</sub> : 
+                            <b>w<sub>1</sub> : </b>
                             <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
 
-                            w<sub>2</sub> : 
+                            <b>w<sub>2</sub> : </b>
                             <div id="AND_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
 
-                            Threshold Value : 
+                            <b>Threshold Value : </b>
                             <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
                             <svg id="AND-gate-svg" width="700" height="300" style="float: left;">
                                 <!--Neural Network connections-->
