@@ -27,11 +27,14 @@
 
         <script type="text/javascript">
           
+          var changed = 0;
+          init();
+
           function init() {
             
             /* This function asks the user to enter the weights first*/
 
-
+            
 
           }
         </script> 
@@ -45,6 +48,16 @@
             padding: 3px;
             background: #89deff;
             border: 1px solid black;
+          }
+
+          .selected{
+            stroke: #00b8ff;
+            stroke-dasharray: 7px;
+          }
+
+          .not_sel{
+            stroke: #ff6a00;
+            stroke-dasharray: 0px;
           }
         </style>
     <!-- Simulation scripts end-->
@@ -107,8 +120,10 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <button id="startSimButton">Start simulation</button>
+          <button id="start" class="btn btn-success">Start simulation</button>
           <h3 style="margin-top:5%">Simulation</h3>
+
+          <p>Click on any line to change its weight</p>
            
             <!--Simulation content goes here -->
 
@@ -116,16 +131,25 @@
 
             <!-- The weights connecting input and hidden layer -->
 
-              <line x1="70" y1="50" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" style="z-index: 1"/>
-              <line x1="70" y1="50" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" style="z-index: 1"/>
+              <line class="not_sel" id="w1" x1="70" y1="50" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(1)"/>
+              <text id="t1" x="110" y="40" font-size="17">0</text>
 
-              <line x1="70" y1="250" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" style="z-index: 1"/>
-              <line x1="70" y1="250" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" style="z-index: 1"/>
+              <line class="not_sel" id="w2" x1="70" y1="50" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(2)"/>
+              <text id="t2" x="130" y="100" font-size="17">0</text>
+
+              <line class="not_sel" id="w3" x1="70" y1="250" x2="270" y2="50" stroke="#ff6a00" stroke-width="5" onclick="editWeights(3)"/>
+              <text id="t3" x="120" y="170" font-size="17">0</text>
+
+              <line class="not_sel" id="w4" x1="70" y1="250" x2="270" y2="250" stroke="#ff6a00" stroke-width="5" onclick="editWeights(4)"/>
+              <text id="t4" x="110" y="240" font-size="17">0</text>
 
             <!-- Ouput neuron and its weights -->
 
-              <line x1="270" y1="50" x2="470" y2="150" stroke="#ff6a00" stroke-width="5" />
-              <line x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5" />
+              <line class="not_sel" id="w5" x1="270" y1="50" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(5)"/>
+              <text id="t5" x="340" y="80" font-size="17">0</text>
+
+              <line class="not_sel" id="w6" x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(6)"/>
+              <text id="t6" x="330" y="205" font-size="17">0</text>
 
               <circle cx="470" cy="150" r="20" fill="#00b8ff" style="z-index: 10"/>
 
@@ -190,6 +214,11 @@
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
+        <div id="edit" style="position: absolute;width: 170px;height: 120px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;display: none;">
+            <p style="text-align: center;color: white;padding: 5px;">Edit weight</p>
+            <input id="inp" type="number" step="0.1" id="Inp_val" placeholder="Input" style="padding: 3px;padding-left: 10px;border-radius: 10px;outline: none;">
+            <button style="width: 50px;margin: 10px;text-align: center;background: #00b8ff;color: black;border-radius: 3px;outline: none;" onclick="set(sel)">Set</button>
+        </div>
     </body>
 </html>
 
@@ -206,3 +235,34 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
+<!-- Editing weights -->
+<script type="text/javascript">
+  var sel=1;
+  function editWeights(id){
+      sel=id;
+      id = "w" + id;
+      $("#"+id).removeClass("not_sel");
+      $("#"+id).addClass("selected");
+      var x = document.getElementById(id);
+      var e = document.getElementById('edit');
+
+      var l,t;
+      l = 820;
+      e.style.left = l+"px";
+      t = 410;
+      e.style.top = t+"px";
+      e.style.display = "block";
+  }
+
+  function set(id){
+      var e = document.getElementById('edit');
+      var i = document.getElementById('inp');
+      var t = document.getElementById('t'+id);
+
+      $("#w"+id).removeClass("selected");
+      $("#w"+id).addClass("not_sel");
+      t.innerHTML=i.value;
+      e.style.display = "none";
+      i.value="";
+  }
+</script>
