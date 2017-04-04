@@ -24,19 +24,26 @@
 
           <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
         <script type="text/javascript">
           
-          var changed = 0;
-          init();
-
-          function init() {
-            
-            /* This function asks the user to enter the weights first*/
-
-            
-
+          $(document).ready(){
+              $(".neuron").tooltip();
           }
+
+          $(function(){
+            $(".sliders").slider({
+              step: 0.1,
+              max: 3,
+              min: -3,
+              slide: function(event,ui){
+                $("#t"+sel).html(ui.value);
+              }
+            });
+          });
         </script> 
 
         <style type="text/css">
@@ -151,17 +158,17 @@
               <line class="not_sel" id="w6" x1="270" y1="250" x2="470" y2="150" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(6)"/>
               <text id="t6" x="330" y="205" font-size="17">0</text>
 
-              <circle cx="470" cy="150" r="20" fill="#00b8ff" style="z-index: 10"/>
+              <circle class="neuron" cx="470" cy="150" r="20" fill="#00b8ff" style="z-index: 10"><title>Output Neuron</title></circle>
 
             <!-- The input layer -->
 
-              <circle cx="70" cy="50" r="20" fill="#00b8ff" style="z-index: 10"/>
-              <circle cx="70" cy="250" r="20" fill="#00b8ff" style="z-index: 10"/>
+              <circle class="neuron" cx="70" cy="50" r="20" fill="#00b8ff" style="z-index: 10"><title>Input 1</title></circle>
+              <circle class="neuron" cx="70" cy="250" r="20" fill="#00b8ff" style="z-index: 10"><title>Input 2</title></circle>
 
             <!-- The hidden layer -->
 
-              <circle cx="270" cy="50" r="20" fill="#222d32" style="z-index: 10"/>
-              <circle cx="270" cy="250" r="20" fill="#222d32" style="z-index: 10"/>
+              <circle class="neuron" cx="270" cy="50" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 1</title></circle>
+              <circle class="neuron" cx="270" cy="250" r="20" fill="#222d32" style="z-index: 10"><title>Hidden Neuron 2</title></circle>
 
             </svg>
 
@@ -214,10 +221,10 @@
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
-        <div id="edit" style="position: absolute;width: 170px;height: 120px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;display: none;">
-            <p style="text-align: center;color: white;padding: 5px;">Edit weight</p>
-            <input id="inp" type="number" step="0.1" id="Inp_val" placeholder="Input" style="padding: 3px;padding-left: 10px;border-radius: 10px;outline: none;">
-            <button style="width: 50px;margin: 10px;text-align: center;background: #00b8ff;color: black;border-radius: 3px;outline: none;" onclick="set(sel)">Set</button>
+        <div id="edit" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;display: none;">
+            <p style="text-align: center;color: white;padding: 5px;">Slide to change weight</p>
+            <div id="wslider" class="sliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
+            <button onclick="set(sel)" style="margin: 15px 0;border: none;outline: none;">Set</button>
         </div>
     </body>
 </html>
@@ -247,22 +254,19 @@
       var e = document.getElementById('edit');
 
       var l,t;
-      l = 820;
+      l = 850;
       e.style.left = l+"px";
-      t = 410;
+      t = 420;
       e.style.top = t+"px";
       e.style.display = "block";
   }
 
   function set(id){
       var e = document.getElementById('edit');
-      var i = document.getElementById('inp');
-      var t = document.getElementById('t'+id);
 
       $("#w"+id).removeClass("selected");
       $("#w"+id).addClass("not_sel");
-      t.innerHTML=i.value;
       e.style.display = "none";
-      i.value="";
+      $(".sliders").slider("value",0,0);
   }
 </script>
