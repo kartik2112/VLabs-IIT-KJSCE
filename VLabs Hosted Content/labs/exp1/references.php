@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION["currPage"] = 8;
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -53,7 +57,7 @@
                     </section>
                 </nav>
             </header>
-            <?php include 'pane.html'; ?>
+            <?php include 'pane.php'; ?>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
