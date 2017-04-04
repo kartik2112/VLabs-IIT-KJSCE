@@ -34,14 +34,16 @@
             var AND_w1 = 1;
             var AND_w2 = 1;
             var AND_calcOP;
+            var timer1, timer2, timer3,timer4;
+
             $(document).ready(function () {
                 /*
                 Initialize sliders and add listeners
                 */
                 $("#AND_Gate_Threshold_slider").slider({
-                    max: 2.5,
+                    max: 6.5,
                     min: -0.5,
-                    step: 0.05,
+                    step: 0.1,
                     slide: function (event, ui) {
                         $("#AND-threshold-value").text("Threshold: " + ui.value);
                         AND_threshold = ui.value;
@@ -53,7 +55,7 @@
 
 
                 $("#AND_Gate_w1_slider").slider({
-                    max: 1,
+                    max: 3,
                     min: 0,
                     value: 1,
                     step: 0.05,
@@ -68,7 +70,7 @@
 
 
                 $("#AND_Gate_w2_slider").slider({
-                    max: 1,
+                    max: 3,
                     min: 0,
                     value: 1,
                     step: 0.05,
@@ -82,7 +84,8 @@
                 AND_w2 = $("#AND_Gate_w2_slider").slider("value");
 
             });
-            var timer1, timer2, timer3;
+
+
             function displayDiv(val) {
                 if (val == "AND") {
                     $("#OR-gate-sim").slideUp(400);
@@ -112,6 +115,7 @@
                 window.clearTimeout(timer1);
                 window.clearTimeout(timer2);
                 window.clearTimeout(timer3);
+                window.clearTimeout(timer4);
             }
 
             function resetCompleteSimulation() {
@@ -128,33 +132,36 @@
                 $(".StdLine").removeClass("animatedLine");
             }
 
-            function simulationPart(iterationNo, inputX, inputY, w1, w2, threshold, interval, timer) {
+            function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interval, timer) {
+                /* This is the way arrays were getting passed as String */
                 inputX = inputX.split(",");
                 inputY = inputY.split(",");
 
                 resetSimulationPart();
 
                 /*
-                Highlight current truth table row
+                Remove all highlights from truth table and highlight current truth table row
                 */
                 $(".AND-TT-rows").removeClass("highlightTTRow");
                 $("#AND-TT-row-" + (iterationNo + 1)).addClass("highlightTTRow");
 
                 /*
-                Set animations
+                Set animations on lines
                 */
                 $(".AND-XVal").text(inputX[iterationNo]);
                 $(".AND-YVal").text(inputY[iterationNo]);
                 $("#AND-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
                 $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-                var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo];
+                var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, u(x) */
+                //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
                 timer1 = window.setTimeout(function () {
+                    /* Display u(x) and pause */
                     $("#AND-ux-value").text("= " + ux);
 
                     timer2 = window.setTimeout(function () {
+                        /* Display threshold calculation and pause */
                         $("#AND-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
-
                         if (ux >= threshold) {
                             $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
                         }
@@ -163,15 +170,16 @@
                         }
 
                         timer3 = window.setTimeout(function () {
+                            /* Display calculation output as y(x) and add to truth table */
                             if (ux >= threshold) {
-                                $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1");
-                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1);
+                                $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
+                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
                                 $("#AND-yx-value").text("= " + 1);
                                 AND_calcOP.push(1);
                             }
                             else {
-                                $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0");
-                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0);
+                                $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
+                                $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
                                 $("#AND-yx-value").text("= " + 0);
                                 AND_calcOP.push(0);
                             }
@@ -183,8 +191,10 @@
             }
 
             function startSimulation(interval) {
-                var inputX = [0, 0, 1, 1];
-                var inputY = [0, 1, 0, 1];
+                resetCompleteSimulation();
+
+                var inputXofAND = [0, 0, 1, 1];
+                var inputYofAND = [0, 1, 0, 1];
                 var iterationNo = 0;
                 AND_calcOP = new Array();
 
@@ -196,18 +206,26 @@
                     scrollTop: $("#AND-gate-svg").offset().top
                 }, 500);
 
-                simulationPart(iterationNo, inputX.join(","), inputY.join(","), AND_w1, AND_w2, parseFloat(AND_threshold), interval);
-
+                /* The first simulation iteration call is done immediately and then later iterations are called in intervals */
+                simulateANDGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(AND_w1), parseFloat(AND_w2), parseFloat(AND_threshold), interval);
                 iterationNo++;
 
                 var timer = window.setInterval(function () {
-                    simulationPart(iterationNo, inputX.join(","), inputY.join(","), AND_w1, AND_w2, parseFloat(AND_threshold), interval, timer);
-
+                    simulateANDGate(iterationNo, inputXofAND.join(","), inputYofAND.join(","), parseFloat(AND_w1), parseFloat(AND_w2), parseFloat(AND_threshold), interval, timer);
                     iterationNo++;
                     if (iterationNo == 4) {
                         window.clearInterval(timer);
                     }
                 }, interval * 17);
+
+                timer4=window.setTimeout(function () {
+                    resetSimulationPart();                    
+                    $(".sliders").slider("enable");
+                    $("#startSimButton").removeClass("disabled");
+                    $("#selGate").prop("disabled", false);
+                    $("#stopSimButton").addClass("disabled");
+                    alert("Simulation Complete!");
+                }, interval * 17 * 4);
 
 
                 $("#stopSimButton").click(function () {
@@ -324,7 +342,7 @@
 
                             Threshold Value : 
                             <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div><br/>
-                            <svg id="AND-gate-svg" width="700" height="300">
+                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;">
                                 <!--Neural Network connections-->
                                 <line id="AND-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="AND-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -345,8 +363,8 @@
                                 <text class="changingTextStyle AND-YVal" font-size="20" x="45" y="255"></text>
 
                                 <!--Weights text-->
-                                <text font-size="20" x="170" y="90">w<tspan baseline-shift="sub">1</tspan> = <tspan class="AND-inputX-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20" x="170" y="215">w<tspan baseline-shift="sub">2</tspan> = <tspan class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
+                                <text font-size="20" x="170" y="90">w<tspan baseline-shift="sub">1</tspan>=<tspan class="AND-inputX-oplay_neuron1-weight">1</tspan></text>
+                                <text font-size="20" x="170" y="215">w<tspan baseline-shift="sub">2</tspan>=<tspan class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
 
                                 <!--u(x) related texts-->
                                 <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
