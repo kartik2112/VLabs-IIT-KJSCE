@@ -38,6 +38,10 @@
         <link href="../Styles.css" rel="stylesheet" />
 
 
+        <!--These are used for plotting the graphs-->
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+ 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -129,7 +133,7 @@
                             <b>Threshold : </b>
                             <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-threshold-value"></span><br/>
 
-                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;">
+                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="AND-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="AND-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -165,8 +169,11 @@
 
                                 <text class="changingTextStyle" id="AND-yx-value-expln" font-size="20" x="415" y="70"></text>
                             </svg>
+                            <div id="AND-output">
+			                    <div id="AND-box" class="jxgbox" style="width:200px; height:200px;"></div>
+		                    </div><br/>
                             <div style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;">                                
-                                <button class="btn btn-warning disabled" id="ANDNextButton" disabled>Apply next set of I/P values</button><br/><br/>
+                                <button class="btn btn-warning disabled" id="ANDNextButton" disabled>Apply next set of I/P values</button><br/>
                                 <h3>Truth Table of AND Gate</h3>
                                 <table class="table-condensed truthTable" style="">
                                     <tr><th>X</th><th>Y</th><th>Expected O/P</th><th>O/P from NN</th></tr>
@@ -176,7 +183,7 @@
                                     <tr class="AND-TT-rows" id="AND-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-4"></td></tr>
                                 </table>
                             </div> 
-                            <br/><br/><br/>
+                            <br/><br/><br/>                            
                             <p>
                                 <b>Hint:</b> Try using 1.5 as threshold and 1 as weights
                             </p>                   
