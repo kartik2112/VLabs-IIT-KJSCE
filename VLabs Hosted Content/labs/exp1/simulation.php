@@ -107,7 +107,7 @@
                     <div class="form-group" style="display: inline-block;">
                         <label for="selGate">Select gate:</label>
                         <select class="form-control" id="selGate" onchange="displayDiv(this.value)" style="width: 150px">
-                            <option value="AND">AND Gate</option>
+                            <option value="AND" selected>AND Gate</option>
                             <option value="OR">OR Gate</option>
                             <option value="NOT">NOT Gate</option>
                         </select>
