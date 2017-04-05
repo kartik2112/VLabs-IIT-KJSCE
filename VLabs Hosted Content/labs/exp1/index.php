@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    $_SESSION["currPage"] = 1;
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -54,7 +59,7 @@
                     </section>
                 </nav>
             </header>
-            <?php include 'pane.html'; ?>
+            <?php include 'pane.php'; ?>
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
@@ -67,6 +72,7 @@
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
                         <!--Aim of experiment -->
+                        To understand the basics of how neural network works using AND, OR, NOT Gates implemented using a single neuron of neural network
                     </p>
                 </section>                
             </div>
