@@ -69,11 +69,36 @@
                     </h1>
                 </section>
                 <!-- Main content -->
-                <section class="content" id="pro">
+                <section class="content" id="pro" style="font-size: larger">
                     <h3 style="margin-top:5%">Procedure</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
+                        The following procedure is to be followed for the simulation:
                     </p>
+                    <ol>
+                        <li>Select any one of the gates from the dropdown. By default, AND Gate is selected.</li>
+                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
+                        <li>Now wait and observer how the I/P combination is interpreted by the neural network.</li>
+                        <li>After the neural network completely interprets each I/P combination, the <button class="btn btn-warning disabled" style="cursor: default;" disabled>Apply next set of I/P values</button> button gets enabled. 
+                            After understanding how this I/P combination was interpreted by the neural network, you can click on this button.
+                            After clicking on this button, this button gets disabled until the next input is completely interpreted by the neural network.</li>
+                    </ol>
+                    <p>After the entire simulation is completed, you will get a popup indicating this completion. 
+                        Now you may select another Gate and run the simulation.</p>
+                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
+                    <p>The correct outputs will be obtained by the neural network only for certain ranges of inputs.<br/>
+                        You can easily visualize this using the graph.
+                        When the line (decision boundary) is such that points that look same are on the same side of line, then correct output has been obtained.</p>
+                    <p>
+                        <b>E.g.</b> In the following plot, <b>similar points are not on the same side of the line</b>. 
+                        Hence, the weights and threshold chosen provide an <b>incorrect output</b> for the corresponding Gate.<br/>
+                        <img src="images/SS2.PNG" alt="SS2"/><br/>
+                        <b>E.g.</b> In the following plot, <b>similar points are on the same side of the line</b>. 
+                        Hence, the weights and threshold chosen provide a <b>correct output</b> for the corresponding Gate.<br/>
+                        <img src="images/SS1.PNG" alt="SS1"/><br/>
+                        <b>Note:</b> If you choose negative weights and negative threshold, then the decision boundary might recognize similar points in same class. 
+                        But here the output will be for opposite class. To see this, try -1 as weights and -1.5 as threshold in AND Gate simulation. This will give incorrect outputs.
+                    </p>                    
                 </section>
                 <!-- /.content -->
             </div>
