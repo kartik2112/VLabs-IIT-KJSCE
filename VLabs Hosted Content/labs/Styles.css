@@ -43,7 +43,7 @@ table.truthTable tr:nth-child(even){
 }
 
 table.truthTable th{
-  	background-color: #196aff;
+  	background-color: #028dff;
 	color: #fff;
 }
 
@@ -63,4 +63,28 @@ table.truthTable tr.highlightTTRow{
 .changingTextStyle{
     stroke: #ff4600; 
     stroke-width: 1;
+}
+
+/* Not used but kept in case an appealing way to use this has been found*/
+
+
+.sliders{
+    background-color: #ff9718;
+}
+
+button.displayActivatedButton{
+    animation: highlightButtonActivated 500ms;
+}
+
+@keyframes highlightButtonActivated{
+    from{
+        box-shadow: inset 0px 0px 40px 40px #ff6a00;
+    }
+    to{
+        box-shadow: inset 0px 0px 0px 0px #fff;
+    }
+}
+
+.jxgbox{
+    background-color: rgba(236, 240, 245, 0.85)!important;
 }

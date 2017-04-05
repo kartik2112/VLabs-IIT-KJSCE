@@ -1,5 +1,5 @@
 <?php 
-$lab_name = "virtual Lab";
+$lab_name = "Lab Name";
 
 $exp_name = "Experiment Name";
 
