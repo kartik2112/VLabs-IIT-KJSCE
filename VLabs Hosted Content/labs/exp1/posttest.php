@@ -73,6 +73,94 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
+                        <form>
+                            <h3>1. Which of the following can be the correct combination of weights & threshold for the neural network to function as an OR Gate?</h3>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio1" id="Q11"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
+                                            <tr><td>0</td><td>0</td><td >0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio1" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
+                                            <tr><td>0</td><td>0</td><td style="text-align: center;">1</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio1" id="Q13"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
+                                            <tr><td>1</td><td>0</td><td style="text-align: center;">0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio1" id="Q14"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
+                                            <tr><td>1</td><td>1</td><td style="text-align: center;">1</td></tr>
+                                            </table></label>
+                            </div><br />
+
+                            <h3>2. The experiment performed can be considered as an example of which of the following type of learning?</h3>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio2" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Supervised Learning</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio2" id="Q22"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Unsupervised Learning</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio2" id="Q23"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Reinforcement Learning</th></tr>
+                                            </table></label>
+                            </div><br />
+                            
+                            <h3>3.Given the weights W1 = 0.4 & W2 = 0.3, what should be the threshold value for the neural network to function as AND Gate?</h3>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio3" id="Q31"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Greater than 0 but less than 0.3</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio3" id="Q32"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Greater than 0.3 but less than 0.4</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio3" id="Q33"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Greater than 0.4 but less than 1</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio3" id="Q34"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>Greater than 1</th></tr>
+                                            </table></label>
+                            </div><br />
+
+                            <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio4" id="Q41"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>AND</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio4" id="Q42"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>OR</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio4" id="Q43"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>NOT</th></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio4" id="Q44"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>XOR</th></tr>
+                                            </table></label>
+                            </div><br />
+                        </form>
                     </p>
                 </section>
                 <!-- /.content -->
