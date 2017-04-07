@@ -97,7 +97,7 @@
             }
 
             function start_ebp(){
-              
+
             }
 
            function init_xor() {
@@ -352,7 +352,7 @@
             <!--Simulation content goes here -->
 
             <select id="m" onchange="changeMode()">
-              <option value="xor">XOR</option>
+              <option value="xor">Multi-Layer Perceptron</option>
               <option value="ebp">Error Back Propogation</option>
             </select>
 
