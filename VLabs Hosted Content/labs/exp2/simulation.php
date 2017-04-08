@@ -62,11 +62,45 @@
                         $("#b" + sel).html(ui.value);
                     }
                 });
+                init_xor();
             });
 
             var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
 
-            $(document).ready(function () {
+            function changeMode(){
+              var m = document.getElementById('m');
+
+              if(m.value=="xor"){
+                document.getElementById('start').setAttribute("onclick","start_xor()");
+                init_xor();
+              }
+              else{
+                document.getElementById('start').setAttribute('onclick','start_ebp()');
+                init_ebp();
+              }
+
+              document.getElementById('r4').style.background = "transparent";
+              document.getElementById('start').innerHTML = "Start simulation";
+              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+              OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+              OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+              OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+              OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+
+              for(var i=1;i<=4;i++){
+                document.getElementById('out' + i).innerHTML = "-";
+              }
+            }
+
+            function init_ebp(){
+
+            }
+
+            function start_ebp(){
+
+            }
+
+           function init_xor() {
                 counter = 0;
                 board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
                 constPointSize = 5;
@@ -92,9 +126,9 @@
                     $("#w" + i).addClass('StdLine');
                 }
 
-            });
+            }
 
-            function start() {
+            function start_xor() {
 
                 document.getElementById('grph').style.display = "block";
 
@@ -113,8 +147,10 @@
                 z1 = z2 = y = y1 = y2 = yin = 0;
 
                 document.getElementById('acc').style.display = "none";
+                document.getElementById('m').setAttribute("disabled","disabled");
                 if (counter == 3) {
                     document.getElementById('start').innerHTML = "Restart simulation";
+                    document.getElementById('m').removeAttribute("disabled");
                 }
                 else if (counter == 4) {
                     for (var i = 1; i <= 4; i++) {
@@ -315,6 +351,11 @@
            
             <!--Simulation content goes here -->
 
+            <select id="m" onchange="changeMode()">
+              <option value="xor">Multi-Layer Perceptron</option>
+              <option value="ebp">Error Back Propogation</option>
+            </select>
+
             <svg height="350" width="900">
 
             <!-- The weights connecting input and hidden layer -->
@@ -372,7 +413,7 @@
 
             <br/>
 
-            <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
+            <button id="start" class="btn btn-success" onclick="start_xor();">Start simulation</button>
 
             <div style="width: 100%;height: 300px;">
               <div style="width: 45%;float: left;">
