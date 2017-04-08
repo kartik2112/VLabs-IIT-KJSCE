@@ -11,7 +11,7 @@ $(document).ready(function () {
     */
     $("#AND_Gate_Threshold_slider").slider({
         max: 6.5,
-        min: -0.5,
+        min: -2,
         step: 0.1,
         slide: function (event, ui) {
             $(".AND-threshold-value").text(ui.value);
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     $("#AND_Gate_w1_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     $("#AND_Gate_w2_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
     */
     $("#OR_Gate_Threshold_slider").slider({
         max: 6.5,
-        min: -0.5,
+        min: -2,
         step: 0.1,
         slide: function (event, ui) {
             $(".OR-threshold-value").text(ui.value);
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     $("#OR_Gate_w1_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -85,7 +85,7 @@ $(document).ready(function () {
     OR_w1 = $("#OR_Gate_w1_slider").slider("value");
     $("#OR_Gate_w2_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
