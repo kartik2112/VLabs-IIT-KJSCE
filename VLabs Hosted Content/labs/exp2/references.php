@@ -67,6 +67,9 @@
           <p class="MsoNormal" style="text-align:justify">
 
            <!--Reference content goes here -->
+            <li> <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">  https://en.wikipedia.org/wiki/Multilayer_perceptron</a></li>
+              <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
+              <li> <a href="https://en.wikipedia.org/wiki/Backpropagation">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
             
           </p>
         </section>

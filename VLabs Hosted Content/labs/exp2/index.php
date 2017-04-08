@@ -49,6 +49,7 @@
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
               </li>
               <li class="active">Aim</li>
+                
             </ol>
           </section>
         </nav>
@@ -64,10 +65,14 @@
                     <!-- Main content -->
                     <section class="content">
                     <h3 style="margin-top:5%"> Aim </h3>
-                    <p style="font-size:130%; margin-top:2%">
+                    <p class="MsoNormal" style="text-align:justify">
+                        <b>To Implement Ex-OR Gate using :-</b><br></p>
+                <div style="margin-left:1.5em">
+                <p>
+                    <b>1.</b>	FeedForward MultiLayer Perceptron.<br>
+                    <b>2.</b>	Error Back Propagation MultiLayer Perceptron.<br>
 
-                    <!--Aim of experiment -->
-                    </p>
+                    </p></div>
                 </section>
             <!-- /.content -->
             </div>

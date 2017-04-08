@@ -37,181 +37,183 @@
 
         <script type="text/javascript">
 
-          $(function(){
-            $(".sliders").slider({
-              step: 0.1,
-              max: 3,
-              min: -3,
-              slide: function(event,ui){
-                $("#t"+sel).html(ui.value);
-              }
+            $(function () {
+                $(".sliders").slider({
+                    step: 0.1,
+                    max: 3,
+                    min: -3,
+                    slide: function (event, ui) {
+                        $("#t" + sel).html(ui.value);
+                    }
+                });
+                $(".tsliders").slider({
+                    step: 0.1,
+                    max: 2,
+                    min: -2,
+                    slide: function (event, ui) {
+                        $("#thresh").html(ui.value);
+                    }
+                });
+                $(".bsliders").slider({
+                    step: 0.1,
+                    max: 2,
+                    min: -2,
+                    slide: function (event, ui) {
+                        $("#b" + sel).html(ui.value);
+                    }
+                });
             });
-            $(".tsliders").slider({
-              step: 0.1,
-              max: 2,
-              min: -2,
-              slide: function(event,ui){
-                $("#thresh").html(ui.value);
-              }
+
+            var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
+
+            $(document).ready(function () {
+                counter = 0;
+                board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+                constPointSize = 5;
+                OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+                OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+                OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+                OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+                x1 = [0, 0, 1, 1];
+                x2 = [0, 1, 0, 1];
+                z = [0, 1, 1, 0];
+
+                testOneX = 0;
+                testOneY = 0;
+
+                testTwoX = 1;
+                testTwoY = 0;
+
+                flag = true;
+                erroneousCount = 0;
+
+                var i;
+                for (i = 1; i <= 7; i++) {
+                    $("#w" + i).addClass('StdLine');
+                }
+
             });
-            $(".bsliders").slider({
-              step: 0.1,
-              max: 2,
-              min: -2,
-              slide: function(event,ui){
-                $("#b"+sel).html(ui.value);
-              }
-            });
-          });
 
-          var counter,board,constPointSize,OP1,OP2,OP3,OP4,x1,x2,z,testOneX,testOneY,testTwoX,testTwoY,w11,w12,w21,w22,v1,v2,b1,b2,b3,theta,flag,erroneousCount,errorRate;
+            function start() {
 
-          $(document).ready(function(){
-            counter=0;
-            board = JXG.JSXGraph.initBoard('box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
-            constPointSize=5;
-            OP1 = board.create('point',[0,0], {size:constPointSize,face:'x',fixed:true});
-            OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
-            OP3 = board.create('point',[1,0], {size:constPointSize,face:'^',fixed:true});
-            OP4 = board.create('point',[1,1], {size:constPointSize,face:'x',fixed:true});
-            x1=[0,0,1,1];
-            x2=[0,1,0,1];
-            z=[0,1,1,0];
+                document.getElementById('grph').style.display = "block";
 
-            testOneX=0;
-            testOneY=0;
+                w11 = Number(document.getElementById('t1').innerHTML);
+                w12 = Number(document.getElementById('t2').innerHTML);
+                b1 = Number(document.getElementById('b1').innerHTML);
 
-            testTwoX=1;
-            testTwoY=0;
-            
-            flag=true;
-            erroneousCount = 0;
+                w21 = Number(document.getElementById('t3').innerHTML);
+                w22 = Number(document.getElementById('t4').innerHTML);
+                b2 = Number(document.getElementById('b2').innerHTML);
 
-            var i;
-            for(i=1;i<=7;i++){
-              $("#w"+i).addClass('StdLine');
+                v1 = Number(document.getElementById('t5').innerHTML);
+                v2 = Number(document.getElementById('t6').innerHTML);
+                b3 = Number(document.getElementById('b3').innerHTML);
+                theta = Number(document.getElementById('thresh').innerHTML);
+                z1 = z2 = y = y1 = y2 = yin = 0;
+
+                document.getElementById('acc').style.display = "none";
+                if (counter == 3) {
+                    document.getElementById('start').innerHTML = "Restart simulation";
+                }
+                else if (counter == 4) {
+                    for (var i = 1; i <= 4; i++) {
+                        document.getElementById('out' + i).innerHTML = "-";
+                    }
+                    counter = 0;
+                    document.getElementById('bef_thresh_op_txt').style.display = "none";
+                    document.getElementById('after_threshold_op').style.display = "none";
+                    document.getElementById('start').innerHTML = "Test next input";
+                    board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+                    OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+                    OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+                    OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+                    OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+                }
+                else document.getElementById('start').innerHTML = "Test next input";
+
+                if (counter != 0) document.getElementById('r' + (counter)).style.background = "transparent";
+                else document.getElementById('r4').style.background = "transparent";
+
+                document.getElementById('r' + (counter + 1)).style.background = "#ff9595";
+
+                var i;
+                for (i = 1; i <= 6; i++) {
+                    $("#w" + i).addClass('animatedLinePurple');
+                }
+                $("#w" + i).addClass('animatedLineGreen');
+
+                document.getElementById('start').setAttribute("disabled", "disabled");
+
+                setTimeout(function () {
+                    mlp(counter);
+                    for (i = 1; i <= 6; i++) {
+                        $("#w" + i).removeClass('animatedLinePurple');
+                    }
+                    document.getElementById('start').removeAttribute("disabled");
+                    $("#w" + i).removeClass('animatedLineGreen');
+                    if (counter == 4) {
+                        document.getElementById('acc').style.display = "block";
+
+                        errorRate = erroneousCount / 4;
+                        errorRate = 1 - errorRate;
+
+                        errorRate = errorRate * 100;
+
+                        document.getElementById('acc_val').innerHTML = errorRate + "%";
+                        erroneousCount = 0;
+                    }
+                }, 2000);
+
+
             }
 
-          });
+            function mlp(index) {
+                document.getElementById('bef_thresh_op_txt').style.display = "block";
+                document.getElementById('after_threshold_op').style.display = "block";
+                counter++;
 
-          function start(){
+                var z11 = x1[index] * w11 + x2[index] * w21 - b1;
+                var z22 = x1[index] * w12 + x2[index] * w22 - b2;
 
-            document.getElementById('grph').style.display = "block";
+                z1 = z11; z2 = z22;
 
-            w11=Number(document.getElementById('t1').innerHTML);
-            w12=Number(document.getElementById('t2').innerHTML);
-            b1=Number(document.getElementById('b1').innerHTML);
+                y1 = Number(z1);
+                y2 = Number(z2);
 
-            w21=Number(document.getElementById('t3').innerHTML);
-            w22=Number(document.getElementById('t4').innerHTML);
-            b2=Number(document.getElementById('b2').innerHTML);
+                if (z1 >= theta)
+                    y1 = 1;
+                else
+                    y1 = 0;
+                if (z2 >= theta)
+                    y2 = 1;
+                else
+                    y2 = 0;
 
-            v1=Number(document.getElementById('t5').innerHTML);
-            v2=Number(document.getElementById('t6').innerHTML);
-            b3=Number(document.getElementById('b3').innerHTML);
-            theta=Number(document.getElementById('thresh').innerHTML);
-            z1=z2=y=y1=y2=yin=0;
+                var yin1 = y1 * v1 + y2 * v2 - b3;
+                yin = yin1;
 
-            document.getElementById('acc').style.display = "none";
-            if(counter==3) {
-              document.getElementById('start').innerHTML = "Restart simulation";
+                yin = Number(yin);
+                document.getElementById('bef_thresh_op').innerHTML = yin;
+
+                if (yin >= theta)
+                    y = 1;
+                else
+                    y = 0;
+
+                var flagger = false;
+
+                if (y != z[index]) {
+                    erroneousCount++;
+                }
+
+                decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
+                decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+
+                document.getElementById('op').innerHTML = y;
+                document.getElementById('out' + (index + 1)).innerHTML = y;
+                z1 = z2 = y = y1 = y2 = 0;
             }
-            else if(counter==4){
-              counter=0;
-              document.getElementById('bef_thresh_op_txt').style.display = "none";
-              document.getElementById('after_threshold_op').style.display = "none";
-              document.getElementById('start').innerHTML = "Test next input";
-              board = JXG.JSXGraph.initBoard('box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});
-              OP1 = board.create('point',[0,0], {size:constPointSize,face:'x',fixed:true});
-              OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
-              OP3 = board.create('point',[1,0], {size:constPointSize,face:'^',fixed:true});
-              OP4 = board.create('point',[1,1], {size:constPointSize,face:'x',fixed:true});
-            }
-            else  document.getElementById('start').innerHTML = "Test next input";
-
-            if(counter!=0) document.getElementById('r'+(counter)).style.background = "transparent";
-            else document.getElementById('r4').style.background = "transparent";
-
-            document.getElementById('r'+(counter+1)).style.background = "#ff9595";
-
-            var i;
-            for(i=1;i<=6;i++){
-              $("#w"+i).addClass('animatedLinePurple');
-            }
-            $("#w"+i).addClass('animatedLineGreen');
-
-            document.getElementById('start').setAttribute("disabled","disabled");
-
-            setTimeout(function(){
-              mlp(counter);
-              for(i=1;i<=6;i++){
-                $("#w"+i).removeClass('animatedLinePurple');
-              }
-              document.getElementById('start').removeAttribute("disabled");
-              $("#w"+i).removeClass('animatedLineGreen');
-              if(counter==4){
-                document.getElementById('acc').style.display = "block";
-
-                errorRate = erroneousCount / 4;
-                errorRate = 1 - errorRate;
-
-                errorRate = errorRate * 100;
-
-                document.getElementById('acc_val').innerHTML = errorRate+"%";
-                erroneousCount=0;
-              }
-            },2000);
-
-              
-          }
-
-          function mlp(index){
-            document.getElementById('bef_thresh_op_txt').style.display = "block";
-            document.getElementById('after_threshold_op').style.display = "block";
-            counter++;
-
-            var z11=x1[index]*w11+x2[index]*w21+b1;
-            var z22=x1[index]*w12+x2[index]*w22+b2;
-
-            z1=z11;z2=z22;
-
-            y1 = Number(z1);
-            y2 = Number(z2);
-
-            /*if(z1>=theta)
-                y1=1;
-            else
-                y1=0;
-            if(z2>=theta)
-                y2=1;
-            else
-                y2=0;*/
-
-            var yin1=y1*v1+y2*v2+b3;
-            yin=yin1;
-
-            yin = Number(yin);
-            document.getElementById('bef_thresh_op').innerHTML = yin;
-
-            if(yin>=theta)
-              y=1;
-            else
-              y=0;
-
-            var flagger=false;
-
-            if(y!=z[index])
-            {
-              erroneousCount++;
-            }
-
-            decisionBoundary1 = board.create('line', [b1*-1, Number(w11), Number(w21)]);
-            decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
-
-            document.getElementById('op').innerHTML = y;
-            document.getElementById('out'+(index+1)).innerHTML = y;
-            z1=z2=y=y1=y2=0;
-          }
         </script> 
 
         <style type="text/css">
@@ -368,6 +370,8 @@
               <text id="after_threshold_op" style="display: none;" x="640" y="150" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
 
+            <br/>
+
             <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
 
             <div style="width: 100%;height: 300px;">
@@ -464,99 +468,111 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- Editing weights -->
 <script type="text/javascript">
-  var sel=1;
-  $("#edit").hide();
-  $("#edit_th").hide();
-  $("#edit_b").hide();
+    var sel = 1;
+    $("#edit").hide();
+    $("#edit_th").hide();
+    $("#edit_b").hide();
 
-  var changing = 0;
-  function editWeights(id){
-      if(changing==1){
-        alert('Save the value first');
-        return;
-      }
-      changing=1;
-      sel=id;
-      id = "w" + id;
-      $("#"+id).removeClass("not_sel");
-      $("#"+id).addClass("selected");
-      var x = document.getElementById(id);
-      var e = document.getElementById('edit');
+    var changing = 0;
+    function editWeights(id) {
+        if (counter > 0 && counter < 4) {
+            alert('Please iterate through all the inputs first. Try after that.');
+            return;
+        }
+        if (changing == 1) {
+            alert('Save the value first');
+            return;
+        }
+        changing = 1;
+        sel = id;
+        id = "w" + id;
+        $("#" + id).removeClass("not_sel");
+        $("#" + id).addClass("selected");
+        var x = document.getElementById(id);
+        var e = document.getElementById('edit');
 
-      var val = $("#t"+sel).html();
-      $(".sliders").slider("value",val);
-      var l,t;
-      l = 750;
-      e.style.left = l+"px";
-      t = 270;
-      e.style.top = t+"px";
-      $("#edit").show();
-  }
+        var val = $("#t" + sel).html();
+        $(".sliders").slider("value", val);
+        var l, t;
+        l = 750;
+        e.style.left = l + "px";
+        t = 270;
+        e.style.top = t + "px";
+        $("#edit").show();
+    }
 
-  function editThreshold(){
-    if(changing==1){
-        alert('Save the value first');
-        return;
-      }
-      changing=1;
-      var e = document.getElementById('edit_th');
+    function editThreshold() {
+        if (counter > 0 && counter < 4) {
+            alert('Please iterate through all the inputs first. Try after that.');
+            return;
+        }
+        if (changing == 1) {
+            alert('Save the value first');
+            return;
+        }
+        changing = 1;
+        var e = document.getElementById('edit_th');
 
-      var val = $("#thresh").html();
-      $(".tsliders").slider("value",val);
-      var l,t;
-      l = 750;
-      e.style.left = l+"px";
-      t = 270;
-      e.style.top = t+"px";
-      $("#edit_th").show();
-  }
+        var val = $("#thresh").html();
+        $(".tsliders").slider("value", val);
+        var l, t;
+        l = 750;
+        e.style.left = l + "px";
+        t = 270;
+        e.style.top = t + "px";
+        $("#edit_th").show();
+    }
 
-  function editBias(id){
-    if(changing==1){
-        alert('Save the value first');
-        return;
-      }
-      sel=id;
+    function editBias(id) {
+        if (counter > 0 && counter < 4) {
+            alert('Please iterate through all the inputs first. Try after that.');
+            return;
+        }
+        if (changing == 1) {
+            alert('Save the value first');
+            return;
+        }
+        sel = id;
 
-      if(sel<3) $("#c"+id).removeClass("hneuron");
-      else $("#c"+id).removeClass("opneuron");
-      $("#c"+id).addClass("neuron_sel");
+        if (sel < 3) $("#c" + id).removeClass("hneuron");
+        else $("#c" + id).removeClass("opneuron");
+        $("#c" + id).addClass("neuron_sel");
 
-      var val = $("#b"+id).html();
-      $(".bsliders").slider("value",val);
-      changing=1;
-      var e = document.getElementById('edit_b');
+        var val = $("#b" + id).html();
+        $(".bsliders").slider("value", val);
+        changing = 1;
+        var e = document.getElementById('edit_b');
 
-      var l,t;
-      l = 750;
-      e.style.left = l+"px";
-      t = 270;
-      e.style.top = t+"px";
-      $("#edit_b").show();
-  }
+        var l, t;
+        l = 750;
+        e.style.left = l + "px";
+        t = 270;
+        e.style.top = t + "px";
+        $("#edit_b").show();
+    }
 
-  function set(id){
-      var e = document.getElementById('edit');
+    function set(id) {
+        var e = document.getElementById('edit');
 
-      $("#w"+id).removeClass("selected");
-      $("#w"+id).addClass("not_sel");
-      $("#edit").hide();
-      $(".sliders").slider("value",0,0);
-      changing=0;
-  }
+        $("#w" + id).removeClass("selected");
+        $("#w" + id).addClass("not_sel");
+        $("#edit").hide();
+        $(".sliders").slider("value", 0, 0);
+        changing = 0;
+    }
 
-  function set_th(){
-      changing=0;
-      $("#edit_th").hide();
-      $(".tsliders").slider("value",0,0);
-  }
+    function set_th() {
+        changing = 0;
+        $("#edit_th").hide();
+        $(".tsliders").slider("value", 0, 0);
+    }
 
-  function set_b(){
-      changing=0;
-      $("#c"+sel).removeClass("neuron_sel");
-      if(sel<3) $("#c"+sel).addClass("hneuron");
-      else $("#c"+sel).addClass("opneuron");
-      $("#edit_b").hide();
-      $(".bsliders").slider("value",0,0);
-  }
+    function set_b() {
+        changing = 0;
+        $("#c" + sel).removeClass("neuron_sel");
+        if (sel < 3) $("#c" + sel).addClass("hneuron");
+        else $("#c" + sel).addClass("opneuron");
+        $("#edit_b").hide();
+        $(".bsliders").slider("value", 0, 0);
+    }
 </script>
