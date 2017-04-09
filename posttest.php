@@ -17,8 +17,35 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        
+        
+        <!-- jQuery 2.2.3 -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+                $(".optradio1").click(function(){
+                    ////alert("clicked");
+                    $("#optradio1Ans").slideDown();
+                });
+                $(".optradio2").click(function(){
+                    //alert("clicked");
+                    $("#optradio2Ans").slideDown();
+                });
+                $(".optradio3").click(function(){
+                    //alert("clicked");
+                    $("#optradio3Ans").slideDown();
+                });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                });
+            });
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        
+        
         <?php
             include '../../common/header.html';
             include 'lab_name.php';
@@ -73,101 +100,118 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
-                        <form>
+                        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                             <h3>1. Which of the following can be the correct combination of weights & threshold for the neural network to function as an OR Gate?</h3>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio1" id="Q11"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">A
+                                <label><input type="radio" class="optradio1" value="Q11"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
                                             <tr><td>0</td><td>0</td><td >0</td></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio1" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">B
+                                <label><input type="radio" class="optradio1" value="Q12"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
                                             <tr><td>0</td><td>0</td><td style="text-align: center;">1</td></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio1" id="Q13"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">C
+                                <label><input type="radio" class="optradio1" value="Q13"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
                                             <tr><td>1</td><td>0</td><td style="text-align: center;">0</td></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio1" id="Q14"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">D
+                                <label><input type="radio" class="optradio1" value="Q14"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>W1</th><th>W2</th><th>Threshold</th></tr>
                                             <tr><td>1</td><td>1</td><td style="text-align: center;">1</td></tr>
                                             </table></label>
                             </div><br />
+                            <p id="optradio1Ans" style="display:none; font-size:20px;"> Ans is D</p>
 
                             <h3>2. The experiment performed can be considered as an example of which of the following type of learning?</h3>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio2" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">A
+                                <label><input type="radio" class="optradio2" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Supervised Learning</th></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio2" id="Q22"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">B
+                                <label><input type="radio" class="optradio2" id="Q22"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Unsupervised Learning</th></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio2" id="Q23"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">C
+                                <label><input type="radio" class="optradio2" id="Q23"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Reinforcement Learning</th></tr>
                                             </table></label>
                             </div><br />
-                            
+                            <p id="optradio2Ans" style="display:none; font-size:20px;"> Ans is A</p>
+
                             <h3>3.Given the weights W1 = 0.4 & W2 = 0.3, what should be the threshold value for the neural network to function as AND Gate?</h3>
                             <div class="radio">
-                                <label><input type="radio" name="optradio3" id="Q31"><table class="table-condensed truthTable" style="text-align: center;">
+                                <label><input type="radio" class="optradio3" id="Q31"><table class="table-condensed truthTable" style="text-align: center;">A
                                             <tr><th>Greater than 0 but less than 0.3</th></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio3" id="Q32"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">B
+                                <label><input type="radio" class="optradio3" id="Q32"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Greater than 0.3 but less than 0.4</th></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio3" id="Q33"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">C
+                                <label><input type="radio" class="optradio3" id="Q33"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Greater than 0.4 but less than 1</th></tr>
                                             </table></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio3" id="Q34"><table class="table-condensed truthTable" style="text-align: center;">
+                            <div class="radio">D
+                                <label><input type="radio" class="optradio3" id="Q34"><table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>Greater than 1</th></tr>
                                             </table></label>
                             </div><br />
+                            <p id="optradio3Ans" style="display:none; font-size:20px;"> Ans is C</p>
 
                             <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
                             <div class="radio">
-                                <label><input type="radio" name="optradio4" id="Q41"><table class="table-condensed truthTable" style="text-align: center;">
-                                            <tr><th>AND</th></tr>
+                                <label><input type="radio" class="optradio4" id="Q41"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>A. AND</th></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio4" id="Q42"><table class="table-condensed truthTable" style="text-align: center;">
-                                            <tr><th>OR</th></tr>
+                                <label><input type="radio" class="optradio4" id="Q42"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>B. OR</th></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio4" id="Q43"><table class="table-condensed truthTable" style="text-align: center;">
-                                            <tr><th>NOT</th></tr>
+                                <label><input type="radio" class="optradio4" id="Q43"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>C. NOT</th></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio4" id="Q44"><table class="table-condensed truthTable" style="text-align: center;">
-                                            <tr><th>XOR</th></tr>
+                                <label><input type="radio" class="optradio4" id="Q44"><table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>D. XOR</th></tr>
                                             </table></label>
                             </div><br />
+                            <p id="optradio4Ans" style="display:none; font-size:20px;"> Ans is D</p>
+
                         </form>
-                    </p>
-                </section>
+                        </p>
+                    </section>
                 <!-- /.content -->
-            </div>
+        
+        </div>
+            
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
-        </div>
+            </div>
+    <?php
+echo "<h2>Your Input:</h2>";
+echo $ans1;
+echo "<br>";
+echo $ans2;
+echo "<br>";
+echo $ans3;
+echo "<br>";
+echo $ans4;
+echo "<br>";?>
     </body>
 </html>
 <!-- ./wrapper -->

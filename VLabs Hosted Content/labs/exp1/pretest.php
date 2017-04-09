@@ -73,6 +73,87 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
+                    <form>
+                    <h3>1. Which of the following is the truth table of NOT Gate?</h3>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio1" id="Q11"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td></tr>
+                                    <tr><td>1</td><td>1</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio1" id="Q12"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>1</td></tr>
+                                    <tr><td>1</td><td>0</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio1" id="Q13"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td></tr>
+                                    <tr><td>1</td><td>0</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio1" id="Q14"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>1</td></tr>
+                                    <tr><td>1</td><td>1</td></tr>
+                                    </table></label>
+                    </div>
+
+                    <h3>2. Two inputs to AND Gate are 0 and 1 respectively. Which of the following will be the output of the AND Gate?</h3>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio2" id="Q21"><table class="table-condensed truthTable" style="text-align: center;">
+                                    0
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio2" id="Q22"><table class="table-condensed truthTable" style="text-align: center;">
+                                    1
+                                    </table></label>
+                    </div>
+
+                    <h3>3. Which of the following is the truth table of OR Gate?</h3>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio3" id="Q31"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><td>0</td><td>1</td><td>1</td></tr>
+                                    <tr><td>1</td><td>0</td><td>1</td></tr>
+                                    <tr><td>1</td><td>1</td><td>0</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio3" id="Q32"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td><td>1</td></tr>
+                                    <tr><td>0</td><td>1</td><td>0</td></tr>
+                                    <tr><td>1</td><td>0</td><td>0</td></tr>
+                                    <tr><td>1</td><td>1</td><td>0</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio3" id="Q33"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td><td>1</td></tr>
+                                    <tr><td>0</td><td>1</td><td>1</td></tr>
+                                    <tr><td>1</td><td>0</td><td>1</td></tr>
+                                    <tr><td>1</td><td>1</td><td>0</td></tr>
+                                    </table></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio3" id="Q34"><table class="table-condensed truthTable" style="text-align: center;">
+                                    <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                    <tr><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><td>0</td><td>1</td><td>1</td></tr>
+                                    <tr><td>1</td><td>0</td><td>1</td></tr>
+                                    <tr><td>1</td><td>1</td><td>1</td></tr>
+                                    </table></label>
+                    </div>
+                    </form>
                     </p>
                 </section>
                 <!-- /.content -->

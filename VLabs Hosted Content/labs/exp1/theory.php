@@ -31,7 +31,7 @@
                 <a href="../explist.php" class="logo">
                     <p align="center" style="font-size:1em;">
                         <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
+                            <?php echo $lab_name?><!-- Write your lab name --> 
                         </b>
                     </p>
                 </a>
@@ -73,6 +73,29 @@
                     <h3 style="margin-top:5%">Theory</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
+                        <h3>Activation functions:- </h3>
+                        <b>In computational networks, the activation function of a node defines the output of that node given an input or set of inputs.</b>
+                        <br /><br /><img src="../images/artificial_nn.png" height="190px" width="400px;" /><br />
+                        Fig 1. General structure of an artificial neural network with a single perceptron.
+                        <br /><br />
+                        <h3>Types of activation functions:-</h3>
+                        <b>1. Hard-limit Activation Function</b>
+                        <br /><br /><img src="../images/hardlimit.png" /><br /><br />
+                        <b>2. Sigmoidal Activation Function</b>
+                        <br /><br /><img src="../images/sigmoid.png" /><b><br /><br />
+                        <b>3. Piecewise Linear Activation Function</b>
+                        <br /><br /><img src="../images/piecewise.png" /><b><br /><br />
+                        <b>4. Signum Activation Function</b>
+                        <br /><br /><img src="../images/signum.png" /><br /><br />
+                        <h3>Working:- </h3>
+                        Let us consider the problem of building an OR Gate using single layer perceptron.
+                        <br /><br />
+                        Following is the truth table of OR Gate.<br />
+                        <img src="../images/or.jpg" height="160" width="230" /><br /><br />
+                        Referring to Fig 1 and the above truth table, X and Y are the two inputs corresponding to X1 and X2.Let Y' be the output of the perceptron and let Z' be the output of the newral network after applying the activation function (Signum in this case). Let the weights be W1=0.5 and W2=0.5.
+                        <br />
+                        Now,<br /> Y' = X1*W1 + X2*W2<br />Z' = F(Y') ; F is the Activation Function.<br /><br />For X = 0 & Y = 0<br/><br />Y' = X*W1 + Y*W2<br />Y' = 0*0.5 + 0*0.5<br />Y' = 0 + 0<br />Y' = 0<br />Z' = F(Y')<br />Z' = F(0)<br />For Signum activation function, F(x) = 0 ; x = 0<br /><br />Z' = 0<br /><br />For X = 0 & Y = 1<br/><br />Y' = X*W1 + Y*W2<br />Y' = 0*0.5 + 1*0.5<br />Y' = 0 + 0.5<br />Y' = 0.5<br />Z' = F(Y')<br />Z' = F(0.5)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />For X=1 & Y=0<br/><br />Y' = X*W1 + Y*W2<br />Y' = 1*0.5 + 0*0.5<br />Y' = 0.5 + 0<br />Y' = 0.5<br />Z' = F(Y')<br />Z' = F(0.5)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />For X=1 & Y=1<br/><br />Y' = X*W1 + Y*W2<br />Y' = 1*0.5 + 1*0.5<br />Y' = 0.5 + 0.5<br />Y' = 1<br />Z' = F(Y')<br />Z' = F(1)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />Thus we can plot a graph as shown below where ^ represents 0 and X represents 1.<br />
+                        <img src="../images/orgraph.png"/>
                     </p>
                 </section>
                 <!-- /.content -->
