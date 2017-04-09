@@ -71,7 +71,10 @@
                 <section class="content">
                     <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!--Reference content goes here -->
+                        <!--Reference content goes here --><br /><b>
+                        1. Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br />
+                        2. S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"
+                        </b>
                     </p>
                 </section>
                 <!-- /.content -->
