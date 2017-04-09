@@ -77,12 +77,12 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="result.php">
+                   <!-- <a href="result.php">
                         <i class="fa fa-laptop"></i>
                         <span>Result</span>
                         <span class="pull-right-container">
                         </span>
-                    </a>
+                    </a>  -->
                 </li>
                 
                 <?php
