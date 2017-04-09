@@ -65,8 +65,73 @@
         <section class="content">
           <h3 style="margin-top:5%">Pre Test</h3>
           <p class="MsoNormal" style="text-align:justify">
+              
+              <script>
 
-            <!-- Pre Test content goes here -->
+                  function result()
+                  {  
+                      if(document.querySelector('input[name="q1"]:checked').value == 4)
+                          document.getElementById("a1").innerHTML = "1) Correct";
+                      else
+                          document.getElementById("a1").innerHTML =  "1) Wrong";
+                      if(document.querySelector('input[name="q2"]:checked').value == 2)
+                          document.getElementById("a2").innerHTML = "2) Correct";
+                      else
+                          document.getElementById("a2").innerHTML =  "2) Wrong";
+                      if(document.querySelector('input[name="q3"]:checked').value == 1)
+                          document.getElementById("a3").innerHTML = "3) Correct";
+                      else
+                          document.getElementById("a3").innerHTML =  "3) Wrong";
+               } 
+            
+            </script>
+              
+            
+              <br>
+            1.	How many Layers can be there in FeedForward or EBPMLP algorithms ?<br>
+              <input type="radio" name="q1" value="1">
+              "3"
+              <br>
+              <input type="radio" name="q1" value="2">
+              "1 or more"
+              <br>
+              <input type="radio" name="q1" value="3">
+              "2 or more"
+              <br>
+              <input type="radio" name="q1" value="4">
+              "3 or more"
+              <br><br>
+              2.	Can Ex-OR gate be implemented using single layer perceptron ?<br>
+              <input type="radio" name="q2" value="1">
+              "Yes"
+              <br>
+              <input type="radio" name="q2" value="2">
+              "No"
+              <br>
+              <input type="radio" name="q2" value="3">
+              "Cannot be determined"
+              <br>
+              <input type="radio" name="q2" value="4">
+              "Maybe"
+              <br><br>
+              3.	Neural Networks are complex ______________ with many parameters.<br>
+              <input type="radio" name="q3" value="1">
+              "Linear Functions"
+              <br>
+              <input type="radio" name="q3" value="2">
+              "Non-Linear Functions"
+              <br>
+              <input type="radio" name="q3" value="3">
+              "Discrete Functions"
+              <br>
+              <input type="radio" name="q3" value="4">
+              "Exponential Functions"
+              <br><br>
+              <input type="button" value="Evaluate" onclick="result()">
+              
+              <h3 id="a1"></h3>
+              <h3 id="a2"></h3>
+            <h3 id="a3"></h3>
             
           </p>
         </section>
