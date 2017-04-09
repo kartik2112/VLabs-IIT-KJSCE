@@ -75,27 +75,99 @@
                         <!--Theory content goes here -->
                         <h3>Activation functions:- </h3>
                         <b>In computational networks, the activation function of a node defines the output of that node given an input or set of inputs.</b>
-                        <br /><br /><img src="../images/artificial_nn.png" height="190px" width="400px;" /><br />
+                        <br /><br /><img src="images/artificial_nn.png" height="190px" width="400px;" /><br />
                         Fig 1. General structure of an artificial neural network with a single perceptron.
                         <br /><br />
                         <h3>Types of activation functions:-</h3>
                         <b>1. Hard-limit Activation Function</b>
-                        <br /><br /><img src="../images/hardlimit.png" /><br /><br />
+                        <br /><br /><img src="images/hardlimit.png" /><br /><br />
                         <b>2. Sigmoidal Activation Function</b>
-                        <br /><br /><img src="../images/sigmoid.png" /><b><br /><br />
+                        <br /><br /><img src="images/sigmoid.png" /><br /><br />
                         <b>3. Piecewise Linear Activation Function</b>
-                        <br /><br /><img src="../images/piecewise.png" /><b><br /><br />
+                        <br /><br /><img src="images/piecewise.png" /><br /><br />
                         <b>4. Signum Activation Function</b>
-                        <br /><br /><img src="../images/signum.png" /><br /><br />
+                        <br /><br /><img src="images/signum.png" /><br /><br />
                         <h3>Working:- </h3>
                         Let us consider the problem of building an OR Gate using single layer perceptron.
                         <br /><br />
                         Following is the truth table of OR Gate.<br />
-                        <img src="../images/or.jpg" height="160" width="230" /><br /><br />
-                        Referring to Fig 1 and the above truth table, X and Y are the two inputs corresponding to X1 and X2.Let Y' be the output of the perceptron and let Z' be the output of the newral network after applying the activation function (Signum in this case). Let the weights be W1=0.5 and W2=0.5.
+                        <img style="float: left;" src="images/or.jpg" height="160" width="230" />&emsp;&emsp;
+                        <img src="images/theory Net.png" height="200" /><br /><br />
+                        Referring to the above neural network and truth table, X and Y are the two inputs corresponding to X1 and X2.
+                        Let Y' be the output of the perceptron and let Z' be the output of the neural network after applying the activation function (Signum in this case). 
+                        Let the weights be W1=1 and W2=1.
                         <br />
-                        Now,<br /> Y' = X1*W1 + X2*W2<br />Z' = F(Y') ; F is the Activation Function.<br /><br />For X = 0 & Y = 0<br/><br />Y' = X*W1 + Y*W2<br />Y' = 0*0.5 + 0*0.5<br />Y' = 0 + 0<br />Y' = 0<br />Z' = F(Y')<br />Z' = F(0)<br />For Signum activation function, F(x) = 0 ; x = 0<br /><br />Z' = 0<br /><br />For X = 0 & Y = 1<br/><br />Y' = X*W1 + Y*W2<br />Y' = 0*0.5 + 1*0.5<br />Y' = 0 + 0.5<br />Y' = 0.5<br />Z' = F(Y')<br />Z' = F(0.5)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />For X=1 & Y=0<br/><br />Y' = X*W1 + Y*W2<br />Y' = 1*0.5 + 0*0.5<br />Y' = 0.5 + 0<br />Y' = 0.5<br />Z' = F(Y')<br />Z' = F(0.5)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />For X=1 & Y=1<br/><br />Y' = X*W1 + Y*W2<br />Y' = 1*0.5 + 1*0.5<br />Y' = 0.5 + 0.5<br />Y' = 1<br />Z' = F(Y')<br />Z' = F(1)<br />For Signum activation function, F(x) = 1 ; x > 0<br /><br />Z' = 1<br /><br />Thus we can plot a graph as shown below where ^ represents 0 and X represents 1.<br />
-                        <img src="../images/orgraph.png"/>
+                        Now,<br /><br /> Y' = X*w<sub>1</sub> + Y*w<sub>2</sub><br />Z' = F(Y') ; F is the Activation Function. Let us assume the threshold is 0.5.
+                        <br /><br />
+                        Thus, Z' = F(Y') will be defined as
+                        <p id="ux-wrapper"><b>Z' = 1 , Y' >= 0.5<br/>
+                            &emsp;= 0 , Y' < 0.5</b></p>
+                        <br />
+                        For X = 0 & Y = 0<br/><br />
+                        Y' = X*w<sub>1</sub> + Y*w<sub>2</sub><br />
+                        Y' = 0*1 + 0*1<br />
+                        Y' = 0 + 0<br />Y' = 0<br />
+                        Z' = F(Y')<br />
+                        Z' = F(0)<br />
+                        For Signum activation function, F(x) = 0 ; x < 0.5<br /><br />
+                        Z' = 0<br /><br />
+                        For X = 0 & Y = 1<br/><br />
+                        Y' = X*w<sub>1</sub> + Y*w<sub>2</sub><br />
+                        Y' = 0*1 + 1*1<br />
+                        Y' = 0 + 1<br />
+                        Y' = 1<br />
+                        Z' = F(Y')<br />
+                        Z' = F(1)<br />
+                        For Signum activation function, F(x) = 1 ; x > 0.5<br /><br />
+                        Z' = 1<br /><br />
+                        For X=1 & Y=0<br/><br />
+                        Y' = X*w<sub>1</sub> + Y*w<sub>2</sub><br />
+                        Y' = 1*1 + 0*1<br />
+                        Y' = 1 + 0<br />
+                        Y' = 1<br />
+                        Z' = F(Y')<br />
+                        Z' = F(1)<br />
+                        For Signum activation function, F(x) = 1 ; x > 0.5<br /><br />
+                        Z' = 1<br /><br />
+                        For X=1 & Y=1<br/><br />
+                        Y' = X*w<sub>1</sub> + Y*w<sub>2</sub><br />
+                        Y' = 1*1 + 1*1<br />
+                        Y' = 1 + 1<br />
+                        Y' = 1<br />
+                        Z' = F(Y')<br />
+                        Z' = F(1)<br />
+                        For Signum activation function, F(x) = 1 ; x > 0.5<br /><br />
+                        Z' = 1<br /><br />
+
+                        Thus we can plot a graph as shown below where ^ represents 0 and X represents 1.<br /><br />
+                        <img src="images/SS1.PNG" alt="SS1"/><br/><br/>
+                        
+                        Here, the line represents the decision boundary which seperates the 2 classes.
+                        <b>The decision boundary will seperate the 2 classes if similar points lie on the same side of the decision boundary.</b>
+                        Here, the equation of the line will be: <br/><br/>
+                                               
+                        <i>X+Y=0.5</i><br/><br/>
+                        
+                        Thus, as you can see point (0,0) will have X+Y < 0.5 and will lie on the origin side of the line.<br/>
+                        While points (0,1), (1,0), (1,1) will have X+Y > 0.5 and will lie on the non origin side of the line.<br/><br/>
+                        Also, from truth table, (0,0) has OR output 0 and (0,1), (1,0), (1,1) have OR outputs 1.
+                        This is why we can say that this <b>decision boundary correctly classifies the points.</b> In the simulation you can try various values of w1, w2 and threshold 
+                        and find that there are many such decision boundaries that can correctly classify these points.<br/><br/>
+                        
+                        But, if the decision boundary is such that similar points are not on the same side of the line then it is not the correct decision boundary.
+                        For e.g, consider the following image:<br/><br/>
+                        
+                        <img src="images/SS2.PNG" alt="SS2"/><br/><br/>
+                        
+                        Here, the equation of the line will be: <br/><br/>
+                        
+                        <i>X+Y=1.5</i><br/><br/>
+                        
+                        Thus, as you can see point (0,0), (0,1), (1,0) will have X+Y < 1.5 and will lie on the origin side of the line.<br/>
+                        While points (1,1) will have X+Y > 1.5 and will lie on the non origin side of the line.<br/>
+                        But from truth table, (0,0) has OR output 0 and (0,1), (1,0), (1,1) have OR outputs 1. 
+                        This is the reason why this <b>decision boundary is incorrect.</b>
+                        
                     </p>
                 </section>
                 <!-- /.content -->

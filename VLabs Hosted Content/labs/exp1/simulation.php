@@ -118,10 +118,7 @@
                     </div>
                     <button id="startSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
                     <button id="stopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button><br/>
-                    <div>
-                        <p id="ux-wrapper">y(x) = 1 , u(x) >= Threshold<br/>
-                            &emsp;&emsp;= 0 , u(x) < Threshold</p>
-                    </div>
+                    
                     <br/>
                     <div id="AND-gate-sim">
                             <h3>AND Gate Neural Network (NN)</h3>
@@ -159,12 +156,12 @@
                                 <text font-size="20" x="170" y="215">w<tspan baseline-shift="sub">2</tspan>=<tspan class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
 
                                 <!--u(x) related texts-->
-                                <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
+                                <text font-size="20" x="260" y="120">Y' = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
                                 <text font-size="20" x="270" y="180"> = <tspan class="AND-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle AND-XVal"> </tspan>) + <tspan class="AND-inputY-oplay_neuron1-weight">1</tspan>*(Y=<tspan class="changingTextStyle AND-YVal"> </tspan>)</text>
                                 <text class="changingTextStyle" id="AND-ux-value" font-size="20" x="270" y="200"></text>
 
                                 <!--y(x) related texts-->
-                                <text font-size="20" x="535" y="150">y(x)</text>
+                                <text font-size="20" x="535" y="150">Z' = F(Y')</text>
                                 <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="535" y="170"></text>
                                 <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="AND-threshold-value" ></tspan></text>
 
@@ -226,12 +223,12 @@
                                 <text font-size="20" x="170" y="215">w<tspan baseline-shift="sub">2</tspan>=<tspan class="OR-inputY-oplay_neuron1-weight">1</tspan></text>
 
                                 <!--u(x) related texts-->
-                                <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
+                                <text font-size="20" x="260" y="120">Y' = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
                                 <text font-size="20" x="270" y="180"> = <tspan class="OR-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle OR-XVal"> </tspan>) + <tspan class="OR-inputY-oplay_neuron1-weight">1</tspan>*(Y=<tspan class="changingTextStyle OR-YVal"> </tspan>)</text>
                                 <text class="changingTextStyle" id="OR-ux-value" font-size="20" x="270" y="200"></text>
 
                                 <!--y(x) related texts-->
-                                <text font-size="20" x="535" y="150">y(x)</text>
+                                <text font-size="20" x="535" y="150">Z' = F(Y')</text>
                                 <text class="changingTextStyle" id="OR-yx-value" font-size="20" x="535" y="170"></text>
                                 <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="OR-threshold-value" ></tspan></text>
 
@@ -289,12 +286,12 @@
                                 
 
                                 <!--u(x) related texts-->
-                                <text font-size="20" x="260" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X</text>
+                                <text font-size="20" x="260" y="120">Y' = w<tspan baseline-shift="sub">1</tspan>*X</text>
                                 <text font-size="20" x="270" y="180"> = <tspan class="NOT-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle NOT-XVal"> </tspan>)</text>
                                 <text class="changingTextStyle" id="NOT-ux-value" font-size="20" x="270" y="200"></text>
 
                                 <!--y(x) related texts-->
-                                <text font-size="20" x="535" y="150">y(x)</text>
+                                <text font-size="20" x="535" y="150">Z' = F(Y')</text>
                                 <text class="changingTextStyle" id="NOT-yx-value" font-size="20" x="535" y="170"></text>
                                 <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="NOT-threshold-value" ></tspan></text>
 
@@ -314,7 +311,7 @@
                             </div> 
                             <br/><br/><br/>                            
                             <p>
-                                <b>Hint:</b> Try using 0.5 as threshold and 1 as weights
+                                <b>Hint:</b> Try using -0.5 as threshold and -1 as weight
                             </p>
                     </div>
                     

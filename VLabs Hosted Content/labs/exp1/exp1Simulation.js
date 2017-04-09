@@ -12,7 +12,7 @@ $(document).ready(function () {
     */
     $("#AND_Gate_Threshold_slider").slider({
         max: 6.5,
-        min: -0.5,
+        min: -2,
         step: 0.1,
         slide: function (event, ui) {
             $(".AND-threshold-value").text(ui.value);
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     $("#AND_Gate_w1_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
     $("#AND_Gate_w2_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -60,7 +60,7 @@ $(document).ready(function () {
     */
     $("#OR_Gate_Threshold_slider").slider({
         max: 6.5,
-        min: -0.5,
+        min: -2,
         step: 0.1,
         slide: function (event, ui) {
             $(".OR-threshold-value").text(ui.value);
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     $("#OR_Gate_w1_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -86,7 +86,7 @@ $(document).ready(function () {
     OR_w1 = $("#OR_Gate_w1_slider").slider("value");
     $("#OR_Gate_w2_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -103,7 +103,7 @@ $(document).ready(function () {
     */
     $("#NOT_Gate_Threshold_slider").slider({
         max: 6.5,
-        min: -0.5,
+        min: -2,
         step: 0.1,
         slide: function (event, ui) {
             $(".NOT-threshold-value").text(ui.value);
@@ -117,7 +117,7 @@ $(document).ready(function () {
 
     $("#NOT_Gate_w1_slider").slider({
         max: 3,
-        min: 0,
+        min: -1,
         value: 1,
         step: 0.05,
         slide: function (event, ui) {
@@ -186,7 +186,7 @@ function resetCompleteSimulation() {
         $(".OR-TT-rows").removeClass("highlightTTRow");
         $(".OR-TT-OP-rows").text("");
     }
-	else{
+	else if(gate_id==3){
 		$(".NOT-TT-rows").removeClass("highlightTTRow");
         $(".NOT-TT-OP-rows").text("");
 	}
@@ -223,33 +223,33 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
     $(".AND-YVal").text(inputY[iterationNo]);
     $("#AND-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
     $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, u(x) */
+    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
-        /* Display u(x) and pause */
+        /* Display Y' and pause */
         $("#AND-ux-value").text("= " + ux);
 
         timer2 = window.setTimeout(function () {
             /* Display threshold calculation and pause */
             $("#AND-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
             if (ux >= threshold) {
-                $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
+                $("#AND-yx-value-expln").text("Y' = " + ux + " >= " + threshold);
             }
             else {
-                $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold);
+                $("#AND-yx-value-expln").text("Y' = " + ux + " < " + threshold);
             }
 
             timer3 = window.setTimeout(function () {
-                /* Display calculation output as y(x) and add to truth table */
+                /* Display calculation output as Z' and add to truth table */
                 if (ux >= threshold) {
-                    $("#AND-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
+                    $("#AND-yx-value-expln").text("Y' = " + ux + " >= " + threshold + " ⇒ Z' = 1"); /* Change explanation to include Z' */
                     $("#AND-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
                     $("#AND-yx-value").text("= " + 1);
                     AND_calcOP.push(1);
                 }
                 else {
-                    $("#AND-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
+                    $("#AND-yx-value-expln").text("Y' = " + ux + " < " + threshold + " ⇒ Z' = 0"); /* Change explanation to include Z' */
                     $("#AND-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
                     $("#AND-yx-value").text("= " + 0);
                     AND_calcOP.push(0);
@@ -307,33 +307,33 @@ function simulateORGate(iterationNo, inputX, inputY, w1, w2, threshold, interval
     $(".OR-YVal").text(inputY[iterationNo]);
     $("#OR-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
     $("#OR-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, u(x) */
+    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
-        /* Display u(x) and pause */
+        /* Display Y' and pause */
         $("#OR-ux-value").text("= " + ux);
 
         timer2 = window.setTimeout(function () {
             /* Display threshold calculation and pause */
             $("#OR-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
             if (ux >= threshold) {
-                $("#OR-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
+                $("#OR-yx-value-expln").text("Y' = " + ux + " >= " + threshold);
             }
             else {
-                $("#OR-yx-value-expln").text("u(x) = " + ux + " < " + threshold);
+                $("#OR-yx-value-expln").text("Y' = " + ux + " < " + threshold);
             }
 
             timer3 = window.setTimeout(function () {
-                /* Display calculation output as y(x) and add to truth table */
+                /* Display calculation output as Z' and add to truth table */
                 if (ux >= threshold) {
-                    $("#OR-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
+                    $("#OR-yx-value-expln").text("Y' = " + ux + " >= " + threshold + " ⇒ Z' = 1"); /* Change explanation to include Z' */
                     $("#OR-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
                     $("#OR-yx-value").text("= " + 1);
                     OR_calcOP.push(1);
                 }
                 else {
-                    $("#OR-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
+                    $("#OR-yx-value-expln").text("Y' = " + ux + " < " + threshold + " ⇒ Z' = 0"); /* Change explanation to include Z' */
                     $("#OR-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
                     $("#OR-yx-value").text("= " + 0);
                     OR_calcOP.push(0);
@@ -388,33 +388,33 @@ function simulateNOTGate(iterationNo, inputX, w1, threshold, interval, timer) {
     */
     $(".NOT-XVal").text(inputX[iterationNo]);
     $("#NOT-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo]; /* Calculate intermediate, u(x) */
+    var ux = w1 * inputX[iterationNo]; /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
-        /* Display u(x) and pause */
+        /* Display Y' and pause */
         $("#NOT-ux-value").text("= " + ux);
 
         timer2 = window.setTimeout(function () {
             /* Display threshold calculation and pause */
             $("#NOT-oplay_neuron1-oplay_thrshld").addClass("animatedLine");
             if (ux >= threshold) {
-                $("#NOT-yx-value-expln").text("u(x) = " + ux + " >= " + threshold);
+                $("#NOT-yx-value-expln").text("Y' = " + ux + " >= " + threshold);
             }
             else {
-                $("#NOT-yx-value-expln").text("u(x) = " + ux + " < " + threshold);
+                $("#NOT-yx-value-expln").text("Y' = " + ux + " < " + threshold);
             }
 
             timer3 = window.setTimeout(function () {
-                /* Display calculation output as y(x) and add to truth table */
+                /* Display calculation output as Z' and add to truth table */
                 if (ux >= threshold) {
-                    $("#NOT-yx-value-expln").text("u(x) = " + ux + " >= " + threshold + " ⇒ y(x) = 1"); /* Change explanation to include y(x) */
+                    $("#NOT-yx-value-expln").text("Y' = " + ux + " >= " + threshold + " ⇒ Z' = 1"); /* Change explanation to include Z' */
                     $("#NOT-TT-OP-row-" + (iterationNo + 1)).text(1); /* Add entry in truth table */
                     $("#NOT-yx-value").text("= " + 0);
                     NOT_calcOP.push(1);
                 }
                 else {
-                    $("#NOT-yx-value-expln").text("u(x) = " + ux + " < " + threshold + " ⇒ y(x) = 0"); /* Change explanation to include y(x) */
+                    $("#NOT-yx-value-expln").text("Y' = " + ux + " < " + threshold + " ⇒ Z' = 0"); /* Change explanation to include Z' */
                     $("#NOT-TT-OP-row-" + (iterationNo + 1)).text(0); /* Add entry in truth table */
                     $("#NOT-yx-value").text("= " + 1);
                     NOT_calcOP.push(0);
