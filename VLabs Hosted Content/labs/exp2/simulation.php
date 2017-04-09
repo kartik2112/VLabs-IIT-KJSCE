@@ -693,7 +693,6 @@ $_SESSION["currPage"]=5;
 
               <text id="after_threshold_op" style="display: none;" x="570" y="200" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
-<<<<<<< HEAD
             <div>
               <div class="ebp_content_only" style="width: 240px;height: 30px;">
                 <h5 style="float: left;margin: 0;margin-top: 14px;width: 140px">
