@@ -98,28 +98,28 @@
                         <div>
                             <h3>1. Which of the following is the truth table of NOT Gate?</h3>
                             <div class="radio">
-                                <label><input type="radio" class="optradio1" name="optradio1" id="Q11">A<table class="table-condensed" style="text-align: center;">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q11">A<table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>I/P</th><th>O/P</th></tr>
                                             <tr><td>0</td><td>0</td></tr>
                                             <tr><td>1</td><td>1</td></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" class="optradio1" name="optradio1" id="Q12">B<table class="table-condensed" style="text-align: center;">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q12">B<table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>I/P</th><th>O/P</th></tr>
                                             <tr><td>0</td><td>1</td></tr>
                                             <tr><td>1</td><td>0</td></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" class="optradio1" name="optradio1" id="Q13">C<table class="table-condensed" style="text-align: center;">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q13">C<table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>I/P</th><th>O/P</th></tr>
                                             <tr><td>0</td><td>0</td></tr>
                                             <tr><td>1</td><td>0</td></tr>
                                             </table></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" class="optradio1" name="optradio1" id="Q14">D<table class="table-condensed" style="text-align: center;">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q14">D<table class="table-condensed truthTable" style="text-align: center;">
                                             <tr><th>I/P</th><th>O/P</th></tr>
                                             <tr><td>0</td><td>1</td></tr>
                                             <tr><td>1</td><td>1</td></tr>
