@@ -277,8 +277,8 @@
                                 <text font-size="20" x="242" y="155" font-size="25">∑</text>
 
                                 <!--Input texts-->
-                                <text font-size="20" x="15" y="150">X</text>
-                                <text class="changingTextStyle NOT-XVal" font-size="20" x="45" y="55"></text>
+                                <text font-size="20" x="15" y="155">X</text>
+                                <text class="changingTextStyle NOT-XVal" font-size="20" x="45" y="155"></text>
                                 
 
                                 <!--Weights text-->
