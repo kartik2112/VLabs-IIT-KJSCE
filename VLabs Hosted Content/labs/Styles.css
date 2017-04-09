@@ -88,3 +88,9 @@ button.displayActivatedButton{
 .jxgbox{
     background-color: rgba(236, 240, 245, 0.85)!important;
 }
+
+.testAns{
+    color: #ff4600;
+    font-size: 20px;
+    font-weight: bolder;
+}

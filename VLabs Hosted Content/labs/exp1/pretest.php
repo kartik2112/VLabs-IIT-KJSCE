@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Virtual Labs </title>
         <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" class="viewport">
         <!-- Bootstrap 3.3.6 -->
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
         <!-- Font Awesome -->
@@ -17,14 +17,36 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link href="../Styles.css" rel="stylesheet" />
+        
+        <script>
+            $(document).ready(function(){
+                $(".optradio1").click(function(){
+                    ////alert("clicked");
+                    $("#optradio1Ans").slideDown();
+                });
+                $(".optradio2").click(function(){
+                    //alert("clicked");
+                    $("#optradio2Ans").slideDown();
+                });
+                $(".optradio3").click(function(){
+                    //alert("clicked");
+                    $("#optradio3Ans").slideDown();
+                });
+               
+            });
+        </script>
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
             include '../../common/header.html';
-            include 'lab_name.php';
+            include 'lab_class.php';
             $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+            $exp_name = $_SESSION['exp_name'];      
+                  ?>
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
@@ -73,6 +95,90 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
+                        <div>
+                            <h3>1. Which of the following is the truth table of NOT Gate?</h3>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q11">A<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td></tr>
+                                            <tr><td>1</td><td>1</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q12">B<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>1</td></tr>
+                                            <tr><td>1</td><td>0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q13">C<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td></tr>
+                                            <tr><td>1</td><td>0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio1" name="optradio1" id="Q14">D<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>1</td></tr>
+                                            <tr><td>1</td><td>1</td></tr>
+                                            </table></label>
+                            </div>
+                            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
+                        </div>
+                        
+                        <div>
+                            <h3>2. Two inputs to AND Gate are 0 and 1 respectively. Which of the following will be the output of the AND Gate?</h3>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio2" name="optradio2" id="Q21">A. 0</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio2" name="optradio2" id="Q22">B. 1</label>
+                            </div>
+                            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+                        </div>
+
+                        <div>
+                            <h3>3. Which of the following is the truth table of OR Gate?</h3>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio3" name="optradio3" id="Q31">A<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td><td>0</td></tr>
+                                            <tr><td>0</td><td>1</td><td>1</td></tr>
+                                            <tr><td>1</td><td>0</td><td>1</td></tr>
+                                            <tr><td>1</td><td>1</td><td>0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio3" name="optradio3" id="Q32">B<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td><td>1</td></tr>
+                                            <tr><td>0</td><td>1</td><td>0</td></tr>
+                                            <tr><td>1</td><td>0</td><td>0</td></tr>
+                                            <tr><td>1</td><td>1</td><td>0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio3" name="optradio3" id="Q33">C<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td><td>1</td></tr>
+                                            <tr><td>0</td><td>1</td><td>1</td></tr>
+                                            <tr><td>1</td><td>0</td><td>1</td></tr>
+                                            <tr><td>1</td><td>1</td><td>0</td></tr>
+                                            </table></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" class="optradio3" name="optradio3" id="Q34">D<table class="table-condensed truthTable" style="text-align: center;">
+                                            <tr><th>I/P #1</th><th>I/P #2</th><th>O/P</th></tr>
+                                            <tr><td>0</td><td>0</td><td>0</td></tr>
+                                            <tr><td>0</td><td>1</td><td>1</td></tr>
+                                            <tr><td>1</td><td>0</td><td>1</td></tr>
+                                            <tr><td>1</td><td>1</td><td>1</td></tr>
+                                            </table></label>
+                            </div>
+                            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        </div>
                     </p>
                 </section>
                 <!-- /.content -->
