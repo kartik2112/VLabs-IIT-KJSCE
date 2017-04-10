@@ -1,0 +1,90 @@
+.animatedLine{
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineGreen{
+    stroke: #00d404!important;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLinePurple{
+    stroke: #7100d5!important;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to{
+  	    stroke-dashoffset: 0;
+    }
+}
+
+.StdLine{
+    stroke: #ff6a00; 
+    stroke-width:5; 
+}
+
+.StdCircle{
+    fill: #00b8ff;
+}
+
+table.truthTable{
+  	border-collapse: collapse;
+}
+
+table.truthTable tr:nth-child(even){
+  	background-color: #b8f6ff;
+	color: #000;
+}
+
+table.truthTable th{
+  	background-color: #028dff;
+	color: #fff;
+}
+
+table.truthTable td,th{
+    text-align: center;
+}
+
+div.highlightDiv{
+    background-color: #06baf4
+}
+
+table.truthTable tr.highlightTTRow{
+    background-color: #ff4600;
+    color: #fff;
+}
+
+.changingTextStyle{
+    stroke: #ff4600; 
+    stroke-width: 1;
+}
+
+/* Not used but kept in case an appealing way to use this has been found*/
+
+
+.sliders{
+    background-color: #ff9718;
+}
+
+button.displayActivatedButton{
+    animation: highlightButtonActivated 500ms;
+}
+
+@keyframes highlightButtonActivated{
+    from{
+        box-shadow: inset 0px 0px 40px 40px #ff6a00;
+    }
+    to{
+        box-shadow: inset 0px 0px 0px 0px #fff;
+    }
+}
+
+.jxgbox{
+    background-color: rgba(236, 240, 245, 0.85)!important;
+}
