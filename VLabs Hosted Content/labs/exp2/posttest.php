@@ -69,6 +69,92 @@
           <p class="MsoNormal" style="text-align:justify">
 
             <!-- Post Test content goes here -->
+               <script>
+
+                  function result()
+                  {  
+                      if(document.querySelector('input[name="q1"]:checked').value == 4)
+                          document.getElementById("a1").innerHTML = "1) Correct";
+                      else
+                          document.getElementById("a1").innerHTML =  "1) Wrong";
+                      if(document.querySelector('input[name="q2"]:checked').value == 3)
+                          document.getElementById("a2").innerHTML = "2) Correct";
+                      else
+                          document.getElementById("a2").innerHTML =  "2) Wrong";
+                      if(document.querySelector('input[name="q3"]:checked').value == 1)
+                          document.getElementById("a3").innerHTML = "3) Correct";
+                      else
+                          document.getElementById("a3").innerHTML =  "3) Wrong";
+                      if(document.querySelector('input[name="q4"]:checked').value == 3)
+                          document.getElementById("a4").innerHTML = "3) Correct";
+                      else
+                          document.getElementById("a4").innerHTML =  "3) Wrong";
+                      
+               } 
+            
+            </script>
+              
+            
+              <br>
+            1.	1.	Why is the XOR problem exceptionally interesting to neural network researchers?<br>
+              <input type="radio" name="q1" value="1">
+              "Because it can be expressed in a way that allows you to use a neural network"
+              <br>
+              <input type="radio" name="q1" value="2">
+              "Because it is complex binary operation that cannot be solved using neural   networks"
+              <br>
+              <input type="radio" name="q1" value="3">
+              "Because it can be solved by a single layer perceptron"
+              <br>
+              <input type="radio" name="q1" value="4">
+              "Because it is the simplest linearly inseparable problem that exists"
+              <br><br>
+              2.	What is back propagation?<br>
+              <input type="radio" name="q2" value="1">
+              " It is another name given to the curvy function in the perceptron"
+              <br>
+              <input type="radio" name="q2" value="2">
+              "It is the transmission of error back through the network to adjust the inputs"
+              <br>
+              <input type="radio" name="q2" value="3">
+              " It is the transmission of error back through the network to allow weights to be adjusted so that the network can learn"
+              <br>
+              <input type="radio" name="q2" value="4">
+              "None of the mentioned"
+              <br><br>
+              3.	What type of learning algorithm is used in EBPMLP ?<br>
+              <input type="radio" name="q3" value="1">
+              "Supervised learning"
+              <br>
+              <input type="radio" name="q3" value="2">
+              "Reinforcement learning"
+              <br>
+              <input type="radio" name="q3" value="3">
+              "Active learning"
+              <br>
+              <input type="radio" name="q3" value="4">
+              "Unsupervised learning"
+              <br><br>
+              4.	What effect does the learning rate have ?<br>
+              <input type="radio" name="q4" value="1">
+              "Always increases the rate of change of weights"
+              <br>
+              <input type="radio" name="q4" value="2">
+              "Always decreases the rate of change of weights"
+              <br>
+              <input type="radio" name="q4" value="3">
+              "Increases the rate if value too high and decreases the rate if value too low"
+              <br>
+              <input type="radio" name="q4" value="4">
+              "No effect"
+              <br><br>
+              <input type="button" value="Evaluate" onclick="result()">
+              
+              <h3 id="a1"></h3>
+              <h3 id="a2"></h3>
+              <h3 id="a3"></h3>
+              <h3 id="a4"></h3>
+            
             
           </p>
         </section>
