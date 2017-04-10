@@ -331,6 +331,7 @@ $_SESSION["currPage"]=5;
 
       /* Creates the cartesian graph */
       board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
       constPointSize = 5;
       OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
       OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -408,6 +409,7 @@ $_SESSION["currPage"]=5;
 
         //Re-plot the graph
         board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+        board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
         OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
         OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
         OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
@@ -498,6 +500,11 @@ $_SESSION["currPage"]=5;
       else
         y = 0;
 
+      if(z[index]==1)
+        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
+      else
+        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
+
       var flagger = false;
 
       if (y != z[index]) {
@@ -506,6 +513,9 @@ $_SESSION["currPage"]=5;
 
       decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
       decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+      finalBoundary = board1.create('line', [-b3, Number(v1), Number(v1)]);
+      document.getElementById('h1' + (index + 1)).innerHTML = y1;
+      document.getElementById('h2' + (index + 1)).innerHTML = y2;
 
       document.getElementById('op').innerHTML = y;
       document.getElementById('out' + (index + 1)).innerHTML = y;
@@ -689,13 +699,11 @@ $_SESSION["currPage"]=5;
 
             <br/>
 
-            <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
-
-            <div style="width: 100%;height: 300px;">
-              <div style="width: 45%;float: left;">
-                <h3>Truth Table</h3>
-                <br/>
-                <table id="truth" border="2" style="text-align: center;">
+            <div style="float: right;width: 300px;height: 550px;">
+            <div style="width: 100%;height: 48%;">
+              <h3>Truth Table</h3>
+              <br/>
+              <table id="truth" border="2" style="text-align: center;">
                   <tr>
                     <th colspan="2" style="text-align: center;">Input</th>
                     <th colspan="5" style="text-align: center;">Output</th>
@@ -745,17 +753,18 @@ $_SESSION["currPage"]=5;
                     <td>0</td>
                   </tr>
                 </table>
-                <h4 id="acc" style="display: none;">Accuracy of network: <span id="acc_val">0%</span></h5>
+              <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
+            </div>
+
+            <div id="grph" style="width: 100%;height: 48%;display: none;">
+              <h3>Decision Boundaries</h3>
+              <div id="output">
+                <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
+                <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
               </div>
-              <div id="grph" style="width: 45%;float: right;display: none;">
-                <h3>Decision Boundaries</h3>
-                <div id="output">
-                  <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
-                  <h3>Conversion to a linearly seperable problem by the hidden layer</h3>
-                  <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
-                </div>
-              </div>
-            <div>
+            </div>
+          </div>
+              
               <div class="ebp_content_only" style="width: 240px;height: 30px;">
                 <h5 style="float: left;margin: 0;margin-top: 14px;width: 140px">
                   Set Learning rate: &nbsp;<span id="learn">1</span>
@@ -773,60 +782,7 @@ $_SESSION["currPage"]=5;
             </div>
           </div>
 
-          <div style="float: right;width: 300px;height: 550px;">
-            <div style="width: 100%;height: 48%;">
-              <h3>Truth Table</h3>
-              <br/>
-              <table id="truth" border="2" style="text-align: center;">
-                <tr>
-                  <th colspan="2" style="text-align: center;">Input</th>
-                  <th colspan="2" style="text-align: center;">Output</th>
-                </tr>
-                <tr>
-                  <th>X1</th>
-                  <th>X2</th>
-                  <th>Expected Output</th>
-                  <th>Network's output</th>
-                </tr>
-
-                <tr id="r1">
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td id="out1">-</td>
-                </tr>
-
-                <tr id="r2">
-                  <td>0</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td id="out2">-</td>
-                </tr>
-
-                <tr id="r3">
-                  <td>1</td>
-                  <td>0</td>
-                  <td>1</td>
-                  <td id="out3">-</td>
-                </tr>
-
-                <tr id="r4">
-                  <td>1</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td id="out4">-</td>
-                </tr>
-              </table>
-              <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
-            </div>
-
-            <div id="grph" style="width: 100%;height: 48%;display: none;">
-              <h3>Decision Boundaries</h3>
-              <div id="output">
-                <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
-              </div>
-            </div>
-          </div>
+          
           
           <br/>
         </div>
