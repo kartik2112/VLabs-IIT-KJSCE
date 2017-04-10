@@ -84,10 +84,16 @@ $_SESSION["currPage"]=5;
 
       if(m.value=="xor"){
         document.getElementById('start').setAttribute("onclick","start_mlp()");
+        $("#output1").removeClass('ebp');
+        $("#output1").addClass('mlp');
+        $("#output2").css("display","none");
         init_mlp();
       }
       else{
         document.getElementById('start').setAttribute('onclick','save_weights_ebp()');
+        $("#output1").removeClass('mlp');
+        $("#output1").addClass('ebp');
+        $("#output2").css("display","block");
         init_ebp();
       }
 
@@ -554,6 +560,14 @@ $_SESSION["currPage"]=5;
     .hneuron{
       fill: #222d32;
     }
+    .mlp{
+      width: 100%;
+      display: grid;
+    }
+    .ebp{
+      width: 48%;
+      float: left;
+    }
   </style>
     </head>
 </body>
@@ -697,13 +711,15 @@ $_SESSION["currPage"]=5;
               <text id="after_threshold_op" style="display: none;" x="570" y="200" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
 
-            <br/>
+          </div>
 
-            <div style="float: right;width: 300px;height: 550px;">
+          <br/>
+
+          <div style="float: right;width: 300px;height: 350px;">
             <div style="width: 100%;height: 48%;">
               <h3>Truth Table</h3>
               <br/>
-              <table id="truth" border="2" style="text-align: center;">
+              <table id="truth" border="1" style="text-align: center;">
                   <tr>
                     <th colspan="2" style="text-align: center;">Input</th>
                     <th colspan="5" style="text-align: center;">Output</th>
@@ -755,35 +771,44 @@ $_SESSION["currPage"]=5;
                 </table>
               <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
             </div>
-
-            <div id="grph" style="width: 100%;height: 48%;display: none;">
-              <h3>Decision Boundaries</h3>
-              <div id="output">
-                <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
-                <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
-              </div>
-            </div>
           </div>
               
-              <div class="ebp_content_only" style="width: 240px;height: 30px;">
-                <h5 style="float: left;margin: 0;margin-top: 14px;width: 140px">
-                  Set Learning rate: &nbsp;<span id="learn">1</span>
-                </h5>
-                <br>
-                <div id="lslider" style="float: right;background: deepskyblue;margin-bottom: 10px;width: 100px"></div>
+          <div class="ebp_content_only" style="width: 240px;height: 290px;">
+            <h5 style="float: left;margin: 0;width: 140px">
+              Set Learning rate: &nbsp;<span id="learn">1</span>
+            </h5>
+            <br>
+            <div id="lslider" style="float: right;background: deepskyblue;margin-bottom: 10px;width: 100px"></div>
+          </div>
+
+          <br>
+
+          <div class="ebp_content_only" style="width: 100%">
+            <label for="iter" style="float: left;width: 150px">No. of iterations? --> </label>
+            <input type="number" min="1000" max="1000000000" name="iter" id="iter" value="1000">
+          </div>
+
+          <br>
+
+          <button style="float: left;margin-right: 10px;" id="start" class="btn btn-success" onclick="start_mlp();">Start simulation</button>
+          <button id="reset" class="btn btn-success ebp_content_only" style="background: red;" onclick="init_ebp();">Reset</button>
+
+          <br>
+          <br>
+
+          <div id="grph" style="width: 640px;height: 350px;/*display: none*/;">
+            <div id="output">
+              <div id="output1" class="mlp">
+                <h3 style="text-align: center;width: 300px;height: 52px;">Decision Boundaries</h3>
+                <div id="box" class="jxgbox" style="width:300px; height:300px;float: left;"></div>
               </div>
-
-              <br>
-
-              <br>
-
-              <button style="float: left;margin-right: 10px;" id="start" class="btn btn-success" onclick="start_mlp();">Start simulation</button>
-              <button id="reset" class="btn btn-success ebp_content_only" style="background: red;" onclick="init_ebp();">Reset</button>
+              <div id="output2" style="width: 48%;float: right;display: none;">
+                <h3 style="text-align: center;width: 300px;">After conversion of Feature space to image space</h3>
+                <div id="box1" class="jxgbox" style="width:300px; height:300px;float: right;"></div>
+              </div>              
             </div>
           </div>
 
-          
-          
           <br/>
         </div>
       </section>
