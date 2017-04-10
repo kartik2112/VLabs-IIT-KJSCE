@@ -69,11 +69,12 @@
             $(document).ready(function () {
                 counter = 0;
                 board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+                boardOutputLayer = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
                 constPointSize = 5;
-                OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-                OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-                OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-                OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+                OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true ,name:'[0, 0]'});
+                OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true ,name:'[0, 1]'});
+                OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true ,name:'[1, 0]'});
+                OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true ,name:'[1, 1]'});
                 x1 = [0, 0, 1, 1];
                 x2 = [0, 1, 0, 1];
                 z = [0, 1, 1, 0];
@@ -125,7 +126,8 @@
                     document.getElementById('after_threshold_op').style.display = "none";
                     document.getElementById('start').innerHTML = "Test next input";
                     board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-                    OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+                    boardOutputLayer = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+                    OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true,name:'Group 1' });
                     OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
                     OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
                     OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
@@ -190,9 +192,12 @@
                 else
                     y2 = 0;
 
+                document.getElementById('h1' + (index + 1)).innerHTML = y1;
+                document.getElementById('h2' + (index + 1)).innerHTML = y2;
+
                 var yin1 = y1 * v1 + y2 * v2 - b3;
                 yin = yin1;
-
+                
                 yin = Number(yin);
                 document.getElementById('bef_thresh_op').innerHTML = yin;
 
@@ -201,14 +206,20 @@
                 else
                     y = 0;
 
+                if(z[index]==1)
+                    HiddenLayerOP = boardOutputLayer.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
+                else
+                    HiddenLayerOP = boardOutputLayer.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
                 var flagger = false;
 
                 if (y != z[index]) {
                     erroneousCount++;
                 }
 
-                decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
-                decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+                decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)],{fixed:true,strokeColor:'#ff0000'});
+                decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)],{fixed:true,strokeColor:'#335BFF'});
+
+                finalDecisionBoundary=boardOutputLayer.create('line', [-b3, Number(v1), Number(v2)],{fixed:true,strokeColor:'#00ff00'});
 
                 document.getElementById('op').innerHTML = y;
                 document.getElementById('out' + (index + 1)).innerHTML = y;
@@ -312,6 +323,8 @@
           <p>--> Click on any line to change its weight</p>
           <p>--> Click on the threshold graph to change threshold value</p>
           <p>--> Click on any hidden/output neuron to change its bias</p>
+          <p>--> You cannot change the parameters once you've started simulations.</p>
+          <p>--> The red line in the decision boundaries graph depicts the boundary formed due to hidden neuron 1, blue line corresponds to hidden neuron 2, and green line to the output neuron respectively.</p>
            
             <!--Simulation content goes here -->
 
@@ -381,50 +394,61 @@
                 <table id="truth" border="2" style="text-align: center;">
                   <tr>
                     <th colspan="2" style="text-align: center;">Input</th>
-                    <th colspan="2" style="text-align: center;">Output</th>
+                    <th colspan="5" style="text-align: center;">Output</th>
                   </tr>
                   <tr>
                     <th>X1</th>
                     <th>X2</th>
+                    <th>Output of hidden neuron 1</th>
+                    <th>Output of hidden neuron 2</th>
+                    <th>Final Network Output</th>
                     <th>Expected Output</th>
-                    <th>Network's output</th>
                   </tr>
 
                   <tr id="r1">
                     <td>0</td>
                     <td>0</td>
-                    <td>0</td>
+                    <td id="h11">-</td>
+                    <td id="h21">-</td>
                     <td id="out1">-</td>
+                    <td>0</td>
                   </tr>
 
                   <tr id="r2">
                     <td>0</td>
                     <td>1</td>
-                    <td>1</td>
+                    <td id="h12">-</td>
+                    <td id="h22">-</td>
                     <td id="out2">-</td>
+                    <td>1</td>
                   </tr>
 
                   <tr id="r3">
                     <td>1</td>
                     <td>0</td>
-                    <td>1</td>
+                    <td id="h13">-</td>
+                    <td id="h23">-</td>
                     <td id="out3">-</td>
+                    <td>1</td>
                   </tr>
 
                   <tr id="r4">
                     <td>1</td>
                     <td>1</td>
-                    <td>0</td>
+                    <td id="h14">-</td>
+                    <td id="h24">-</td>
                     <td id="out4">-</td>
+                    <td>0</td>
                   </tr>
                 </table>
                 <h4 id="acc" style="display: none;">Accuracy of network: <span id="acc_val">0%</span></h5>
               </div>
-
               <div id="grph" style="width: 45%;float: right;display: none;">
                 <h3>Decision Boundaries</h3>
                 <div id="output">
                   <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
+                  <h3>Conversion to a linearly seperable problem by the hidden layer</h3>
+                  <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
                 </div>
               </div>
 
