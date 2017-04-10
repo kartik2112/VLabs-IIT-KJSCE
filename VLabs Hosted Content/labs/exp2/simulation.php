@@ -568,6 +568,269 @@ $_SESSION["currPage"]=5;
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <!-- JSX Graph links -->
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+        <!-- Simulation scripts start-->
+          <script src="../src/math.ob.js"></script>
+
+          <script src="../src/numcheck.ob.js"></script>
+          <script src="../src/canvasjschart.ob.js"></script>
+          <script src="../src/bracket.ob.js"></script>
+          <link href="../src/StyleSheet1.css" rel="stylesheet" />
+          <link href="../Styles.css" rel="stylesheet" />
+
+          <!-- jQuery 2.2.3 -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <script type="text/javascript">
+
+            $(function () {
+                $(".sliders").slider({
+                    step: 0.1,
+                    max: 3,
+                    min: -3,
+                    slide: function (event, ui) {
+                        $("#t" + sel).html(ui.value);
+                    }
+                });
+                $(".tsliders").slider({
+                    step: 0.1,
+                    max: 2,
+                    min: -2,
+                    slide: function (event, ui) {
+                        $("#thresh").html(ui.value);
+                    }
+                });
+                $(".bsliders").slider({
+                    step: 0.1,
+                    max: 2,
+                    min: -2,
+                    slide: function (event, ui) {
+                        $("#b" + sel).html(ui.value);
+                    }
+                });
+            });
+
+            var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
+
+            $(document).ready(function () {
+                counter = 0;
+                board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+                boardOutputLayer = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+                constPointSize = 5;
+                OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true ,name:'[0, 0]'});
+                OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true ,name:'[0, 1]'});
+                OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true ,name:'[1, 0]'});
+                OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true ,name:'[1, 1]'});
+                x1 = [0, 0, 1, 1];
+                x2 = [0, 1, 0, 1];
+                z = [0, 1, 1, 0];
+
+                testOneX = 0;
+                testOneY = 0;
+
+                testTwoX = 1;
+                testTwoY = 0;
+
+                flag = true;
+                erroneousCount = 0;
+
+                var i;
+                for (i = 1; i <= 7; i++) {
+                    $("#w" + i).addClass('StdLine');
+                }
+
+            });
+
+            function start() {
+
+                document.getElementById('grph').style.display = "block";
+
+                w11 = Number(document.getElementById('t1').innerHTML);
+                w12 = Number(document.getElementById('t2').innerHTML);
+                b1 = Number(document.getElementById('b1').innerHTML);
+
+                w21 = Number(document.getElementById('t3').innerHTML);
+                w22 = Number(document.getElementById('t4').innerHTML);
+                b2 = Number(document.getElementById('b2').innerHTML);
+
+                v1 = Number(document.getElementById('t5').innerHTML);
+                v2 = Number(document.getElementById('t6').innerHTML);
+                b3 = Number(document.getElementById('b3').innerHTML);
+                theta = Number(document.getElementById('thresh').innerHTML);
+                z1 = z2 = y = y1 = y2 = yin = 0;
+
+                document.getElementById('acc').style.display = "none";
+                if (counter == 3) {
+                    document.getElementById('start').innerHTML = "Restart simulation";
+                }
+                else if (counter == 4) {
+                    for (var i = 1; i <= 4; i++) {
+                        document.getElementById('out' + i).innerHTML = "-";
+                    }
+                    counter = 0;
+                    document.getElementById('bef_thresh_op_txt').style.display = "none";
+                    document.getElementById('after_threshold_op').style.display = "none";
+                    document.getElementById('start').innerHTML = "Test next input";
+                    board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+                    boardOutputLayer = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+                    OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true,name:'Group 1' });
+                    OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+                    OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+                    OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+                }
+                else document.getElementById('start').innerHTML = "Test next input";
+
+                if (counter != 0) document.getElementById('r' + (counter)).style.background = "transparent";
+                else document.getElementById('r4').style.background = "transparent";
+
+                document.getElementById('r' + (counter + 1)).style.background = "#ff9595";
+
+                var i;
+                for (i = 1; i <= 6; i++) {
+                    $("#w" + i).addClass('animatedLinePurple');
+                }
+                $("#w" + i).addClass('animatedLineGreen');
+
+                document.getElementById('start').setAttribute("disabled", "disabled");
+
+                setTimeout(function () {
+                    mlp(counter);
+                    for (i = 1; i <= 6; i++) {
+                        $("#w" + i).removeClass('animatedLinePurple');
+                    }
+                    document.getElementById('start').removeAttribute("disabled");
+                    $("#w" + i).removeClass('animatedLineGreen');
+                    if (counter == 4) {
+                        document.getElementById('acc').style.display = "block";
+
+                        errorRate = erroneousCount / 4;
+                        errorRate = 1 - errorRate;
+
+                        errorRate = errorRate * 100;
+
+                        document.getElementById('acc_val').innerHTML = errorRate + "%";
+                        erroneousCount = 0;
+                    }
+                }, 2000);
+
+
+            }
+
+            function mlp(index) {
+                document.getElementById('bef_thresh_op_txt').style.display = "block";
+                document.getElementById('after_threshold_op').style.display = "block";
+                counter++;
+
+                var z11 = x1[index] * w11 + x2[index] * w21 - b1;
+                var z22 = x1[index] * w12 + x2[index] * w22 - b2;
+
+                z1 = z11; z2 = z22;
+
+                y1 = Number(z1);
+                y2 = Number(z2);
+
+                if (z1 >= theta)
+                    y1 = 1;
+                else
+                    y1 = 0;
+                if (z2 >= theta)
+                    y2 = 1;
+                else
+                    y2 = 0;
+
+                document.getElementById('h1' + (index + 1)).innerHTML = y1;
+                document.getElementById('h2' + (index + 1)).innerHTML = y2;
+
+                var yin1 = y1 * v1 + y2 * v2 - b3;
+                yin = yin1;
+                
+                yin = Number(yin);
+                document.getElementById('bef_thresh_op').innerHTML = yin;
+
+                if (yin >= theta)
+                    y = 1;
+                else
+                    y = 0;
+
+                if(z[index]==1)
+                    HiddenLayerOP = boardOutputLayer.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
+                else
+                    HiddenLayerOP = boardOutputLayer.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
+                var flagger = false;
+
+                if (y != z[index]) {
+                    erroneousCount++;
+                }
+
+                decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)],{fixed:true,strokeColor:'#ff0000'});
+                decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)],{fixed:true,strokeColor:'#335BFF'});
+
+                finalDecisionBoundary=boardOutputLayer.create('line', [-b3, Number(v1), Number(v2)],{fixed:true,strokeColor:'#00ff00'});
+
+                document.getElementById('op').innerHTML = y;
+                document.getElementById('out' + (index + 1)).innerHTML = y;
+                z1 = z2 = y = y1 = y2 = 0;
+            }
+        </script> 
+
+        <style type="text/css">
+          #truth td{
+            padding: 3px;
+          }
+
+          #truth th{
+            padding: 3px;
+            background: #89deff;
+            border: 1px solid black;
+          }
+
+          .selected{
+            stroke: #00b8ff;
+          }
+
+          .not_sel{
+            stroke: #ff6a00;
+          }
+
+          .neuron_sel{
+            fill: #ff6a00;
+          }
+
+          .opneuron{
+            fill: #00b8ff;
+          }
+
+          .hneuron{
+            fill: #222d32;
+          }
+        </style>
+    <!-- Simulation scripts end-->
+    </head>
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        <?php
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
+
+        <div class="wrapper">
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
         <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
       </a>
 
@@ -599,7 +862,13 @@ $_SESSION["currPage"]=5;
       <section class="content-header">
         <h1 align="center"><?php echo $exp_name?></h1>
         <!-- Write your experiment name -->
-
+          <p>--> Click on any line to change its weight</p>
+          <p>--> Click on the threshold graph to change threshold value</p>
+          <p>--> Click on any hidden/output neuron to change its bias</p>
+          <p>--> You cannot change the parameters once you've started simulations.</p>
+          <p>--> The red line in the decision boundaries graph depicts the boundary formed due to hidden neuron 1, blue line corresponds to hidden neuron 2, and green line to the output neuron respectively.</p>
+           
+            <!--Simulation content goes here -->
 
       </section>
 
@@ -693,6 +962,75 @@ $_SESSION["currPage"]=5;
 
               <text id="after_threshold_op" style="display: none;" x="570" y="200" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
+
+            <br/>
+
+            <button id="start" class="btn btn-success" onclick="start();">Start simulation</button>
+
+            <div style="width: 100%;height: 300px;">
+              <div style="width: 45%;float: left;">
+                <h3>Truth Table</h3>
+                <br/>
+                <table id="truth" border="2" style="text-align: center;">
+                  <tr>
+                    <th colspan="2" style="text-align: center;">Input</th>
+                    <th colspan="5" style="text-align: center;">Output</th>
+                  </tr>
+                  <tr>
+                    <th>X1</th>
+                    <th>X2</th>
+                    <th>Output of hidden neuron 1</th>
+                    <th>Output of hidden neuron 2</th>
+                    <th>Final Network Output</th>
+                    <th>Expected Output</th>
+                  </tr>
+
+                  <tr id="r1">
+                    <td>0</td>
+                    <td>0</td>
+                    <td id="h11">-</td>
+                    <td id="h21">-</td>
+                    <td id="out1">-</td>
+                    <td>0</td>
+                  </tr>
+
+                  <tr id="r2">
+                    <td>0</td>
+                    <td>1</td>
+                    <td id="h12">-</td>
+                    <td id="h22">-</td>
+                    <td id="out2">-</td>
+                    <td>1</td>
+                  </tr>
+
+                  <tr id="r3">
+                    <td>1</td>
+                    <td>0</td>
+                    <td id="h13">-</td>
+                    <td id="h23">-</td>
+                    <td id="out3">-</td>
+                    <td>1</td>
+                  </tr>
+
+                  <tr id="r4">
+                    <td>1</td>
+                    <td>1</td>
+                    <td id="h14">-</td>
+                    <td id="h24">-</td>
+                    <td id="out4">-</td>
+                    <td>0</td>
+                  </tr>
+                </table>
+                <h4 id="acc" style="display: none;">Accuracy of network: <span id="acc_val">0%</span></h5>
+              </div>
+              <div id="grph" style="width: 45%;float: right;display: none;">
+                <h3>Decision Boundaries</h3>
+                <div id="output">
+                  <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
+                  <h3>Conversion to a linearly seperable problem by the hidden layer</h3>
+                  <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
+                </div>
+              </div>
             <div>
               <div class="ebp_content_only" style="width: 240px;height: 30px;">
                 <h5 style="float: left;margin: 0;margin-top: 14px;width: 140px">
