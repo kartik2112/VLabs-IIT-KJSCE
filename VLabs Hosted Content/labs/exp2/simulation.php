@@ -331,6 +331,7 @@ $_SESSION["currPage"]=5;
 
       /* Creates the cartesian graph */
       board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
       constPointSize = 5;
       OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
       OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -408,6 +409,7 @@ $_SESSION["currPage"]=5;
 
         //Re-plot the graph
         board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+        board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
         OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
         OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
         OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
@@ -498,6 +500,11 @@ $_SESSION["currPage"]=5;
       else
         y = 0;
 
+      if(z[index]==1)
+        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
+      else
+        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
+
       var flagger = false;
 
       if (y != z[index]) {
@@ -506,6 +513,9 @@ $_SESSION["currPage"]=5;
 
       decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
       decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+      finalBoundary = board1.create('line', [-b3, Number(v1), Number(v1)]);
+      document.getElementById('h1' + (index + 1)).innerHTML = y1;
+      document.getElementById('h2' + (index + 1)).innerHTML = y2;
 
       document.getElementById('op').innerHTML = y;
       document.getElementById('out' + (index + 1)).innerHTML = y;
@@ -545,29 +555,20 @@ $_SESSION["currPage"]=5;
       fill: #222d32;
     }
   </style>
-  <!-- Simulation scripts end-->
-</head>
+    </head>
+</body>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <?php
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
 
-<body class="hold-transition skin-blue sidebar-mini">
-  <?php
-    include '../../common/header.html';
-    include 'lab_name.php';
-    $lab_name = $_SESSION['lab_name'];
-    $exp_name = $_SESSION['exp_name'];
-  ?>
-
-  <div class="wrapper">
-    <header class="main-header">
-
-      <!-- Logo -->
-      <a href="../explist.php" class="logo">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Virtual Labs </title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.6 -->
+        <div class="wrapper">
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
         <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
       </a>
 
@@ -599,7 +600,9 @@ $_SESSION["currPage"]=5;
       <section class="content-header">
         <h1 align="center"><?php echo $exp_name?></h1>
         <!-- Write your experiment name -->
-
+          
+           
+            <!--Simulation content goes here -->
 
       </section>
 
@@ -620,11 +623,11 @@ $_SESSION["currPage"]=5;
       <!-- Main content -->
       <section class="content">
         <h3 style="margin-top:5%">Simulation</h3>
-
         <p>&rarr; Click on any line to change its weight</p>
-        <p>&rarr; Click on the threshold graph to change threshold value</p>
-        <p>&rarr; Click on any hidden/output neuron to change its bias</p>
-
+          <p>&rarr; Click on the threshold graph to change threshold value</p>
+          <p>&rarr; Click on any hidden/output neuron to change its bias</p>
+          <p>&rarr; You cannot change the parameters once you've started simulations.</p>
+          <p>&rarr; The red line in the decision boundaries graph depicts the boundary formed due to hidden neuron 1, blue line corresponds to hidden neuron 2, and green line to the output neuron respectively.</p>
         <br>
 
         <!--Simulation content goes here -->
@@ -693,7 +696,75 @@ $_SESSION["currPage"]=5;
 
               <text id="after_threshold_op" style="display: none;" x="570" y="200" font-size="17">o(x) = <tspan id="op">0</tspan></text>
             </svg>
-            <div>
+
+            <br/>
+
+            <div style="float: right;width: 300px;height: 550px;">
+            <div style="width: 100%;height: 48%;">
+              <h3>Truth Table</h3>
+              <br/>
+              <table id="truth" border="2" style="text-align: center;">
+                  <tr>
+                    <th colspan="2" style="text-align: center;">Input</th>
+                    <th colspan="5" style="text-align: center;">Output</th>
+                  </tr>
+                  <tr>
+                    <th>X1</th>
+                    <th>X2</th>
+                    <th>Output of hidden neuron 1</th>
+                    <th>Output of hidden neuron 2</th>
+                    <th>Final Network Output</th>
+                    <th>Expected Output</th>
+                  </tr>
+
+                  <tr id="r1">
+                    <td>0</td>
+                    <td>0</td>
+                    <td id="h11">-</td>
+                    <td id="h21">-</td>
+                    <td id="out1">-</td>
+                    <td>0</td>
+                  </tr>
+
+                  <tr id="r2">
+                    <td>0</td>
+                    <td>1</td>
+                    <td id="h12">-</td>
+                    <td id="h22">-</td>
+                    <td id="out2">-</td>
+                    <td>1</td>
+                  </tr>
+
+                  <tr id="r3">
+                    <td>1</td>
+                    <td>0</td>
+                    <td id="h13">-</td>
+                    <td id="h23">-</td>
+                    <td id="out3">-</td>
+                    <td>1</td>
+                  </tr>
+
+                  <tr id="r4">
+                    <td>1</td>
+                    <td>1</td>
+                    <td id="h14">-</td>
+                    <td id="h24">-</td>
+                    <td id="out4">-</td>
+                    <td>0</td>
+                  </tr>
+                </table>
+              <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
+            </div>
+
+            <div id="grph" style="width: 100%;height: 48%;display: none;">
+              <h3>Decision Boundaries</h3>
+              <div id="output">
+                <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
+                <div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
+              </div>
+            </div>
+          </div>
+              
               <div class="ebp_content_only" style="width: 240px;height: 30px;">
                 <h5 style="float: left;margin: 0;margin-top: 14px;width: 140px">
                   Set Learning rate: &nbsp;<span id="learn">1</span>
@@ -711,60 +782,7 @@ $_SESSION["currPage"]=5;
             </div>
           </div>
 
-          <div style="float: right;width: 300px;height: 550px;">
-            <div style="width: 100%;height: 48%;">
-              <h3>Truth Table</h3>
-              <br/>
-              <table id="truth" border="2" style="text-align: center;">
-                <tr>
-                  <th colspan="2" style="text-align: center;">Input</th>
-                  <th colspan="2" style="text-align: center;">Output</th>
-                </tr>
-                <tr>
-                  <th>X1</th>
-                  <th>X2</th>
-                  <th>Expected Output</th>
-                  <th>Network's output</th>
-                </tr>
-
-                <tr id="r1">
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td id="out1">-</td>
-                </tr>
-
-                <tr id="r2">
-                  <td>0</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td id="out2">-</td>
-                </tr>
-
-                <tr id="r3">
-                  <td>1</td>
-                  <td>0</td>
-                  <td>1</td>
-                  <td id="out3">-</td>
-                </tr>
-
-                <tr id="r4">
-                  <td>1</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td id="out4">-</td>
-                </tr>
-              </table>
-              <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
-            </div>
-
-            <div id="grph" style="width: 100%;height: 48%;display: none;">
-              <h3>Decision Boundaries</h3>
-              <div id="output">
-                <div id="box" class="jxgbox" style="width:300px; height:300px;"></div>
-              </div>
-            </div>
-          </div>
+          
           
           <br/>
         </div>
