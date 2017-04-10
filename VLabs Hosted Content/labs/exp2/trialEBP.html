@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+ 		<meta charset = "UTF-8">
+ 		<title>JSX Trial</title>
+ 		<link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+ 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+ 	</head>
+	<body>
+		<form>
+			Enter w11:<input type="number" name="w11" id="w11" value="1"/>
+			<br />
+			Enter w12:<input type="number" name="w12" id="w12" value="-1"/><br />
+			Enter b1:<input type="number" name="b1" id="b1" value="1"/><br />
+			Enter w21:<input type="number" name="w21" id="w21" value="2"/><br />
+			Enter w22:<input type="number" name="w22" id="w22" value="3"/><br />
+			Enter b2:<input type="number" name="b2" id="b2" value="1"/><br />
+			Enter v1:<input type="number" name="v1" id="v1" value="-1"/><br />
+			Enter v2:<input type="number" name="v2" id="v2" value="-2"/><br />
+			Enter b3:<input type="number" name="b3" id="b3" value="1"/><br />
+			Enter Learning Rate:<input type="number" name="LR" id="LR" value="0.3"/><br />
+			Enter number of epochs for which the network must train:<input type="number" name="iter" id="iter" value="1"/><br />
+			<input type="button" onclick="initiateTraining()" name="initate" value="Start Training">
+		</form>
+		<div id="output">
+		</div>
+		<div id="outputText"></div>
+		<script type="text/javascript">
+			function initiateTraining()
+			{
+				var theDiv = document.getElementById("output");
+				theDiv.innerHTML="";
+				var x = document.createElement("br"); 
+				var x1=[0,0,1,1];
+				var x2=[0,1,0,1];
+				var z=[0,1,1,0];
+				var e=Math.E;
+				var z1=[]
+				var z2=[]
+				var y1=[]
+				var y2=[]
+				var yin=[]
+				var y=[];
+				var w11=parseFloat(document.getElementById('w11').value);
+				var w12=parseFloat(document.getElementById('w12').value);
+				var b1=parseFloat(document.getElementById('b1').value);
+
+				var w21=parseFloat(document.getElementById('w21').value);
+				var w22=parseFloat(document.getElementById('w22').value);
+				var b2=parseFloat(document.getElementById('b2').value);
+
+				var v1=parseFloat(document.getElementById('v1').value);
+				var v2=parseFloat(document.getElementById('v2').value);
+				var b3=parseFloat(document.getElementById('b3').value);
+
+				var learningRate=parseFloat(document.getElementById('LR').value);
+				var iterations=parseFloat(document.getElementById('iter').value);
+
+				for(i=1;i<=iterations;i++)
+				{
+					for(j=0;j<x1.length;j++)
+					{
+						// var x = document.createElement("br"); 
+						// var content = document.createTextNode("w11:"+w11.toFixed(6)+" w12:"+w12.toFixed(6)+" b1:"+b1.toFixed(6)+"\n");
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+						// var x = document.createElement("br");
+						// var content = document.createTextNode("w21:"+w21.toFixed(6)+" w22:"+w22.toFixed(6)+" b2:"+b2.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+						// var x = document.createElement("br");
+						// var content = document.createTextNode("v1:"+v1.toFixed(6)+" v2:"+v2.toFixed(6)+" b3:"+b3.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+						z1[j]=x1[j]*w11+x2[j]*w21+b1;  // Computation at hidden neuron 1
+        				z2[j]=x1[j]*w21+x2[j]*w22+b2;  // Computation at hidden neuron 2
+
+      //   				var x = document.createElement("br");
+      //   				var content = document.createTextNode("z1:"+z1[j].toFixed(6)+" z2:"+z2[j].toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+        				//Output at hidden layer nuerons
+        				var temp=Math.pow(e,-z1[j]);
+        				y1[j]=1/(1+temp);
+        				var temp=Math.pow(e,-z2[j]);
+        				y2[j]=1/(1+temp);
+
+      //   				var x = document.createElement("br");
+      //   				var content = document.createTextNode("y1:"+y1[j].toFixed(6)+" y2:"+y2[j].toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+        				//Calculation at output nueron
+        				yin[j]=y1[j]*v1+y2[j]*v2+b3;
+
+      //   				var x = document.createElement("br");
+      //   				var content = document.createTextNode("yin:"+yin[j].toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+        				//Output at output nueron
+        				var temp=Math.pow(e,-yin[j]);
+        				y[j]=1/(1+temp);
+
+      //   				var x = document.createElement("br");
+      //   				var content = document.createTextNode("y:"+y[j].toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+        				//Calculation of delta values for each neuron
+        				var delta1=y[j]*(1-y[j])*(z[j]-y[j]);
+        				var delta2 = y1[j]*(1-y1[j])*v1*delta1;
+        				var delta3 = y2[j]*(1-y2[j])*v2*delta1;
+
+      //   				var x = document.createElement("br");
+      //   				var content = document.createTextNode("delta1:"+delta1.toFixed(6)+" delta2:"+delta2.toFixed(6)+" delta3:"+delta3.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+        				//Update Bias:
+        				b1=b1+learningRate*delta2;
+        				b2=b2+learningRate*delta3;
+        				b3=b3+learningRate*delta1;
+
+        				//Changing weights between input neurons and hidden neurons
+                        w11=w11+learningRate*x1[j]*delta2; 
+				        w12=w12+learningRate*x1[j]*delta2;
+				        w21=w21+learningRate*x2[j]*delta3;
+				        w22=w22+learningRate*x2[j]*delta3;
+
+				        // Changing weights between output neurons and hidden neurons
+                        v1=v1+learningRate*y1[j]*delta1;
+				        v2=v2+learningRate*y2[j]*delta1;
+
+				  //       var x = document.createElement("br");
+				  //       var content = document.createTextNode("w11:"+w11.toFixed(6)+" w12:"+w12.toFixed(6)+" b1:"+b1.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+						// var x = document.createElement("br");
+						// var content = document.createTextNode("w21:"+w21.toFixed(6)+" w22:"+w22.toFixed(6)+" b2:"+b2.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+
+						// var x = document.createElement("br");
+						// var content = document.createTextNode("v1:"+v1.toFixed(6)+" v2:"+v2.toFixed(6)+" b3:"+b3.toFixed(6));
+						// theDiv.appendChild(content);
+						// theDiv.appendChild(x);
+					}
+				}
+					var squaredError=0;
+					for(k=0;k<y.length;k++)
+					{
+						squaredError+=Math.pow(z[k]-y[k],2);
+					}
+					var RMSError=Math.sqrt(squaredError/y1.length);
+				    // document.getElementById('output').innerHTML="Ouput of network after "+i+" iteration: <br /> "+y+"<br />Error Rate:"+errorRate+"%<br />";
+				    var theDiv = document.getElementById("output");
+					var content = document.createTextNode("Ouput of network after "+i+" iteration:"+y+" RMS Error:"+RMSError.toFixed(6));
+					var x = document.createElement("br"); 
+					theDiv.appendChild(content);
+					theDiv.appendChild(x);
+			}
+		</script>
+	</body>
+</html>
