@@ -96,7 +96,12 @@
                         <b>E.g.</b> In the following plot, <b>similar points are on the same side of the line</b>. 
                         Hence, the weights and threshold chosen provide a <b>correct output</b> for the corresponding Gate.<br/>
                         <img src="graph1.jpg" alt="SS1"/><br/>
-                    </p>                    
+                    </p>   
+					<br><br>
+					<br>
+					 <p>
+                                <b>Hint:</b> Try using -2.5 as threshold and -2.4 as weights
+                            </p>
                 </section>
                 <!-- /.content -->
             </div>

@@ -29,6 +29,9 @@
                                 <li class="list-group-item">
                                     <a href="exp2/index.php"> Implementation of XOR Gate using Multi-Layer Perceptron/Error Back Propogation </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="exp3/index.php"> XOR Using Radial Basis Function Network </a>
+                                </li>
                             </h3>
                         </ul>
                     </div>
