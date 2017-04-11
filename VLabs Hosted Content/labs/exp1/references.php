@@ -71,6 +71,7 @@
                 <section class="content">
                     <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
+
                         <!--Reference content goes here -->
                         1. Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br />
                         2. S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"<br><br>
@@ -84,7 +85,6 @@
 7. Vinay Pandya<br>
 8. Abhishek Ananthakrishnan<br>
 9. Nitin Mishra<br>
-
                     </p>
                 </section>
                 <!-- /.content -->
