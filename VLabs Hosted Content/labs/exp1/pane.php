@@ -71,11 +71,12 @@
                     </a>
                 </li>
 
+                <!--
                 <?php
-                    if($_SESSION["currPage"]==6)
+                    /*if($_SESSION["currPage"]==6)
                         echo '<li class="active treeview">';
                     else
-                        echo '<li class="treeview">';
+                        echo '<li class="treeview">';*/
                 ?>
                     <a href="result.php">
                         <i class="fa fa-laptop"></i>
@@ -83,7 +84,7 @@
                         <span class="pull-right-container">
                         </span>
                     </a>
-                </li>
+                </li>-->
                 
                 <?php
                     if($_SESSION["currPage"]==7)

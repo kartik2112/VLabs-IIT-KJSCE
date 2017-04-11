@@ -72,9 +72,23 @@
                     <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
-                        1. Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br />
-                        2. S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"
+                        <ol>
+                            <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
+                            <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
+                        </ol>                        
                     </p>
+                    <b> Developed By :-</b><br>
+                    <ol>
+                        <li>Abhishek Mahajani</li>
+                        <li>Meet Mukadam</li>
+                        <li>Kartik Shenoy</li>
+                        <li>Varun Rao</li>
+                        <li>Manmath Paste</li>
+                        <li>Tejas Dastane</li>
+                        <li>Vinay Pandya</li>
+                        <li>Abhishek Ananthakrishnan</li>
+                        <li>Nitin Mishra</li>
+                    </ol>
                 </section>
                 <!-- /.content -->
             </div>
