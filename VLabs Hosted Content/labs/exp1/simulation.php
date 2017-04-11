@@ -182,11 +182,7 @@
                                     <tr class="AND-TT-rows" id="AND-TT-row-3"><td>1</td><td>0</td><td>0</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-3"></td></tr>
                                     <tr class="AND-TT-rows" id="AND-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="AND-TT-OP-rows" id="AND-TT-OP-row-4"></td></tr>
                                 </table>
-                            </div> 
-                            <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using 1.5 as threshold and 1 as weights
-                            </p>                   
+                            </div>                 
                     </div>
 
                     <div id="OR-gate-sim" style="display: none;">
@@ -252,11 +248,7 @@
                                     <tr class="OR-TT-rows" id="OR-TT-row-3"><td>1</td><td>0</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-3"></td></tr>
                                     <tr class="OR-TT-rows" id="OR-TT-row-4"><td>1</td><td>1</td><td>1</td><td class="OR-TT-OP-rows" id="OR-TT-OP-row-4"></td></tr>
                                 </table>
-                            </div> 
-                            <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using 0.5 as threshold and 1 as weights
-                            </p> 
+                            </div>
                     </div>
 
                     <div id="NOT-gate-sim" style="display: none;">
@@ -303,7 +295,7 @@
                                 <text class="changingTextStyle" id="NOT-yx-value" font-size="20" x="535" y="170"></text>
                                 <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="NOT-threshold-value" ></tspan></text>
 
-                                <text class="changingTextStyle" id="NOT-yx-value-expln" font-size="20" x="415" y="70"></text>
+                                <text class="changingTextStyle" id="NOT-yx-value-expln" font-size="20" x="415" y="105"></text>
                             </svg>
                             <div id="NOT-output">
 			                    <div id="NOT-box" class="jxgbox" style="width:200px; height:200px;"></div>
@@ -317,10 +309,6 @@
                                     <tr class="NOT-TT-rows" id="NOT-TT-row-2"><td>1</td><td>0</td><td class="NOT-TT-OP-rows" id="NOT-TT-OP-row-2"></td></tr>
                                     </table>
                             </div> 
-                            <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using -0.5 as threshold and -1 as weight
-                            </p>
                     </div>
                     
                 </section>                
