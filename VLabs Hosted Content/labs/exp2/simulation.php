@@ -77,23 +77,17 @@ $_SESSION["currPage"]=5;
     var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
 
     //These variables are used only for Error Back Propogation.
-    var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, sim, learningRate, e=Math.E;
+    var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, s_iter=1000, sim, learningRate, e=Math.E, iter, iterations=-1, outs=[];
 
     function changeMode(){
       var m = document.getElementById('m');
 
       if(m.value=="xor"){
         document.getElementById('start').setAttribute("onclick","start_mlp()");
-        $("#output1").removeClass('ebp');
-        $("#output1").addClass('mlp');
-        $("#output2").css("display","none");
         init_mlp();
       }
       else{
         document.getElementById('start').setAttribute('onclick','save_weights_ebp()');
-        $("#output1").removeClass('mlp');
-        $("#output1").addClass('ebp');
-        $("#output2").css("display","block");
         init_ebp();
       }
 
@@ -125,7 +119,9 @@ $_SESSION["currPage"]=5;
 
       s_learningRate=parseFloat(document.getElementById('learn').innerHTML);
       theta = parseFloat(document.getElementById('thresh').innerHTML);
+      s_iter = parseFloat(document.getElementById('iter').value);
 
+      init_ebp();
       start_ebp();
     }
 
@@ -136,19 +132,20 @@ $_SESSION["currPage"]=5;
 
       document.getElementById('start').innerHTML = "Start simulation";
 
-      document.getElementById('t1').innerHTML = s_w11;
-      document.getElementById('t2').innerHTML = s_w12;
-      document.getElementById('b1').innerHTML = s_b1;
+      w11 = document.getElementById('t1').innerHTML = s_w11;
+      w12 = document.getElementById('t2').innerHTML = s_w12;
+      b1 = document.getElementById('b1').innerHTML = s_b1;
 
-      document.getElementById('t3').innerHTML = s_w21;
-      document.getElementById('t4').innerHTML = s_w22;
-      document.getElementById('b2').innerHTML = s_b2;
+      w21 = document.getElementById('t3').innerHTML = s_w21;
+      w22 = document.getElementById('t4').innerHTML = s_w22;
+      b2 = document.getElementById('b2').innerHTML = s_b2;
 
-      document.getElementById('t5').innerHTML = s_v1;
-      document.getElementById('t6').innerHTML = s_v2;
-      document.getElementById('b3').innerHTML = s_b3;
+      v1 = document.getElementById('t5').innerHTML = s_v1;
+      v2 = document.getElementById('t6').innerHTML = s_v2;
+      b3 = document.getElementById('b3').innerHTML = s_b3;
 
-      document.getElementById('learn').innerHTML = s_learningRate;
+      learningRate = document.getElementById('learn').innerHTML = s_learningRate;
+      iter = document.getElementById('iter').value = s_iter;
 
       var ebp_elems = document.getElementsByClassName('ebp_content_only');
       for(var i=0;i<ebp_elems.length;i++){
@@ -170,47 +167,12 @@ $_SESSION["currPage"]=5;
     }
 
     function start_ebp(){
-      document.getElementById('r4').style.background = "transparent";
-      document.getElementById('reset').style.display = "none";
-      document.getElementById('grph').style.display = "block";
-
-      w11=parseFloat(document.getElementById('t1').innerHTML);
-      w12=parseFloat(document.getElementById('t2').innerHTML);
-      b1=parseFloat(document.getElementById('b1').innerHTML);
-
-      w21=parseFloat(document.getElementById('t3').innerHTML);
-      w22=parseFloat(document.getElementById('t4').innerHTML);
-      b2=parseFloat(document.getElementById('b2').innerHTML);
-
-      v1=parseFloat(document.getElementById('t5').innerHTML);
-      v2=parseFloat(document.getElementById('t6').innerHTML);
-      b3=parseFloat(document.getElementById('b3').innerHTML);
-
-      learningRate=parseFloat(document.getElementById('learn').innerHTML);
-
-      var s = document.getElementById('start');
-      s.setAttribute("onclick","start_ebp()");
-      s.innerHTML = "Next Iteration";
-      s.setAttribute("disabled","disabled");
+      document.getElementById('bef_thresh_op_txt').style.display = "none";
+      document.getElementById('after_threshold_op').style.display = "none";
 
       z1 = z2 = y = y1 = y2 = yin = 0;
 
       document.getElementById('acc').style.display = "none";
-
-      counter=0;
-      errorRate=0;
-
-      init_ebp_sim();
-      sim = setInterval(function(){
-        init_ebp_sim();
-      },4000);
-    }
-
-    function init_ebp_sim(){
-
-      //Highlight next row in truth table
-      if(counter!=0) document.getElementById('r' + (counter)).style.background = "transparent";
-      document.getElementById('r' + (counter + 1)).style.background = "#ff9595";
 
       //Start animation of weight lines
       var i;
@@ -219,36 +181,98 @@ $_SESSION["currPage"]=5;
       }
       $("#w" + i).addClass('animatedLineGreen');
 
+      document.getElementById('msg').innerHTML = "Calculating..";
+
       setTimeout(function(){
-        ebp(counter);
+        for(var i=iterations+1;i<iter;i++){
+          var set_op = false;
+          errorRate = 0;
+          for(var inp=0;inp<4;inp++) ebp(inp);
 
-        var i;
-        for (i = 1; i <= 6; i++) {
-          $("#w" + i).removeClass('animatedLinePurple');
+          if(i == iter-1){
+            var reset = document.getElementById('reset');
+            reset.style.display = "block";
+            reset.innerHTML = "Reset";
+            reset.setAttribute('onclick','init_ebp()');
+            iterations = 0;
+
+            set_op = true;
+          }
+          else if(i == 10000 || i == 100000 || i == 1000000 || i==10000000){
+            var reset = document.getElementById('reset');
+            reset.style.display = "block";
+            reset.innerHTML = "Continue";
+            reset.setAttribute('onclick','start_ebp()');
+
+            set_op = true;
+          }
+
+          if(set_op == true){
+
+            setTimeout(function(){
+              var i;
+              for (i = 1; i <= 6; i++) {
+                $("#w" + i).removeClass('animatedLinePurple');
+              }
+              $("#w" + i).removeClass('animatedLineGreen');
+              iterations++;
+            },1000);
+
+            var msg = document.getElementById('msg');
+            msg.innerHTML = "No. of iterations completed: "+(i);
+            if(i==iter-1) msg.innerHTML += ".Check how the weights are affected. Click the button below to continue."
+
+            //Set weights on weight lines
+            for(var wt=1;wt<=6;wt++){
+              var weight = document.getElementById("t"+wt);
+              switch(wt){
+                case 1:
+                  weight.innerHTML = w11.toFixed(3);break;
+                case 2:
+                  weight.innerHTML = w12.toFixed(3);break;
+                case 3:
+                  weight.innerHTML = w21.toFixed(3);break;
+                case 4:
+                  weight.innerHTML = w22.toFixed(3);break;
+                case 5:
+                  weight.innerHTML = v1.toFixed(3);break;
+                case 6:
+                  weight.innerHTML = v2.toFixed(3);break;
+              }
+            }
+
+            //Set biases
+            document.getElementById('b1').innerHTML = b1.toFixed(3);
+            document.getElementById('b2').innerHTML = b2.toFixed(3);
+            document.getElementById('b3').innerHTML = b3.toFixed(3);
+
+            //Set intermediate output
+            document.getElementById('bef_thresh_op').innerHTML = yin.toFixed(3);
+
+            //Set final output
+            document.getElementById('op').innerHTML = y.toFixed(3);
+
+            for(var j=0;j<4;j++)  document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
+            break;
+          }
+
+          iterations++;
         }
-        $("#w" + i).removeClass('animatedLineGreen');
 
-        counter++;
-        if(counter==4){
-          document.getElementById('start').removeAttribute("disabled");
-          document.getElementById('reset').style.display = "block";
-          
-          document.getElementById('acc').style.display = "block";
+        document.getElementById('bef_thresh_op_txt').style.display = "block";
+        document.getElementById('after_threshold_op').style.display = "block";
+        document.getElementById('acc').style.display = "block";
 
-          rms = Math.sqrt(errorRate/4);
-          rms = rms*100;
-          document.getElementById('acc_val').innerHTML = rms.toFixed(3) + "%";
-
-          clearInterval(sim);
-        }
-      },2000);
-
+        rms = Math.sqrt(errorRate/4);
+        rms = rms*100;
+        document.getElementById('acc_val').innerHTML = rms.toFixed(3) + "%";
+      },1000);
     }
 
     function ebp(j){
 
-      document.getElementById('bef_thresh_op_txt').style.display = "block";
-      document.getElementById('after_threshold_op').style.display = "block";
+      /*document.getElementById('bef_thresh_op_txt').style.display = "block";
+      document.getElementById('after_threshold_op').style.display = "block";*/
 
       //Hidden Neuron computations
       z1=x1[j]*w11+x2[j]*w21+b1;  // Computation at hidden neuron 1
@@ -287,39 +311,9 @@ $_SESSION["currPage"]=5;
       v1 = v1 + learningRate * y1 * delta1;
       v2 = v2 + learningRate * y2 * delta1;
 
-      //Set weights on weight lines
-      for(var wt=1;wt<=6;wt++){
-        var weight = document.getElementById("t"+wt);
-        switch(wt){
-          case 1:
-            weight.innerHTML = w11.toFixed(3);break;
-          case 2:
-            weight.innerHTML = w12.toFixed(3);break;
-          case 3:
-            weight.innerHTML = w21.toFixed(3);break;
-          case 4:
-            weight.innerHTML = w22.toFixed(3);break;
-          case 5:
-            weight.innerHTML = v1.toFixed(3);break;
-          case 6:
-            weight.innerHTML = v2.toFixed(3);break;
-        }
-      }
-
-      //Set biases
-      document.getElementById('b1').innerHTML = b1.toFixed(3);
-      document.getElementById('b2').innerHTML = b2.toFixed(3);
-      document.getElementById('b3').innerHTML = b3.toFixed(3);
-
-      //Set intermediate output
-      document.getElementById('bef_thresh_op').innerHTML = yin.toFixed(3);
-
-      //Set final output
-      document.getElementById('op').innerHTML = y.toFixed(3);
-      document.getElementById('out' + (j + 1)).innerHTML = y.toFixed(3);
+      outs[j] = y;
 
       errorRate += Math.pow(z[j]-y,2);
-      //errorRate = Math.sqrt(errorRate);
 
     }
 
@@ -560,14 +554,6 @@ $_SESSION["currPage"]=5;
     .hneuron{
       fill: #222d32;
     }
-    .mlp{
-      width: 100%;
-      display: grid;
-    }
-    .ebp{
-      width: 48%;
-      float: left;
-    }
   </style>
     </head>
 </body>
@@ -655,7 +641,7 @@ $_SESSION["currPage"]=5;
         <br>
 
         <div style="width: 100%;height: 700px">
-          <div style="float: left;">
+          <div style="float: left;height: 300px;clear: right;">
             <svg height="300" width="680">
 
               <!-- The weights connecting input and hidden layer -->
@@ -788,21 +774,25 @@ $_SESSION["currPage"]=5;
             <input type="number" min="1000" max="1000000000" name="iter" id="iter" value="1000">
           </div>
 
+          <br/>
+
+          <h4 id="msg" class="ebp_content_only">Set the no.of iterations between 1000 & 100000000</h4>
+
           <br>
 
           <button style="float: left;margin-right: 10px;" id="start" class="btn btn-success" onclick="start_mlp();">Start simulation</button>
-          <button id="reset" class="btn btn-success ebp_content_only" style="background: red;" onclick="init_ebp();">Reset</button>
+          <button id="reset" class="btn btn-success ebp_content_only" style="background: red;" onclick="document.getElementById('start').setAttribute('onclick','save_weights_ebp()');init_ebp();">Reset</button>
 
           <br>
           <br>
 
-          <div id="grph" style="width: 640px;height: 350px;/*display: none*/;">
+          <div id="grph" style="width: 640px;height: 410px;clear: both;/*display: none*/;">
             <div id="output">
-              <div id="output1" class="mlp">
+              <div  style="width: 48%;float: left;">
                 <h3 style="text-align: center;width: 300px;height: 52px;">Decision Boundaries</h3>
                 <div id="box" class="jxgbox" style="width:300px; height:300px;float: left;"></div>
               </div>
-              <div id="output2" style="width: 48%;float: right;display: none;">
+              <div style="width: 48%;float: right;">
                 <h3 style="text-align: center;width: 300px;">After conversion of Feature space to image space</h3>
                 <div id="box1" class="jxgbox" style="width:300px; height:300px;float: right;"></div>
               </div>              
