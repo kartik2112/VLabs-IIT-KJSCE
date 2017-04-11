@@ -77,7 +77,7 @@ $_SESSION["currPage"]=5;
     var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
 
     //These variables are used only for Error Back Propogation.
-    var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, s_iter=1000, sim, learningRate, e=Math.E, iter, iterations=-1, outs=[];
+    var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, s_iter=1000, sim, learningRate, e=Math.E, iter, iterations=-1, outs=[], outs_hidden_1=[], outs_hidden_2=[];
 
     function changeMode(){
       var m = document.getElementById('m');
@@ -85,7 +85,7 @@ $_SESSION["currPage"]=5;
       if(m.value=="mlp"){
         document.getElementById('start').setAttribute("onclick","start_mlp()");
         document.getElementById('thresh_title').style.display = "block";
-        document.getElementById('img_thresh').setAttribute("onclick","edit_th()");
+        document.getElementById('img_thresh').setAttribute("onclick","editThreshold()");
         init_mlp();
       }
       else{
@@ -160,6 +160,7 @@ $_SESSION["currPage"]=5;
 
       counter = 0;
       board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
       constPointSize = 5;
       OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
       OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -171,6 +172,14 @@ $_SESSION["currPage"]=5;
     }
 
     function start_ebp(){
+      board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+      constPointSize = 5;
+      OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+      OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+      OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+      OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+
       document.getElementById('bef_thresh_op_txt').style.display = "none";
       document.getElementById('after_threshold_op').style.display = "none";
       document.getElementById('grph').style.display = "none";
@@ -260,15 +269,25 @@ $_SESSION["currPage"]=5;
             document.getElementById('op').innerHTML = y.toFixed(3);
 
             for(var j=0;j<4;j++)  document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
+            for(var ctr=1;ctr<=4;ctr++){
+              console.log(outs_hidden_1[ctr] + " "+outs_hidden_2[ctr-1]);
+              document.getElementById('h1'+ctr).innerHTML = outs_hidden_1[ctr-1].toFixed(3);
+              document.getElementById('h2'+ctr).innerHTML = outs_hidden_2[ctr-1].toFixed(3);
+            }
+
+
+            for(j=0;j<outs_hidden_1.length;j++)
+            {
+              if(z[j]==0)
+                var finalPoints = board1.create('point',[outs_hidden_1[j],outs_hidden_2[j]], {size:constPointSize,face:'x',fixed:true,name:'Group 0'});
+              else
+                var finalPoints = board1.create('point',[outs_hidden_1[j],outs_hidden_2[j]], {size:constPointSize,face:'^',fixed:true,name:'Group 1'});
+            }
+            decisionBoundary1 = board.create('line', [b1, Number(w11), Number(w21)],{fixed:true});
+            decisionBoundary2 = board.create('line', [b2, Number(w12), Number(w22)],{fixed:true});
+            finalBoundary = board1.create('line', [b3, Number(v1), Number(v2)],{fixed:true});
 
             document.getElementById('grph').style.display = "block";
-            /*
-              ---------------------------------------
-
-              Insert code for plotting graph here.
-
-              ---------------------------------------
-            */
             break;
           }
 
@@ -328,6 +347,8 @@ $_SESSION["currPage"]=5;
       v2 = v2 + learningRate * y2 * delta1;
 
       outs[j] = y;
+      outs_hidden_1[j] = y1;
+      outs_hidden_2[j] = y2;
 
       errorRate += Math.pow(z[j]-y,2);
 
@@ -771,7 +792,7 @@ $_SESSION["currPage"]=5;
                     <td>0</td>
                   </tr>
                 </table>
-              <h5 id="acc" style="display: none;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
+              <h5 id="acc" style="display: none;border: 1px solid black;color: #f3bb43;text-align: center;padding: 3px;background:  #222d32;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
             </div>
           </div>
               
@@ -786,7 +807,7 @@ $_SESSION["currPage"]=5;
           <br>
 
           <div class="ebp_content_only" style="width: 100%">
-            <label for="iter" style="float: left;width: 150px">No. of iterations? --> </label>
+            <label for="iter" style="float: left;width: 150px">No. of iterations? &rarr; </label>
             <input type="number" min="1000" max="1000000000" name="iter" id="iter" value="1000">
           </div>
 
