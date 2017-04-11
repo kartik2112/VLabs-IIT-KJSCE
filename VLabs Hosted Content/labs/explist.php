@@ -26,7 +26,9 @@
                                 <li class="list-group-item">
                                     <a href="exp1/index.php"> Implementation of AND/OR/NOT Gate using Single Layer Perceptron </a>
                                 </li>
-                                
+                                <li class="list-group-item">
+                                    <a href="exp2/index.php"> Implementation of XOR Gate using Multi-Layer Perceptron/Error Back Propogation </a>
+                                </li>
                             </h3>
                         </ul>
                     </div>

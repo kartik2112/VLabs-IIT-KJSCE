@@ -1,5 +1,6 @@
 <?php 
-$lab_name = "Machine Learning";
+
+$lab_name = "Machine Learning Lab";
 
 $exp_name = "Implementation of XOR Gate using Multi-Layer Perceptron/Error Back Propogation";
 

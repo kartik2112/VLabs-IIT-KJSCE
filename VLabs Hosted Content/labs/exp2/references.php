@@ -70,7 +70,18 @@
             <li> <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">  https://en.wikipedia.org/wiki/Multilayer_perceptron</a></li>
               <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
               <li> <a href="https://en.wikipedia.org/wiki/Backpropagation">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
-            
+            <b>Developed by:</b>
+              <ol>
+                <li>Abhishek Mahajani</li>
+                <li>Tejas Dastane</li>
+                <li>Varun Rao</li>
+                <li>Kartik Shenoy</li>
+                <li>Meet Mukadam</li>
+                <li>Vinay Pandya</li>
+                <li>Abhishek Ananthakrishnan</li>
+                <li>Manmath Paste</li>
+                <li>Nitin Mishra</li>
+              </ol>
           </p>
         </section>
         <!-- /.content -->
