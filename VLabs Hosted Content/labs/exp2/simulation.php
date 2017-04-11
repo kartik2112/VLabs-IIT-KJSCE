@@ -40,8 +40,8 @@ $_SESSION["currPage"]=5;
     $(function () {
       $(".sliders").slider({
         step: 0.1,
-        max: 3,
-        min: -3,
+        max: 5,
+        min: -5,
         slide: function (event, ui) {
           $("#t" + sel).html(ui.value);
         }
@@ -64,7 +64,7 @@ $_SESSION["currPage"]=5;
       });
       $("#lslider").slider({
         step: 0.1,
-        max: 1,
+        max: 2,
         min: 0.1,
         value: 1,
         slide: function (event, ui) {
@@ -82,12 +82,16 @@ $_SESSION["currPage"]=5;
     function changeMode(){
       var m = document.getElementById('m');
 
-      if(m.value=="xor"){
+      if(m.value=="mlp"){
         document.getElementById('start').setAttribute("onclick","start_mlp()");
+        document.getElementById('thresh_title').style.display = "block";
+        document.getElementById('img_thresh').setAttribute("onclick","edit_th()");
         init_mlp();
       }
       else{
         document.getElementById('start').setAttribute('onclick','save_weights_ebp()');
+        document.getElementById('thresh_title').style.display = "none";
+        document.getElementById('img_thresh').setAttribute("onclick","");
         init_ebp();
       }
 
@@ -181,13 +185,13 @@ $_SESSION["currPage"]=5;
       }
       $("#w" + i).addClass('animatedLineGreen');
 
-      document.getElementById('msg').innerHTML = "Calculating..";
+      document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
 
       setTimeout(function(){
         for(var i=iterations+1;i<iter;i++){
           var set_op = false;
           errorRate = 0;
-          for(var inp=0;inp<4;inp++) ebp(inp);
+          for(counter=0;counter<4;counter++) ebp(counter);
 
           if(i == iter-1){
             var reset = document.getElementById('reset');
@@ -220,7 +224,7 @@ $_SESSION["currPage"]=5;
 
             var msg = document.getElementById('msg');
             msg.innerHTML = "No. of iterations completed: "+(i);
-            if(i==iter-1) msg.innerHTML += ".Check how the weights are affected. Click the button below to continue."
+            if(i!=iter-1) msg.innerHTML += ". Check how the weights are affected. Click the button below to continue.";
 
             //Set weights on weight lines
             for(var wt=1;wt<=6;wt++){
@@ -595,7 +599,7 @@ $_SESSION["currPage"]=5;
     <?php include 'pane.php'; ?>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="min-height: 1250px">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 align="center"><?php echo $exp_name?></h1>
@@ -634,7 +638,7 @@ $_SESSION["currPage"]=5;
 
         <p class="nw">Select a network:</p>
         <select class="nw" id="m" onchange="changeMode()">
-          <option value="xor">Multi-Layer Perceptron</option>
+          <option value="mlp">Multi-Layer Perceptron</option>
           <option value="ebp">Error   Back Propogation</option>
         </select>
 
@@ -689,8 +693,8 @@ $_SESSION["currPage"]=5;
 
               <!-- Threshold. Use #thresh to set value of threshold -->
 
-              <text x="570" y="115" font-size="15">Threshold = <tspan id="thresh">0</tspan></text>
-              <image x="570" y="125" height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff" onclick="editThreshold()"/>
+              <text id="thresh_title" x="570" y="115" font-size="15">Threshold = <tspan id="thresh">0</tspan></text>
+              <image id="img_thresh" x="570" y="125" height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff" onclick="editThreshold()"/>
 
               <!-- The output. Use #op to set value of output -->
 
@@ -851,6 +855,7 @@ $_SESSION["currPage"]=5;
 <!-- Editing weights -->
 <script type="text/javascript">
   var sel = 1;
+  var LEFT = 700,TOP = 500;
   $("#edit").hide();
   $("#edit_th").hide();
   $("#edit_b").hide();
@@ -858,7 +863,7 @@ $_SESSION["currPage"]=5;
   var changing = 0;
   function editWeights(id) {
     if (counter > 0 && counter < 4) {
-      alert('Please iterate through all the inputs first. Try after that.');
+      alert('Finish the simulation first!');
       return;
     }
     if (changing == 1) {
@@ -878,16 +883,16 @@ $_SESSION["currPage"]=5;
     var val = $("#t" + sel).html();
     $(".sliders").slider("value", val);
     var l, t;
-    l = 750;
+    l = LEFT;
     e.style.left = l + "px";
-    t = 420;
+    t = TOP;
     e.style.top = t + "px";
     $("#edit").show();
   }
 
   function editThreshold() {
     if (counter > 0 && counter < 4) {
-      alert('Please iterate through all the inputs first. Try after that.');
+      alert('Finish the simulation first!');
       return;
     }
     if (changing == 1) {
@@ -901,16 +906,16 @@ $_SESSION["currPage"]=5;
     var val = $("#thresh").html();
     $(".tsliders").slider("value", val);
     var l, t;
-    l = 750;
+    l = LEFT;
     e.style.left = l + "px";
-    t = 420;
+    t = TOP;
     e.style.top = t + "px";
     $("#edit_th").show();
   }
 
   function editBias(id) {
     if (counter > 0 && counter < 4) {
-      alert('Please iterate through all the inputs first. Try after that.');
+      alert('Finish the simulation first!');
       return;
     }
     if (changing == 1) {
@@ -929,9 +934,9 @@ $_SESSION["currPage"]=5;
     var e = document.getElementById('edit_b');
 
     var l, t;
-    l = 750;
+    l = LEFT;
     e.style.left = l + "px";
-    t = 420;
+    t = TOP;
     e.style.top = t + "px";
     $("#edit_b").show();
   }
