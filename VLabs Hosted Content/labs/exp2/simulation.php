@@ -550,7 +550,7 @@ $_SESSION["currPage"]=5;
 
       decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
       decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
-      finalBoundary = board1.create('line', [-b3, Number(v1), Number(v1)]);
+      finalBoundary = board1.create('line', [-b3, Number(v1), Number(v2)]);
       document.getElementById('h1' + (index + 1)).innerHTML = y1;
       document.getElementById('h2' + (index + 1)).innerHTML = y2;
 
