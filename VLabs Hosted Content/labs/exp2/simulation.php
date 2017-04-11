@@ -226,7 +226,7 @@ $_SESSION["currPage"]=5;
 
             var msg = document.getElementById('msg');
             msg.innerHTML = "No. of iterations completed: "+(i);
-            if(i!=iter) msg.innerHTML += ". Check how the weights are affected. Click the button below to continue.";
+            if(i!=iter) msg.innerHTML += ". Check how the weights affect the decision boundaries and the solution below. Click the button below to continue.";
             else msg.innerHTML += ". Click Reset to try again with different values."
 
             //Set weights on weight lines
