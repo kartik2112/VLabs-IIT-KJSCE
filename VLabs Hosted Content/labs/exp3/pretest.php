@@ -1,4 +1,4 @@
-<?php
+	<?php
     session_start();
     $_SESSION["currPage"] = 3;
 ?>
@@ -85,6 +85,10 @@
                           document.getElementById("a2").innerHTML = "2) Correct";
                       else
                           document.getElementById("a2").innerHTML =  "2) Wrong";
+					  if(document.querySelector('input[name="q3"]:checked').value == 1)
+                          document.getElementById("a3").innerHTML = "3) Correct";
+                      else
+                          document.getElementById("a3").innerHTML =  "3) Wrong";
                      
                } 
             
@@ -119,6 +123,20 @@
               3
               <br><br>
             
+			<br>
+            3. RBF neuron activation function is given by ?<br>
+              <input type="radio" name="q3" value="1">
+              Phi(x)=e^(-beta*||x- mu||^2)
+              <br>
+              <input type="radio" name="q3" value="2">
+              Phi(x)=e^(-beta/||x- mu||^2)
+              <br>
+              <input type="radio" name="q3" value="3">
+              Phi(x)=e^(-(beta*||x- mu||)2)
+              <br>
+              <input type="radio" name="q3" value="4">
+              Phi(x)=e^(-beta^2*||x- mu||^2)
+              <br><br>
             
               <input type="button" value="Evaluate" onclick="result()">
               

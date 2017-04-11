@@ -132,7 +132,7 @@
                             <b>Threshold : </b>
                             <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-threshold-value"></span><br/>
 
-                            <svg id="AND-gate-svg" width="700" height="400" style="float: left;margin-top: 70px">
+                            <svg id="AND-gate-svg" width="800" height="400" style="float: left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="AND-inputX-oplay_neuron1" class="StdLine" x1="200" y1="50" x2="350" y2="150" style=""/>
                                 <line id="AND-inputY-oplay_neuron1" class="StdLine" x1="200" y1="250" x2="350" y2="150" style=""/>
@@ -155,7 +155,7 @@
                                 <circle id="AND-oplay_neuron1" class="StdCircle" cx="350" cy="150" r="20"/>
                                 <image id="AND-oplay_thrshld" x="550" y="125"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
 
-                                <text font-size="20" x="350" y="155" font-size="25">∑</text>
+                                <text font-size="20" x="345" y="155" font-size="25">∑</text>
 
                                 <!--Input texts-->
                                 <text font-size="20" x="15" y="55">X</text>
@@ -167,27 +167,27 @@
 								<text font-size="20" x="150" y="220">1</text>
                                 <text font-size="20" x="150" y="270">1</text>
 								
-								<text font-size="20" x="190" y="50">n1</text>
-                                <text font-size="20" x="190" y="250">n2</text>
+								<text font-size="20" x="190" y="55">n1</text>
+                                <text font-size="20" x="190" y="255">n2</text>
 
                                 <!--Weights text-->
                                 <text font-size="20" x="270" y="90">w<tspan baseline-shift="sub">1</tspan>=<tspan class="AND-inputX-oplay_neuron1-weight">1</tspan></text>
                                 <text font-size="20" x="270" y="215">w<tspan baseline-shift="sub">2</tspan>=<tspan class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
 								
 								<!-- n(x) related text -->
-								 <text font-size="20" x="170" y="20"> y(x) =  exp (- |x1-µ1|^2 )</text>
-								  <text font-size="20" x="170" y="285"> y(x) =  exp (- |x1-µ1|^2 ) </text>
+								 <text font-size="20" x="170" y="15"> y(x) =  exp (- |x1-µ1|^2 )</text>
+								  <text font-size="20" x="170" y="295"> y(x) =  exp (- |x1-µ1|^2 ) </text>
 								<text class="changingTextStyle" id="AND-n1x-value" font-size="20" x="230" y="40"></text>
-								<text class="changingTextStyle" id="AND-n2x-value" font-size="20" x="200" y="310"></text>
+								<text class="changingTextStyle" id="AND-n2x-value" font-size="20" x="200" y="330"></text>
                                 <!--u(x) related texts-->
-                                <text font-size="20" x="350" y="120">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
-                                <text font-size="20" x="350" y="180"> = <tspan class="AND-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle AND-XVal"> </tspan>) + <tspan class="AND-inputY-oplay_neuron1-weight">1</tspan>*(Y=<tspan class="changingTextStyle AND-YVal"> </tspan>)</text>
-                                <text class="changingTextStyle" id="AND-ux-value" font-size="20" x="360" y="200"></text>
+                                <text font-size="20" x="350" y="110">u(x) = w<tspan baseline-shift="sub">1</tspan>*X + w<tspan baseline-shift="sub">2</tspan>*Y</text>
+                                <text font-size="20" x="350" y="190"> = <tspan class="AND-inputX-oplay_neuron1-weight">1</tspan>*(X=<tspan class="changingTextStyle AND-XVal"> </tspan>) + <tspan class="AND-inputY-oplay_neuron1-weight">1</tspan>*(Y=<tspan class="changingTextStyle AND-YVal"> </tspan>)</text>
+                                <text class="changingTextStyle" id="AND-ux-value" font-size="20" x="360" y="220"></text>
 
                                 <!--y(x) related texts-->
                                 <text font-size="20" x="550" y="110">y(x)</text>
-                                <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="535" y="170"></text>
-                                <text class="" font-size="20" x="455" y="220">Threshold: <tspan class="AND-threshold-value" ></tspan></text>
+                                <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="620" y="160"></text>
+                                <text class="" font-size="20" x="455" y="250">Threshold: <tspan class="AND-threshold-value" ></tspan></text>
 
                                 <text class="changingTextStyle" id="AND-yx-value-expln" font-size="20" x="415" y="70"></text>
                             </svg>
@@ -206,9 +206,7 @@
                                 </table>
                             </div> 
                             <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using -2.5 as threshold and -2.4 as weights
-                            </p>                   
+                                              
                     </div>
                     
                 </section>                

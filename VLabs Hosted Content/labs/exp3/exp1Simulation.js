@@ -137,7 +137,8 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
     $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
 	$("#AND-n1x-value").text("= " +inputX[iterationNo]);
 	$("#AND-n2x-value").text("= " + inputY[iterationNo]);
-    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo];	
+    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo];
+		ux = parseFloat(ux).toFixed( 2 );	
     timer1 = window.setTimeout(function () {
         /* Display u(x) and pause */
         $("#AND-ux-value").text("= " + ux);

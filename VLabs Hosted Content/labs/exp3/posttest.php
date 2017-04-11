@@ -85,7 +85,10 @@
                           document.getElementById("a2").innerHTML = "2) Correct";
                       else
                           document.getElementById("a2").innerHTML =  "2) Wrong";
-                     
+                     if(document.querySelector('input[name="q3"]:checked').value == 1)
+                          document.getElementById("a3").innerHTML = "3) Correct";
+                      else
+                          document.getElementById("a3").innerHTML =  "3) Wrong";
                       
                } 
             
@@ -95,37 +98,54 @@
               <br>
               1. Why RBFN is better than Multi layer Perceptron (MLP)?<br>
               <input type="radio" name="q1" value="1">
-              "Because RBFN performs classification by measuring the input’s similarity to the examples from the training set"
+              Because RBFN performs classification by measuring the input’s similarity to the examples from the training set
               <br>
               <input type="radio" name="q1" value="2">
-              "Because it is easy to solve complex network problem by RBFN than MLP"
+              Because it is easy to solve complex network problem by RBFN than MLP
               <br>
               <input type="radio" name="q1" value="3">
-              "Because RBFN has one single hidden layer"
+              Because RBFN has one single hidden layer
               <br>
               <input type="radio" name="q1" value="4">
-              "None of these"
+              None of these
               <br><br>
               2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?<br>
               <input type="radio" name="q2" value="1">
-              "The response will increase exponentially"
+              The response will increase exponentially
               <br>
               <input type="radio" name="q2" value="2">
-              "The response will increase linearly"
+              The response will increase linearly
               <br>
               <input type="radio" name="q2" value="3">
-              "The response will fall exponentially"
+              The response will fall exponentially
               <br>
               <input type="radio" name="q2" value="4">
-              "The response will not change"
+              The response will not change
               <br><br>
-              
+              <br>
+              3.What are the two stages in radial basis function network ?<br>
+              <input type="radio" name="q3" value="1">
+              Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  Stage 2: Discover the weights for the output layer.
+              <br>
+              <input type="radio" name="q3" value="2">
+              Stage 1: Discover the weights for the output layer.<br>
+			  Stage 2: establish a centre and a radii for the RBF layer.
+              <br>
+              <input type="radio" name="q3" value="3">
+              Stage 1: establish a centre for the RBF layer.<br>
+			  Stage 2: establish a radii for the RBF layer.
+              <br>
+              <input type="radio" name="q3" value="4">
+              Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  Stage 2: Discover the weights for the hidden layer.
+              <br><br>
             
               <input type="button" value="Evaluate" onclick="result()">
               
               <h3 id="a1"></h3>
               <h3 id="a2"></h3>
-             
+             <h3 id="a3"></h3>
             
             
                     </p>
