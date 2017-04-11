@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron">
-              <h1 class="text-primary">Lab Name Machine Learning Lab</h1>
+              <h1 class="text-primary">Lab Name: Machine Learning Lab</h1>
               <p class="text-primary"><!-- Description --></p>
               <a class="btn btn-primary btn-large" href="labs/explist.php">Explore</a>
             </div>

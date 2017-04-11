@@ -43,7 +43,7 @@
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
             include '../../common/header.html';
-            include 'lab_class.php';
+            include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
             $exp_name = $_SESSION['exp_name'];      
                   ?>
