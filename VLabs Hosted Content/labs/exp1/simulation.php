@@ -184,9 +184,7 @@
                                 </table>
                             </div> 
                             <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using 1.5 as threshold and 1 as weights
-                            </p>                   
+                                              
                     </div>
 
                     <div id="OR-gate-sim" style="display: none;">
@@ -254,9 +252,7 @@
                                 </table>
                             </div> 
                             <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using 0.5 as threshold and 1 as weights
-                            </p> 
+                            
                     </div>
 
                     <div id="NOT-gate-sim" style="display: none;">
@@ -318,9 +314,7 @@
                                     </table>
                             </div> 
                             <br/><br/><br/>                            
-                            <p>
-                                <b>Hint:</b> Try using -0.5 as threshold and -1 as weight
-                            </p>
+                            
                     </div>
                     
                 </section>                

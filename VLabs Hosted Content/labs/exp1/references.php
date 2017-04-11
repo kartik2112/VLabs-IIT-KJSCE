@@ -73,7 +73,18 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
                         1. Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br />
-                        2. S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"
+                        2. S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"<br><br>
+                       <b> Developed By :-</b><br>
+1. Abhishek Mahajani<br>
+2. Meet Mukadam<br>
+3. Kartik Shenoy<br>
+4. Varun Rao<br>
+5. Manmath Paste<br>
+6. Tejas Dastane <br>
+7. Vinay Pandya<br>
+8. Abhishek Ananthakrishnan<br>
+9. Nitin Mishra<br>
+
                     </p>
                 </section>
                 <!-- /.content -->
