@@ -122,16 +122,18 @@
                     <br/>
                     <div id="AND-gate-sim">
                             <h3>AND Gate Neural Network (NN)</h3>
-                            <b>w<sub>1</sub> : </b>
-                            <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputX-oplay_neuron1-weight"></span><br/>
+                            <div style="float: left;">
+                                <b>w<sub>1</sub> : </b>
+                                <div id="AND_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputX-oplay_neuron1-weight"></span><br/>
 
-                            <b>w<sub>2</sub> : </b>
-                            <div id="AND_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputY-oplay_neuron1-weight"></span><br/>
+                                <b>w<sub>2</sub> : </b>
+                                <div id="AND_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-inputY-oplay_neuron1-weight"></span><br/>
 
-                            <b>Threshold : </b>
-                            <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-threshold-value"></span><br/>
+                                <b>Threshold : </b>
+                                <div id="AND_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="AND-threshold-value"></span><br/>
+                            </div>
 
-                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
+                            <svg id="AND-gate-svg" width="700" height="300" style="float: left;clear:left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="AND-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="AND-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -189,16 +191,19 @@
 
                     <div id="OR-gate-sim" style="display: none;">
                             <h3>OR Gate Neural Network (NN)</h3>
-                            <b>w<sub>1</sub> : </b>
-                            <div id="OR_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputX-oplay_neuron1-weight"></span><br/>
+                            <div style="float: left;">
+                                <b>w<sub>1</sub> : </b>
+                                <div id="OR_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputX-oplay_neuron1-weight"></span><br/>
 
-                            <b>w<sub>2</sub> : </b>
-                            <div id="OR_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputY-oplay_neuron1-weight"></span><br/>
+                                <b>w<sub>2</sub> : </b>
+                                <div id="OR_Gate_w2_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-inputY-oplay_neuron1-weight"></span><br/>
 
-                            <b>Threshold : </b>
-                            <div id="OR_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-threshold-value"></span><br/>
+                                <b>Threshold : </b>
+                                <div id="OR_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="OR-threshold-value"></span><br/>
+                            </div>
+                            
 
-                            <svg id="OR-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
+                            <svg id="OR-gate-svg" width="700" height="300" style="float: left;clear:left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="OR-inputX-oplay_neuron1" class="StdLine" x1="50" y1="50" x2="250" y2="150" style=""/>
                                 <line id="OR-inputY-oplay_neuron1" class="StdLine" x1="50" y1="250" x2="250" y2="150" style=""/>
@@ -255,14 +260,17 @@
                     </div>
 
                     <div id="NOT-gate-sim" style="display: none;">
-						<h3>NOT Gate Neural Network (NN)</h3>
-                            <b>w<sub>1</sub> : </b>
-                            <div id="NOT_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-inputX-oplay_neuron1-weight"></span><br/>
+						    <h3>NOT Gate Neural Network (NN)</h3>
+                            <div style="float: left;">
+                                <b>w<sub>1</sub> : </b>
+                                <div id="NOT_Gate_w1_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-inputX-oplay_neuron1-weight"></span><br/>
 
-                            <b>Threshold : </b>
-                            <div id="NOT_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-threshold-value"></span><br/>
+                                <b>Threshold : </b>
+                                <div id="NOT_Gate_Threshold_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="NOT-threshold-value"></span><br/>
+                            </div>
+                            
 
-                            <svg id="NOT-gate-svg" width="700" height="300" style="float: left;margin-top: 70px">
+                            <svg id="NOT-gate-svg" width="700" height="300" style="float: left;clear:left;margin-top: 70px">
                                 <!--Neural Network connections-->
                                 <line id="NOT-inputX-oplay_neuron1" class="StdLine" x1="50" y1="150" x2="250" y2="150" style=""/>
                                 
