@@ -32,7 +32,7 @@
                 <a href="../explist.php" class="logo">
                     <p align="center" style="font-size:1em;">
                         <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
+                            <?php echo $lab_name?>
                         </b>
                     </p>
                 </a>
@@ -46,12 +46,12 @@
                         <ol class="breadcrumb">
                             <li>
                                 <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
+                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
+                                    <?php echo $exp_name?>
                                 </a>
                             </li>
                             <li class="active">Aim</li>

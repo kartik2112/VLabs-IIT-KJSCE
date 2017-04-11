@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Lab Name</h1>
+                        <h1>Machine Learning Lab</h1>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         <ul class="list-group">
                             <h3>
                                 <li class="list-group-item">
-                                    <a href="exp1/index.php"> Experiment Name </a>
+                                    <a href="exp1/index.php"> Implementation of AND/OR/NOT Gate using Single Layer Perceptron </a>
                                 </li>
                                 
                             </h3>

@@ -199,6 +199,11 @@
                             </div><br />
                             <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
                         </div>
+                    <br><br>
+                    <b>Hints :-</b><br><br>
+                    1. And Gate :- Try using 1.5 as threshold and 1 as weights<br>
+                    2. Or Gate :- Try using 0.5 as threshold and 1 as weights<br>
+                    3. Not Gate :- Try using -0.5 as threshold and -1 as weight
                     </p>
                 </section>
                 <!-- /.content -->
