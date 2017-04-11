@@ -82,9 +82,9 @@
               <b>6.</b>	After understanding the whole simulation for 1 input, then Apply the next set of inputs.  <button class="btn btn-warning disabled" style="cursor: default;" disabled>Apply next set of I/P values</button><br>
               <b>7.</b>	Successively the changed weight and bias values will be shown for clear understanding of EBPMLP.<br>
               <b>8.</b>	If proper inputs of weight and bias are not provided then a hint having all the appropriate input values is also given to observe the correct simulation of the algorithm.<br>
-              <b>9.</b>	Later, Answer the Post Test questions to ascertain the correctness of your  understanding.<br>
-              <br /><br />
+              <b>9.</b>	Later, Answer the Post Test questions to ascertain the correctness of your  understanding.<br><br><br>
               <b>Note:</b>The simulation for error back propogation may hang if the number of iterations entered is greater than or equal to 100000. The answer will come, albeit with a minimal delay
+              <p>* Hints to get correct output are provided in the Post Test section.</p>
 
             <!--Theory content goes here -->
           

@@ -64,7 +64,7 @@ $_SESSION["currPage"]=5;
       });
       $("#lslider").slider({
         step: 0.1,
-        max: 2,
+        max: 3.0,
         min: 0.1,
         value: 1,
         slide: function (event, ui) {
@@ -75,6 +75,9 @@ $_SESSION["currPage"]=5;
     });
 
     var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
+
+    //These variables are used only for Multi Layer Perceptron
+    var mlp_s_w11=0, mlp_s_w12=0, mlp_s_w21=0, mlp_s_w22=0, mlp_s_v1=0, mlp_s_v2=0, mlp_s_b1=0, mlp_s_b2=0, mlp_s_b3=0, mlp_s_theta=0;
 
     //These variables are used only for Error Back Propogation.
     var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, s_iter=1000, sim, learningRate, e=Math.E, iter, iterations=-1, outs=[], outs_hidden_1=[], outs_hidden_2=[];
@@ -87,13 +90,33 @@ $_SESSION["currPage"]=5;
         document.getElementById('thresh_title').style.display = "block";
         document.getElementById('img_thresh').setAttribute("onclick","editThreshold()");
         init_mlp();
+
+        for(var i=1;i<=4;i++){
+          document.getElementById('out'+i).innerHTML = "-";
+          document.getElementById('h1'+i).innerHTML = "-";
+          document.getElementById('h2'+i).innerHTML = "-";
+        }
+        document.getElementById('acc_val').innerHTML = 0;
+        document.getElementById('acc').style.display = "none";
+        document.getElementById('grph').style.display = "none";
       }
       else{
+        save_weights_mlp();
         document.getElementById('start').setAttribute('onclick','save_weights_ebp()');
         document.getElementById('thresh_title').style.display = "none";
         document.getElementById('img_thresh').setAttribute("onclick","");
         init_ebp();
+
+        for(var i=1;i<=4;i++){
+          document.getElementById('out'+i).innerHTML = "-";
+          document.getElementById('h1'+i).innerHTML = "-";
+          document.getElementById('h2'+i).innerHTML = "-";
+        }
+        document.getElementById('acc_val').innerHTML = 0;
+        document.getElementById('acc').style.display = "none";
+        document.getElementById('grph').style.display = "none";
       }
+
 
       document.getElementById('r4').style.background = "transparent";
       document.getElementById('start').innerHTML = "Start simulation";
@@ -129,6 +152,22 @@ $_SESSION["currPage"]=5;
       start_ebp();
     }
 
+    function save_weights_mlp(){
+      mlp_s_w11=parseFloat(document.getElementById('t1').innerHTML);
+      mlp_s_w12=parseFloat(document.getElementById('t2').innerHTML);
+      mlp_s_b1=parseFloat(document.getElementById('b1').innerHTML);
+
+      mlp_s_w21=parseFloat(document.getElementById('t3').innerHTML);
+      mlp_s_w22=parseFloat(document.getElementById('t4').innerHTML);
+      mlp_s_b2=parseFloat(document.getElementById('b2').innerHTML);
+
+      mlp_s_v1=parseFloat(document.getElementById('t5').innerHTML);
+      mlp_s_v2=parseFloat(document.getElementById('t6').innerHTML);
+      mlp_s_b3=parseFloat(document.getElementById('b3').innerHTML);
+
+      mlp_s_theta = parseFloat(document.getElementById('thresh').innerHTML);
+    }
+
     function init_ebp(){
 
       document.getElementById('r4').style.background = "transparent";
@@ -155,6 +194,15 @@ $_SESSION["currPage"]=5;
       for(var i=0;i<ebp_elems.length;i++){
         ebp_elems[i].style.display = "block";
       }
+
+      for(var i=1;i<=4;i++){
+        document.getElementById('out'+i).innerHTML = "-";
+        document.getElementById('h1'+i).innerHTML = "-";
+        document.getElementById('h2'+i).innerHTML = "-";
+      }
+      document.getElementById('acc_val').innerHTML = 0;
+      document.getElementById('acc').style.display = "none";
+      document.getElementById('grph').style.display = "none";
 
       document.getElementById('reset').style.display = "none";
 
@@ -183,10 +231,16 @@ $_SESSION["currPage"]=5;
       document.getElementById('bef_thresh_op_txt').style.display = "none";
       document.getElementById('after_threshold_op').style.display = "none";
       document.getElementById('grph').style.display = "none";
+      var mode = document.getElementsByClassName('nw');
+      for(var i=0;i<mode.length;i++){
+        mode[i].style.display = "none";
+      }
+      document.getElementById('acc').style.display = "none";
+      document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
+      document.getElementById('start').setAttribute("disabled","disabled");
 
       z1 = z2 = y = y1 = y2 = yin = 0;
 
-      document.getElementById('acc').style.display = "none";
 
       //Start animation of weight lines
       var i;
@@ -195,7 +249,6 @@ $_SESSION["currPage"]=5;
       }
       $("#w" + i).addClass('animatedLineGreen');
 
-      document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
 
       setTimeout(function(){
         for(var i=iterations+1;i<iter;i++){
@@ -236,7 +289,14 @@ $_SESSION["currPage"]=5;
             var msg = document.getElementById('msg');
             msg.innerHTML = "No. of iterations completed: "+(i);
             if(i!=iter) msg.innerHTML += ". Check how the weights affect the decision boundaries and the solution below. Click the button below to continue.";
-            else msg.innerHTML += ". Click Reset to try again with different values."
+            else {
+              msg.innerHTML += ". Click Reset to try again with different values."
+              document.getElementById('start').removeAttribute("disabled");
+              var mode = document.getElementsByClassName('nw');
+              for(var i=0;i<mode.length;i++){
+                mode[i].style.display = "block";
+              }
+            }
 
             //Set weights on weight lines
             for(var wt=1;wt<=6;wt++){
@@ -355,6 +415,19 @@ $_SESSION["currPage"]=5;
     }
 
     function init_mlp() {
+
+      document.getElementById('t1').innerHTML = mlp_s_w11;
+      document.getElementById('t2').innerHTML = mlp_s_w12;
+      document.getElementById('b1').innerHTML = mlp_s_b1;
+
+      document.getElementById('t3').innerHTML = mlp_s_w21;
+      document.getElementById('t4').innerHTML = mlp_s_w22;
+      document.getElementById('b2').innerHTML = mlp_s_b2;
+
+      document.getElementById('t5').innerHTML = mlp_s_v1;
+      document.getElementById('t6').innerHTML = mlp_s_v2;
+      document.getElementById('b3').innerHTML = mlp_s_b3;
+      document.getElementById('thresh').innerHTML = mlp_s_theta;
 
       //Hide all elements unique to EBP.
       var ebp_elems = document.getElementsByClassName('ebp_content_only');

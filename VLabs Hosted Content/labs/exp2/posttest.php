@@ -155,7 +155,14 @@
               <h3 id="a3"></h3>
               <h3 id="a4"></h3>
             
-            
+              
+          </p>
+
+          <br><br>
+
+          <p><b>Hints:- Try these values and verify that you get the correct output.</b>
+          <br><br><b>1. MLP: </b><br>W11 = W12 = W21 = W22 = 1,<br> b1 = 1.5, b2 = 0.5 and b3 = 0.5,<br> V1 = -2 and V2 = 1.
+          <br><br><b>2. EBP: </b><br>W11 = 1, W12 = -1, W21 = 2 and W22 = 3,<br>b1  = b2 = b3 = -1, <br> V1 = -1 and V2 = -2,<br>Learning rate = 0.75 and No. of iterations = 10,00,000.
           </p>
         </section>
         <!-- /.content -->
