@@ -84,7 +84,7 @@
               <b>8.</b>	If proper inputs of weight and bias are not provided then a hint having all the appropriate input values is also given to observe the correct simulation of the algorithm.<br>
               <b>9.</b>	Later, Answer the Post Test questions to ascertain the correctness of your  understanding.<br><br><br>
 
-              <p>* Hints are provided in the post-test section.</p>
+              <p>* Hints to get correct output are provided in the Post Test section.</p>
 
 
             <!--Theory content goes here -->
