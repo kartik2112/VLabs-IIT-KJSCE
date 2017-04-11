@@ -359,7 +359,8 @@ $_SESSION["currPage"]=5;
         document.getElementById('acc').style.display = "block";
 
         rms = Math.sqrt(errorRate/4);
-        rms = rms*100;
+        rms = rms*100; 
+        rms = 100-rms;
         document.getElementById('acc_val').innerHTML = rms.toFixed(3) + "%";
       },1000);
     }
