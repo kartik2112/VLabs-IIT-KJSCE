@@ -74,7 +74,18 @@
                         <!--Reference content goes here -->
                          <li> <a href="http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></li>
               <li> <a href="https://en.wikipedia.org/wiki/Radial_basis_function">https://en.wikipedia.org/wiki/Radial_basis_function</a></li>
-              
+              <b>Developed by:</b>
+              <ol>
+                <li>Abhishek Mahajani</li>
+                <li>Tejas Dastane</li>
+                <li>Varun Rao</li>
+                <li>Kartik Shenoy</li>
+                <li>Meet Mukadam</li>
+                <li>Vinay Pandya</li>
+                <li>Abhishek Ananthakrishnan</li>
+                <li>Manmath Paste</li>
+                <li>Nitin Mishra</li>
+              </ol>
                     </p>
                 </section>
                 <!-- /.content -->
