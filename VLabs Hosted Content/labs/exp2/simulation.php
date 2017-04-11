@@ -173,6 +173,7 @@ $_SESSION["currPage"]=5;
     function start_ebp(){
       document.getElementById('bef_thresh_op_txt').style.display = "none";
       document.getElementById('after_threshold_op').style.display = "none";
+      document.getElementById('grph').style.display = "none";
 
       z1 = z2 = y = y1 = y2 = yin = 0;
 
@@ -199,6 +200,7 @@ $_SESSION["currPage"]=5;
             reset.innerHTML = "Reset";
             reset.setAttribute('onclick','init_ebp()');
             iterations = 0;
+            i++;
 
             set_op = true;
           }
@@ -214,17 +216,18 @@ $_SESSION["currPage"]=5;
           if(set_op == true){
 
             setTimeout(function(){
-              var i;
-              for (i = 1; i <= 6; i++) {
-                $("#w" + i).removeClass('animatedLinePurple');
+              var p;
+              for (p = 1; p <= 6; p++) {
+                $("#w" + p).removeClass('animatedLinePurple');
               }
-              $("#w" + i).removeClass('animatedLineGreen');
+              $("#w" + p).removeClass('animatedLineGreen');
               iterations++;
             },1000);
 
             var msg = document.getElementById('msg');
             msg.innerHTML = "No. of iterations completed: "+(i);
-            if(i!=iter-1) msg.innerHTML += ". Check how the weights are affected. Click the button below to continue.";
+            if(i!=iter) msg.innerHTML += ". Check how the weights are affected. Click the button below to continue.";
+            else msg.innerHTML += ". Click Reset to try again with different values."
 
             //Set weights on weight lines
             for(var wt=1;wt<=6;wt++){
@@ -257,6 +260,15 @@ $_SESSION["currPage"]=5;
             document.getElementById('op').innerHTML = y.toFixed(3);
 
             for(var j=0;j<4;j++)  document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
+
+            document.getElementById('grph').style.display = "block";
+            /*
+              ---------------------------------------
+
+              Insert code for plotting graph here.
+
+              ---------------------------------------
+            */
             break;
           }
 
@@ -790,7 +802,7 @@ $_SESSION["currPage"]=5;
           <br>
           <br>
 
-          <div id="grph" style="width: 640px;height: 410px;clear: both;/*display: none*/;">
+          <div id="grph" style="width: 640px;height: 410px;clear: both;display: none;">
             <div id="output">
               <div  style="width: 48%;float: left;">
                 <h3 style="text-align: center;width: 300px;height: 52px;">Decision Boundaries</h3>
