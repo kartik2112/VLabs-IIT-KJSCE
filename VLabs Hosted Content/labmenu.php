@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron">
-              <h1 class="text-primary">Lab Name <!-- Lab Name --></h1>
+              <h1 class="text-primary">Lab Name: Machine Learning Lab</h1>
               <p class="text-primary"><!-- Description --></p>
               <a class="btn btn-primary btn-large" href="labs/explist.php">Explore</a>
             </div>
@@ -31,7 +31,7 @@
             <center>
               <img src="" alt="" height="90" width="75">
               <p></p>
-              <h3>This lab is contributed by <!-- Institute Name --></h3>
+              <h3>This lab is contributed by K. J. Somaiya College of Engineering</h3>
               <p></p>
             </center>
           </div>
