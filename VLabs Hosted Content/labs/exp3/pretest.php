@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link href="../Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -74,72 +77,72 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
                         <script>
+                            $(document).ready(function () {
+                                $(".optradio1").click(function () {
+                                    ////alert("clicked");
+                                    $("#optradio1Ans").slideDown();
+                                });
+                                $(".optradio2").click(function () {
+                                    //alert("clicked");
+                                    $("#optradio2Ans").slideDown();
+                                });
+                                $(".optradio3").click(function () {
+                                    //alert("clicked");
+                                    $("#optradio3Ans").slideDown();
+                                });
 
-                  function result()
-                  {  
-                      if(document.querySelector('input[name="q1"]:checked').value == 1)
-                          document.getElementById("a1").innerHTML = "1) Correct";
-                      else
-                          document.getElementById("a1").innerHTML =  "1) Wrong";
-                      if(document.querySelector('input[name="q2"]:checked').value == 2)
-                          document.getElementById("a2").innerHTML = "2) Correct";
-                      else
-                          document.getElementById("a2").innerHTML =  "2) Wrong";
-					  if(document.querySelector('input[name="q3"]:checked').value == 1)
-                          document.getElementById("a3").innerHTML = "3) Correct";
-                      else
-                          document.getElementById("a3").innerHTML =  "3) Wrong";
-                     
-               } 
-            
+                            });
+
             </script>
               
             
               <br>
             1. If the value of 1/(2*sigma^2) increases in activation function then the size of graph  ?<br>
-              <input type="radio" name="q1" value="1">
-              Decreases
+              <input class="optradio1" type="radio" name="q1" value="1">
+              A. Decreases
               <br>
-              <input type="radio" name="q1" value="2">
-              Increases
+              <input class="optradio1" type="radio" name="q1" value="2">
+              B. Increases
               <br>
-              <input type="radio" name="q1" value="3">
-              Remains Constant
+              <input class="optradio1" type="radio" name="q1" value="3">
+              C. Remains Constant
               <br>
-              <input type="radio" name="q1" value="4">
-              None of these
-              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="4">
+              D. None of these
+              <br>
+              <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
+              <br>
             2. How many hidden layers are there in RBFN?<br>
-              <input type="radio" name="q2" value="1">
-              0
+              <input class="optradio2" type="radio" name="q2" value="1">
+              A. 0
               <br>
-              <input type="radio" name="q2" value="2">
-              1
+              <input class="optradio2" type="radio" name="q2" value="2">
+              B. 1
               <br>
-              <input type="radio" name="q2" value="3">
-              2
+              <input class="optradio2" type="radio" name="q2" value="3">
+              C. 2
               <br>
-              <input type="radio" name="q2" value="4">
-              3
-              <br><br>
+              <input class="optradio2" type="radio" name="q2" value="4">
+              D. 3
+              <br>
+              <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p><br>
             
 			<br>
             3. RBF neuron activation function is given by ?<br>
-              <input type="radio" name="q3" value="1">
-              Phi(x)=e^(-beta*||x- mu||^2)
+              <input class="optradio3" type="radio" name="q3" value="1">
+              A. Phi(x)=e^(-beta*||x- mu||^2)
               <br>
-              <input type="radio" name="q3" value="2">
-              Phi(x)=e^(-beta/||x- mu||^2)
+              <input class="optradio3" type="radio" name="q3" value="2">
+              B. Phi(x)=e^(-beta/||x- mu||^2)
               <br>
-              <input type="radio" name="q3" value="3">
-              Phi(x)=e^(-(beta*||x- mu||)2)
+              <input class="optradio3" type="radio" name="q3" value="3">
+              C. Phi(x)=e^(-(beta*||x- mu||)2)
               <br>
-              <input type="radio" name="q3" value="4">
-              Phi(x)=e^(-beta^2*||x- mu||^2)
-              <br><br>
-            
-              <input type="button" value="Evaluate" onclick="result()">
-              
+              <input class="optradio3" type="radio" name="q3" value="4">
+              D. Phi(x)=e^(-beta^2*||x- mu||^2)
+              <br>
+              <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
+                          
               <h3 id="a1"></h3>
               <h3 id="a2"></h3>
             <h3 id="a3"></h3>
