@@ -18,10 +18,6 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <!-- Simulation scripts start-->
-        <script src="../src/math.ob.js"></script>
-        <script src="../src/numcheck.ob.js"></script>
-        <script src="../src/canvasjschart.ob.js"></script>
-        <script src="../src/bracket.ob.js"></script>
 
         <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -33,7 +29,7 @@
 
 
         <!--Here is the main script that handles the simulation-->
-        <script type="text/javascript" src="exp1Simulation.js"></script>    
+        <script type="text/javascript" src="../../../src/exp1Simulation.js"></script>    
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
         <link href="../Styles.css" rel="stylesheet" />
 
