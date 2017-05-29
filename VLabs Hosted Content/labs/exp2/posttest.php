@@ -102,34 +102,41 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
                         <h3>1. Why is the XOR problem exceptionally interesting to neural network researchers?</h3>
-                        <input type="radio" class="optradio1" name="q1" value="1">"A. Because it can be expressed in a way that allows you to use a neural network"<br>
-                        <input type="radio" class="optradio1" name="q1" value="2">"B. Because it is complex binary operation that cannot be solved using neural networks"<br>
-                        <input type="radio" class="optradio1" name="q1" value="3">"C. Because it can be solved by a single layer perceptron"<br>
-                        <input type="radio" class="optradio1" name="q1" value="4">"D. Because it is the simplest linearly inseparable problem that exists"<br>
+
+                        <input type="radio" class="optradio1" name="q1" value="1">A. Because it can be expressed in a way that allows you to use a neural network<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. Because it is complex binary operation that cannot be solved using neural networks<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. Because it can be solved by a single layer perceptron<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. Because it is the simplest linearly inseparable problem that exists<br>
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
                         
                         <h3>2. What is back propagation?</h3>
-                        <input type="radio" class="optradio2" name="q2" value="1">"A. It is another name given to the curvy function in the perceptron"<br>
-                        <input type="radio" class="optradio2" name="q2" value="2">"B. It is the transmission of error back through the network to adjust the inputs"<br>
-                        <input type="radio" class="optradio2" name="q2" value="3">"C. It is the transmission of error back through the network to allow weights to be adjusted so that the network can learn"<br>
-                        <input type="radio" class="optradio2" name="q2" value="4">"D. None of the mentioned"<br>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. It is another name given to the curvy function in the perceptron<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. It is the transmission of error back through the network to adjust the inputs<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. It is the transmission of error back through the network to allow weights to be adjusted so that the network can learn<br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. None of the mentioned<br>
+
                         <br />
                         <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
 
                         <h3>3. What type of learning algorithm is used in EBPMLP?</h3>
-                        <input type="radio" class="optradio3" name="q3" value="1">"A. Supervised learning"<br>
-                        <input type="radio" class="optradio3" name="q3" value="2">"B. Reinforcement learning"<br>
-                        <input type="radio" class="optradio3" name="q3" value="3">"C. Active learning"<br>
-                        <input type="radio" class="optradio3" name="q3" value="4">"D. Unsupervised learning"<br>      
+                    
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. Supervised learning<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. Reinforcement learning<br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. Active learning<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. Unsupervised learning<br>      
+
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
                             
                         <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
-                        <input type="radio" class="optradio4" name="q4" value="1">"A. Always increases the rate of change of weights"<br>
-                        <input type="radio" class="optradio4" name="q4" value="2">"B. Always decreases the rate of change of weights"<br>
-                        <input type="radio" class="optradio4" name="q4" value="3">"C. Increases the rate if value too high and decreases the rate if value too low"<br>
-                        <input type="radio" class="optradio4" name="q4" value="4">"D. No effect"<br>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. Always increases the rate of change of weights<br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B. Always decreases the rate of change of weights<br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. Increases the rate if value too high and decreases the rate if value too low<br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. No effect<br>
+
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
 
