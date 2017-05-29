@@ -21,11 +21,8 @@ $_SESSION["currPage"]=5;
   <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
   <!-- Simulation scripts start-->
-  <script src="../src/math.ob.js"></script>
 
-  <script src="../src/numcheck.ob.js"></script>
-  <script src="../src/canvasjschart.ob.js"></script>
-  <script src="../src/bracket.ob.js"></script>
+
   <link href="../src/StyleSheet1.css" rel="stylesheet" />
   <link href="../Styles.css" rel="stylesheet" />
 
