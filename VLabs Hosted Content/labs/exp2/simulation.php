@@ -24,7 +24,7 @@ $_SESSION["currPage"]=5;
 
 
   <link href="../src/StyleSheet1.css" rel="stylesheet" />
-  <link href="../Styles.css" rel="stylesheet" />
+  <link href="../../../../src/Styles.css" rel="stylesheet" />
 
   <!-- jQuery 2.2.3 -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
