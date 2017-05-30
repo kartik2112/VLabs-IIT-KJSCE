@@ -130,7 +130,7 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
                             
-                        <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
+                        <h3>4. What effect does the learning rate have?</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. Always increases the rate of change of weights<br>
                         <input type="radio" class="optradio4" name="q4" value="2"> B. Always decreases the rate of change of weights<br>

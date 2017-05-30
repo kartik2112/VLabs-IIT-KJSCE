@@ -29,7 +29,7 @@
 
 
         <!--Here is the main script that handles the simulation-->
-        <script type="text/javascript" src="exp1Simulation.js"></script>    
+        <script type="text/javascript" src="../../../src/exp1Simulation.js"></script>    
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
         <link href="../Styles.css" rel="stylesheet" />
 
