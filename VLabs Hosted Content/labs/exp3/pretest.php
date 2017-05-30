@@ -130,16 +130,16 @@
 			<br>
             3. RBF neuron activation function is given by ?<br>
               <input class="optradio3" type="radio" name="q3" value="1">
-              A. Phi(x)=e^(-beta*||x- mu||^2)
+                    A. &#934(x)=e<sup>(-&#946 &times ||x- &#956||<sup>2</sup>)</sup>
               <br>
               <input class="optradio3" type="radio" name="q3" value="2">
-              B. Phi(x)=e^(-beta/||x- mu||^2)
+                    B. &#934(x)=e<sup>(-&#946 &divide ||x- &#956||<sup>2</sup>)</sup>
               <br>
               <input class="optradio3" type="radio" name="q3" value="3">
-              C. Phi(x)=e^(-(beta*||x- mu||)2)
+                    C. &#934(x)=e<sup>(-(&#946 &times ||x- &#956||)<sup>2</sup>)</sup>
               <br>
               <input class="optradio3" type="radio" name="q3" value="4">
-              D. Phi(x)=e^(-beta^2*||x- mu||^2)
+                    D. &#934(x)=e<sup>(-&#946^2 &times ||x- &#956||<sup>2</sup>)</sup>
               <br>
               <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
                           
