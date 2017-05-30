@@ -14,7 +14,10 @@
           <div class="col-md-12">
             <div class="jumbotron">
               <h1 class="text-primary">Machine Learning Lab</h1>
-              <p class="text-primary"><!-- Description --></p>
+              <p class="text-primary">
+                  This lab helps you in understanding the basics of machine learning - 
+                  the types of perceptrons, the learning rules, fuzzy inference engine via visualizations. 
+                  At the same time it also helps you get to know the theory and consolidate it using the pretest and posttest for each experiment.</p>
               <a class="btn btn-primary btn-large" href="labs/explist.php">Explore</a>
             </div>
           </div>
