@@ -53,8 +53,8 @@
         </style>
 
         <script type="text/javascript">
-            var sel = 1;
-            var LEFT = 700, TOP = 500;
+            
+            var LEFT = 650, TOP = 374;
             $("#edit").hide();
             var changing = 0;
 
@@ -75,7 +75,7 @@
                 $("#" + id).addClass("selected");
                 var x = document.getElementById(id);
                 var e = document.getElementById('edit');
-                var val = $("#t" + sel).html();
+                var val = $(".w" + sel+"text").html();
                 //alert("the value is " + val);
                 $("#wslider").slider("value", val);
                 var l, t;
@@ -164,101 +164,90 @@
                     
 
                     <p>&rarr; Click on any line to change its weight</p>
-                    <p>&rarr; Click on the threshold graph to change threshold value</p>
-                    <p>&rarr; Click on any hidden/output neuron to change its bias</p>
                     <p>&rarr; You cannot change the parameters once you've started simulations.</p>
-                    <p>&rarr; The red line in the decision boundaries graph depicts the boundary formed due to hidden neuron 1, blue line corresponds to hidden neuron 2, and green line to the output neuron respectively.</p>
+                    <p>&rarr; The blue region in the graph depicts the boundary formed due to neuron 1, red region corresponds to neuron 2, and green region corresponds to neuron 3.</p>
                     <br>
 
 
-                    <svg id="AND-gate-svg" width="800" height="500" style="float: left;margin-top: 70px">
+                    <svg id="PercLR_svg" width="700" height="400" style="float: left;clear:left;">
                                 <!--Neural Network connections-->
-                                <line id="w11" class="not_sel" stroke="#ff6a00" stroke-width="5"  
-                                      onclick="editWeights(11)"x1="50" y1="50" x2="350" y2="50" style=""/>
-                                <line id="w12" class="not_sel" stroke="#ff6a00" stroke-width="5" onclick="editWeights(12)" x1="50" y1="50" x2="350" y2="200" style=""/>
-                                <line id="w13" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(13) "x1="50" y1="50" x2="350" y2="350" style=""/>
+                                <line id="w11" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(11)"x1="50" y1="50" x2="350" y2="50" style=""/>
+                                <line id="w12" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(12)" x1="50" y1="200" x2="350" y2="50" style=""/>
+                                <line id="w13" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(13)" x1="50" y1="350" x2="350" y2="50" style=""/>
 
-                                <line id="w21" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21)" x1="50" y1="200" x2="350" y2="50" style=""/>
-                                <line id="w22" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(22)" x1="50" y1="200" x2="350" y2="200" style=""/>
-                                <line id="w23" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(23)" x1="50" y1="200" x2="350" y2="350" style=""/>
+                                <line id="w21" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21)" x1="50" y1="50" x2="350" y2="200" style=""/>
+                                <line id="w22" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(22)" x1="50" y1="200" x2="350" y2="200" style=""/>
+                                <line id="w23" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(23)" x1="50" y1="350" x2="350" y2="200" style=""/>
 
-                                <line id="w31" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(31)" x1="50" y1="350" x2="350" y2="50" style=""/>
-                                <line id="w32" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(32)" x1="50" y1="350" x2="350" y2="200" style=""/>
-                                <line id="w33" class="not_sel" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(33)" x1="50" y1="350" x2="350" y2="350" style=""/>
+                                <line id="w31" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(31) "x1="50" y1="50" x2="350" y2="350" style=""/>                                
+                                <line id="w32" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(32)" x1="50" y1="200" x2="350" y2="350" style=""/>                                
+                                <line id="w33" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(33)" x1="50" y1="350" x2="350" y2="350" style=""/>
 
 								<!-- @@@@@-->
-                                <line id="AND-inputX-oplay_neuron2" class="StdLine" x1="300" y1="50" x2="650" y2="50" style=""/>
-                                <line id="AND-inputY-oplay_neuron3" class="StdLine" x1="300" y1="200" x2="650" y2="200" style=""/>
-                                <line id="AND-inputX-oplay_neuron3" class="StdLine" x1="300" y1="350" x2="650" y2="350" style=""/>
+                                <line id="" class="StdLine percLRNeur_1_lines" x1="300" y1="50" x2="610" y2="50" style=""/>
+                                <line id="" class="StdLine percLRNeur_2_lines" x1="300" y1="200" x2="610" y2="200" style=""/>
+                                <line id="" class="StdLine percLRNeur_3_lines" x1="300" y1="350" x2="610" y2="350" style=""/>
 								<!-- @@@@@-->
                                 
 
                                 <!--Neural Network nodes-->
-                                <circle id="AND-inputX" class="StdCircle" cx="50" cy="50" r="20"/>
-                                <circle id="AND-inputY" class="StdCircle" cx="50" cy="200" r="20"/>
-                                <circle id="AND-inputY" class="StdCircle" cx="50" cy="350" r="20"/>
+                                <circle id="" class="StdCircle" cx="50" cy="50" r="20"/>
+                                <circle id="" class="StdCircle" cx="50" cy="200" r="20"/>
+                                <circle id="" class="StdCircle" cx="50" cy="350" r="20"/>
 								<!-- @@@@@ -->
 								
-                                <circle id="AND-oplay_neuron2" class="StdCircle" cx="350" cy="50" r="20"/>
-                                <circle id="AND-oplay_neuron3" class="StdCircle" cx="350" cy="200" r="20"/>
-                                <circle id="AND-oplay_neuron2" class="StdCircle" cx="350" cy="350" r="20"/>
+                                <circle id="" class="StdCircle" cx="350" cy="50" r="20"/>
+                                <circle id="" class="StdCircle" cx="350" cy="200" r="20"/>
+                                <circle id="" class="StdCircle" cx="350" cy="350" r="20"/>
 
 								<!-- @@@@@  -->
-                                <image id="AND-oplay_thrshld" x="650" y="25"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                                <image id="AND-oplay_thrshld" x="650" y="175"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                                <image id="AND-oplay_thrshld" x="650" y="325"  height="50" width="50" xlink:href="../images/unipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                <image id="" x="610" y="25"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                <image id="" x="610" y="175"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                <image id="" x="610" y="325"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
                                 
 
                                 
 
                                 <!--Input texts-->
-                                <text font-size="20" x="10" y="55">X1</text>
-                                <text class="changingTextStyle AND-XVal" font-size="20" x="45" y="55"></text>
-                                <text font-size="20" x="10" y="210">X2</text>
-                                <text class="changingTextStyle AND-YVal" font-size="20" x="45" y="255"></text>
-                                <text font-size="20" x="10" y="360">X3</text>
-                                <text class="changingTextStyle AND-YVal" font-size="20" x="45" y="455"></text>
+                                <text font-size="20" x="5" y="55">X1</text>
+                                <text class="changingTextStyle percLRX_inputX1" font-size="20" x="45" y="55"></text>
+                                <text font-size="20" x="5" y="210">X2</text>
+                                <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="255"></text>
+                                <text font-size="20" x="10" y="360">1</text>
+                                <text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="455"></text>
                                 
 								
-								<text font-size="20" x="340" y="55">n1</text>
-                                <text font-size="20" x="340" y="205">n2</text>
-                                <text font-size="20" x="340" y="355">n3</text>
+								<text font-size="20" x="342" y="55">∑</text>
+                                <text font-size="20" x="342" y="205">∑</text>
+                                <text font-size="20" x="342" y="355">∑</text>
 
                                 <!--Weights text-->
-                                <text font-size="20"  x="225" y="30">w<tspan baseline-shift="sub">11</tspan>=<tspan id="t11" class="AND-inputX-oplay_neuron1-weight" >1</tspan></text>
-                                <text font-size="20"  x="235"  y="75">w<tspan baseline-shift="sub">21</tspan>=<tspan id="t21" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"  x="300" y="110">w<tspan baseline-shift="sub">31</tspan>=<tspan id="t31" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"  x="285" y="155">w<tspan baseline-shift="sub">12</tspan>=<tspan id="t12" class="AND-inputX-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"  x="240" y="185">w<tspan baseline-shift="sub">22</tspan>=<tspan id="t22" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20" x="288" y="240">w<tspan baseline-shift="sub">32</tspan>=<tspan id="t32" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">13</tspan>=<tspan id="t13" class="AND-inputX-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">23</tspan>=<tspan id="t23" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
-                                <text font-size="20"id="t33"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan id="t33" class="AND-inputY-oplay_neuron1-weight">1</tspan></text>
+                                <text font-size="20"  x="225" y="30" >w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
+                                <text font-size="20"  x="235" y="75" >w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
+                                <text font-size="20"  x="303" y="110">w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">1</tspan></text>
+                                <text font-size="20"  x="285" y="155">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
+                                <text font-size="20"  x="240" y="195">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
+                                <text font-size="20"  x="288" y="245">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
+                                <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">1</tspan></text>
+                                <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
+                                <text font-size="20"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">1</tspan></text>
 								
-								<!-- n(x) related text -->
-								 
-                               
-								<text class="changingTextStyle" id="AND-n1x-value" font-size="20" x="230" y="40"></text>
-								<text class="changingTextStyle" id="AND-n2x-value" font-size="20" x="200" y="330"></text>
+								
                                 <!--u(x) related texts-->
-                                <text font-size="20" x="370" y="75">u(x) = w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">21</tspan>*X2 + w<tspan baseline-shift="sub">31</tspan>*X3</text>
-                                <text font-size="20" x="370" y="230">u(x) = w<tspan baseline-shift="sub">12</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">32</tspan>*X3</text>
-                                <text font-size="20" x="370" y="375">u(x) = w<tspan baseline-shift="sub">13</tspan>*X1 + w<tspan baseline-shift="sub">23</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*X3</text>
+                                <text font-size="20" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*1</text>
+                                <text font-size="20" x="370" y="190">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*1</text>
+                                <text font-size="20" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*1</text>
                                
 
                                 <!--y(x) related texts-->
-                                <text font-size="20" x="710" y="50">y(x)</text>
-                                <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="620" y="160"></text>
+                                <text font-size="20" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
+                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
                                 
-                                <text font-size="20" x="710" y="200">y(x)</text>
-                                <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="620" y="160"></text>
+                                <text font-size="20" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
+                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
                                 
-                                <text font-size="20" x="710" y="350">y(x)</text>
-                                <text class="changingTextStyle" id="AND-yx-value" font-size="20" x="620" y="160"></text>
-                                
-
-
-                                <text class="changingTextStyle" id="AND-yx-value-expln" font-size="20" x="415" y="70"></text>
+                                <text font-size="20" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
+                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
                     </svg>
 
 
@@ -268,15 +257,19 @@
                         <button onclick="set(sel)" style="margin: 15px 0;border: none;outline: none;">Set</button>
                     </div>
 
-                    <b>Learning Rate (η) : </b>
-                    <div id="learningRate_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="learningRate"></span><br/>
-
                     <div id="graph-outer">
 			            <div id="graphDiv" class="jxgbox" style="width:300px; height:300px;"></div>
 		            </div>
+                    <br/><br/>
+                    <b>Learning Rate (η) : </b>
+                    <div id="learningRate_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="learningRate"></span><br/><br/><br/>
 
-                    <div id="ExplanationOfCalculation">
-                        <div id="FirstPartOfExpln">
+                    <button id="PercLRStartSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
+                    <button id="PercLRStopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button>
+                    <button class="btn btn-warning disabled" id="PercLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button when you have understood the calculation for this input">Apply next I/P value</button><br/><br/>
+
+                    <div id="ExplanationOfCalculation" style="clear: both;">
+                        <div id="FirstPartOfExpln" style="display: none;">
                                 <h3>Calculations:</h3>
                                 O = sgn( W x X )<br/>
 
@@ -310,7 +303,7 @@
 
                                 <div class="centerPosOperatorsForMatrices">sgn(</div>
                                 <div style="display: inline-block">
-                                    <table class="matrix changingBlocks summationVector" data-toggle="tooltip" data-placement="bottom" title="Σ Vector">
+                                    <table class="matrix changingBlocks summationVector" data-toggle="tooltip" data-placement="bottom" title="∑ Vector">
                                         <tr class="0"><td class="0">0</td></tr>
                                         <tr class="1"><td class="0">0</td></tr>
                                         <tr class="2"><td class="0">0</td></tr>
@@ -331,7 +324,7 @@
                                 </div>
                         </div>
                         
-                        <br/><br/><br/>
+                        <br/>
 
 
                         <div id="SecondPartOfExpln" style="display: none;">
@@ -370,7 +363,7 @@
                                     </ol>
 
                                     <!-- Wrapper for slides -->
-                                    <div class="carousel-inner" style="margin: auto; height: 300px; width: 400px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                                    <div class="carousel-inner" style="margin: auto; height: 400px; width: 350px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
                                         <div class="item active" style="padding: 15px;">
                                                 <div id="PercCalcnExplnFor_i_0">
                                                         <div><h3>For i = 1, D<sub>1</sub> = <span class="Di"></span>, O<sub>1</sub> = <span class="Oi"></span></h3></div><br/><br/>
@@ -394,8 +387,8 @@
                                                             </table>
                                                         </div>
                                                         <div class="centerPosOperatorsForMatrices"> / 2</div>
-
-                                                        <div class="centerPosOperatorsForMatrices"> = </div>
+                                                        <br/><br/>
+                                                        <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                         <div style="display: inline-block">
                                                             <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
@@ -430,8 +423,8 @@
                                                             </table>
                                                         </div>
                                                         <div class="centerPosOperatorsForMatrices"> / 2</div>
-
-                                                        <div class="centerPosOperatorsForMatrices"> = </div>
+                                                        <br/><br/>
+                                                        <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                         <div style="display: inline-block">
                                                             <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
@@ -466,8 +459,8 @@
                                                             </table>
                                                         </div>
                                                         <div class="centerPosOperatorsForMatrices"> / 2</div>
-
-                                                        <div class="centerPosOperatorsForMatrices"> = </div>
+                                                        <br/><br/>
+                                                        <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                         <div style="display: inline-block">
                                                             <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
@@ -517,7 +510,7 @@
                                 </div>
 
                                 <div class="revealNewWtLine5 changingBlocks">Thus, the new weight matrix becomes: </div>
-                                &#9;
+                                &emsp;&emsp;&emsp;
                                 <div style="display: inline-block">
                                     <table class="matrix changingBlocks newWeightMatrix" data-toggle="tooltip" data-placement="bottom" title="New Weight Matrix W">
                                         <tr class="0"><td class="0">0</td><td class="1">0</td><td class="2">0</td></tr>

@@ -15,6 +15,24 @@
     animation: dash 2s linear infinite;
 }
 
+.animatedLineRegionRed{
+    stroke: #e81e1e!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineRegionBlue{
+    stroke: #3366ff!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineRegionGreen{
+    stroke: #00a703!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
 @keyframes dash {
     from {
         stroke-dashoffset: 1000;
