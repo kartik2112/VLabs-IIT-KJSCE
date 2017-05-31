@@ -94,3 +94,55 @@ button.displayActivatedButton{
     font-size: 20px;
     font-weight: bolder;
 }
+
+
+/*The following definitions are used to display matrices Reference: http://jsfiddle.net/NQ6ww/38/ */
+.matrix {
+    position: relative;
+}
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid #000;
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0px;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0px;
+}
+.matrix td {
+    padding: 5px;    
+    text-align: center;
+}
+
+
+
+
+.centerPosOperatorsForMatrices{
+    display: inline-block; 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    position: relative; 
+    bottom: 42px;
+}
+
+.centerPosOperatorsForArrays{
+    display: inline-block; 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    position: relative; 
+    bottom: 12px;
+}
+
+.carousel-indicators li {
+    background-color: #0091ff; 
+}
+.carousel-indicators .active {
+    background-color: #0781c8;
+}
