@@ -20,7 +20,7 @@
 
         
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <link href="../../../../src/Styles.css" rel="stylesheet" />
+        <link href="../../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
