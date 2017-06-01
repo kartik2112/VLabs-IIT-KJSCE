@@ -265,13 +265,13 @@
                     <div id="learningRate_slider" class="sliders" style="width: 200px;display: inline-block;"></div>&emsp;<span class="learningRate"></span><br/><br/><br/>
 
                     <button id="PercLRStartSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
-                    <button id="PercLRStopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button>
+                    <button id="PercLRStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation()" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="PercLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button when you have understood the calculation for this input">Apply next I/P value</button><br/><br/>
 
                     <div id="ExplanationOfCalculation" style="clear: both;">
                         <div id="FirstPartOfExpln" style="display: none;">
                                 <h3>Calculations:</h3>
-                                O = sgn( W x X )<br/>
+                                &emsp;&emsp;O = sgn( W x X )<br/>
 
                                 <div class="centerPosOperatorsForMatrices">O = </div>
 

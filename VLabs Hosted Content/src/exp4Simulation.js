@@ -1,4 +1,4 @@
-var weightMatrix = [[-2, 1, -5], [3,2,1], [0,-1,-1.5]];
+var weightMatrix = [[-2, 1, -6.5], [3,2,1], [0,-1,-1.5]];
 var lineColors = ['#3366ff','#ff0000','#009933'];
 var inputs = [[-2,3,1],[-2,2,1],[2,3,1],[2,2,1],[3,4,1],[-2,-2,1],[2,-2,1]];
 var desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
@@ -70,6 +70,7 @@ function resetSimulation(){
     $("#PercLRNextButton").attr("disabled");
     $("#PercLRNextButton").addClass("disabled");
     $("#PercLRNextButton").removeClass("displayActivatedButton");
+    $("#PercLRNextButton").unbind("click");
 }
 
 
@@ -101,6 +102,7 @@ function learnInput(inputIndex){
     $("#PercLRNextButton").attr("disabled");
     $("#PercLRNextButton").addClass("disabled");
     $("#PercLRNextButton").removeClass("displayActivatedButton");
+    $("#PercLRNextButton").unbind("click");
 
 
     var constPointSize = 5;
@@ -118,7 +120,7 @@ function learnInput(inputIndex){
     window.setTimeout(function () {
         points[inputIndex].fillColor('#000000');
         points[inputIndex].strokeColor('#000000');
-        points[inputIndex].size(15);
+        points[inputIndex].size(25);
         window.setTimeout(function () {
             points[inputIndex].fillColor(desiredOPsProps[0][1]);
             points[inputIndex].strokeColor(desiredOPsProps[0][1]);
@@ -126,7 +128,7 @@ function learnInput(inputIndex){
             window.setTimeout(function () {
                 points[inputIndex].fillColor('#000000');
                 points[inputIndex].strokeColor('#000000');
-                points[inputIndex].size(15);
+                points[inputIndex].size(25);
                 window.setTimeout(function () {
                     points[inputIndex].fillColor(desiredOPsProps[0][1]);
                     points[inputIndex].strokeColor(desiredOPsProps[0][1]);
@@ -319,15 +321,19 @@ function learnInput(inputIndex){
                     }, 3000);
                     window.setTimeout(function () {
                         plotGraph();
-                        window.setTimeout(function () {
-                            $("#PercLRNextButton").removeAttr("disabled");
-                            $("#PercLRNextButton").removeClass("disabled");
-                            $("#PercLRNextButton").addClass("displayActivatedButton");
-                            $("#PercLRNextButton").unbind("click");
-                            $("#PercLRNextButton").click(function () {
-                                learnInput(inputIndex + 1);
-                            });
-                        }, 1000);
+                        if(inputIndex!=inputs.length){
+                            window.setTimeout(function () {
+                                $("#PercLRNextButton").removeAttr("disabled");
+                                $("#PercLRNextButton").removeClass("disabled");
+                                $("#PercLRNextButton").addClass("displayActivatedButton");                                
+                                $("#PercLRNextButton").click(function () {
+                                    learnInput(inputIndex + 1);
+                                });
+                            }, 1000);
+                        }    
+                        else{
+                            alert("Simulation has been completed! As you can see from the graph, the classifier is converging towards classifying all inputs correctly!")
+                        }                    
                     }, 4500);
                 }, 18000));
 
