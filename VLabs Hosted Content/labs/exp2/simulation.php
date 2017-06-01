@@ -20,14 +20,14 @@ $_SESSION["currPage"]=5;
   
   
   <!-- jQuery 2.2.3 -->
-  <script src="../../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
-  <script src="../../../../plugins/jQueryUI/jquery-ui.min.js"></script>
+  <script src="../../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
 
   <!-- Simulation scripts start-->
 
-  <link href="../../../../src/Styles.css" rel="stylesheet" />
+  <link href="../../../src/Styles.css" rel="stylesheet" />
 
   <!-- JSX Graph links -->
   <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
