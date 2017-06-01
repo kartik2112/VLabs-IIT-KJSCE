@@ -17,618 +17,621 @@ $_SESSION["currPage"]=5;
   <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  
+  
+  <!-- jQuery 2.2.3 -->
+  <script src="../../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="../../../../plugins/jQueryUI/jquery-ui.min.js"></script>
+
+
+  <!-- Simulation scripts start-->
+
+  <link href="../../../../src/Styles.css" rel="stylesheet" />
+
   <!-- JSX Graph links -->
   <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
-  <!-- Simulation scripts start-->
 
 
-  <link href="../src/StyleSheet1.css" rel="stylesheet" />
-  <link href="../Styles.css" rel="stylesheet" />
-
-  <!-- jQuery 2.2.3 -->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <script type="text/javascript">
 
-    $(function () {
-      $(".sliders").slider({
-        step: 0.1,
-        max: 5,
-        min: -5,
-        slide: function (event, ui) {
-          $("#t" + sel).html(ui.value);
-        }
+      $(function () {
+          $(".sliders").slider({
+              step: 0.1,
+              max: 5,
+              min: -5,
+              slide: function (event, ui) {
+                  $("#t" + sel).html(ui.value);
+              }
+          });
+          $(".tsliders").slider({
+              step: 0.1,
+              max: 2,
+              min: -2,
+              slide: function (event, ui) {
+                  $("#thresh").html(ui.value);
+              }
+          });
+          $(".bsliders").slider({
+              step: 0.1,
+              max: 2,
+              min: -2,
+              slide: function (event, ui) {
+                  $("#b" + sel).html(ui.value);
+              }
+          });
+          $("#lslider").slider({
+              step: 0.1,
+              max: 3.0,
+              min: 0.1,
+              value: 1,
+              slide: function (event, ui) {
+                  $("#learn").html(ui.value);
+              }
+          });
+          init_mlp();
       });
-      $(".tsliders").slider({
-        step: 0.1,
-        max: 2,
-        min: -2,
-        slide: function (event, ui) {
-          $("#thresh").html(ui.value);
-        }
-      });
-      $(".bsliders").slider({
-        step: 0.1,
-        max: 2,
-        min: -2,
-        slide: function (event, ui) {
-          $("#b" + sel).html(ui.value);
-        }
-      });
-      $("#lslider").slider({
-        step: 0.1,
-        max: 3.0,
-        min: 0.1,
-        value: 1,
-        slide: function (event, ui) {
-          $("#learn").html(ui.value);
-        }
-      });
-      init_mlp();
-    });
 
-    var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
+      var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
 
-    //These variables are used only for Multi Layer Perceptron
-    var mlp_s_w11=0, mlp_s_w12=0, mlp_s_w21=0, mlp_s_w22=0, mlp_s_v1=0, mlp_s_v2=0, mlp_s_b1=0, mlp_s_b2=0, mlp_s_b3=0, mlp_s_theta=0;
+      //These variables are used only for Multi Layer Perceptron
+      var mlp_s_w11 = 0, mlp_s_w12 = 0, mlp_s_w21 = 0, mlp_s_w22 = 0, mlp_s_v1 = 0, mlp_s_v2 = 0, mlp_s_b1 = 0, mlp_s_b2 = 0, mlp_s_b3 = 0, mlp_s_theta = 0;
 
-    //These variables are used only for Error Back Propogation.
-    var s_w11=0, s_w12=0, s_w21=0, s_w22=0, s_v1=0, s_v2=0, s_b1=0, s_b2=0, s_b3=0, s_learningRate=1, s_iter=1000, sim, learningRate, e=Math.E, iter, iterations=-1, outs=[], outs_hidden_1=[], outs_hidden_2=[];
+      //These variables are used only for Error Back Propogation.
+      var s_w11 = 0, s_w12 = 0, s_w21 = 0, s_w22 = 0, s_v1 = 0, s_v2 = 0, s_b1 = 0, s_b2 = 0, s_b3 = 0, s_learningRate = 1, s_iter = 1000, sim, learningRate, e = Math.E, iter, iterations = -1, outs = [], outs_hidden_1 = [], outs_hidden_2 = [];
 
-    function changeMode(){
-      var m = document.getElementById('m');
+      function changeMode() {
+          var m = document.getElementById('m');
 
-      if(m.value=="mlp"){
-        document.getElementById('start').setAttribute("onclick","start_mlp()");
-        document.getElementById('thresh_title').style.display = "block";
-        document.getElementById('img_thresh').setAttribute("onclick","editThreshold()");
-        init_mlp();
+          if (m.value == "mlp") {
+              document.getElementById('start').setAttribute("onclick", "start_mlp()");
+              document.getElementById('thresh_title').style.display = "block";
+              document.getElementById('img_thresh').setAttribute("onclick", "editThreshold()");
+              init_mlp();
 
-        for(var i=1;i<=4;i++){
-          document.getElementById('out'+i).innerHTML = "-";
-          document.getElementById('h1'+i).innerHTML = "-";
-          document.getElementById('h2'+i).innerHTML = "-";
-        }
-        document.getElementById('acc_val').innerHTML = 0;
-        document.getElementById('acc').style.display = "none";
-        document.getElementById('grph').style.display = "none";
-      }
-      else{
-        save_weights_mlp();
-        document.getElementById('start').setAttribute('onclick','save_weights_ebp()');
-        document.getElementById('thresh_title').style.display = "none";
-        document.getElementById('img_thresh').setAttribute("onclick","");
-        init_ebp();
-
-        for(var i=1;i<=4;i++){
-          document.getElementById('out'+i).innerHTML = "-";
-          document.getElementById('h1'+i).innerHTML = "-";
-          document.getElementById('h2'+i).innerHTML = "-";
-        }
-        document.getElementById('acc_val').innerHTML = 0;
-        document.getElementById('acc').style.display = "none";
-        document.getElementById('grph').style.display = "none";
-      }
-
-
-      document.getElementById('r4').style.background = "transparent";
-      document.getElementById('start').innerHTML = "Start simulation";
-      board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-      OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-      OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-      OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-      OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
-
-      for(var i=1;i<=4;i++){
-        document.getElementById('out' + i).innerHTML = "-";
-      }
-    }
-
-    function save_weights_ebp() {
-      s_w11=parseFloat(document.getElementById('t1').innerHTML);
-      s_w12=parseFloat(document.getElementById('t2').innerHTML);
-      s_b1=parseFloat(document.getElementById('b1').innerHTML);
-
-      s_w21=parseFloat(document.getElementById('t3').innerHTML);
-      s_w22=parseFloat(document.getElementById('t4').innerHTML);
-      s_b2=parseFloat(document.getElementById('b2').innerHTML);
-
-      s_v1=parseFloat(document.getElementById('t5').innerHTML);
-      s_v2=parseFloat(document.getElementById('t6').innerHTML);
-      s_b3=parseFloat(document.getElementById('b3').innerHTML);
-
-      s_learningRate=parseFloat(document.getElementById('learn').innerHTML);
-      theta = parseFloat(document.getElementById('thresh').innerHTML);
-      s_iter = parseFloat(document.getElementById('iter').value);
-
-      init_ebp();
-      start_ebp();
-    }
-
-    function save_weights_mlp(){
-      mlp_s_w11=parseFloat(document.getElementById('t1').innerHTML);
-      mlp_s_w12=parseFloat(document.getElementById('t2').innerHTML);
-      mlp_s_b1=parseFloat(document.getElementById('b1').innerHTML);
-
-      mlp_s_w21=parseFloat(document.getElementById('t3').innerHTML);
-      mlp_s_w22=parseFloat(document.getElementById('t4').innerHTML);
-      mlp_s_b2=parseFloat(document.getElementById('b2').innerHTML);
-
-      mlp_s_v1=parseFloat(document.getElementById('t5').innerHTML);
-      mlp_s_v2=parseFloat(document.getElementById('t6').innerHTML);
-      mlp_s_b3=parseFloat(document.getElementById('b3').innerHTML);
-
-      mlp_s_theta = parseFloat(document.getElementById('thresh').innerHTML);
-    }
-
-    function init_ebp(){
-
-      document.getElementById('r4').style.background = "transparent";
-      $("#acc_title").html("Root mean square error: ");
-
-      document.getElementById('start').innerHTML = "Start simulation";
-
-      w11 = document.getElementById('t1').innerHTML = s_w11;
-      w12 = document.getElementById('t2').innerHTML = s_w12;
-      b1 = document.getElementById('b1').innerHTML = s_b1;
-
-      w21 = document.getElementById('t3').innerHTML = s_w21;
-      w22 = document.getElementById('t4').innerHTML = s_w22;
-      b2 = document.getElementById('b2').innerHTML = s_b2;
-
-      v1 = document.getElementById('t5').innerHTML = s_v1;
-      v2 = document.getElementById('t6').innerHTML = s_v2;
-      b3 = document.getElementById('b3').innerHTML = s_b3;
-
-      learningRate = document.getElementById('learn').innerHTML = s_learningRate;
-      iter = document.getElementById('iter').value = s_iter;
-
-      var ebp_elems = document.getElementsByClassName('ebp_content_only');
-      for(var i=0;i<ebp_elems.length;i++){
-        ebp_elems[i].style.display = "block";
-      }
-
-      for(var i=1;i<=4;i++){
-        document.getElementById('out'+i).innerHTML = "-";
-        document.getElementById('h1'+i).innerHTML = "-";
-        document.getElementById('h2'+i).innerHTML = "-";
-      }
-      document.getElementById('acc_val').innerHTML = 0;
-      document.getElementById('acc').style.display = "none";
-      document.getElementById('grph').style.display = "none";
-
-      document.getElementById('reset').style.display = "none";
-
-      counter = 0;
-      board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-      constPointSize = 5;
-      OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-      OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-      OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-      OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
-      x1 = [0, 0, 1, 1];
-      x2 = [0, 1, 0, 1];
-      z = [0, 1, 1, 0];
-    }
-
-    function start_ebp(){
-      board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-      constPointSize = 5;
-      OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-      OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-      OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-      OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
-
-      document.getElementById('bef_thresh_op_txt').style.display = "none";
-      document.getElementById('after_threshold_op').style.display = "none";
-      document.getElementById('grph').style.display = "none";
-      var mode = document.getElementsByClassName('nw');
-      for(var i=0;i<mode.length;i++){
-        mode[i].style.display = "none";
-      }
-      document.getElementById('acc').style.display = "none";
-      document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
-      document.getElementById('start').setAttribute("disabled","disabled");
-
-      z1 = z2 = y = y1 = y2 = yin = 0;
-
-
-      //Start animation of weight lines
-      var i;
-      for (i = 1; i <= 6; i++) {
-        $("#w" + i).addClass('animatedLinePurple');
-      }
-      $("#w" + i).addClass('animatedLineGreen');
-
-
-      setTimeout(function(){
-        for(var i=iterations+1;i<iter;i++){
-          var set_op = false;
-          errorRate = 0;
-          for(counter=0;counter<4;counter++) ebp(counter);
-
-          if(i == iter-1){
-            var reset = document.getElementById('reset');
-            reset.style.display = "block";
-            reset.innerHTML = "Reset";
-            reset.setAttribute('onclick','init_ebp()');
-            iterations = 0;
-            i++;
-
-            set_op = true;
+              for (var i = 1; i <= 4; i++) {
+                  document.getElementById('out' + i).innerHTML = "-";
+                  document.getElementById('h1' + i).innerHTML = "-";
+                  document.getElementById('h2' + i).innerHTML = "-";
+              }
+              document.getElementById('acc_val').innerHTML = 0;
+              document.getElementById('acc').style.display = "none";
+              document.getElementById('grph').style.display = "none";
           }
-          else if(i == 10000 || i == 100000 || i == 1000000 || i==10000000){
-            var reset = document.getElementById('reset');
-            reset.style.display = "block";
-            reset.innerHTML = "Continue";
-            reset.setAttribute('onclick','start_ebp()');
+          else {
+              save_weights_mlp();
+              document.getElementById('start').setAttribute('onclick', 'save_weights_ebp()');
+              document.getElementById('thresh_title').style.display = "none";
+              document.getElementById('img_thresh').setAttribute("onclick", "");
+              init_ebp();
 
-            set_op = true;
+              for (var i = 1; i <= 4; i++) {
+                  document.getElementById('out' + i).innerHTML = "-";
+                  document.getElementById('h1' + i).innerHTML = "-";
+                  document.getElementById('h2' + i).innerHTML = "-";
+              }
+              document.getElementById('acc_val').innerHTML = 0;
+              document.getElementById('acc').style.display = "none";
+              document.getElementById('grph').style.display = "none";
           }
 
-          if(set_op == true){
 
-            setTimeout(function(){
-              var p;
-              for (p = 1; p <= 6; p++) {
-                $("#w" + p).removeClass('animatedLinePurple');
-              }
-              $("#w" + p).removeClass('animatedLineGreen');
-              iterations++;
-            },1000);
+          document.getElementById('r4').style.background = "transparent";
+          document.getElementById('start').innerHTML = "Start simulation";
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+          OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+          OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+          OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
 
-            var msg = document.getElementById('msg');
-            msg.innerHTML = "No. of iterations completed: "+(i);
-            if(i!=iter) msg.innerHTML += ". Check how the weights affect the decision boundaries and the solution below. Click the button below to continue.";
-            else {
-              msg.innerHTML += ". Click Reset to try again with different values."
-              document.getElementById('start').removeAttribute("disabled");
-              var mode = document.getElementsByClassName('nw');
-              for(var i=0;i<mode.length;i++){
-                mode[i].style.display = "block";
-              }
-            }
+          for (var i = 1; i <= 4; i++) {
+              document.getElementById('out' + i).innerHTML = "-";
+          }
+      }
 
-            //Set weights on weight lines
-            for(var wt=1;wt<=6;wt++){
-              var weight = document.getElementById("t"+wt);
-              switch(wt){
-                case 1:
-                  weight.innerHTML = w11.toFixed(3);break;
-                case 2:
-                  weight.innerHTML = w12.toFixed(3);break;
-                case 3:
-                  weight.innerHTML = w21.toFixed(3);break;
-                case 4:
-                  weight.innerHTML = w22.toFixed(3);break;
-                case 5:
-                  weight.innerHTML = v1.toFixed(3);break;
-                case 6:
-                  weight.innerHTML = v2.toFixed(3);break;
-              }
-            }
+      function save_weights_ebp() {
+          s_w11 = parseFloat(document.getElementById('t1').innerHTML);
+          s_w12 = parseFloat(document.getElementById('t2').innerHTML);
+          s_b1 = parseFloat(document.getElementById('b1').innerHTML);
 
-            //Set biases
-            document.getElementById('b1').innerHTML = b1.toFixed(3);
-            document.getElementById('b2').innerHTML = b2.toFixed(3);
-            document.getElementById('b3').innerHTML = b3.toFixed(3);
+          s_w21 = parseFloat(document.getElementById('t3').innerHTML);
+          s_w22 = parseFloat(document.getElementById('t4').innerHTML);
+          s_b2 = parseFloat(document.getElementById('b2').innerHTML);
 
-            //Set intermediate output
-            document.getElementById('bef_thresh_op').innerHTML = yin.toFixed(3);
+          s_v1 = parseFloat(document.getElementById('t5').innerHTML);
+          s_v2 = parseFloat(document.getElementById('t6').innerHTML);
+          s_b3 = parseFloat(document.getElementById('b3').innerHTML);
 
-            //Set final output
-            document.getElementById('op').innerHTML = y.toFixed(3);
+          s_learningRate = parseFloat(document.getElementById('learn').innerHTML);
+          theta = parseFloat(document.getElementById('thresh').innerHTML);
+          s_iter = parseFloat(document.getElementById('iter').value);
 
-            for(var j=0;j<4;j++)  document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
-            for(var ctr=1;ctr<=4;ctr++){
-              console.log(outs_hidden_1[ctr] + " "+outs_hidden_2[ctr-1]);
-              document.getElementById('h1'+ctr).innerHTML = outs_hidden_1[ctr-1].toFixed(3);
-              document.getElementById('h2'+ctr).innerHTML = outs_hidden_2[ctr-1].toFixed(3);
-            }
+          init_ebp();
+          start_ebp();
+      }
 
+      function save_weights_mlp() {
+          mlp_s_w11 = parseFloat(document.getElementById('t1').innerHTML);
+          mlp_s_w12 = parseFloat(document.getElementById('t2').innerHTML);
+          mlp_s_b1 = parseFloat(document.getElementById('b1').innerHTML);
 
-            for(j=0;j<outs_hidden_1.length;j++)
-            {
-              if(z[j]==0)
-                var finalPoints = board1.create('point',[outs_hidden_1[j],outs_hidden_2[j]], {size:constPointSize,face:'x',fixed:true,name:'Group 0'});
-              else
-                var finalPoints = board1.create('point',[outs_hidden_1[j],outs_hidden_2[j]], {size:constPointSize,face:'^',fixed:true,name:'Group 1'});
-            }
-            decisionBoundary1 = board.create('line', [b1, Number(w11), Number(w21)],{fixed:true});
-            decisionBoundary2 = board.create('line', [b2, Number(w12), Number(w22)],{fixed:true});
-            finalBoundary = board1.create('line', [b3, Number(v1), Number(v2)],{fixed:true});
+          mlp_s_w21 = parseFloat(document.getElementById('t3').innerHTML);
+          mlp_s_w22 = parseFloat(document.getElementById('t4').innerHTML);
+          mlp_s_b2 = parseFloat(document.getElementById('b2').innerHTML);
 
-            document.getElementById('grph').style.display = "block";
-            break;
+          mlp_s_v1 = parseFloat(document.getElementById('t5').innerHTML);
+          mlp_s_v2 = parseFloat(document.getElementById('t6').innerHTML);
+          mlp_s_b3 = parseFloat(document.getElementById('b3').innerHTML);
+
+          mlp_s_theta = parseFloat(document.getElementById('thresh').innerHTML);
+      }
+
+      function init_ebp() {
+
+          document.getElementById('r4').style.background = "transparent";
+          $("#acc_title").html("Root mean square error: ");
+
+          document.getElementById('start').innerHTML = "Start simulation";
+
+          w11 = document.getElementById('t1').innerHTML = s_w11;
+          w12 = document.getElementById('t2').innerHTML = s_w12;
+          b1 = document.getElementById('b1').innerHTML = s_b1;
+
+          w21 = document.getElementById('t3').innerHTML = s_w21;
+          w22 = document.getElementById('t4').innerHTML = s_w22;
+          b2 = document.getElementById('b2').innerHTML = s_b2;
+
+          v1 = document.getElementById('t5').innerHTML = s_v1;
+          v2 = document.getElementById('t6').innerHTML = s_v2;
+          b3 = document.getElementById('b3').innerHTML = s_b3;
+
+          learningRate = document.getElementById('learn').innerHTML = s_learningRate;
+          iter = document.getElementById('iter').value = s_iter;
+
+          var ebp_elems = document.getElementsByClassName('ebp_content_only');
+          for (var i = 0; i < ebp_elems.length; i++) {
+              ebp_elems[i].style.display = "block";
           }
 
-          iterations++;
-        }
+          for (var i = 1; i <= 4; i++) {
+              document.getElementById('out' + i).innerHTML = "-";
+              document.getElementById('h1' + i).innerHTML = "-";
+              document.getElementById('h2' + i).innerHTML = "-";
+          }
+          document.getElementById('acc_val').innerHTML = 0;
+          document.getElementById('acc').style.display = "none";
+          document.getElementById('grph').style.display = "none";
 
-        document.getElementById('bef_thresh_op_txt').style.display = "block";
-        document.getElementById('after_threshold_op').style.display = "block";
-        document.getElementById('acc').style.display = "block";
+          document.getElementById('reset').style.display = "none";
 
-        rms = Math.sqrt(errorRate/4);
-        rms = rms*100; 
-
-        document.getElementById('acc_val').innerHTML = rms.toFixed(3) + "%";
-      },1000);
-    }
-
-    function ebp(j){
-
-      /*document.getElementById('bef_thresh_op_txt').style.display = "block";
-      document.getElementById('after_threshold_op').style.display = "block";*/
-
-      //Hidden Neuron computations
-      z1=x1[j]*w11+x2[j]*w21+b1;  // Computation at hidden neuron 1
-      z2=x1[j]*w21+x2[j]*w22+b2;  // Computation at hidden neuron 2
-
-      //Output at hidden layer nuerons
-      var temp=Math.pow(e,-z1);
-      y1=1/(1+temp);
-      temp=Math.pow(e,-z2);
-      y2=1/(1+temp);
-
-      //Calculation at output nueron
-      yin=y1*v1+y2*v2+b3;
-
-      //Output at output nueron
-      var temp=Math.pow(e,-yin);
-      y=1/(1+temp);
-
-      //Calculation of delta values for each neuron
-      var delta1 = y*(1-y)*(z[j]-y);
-      var delta2 = y1*(1-y1)*v1*delta1;
-      var delta3 = y2*(1-y2)*v2*delta1;
-
-      //Update Bias:
-      b1 = b1 + learningRate * delta2;
-      b2 = b2 + learningRate * delta3;
-      b3 = b3 + learningRate * delta1;
-
-      //Changing weights between input neurons and hidden neurons
-      w11 = w11 + learningRate * x1[j] * delta2; 
-      w12 = w12 + learningRate * x1[j] * delta2;
-      w21 = w21 + learningRate * x2[j] * delta3;
-      w22 = w22 + learningRate * x2[j] * delta3;
-
-      // Changing weights between output neurons and hidden neurons
-      v1 = v1 + learningRate * y1 * delta1;
-      v2 = v2 + learningRate * y2 * delta1;
-
-      outs[j] = y;
-      outs_hidden_1[j] = y1;
-      outs_hidden_2[j] = y2;
-
-      errorRate += Math.pow(z[j]-y,2);
-
-    }
-
-    function init_mlp() {
-
-      document.getElementById('t1').innerHTML = mlp_s_w11;
-      document.getElementById('t2').innerHTML = mlp_s_w12;
-      document.getElementById('b1').innerHTML = mlp_s_b1;
-
-      document.getElementById('t3').innerHTML = mlp_s_w21;
-      document.getElementById('t4').innerHTML = mlp_s_w22;
-      document.getElementById('b2').innerHTML = mlp_s_b2;
-
-      document.getElementById('t5').innerHTML = mlp_s_v1;
-      document.getElementById('t6').innerHTML = mlp_s_v2;
-      document.getElementById('b3').innerHTML = mlp_s_b3;
-      document.getElementById('thresh').innerHTML = mlp_s_theta;
-
-      //Hide all elements unique to EBP.
-      var ebp_elems = document.getElementsByClassName('ebp_content_only');
-      for(var i=0;i<ebp_elems.length;i++){
-        ebp_elems[i].style.display = "none";
+          counter = 0;
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          constPointSize = 5;
+          OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+          OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+          OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+          OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+          x1 = [0, 0, 1, 1];
+          x2 = [0, 1, 0, 1];
+          z = [0, 1, 1, 0];
       }
 
-      $("#acc_title").html("Accuracy of network: ");
+      function start_ebp() {
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          constPointSize = 5;
+          OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+          OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+          OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+          OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
 
-      counter = 0;
+          document.getElementById('bef_thresh_op_txt').style.display = "none";
+          document.getElementById('after_threshold_op').style.display = "none";
+          document.getElementById('grph').style.display = "none";
+          var mode = document.getElementsByClassName('nw');
+          for (var i = 0; i < mode.length; i++) {
+              mode[i].style.display = "none";
+          }
+          document.getElementById('acc').style.display = "none";
+          document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
+          document.getElementById('start').setAttribute("disabled", "disabled");
 
-      /* Creates the cartesian graph */
-      board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-      board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-      constPointSize = 5;
-      OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-      OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-      OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-      OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
-      x1 = [0, 0, 1, 1];
-      x2 = [0, 1, 0, 1];
-      z = [0, 1, 1, 0];
+          z1 = z2 = y = y1 = y2 = yin = 0;
 
-      testOneX = 0;
-      testOneY = 0;
 
-      testTwoX = 1;
-      testTwoY = 0;
+          //Start animation of weight lines
+          var i;
+          for (i = 1; i <= 6; i++) {
+              $("#w" + i).addClass('animatedLinePurple');
+          }
+          $("#w" + i).addClass('animatedLineGreen');
 
-      flag = true;
-      erroneousCount = 0;
 
-      var i;
-      for (i = 1; i <= 7; i++) {
-        $("#w" + i).addClass('StdLine');
+          setTimeout(function () {
+              for (var i = iterations + 1; i < iter; i++) {
+                  var set_op = false;
+                  errorRate = 0;
+                  for (counter = 0; counter < 4; counter++) ebp(counter);
+
+                  if (i == iter - 1) {
+                      var reset = document.getElementById('reset');
+                      reset.style.display = "block";
+                      reset.innerHTML = "Reset";
+                      reset.setAttribute('onclick', 'init_ebp()');
+                      iterations = 0;
+                      i++;
+
+                      set_op = true;
+                  }
+                  else if (i == 10000 || i == 100000 || i == 1000000 || i == 10000000) {
+                      var reset = document.getElementById('reset');
+                      reset.style.display = "block";
+                      reset.innerHTML = "Continue";
+                      reset.setAttribute('onclick', 'start_ebp()');
+
+                      set_op = true;
+                  }
+
+                  if (set_op == true) {
+
+                      setTimeout(function () {
+                          var p;
+                          for (p = 1; p <= 6; p++) {
+                              $("#w" + p).removeClass('animatedLinePurple');
+                          }
+                          $("#w" + p).removeClass('animatedLineGreen');
+                          iterations++;
+                      }, 1000);
+
+                      var msg = document.getElementById('msg');
+                      msg.innerHTML = "No. of iterations completed: " + (i);
+                      if (i != iter) msg.innerHTML += ". Check how the weights affect the decision boundaries and the solution below. Click the button below to continue.";
+                      else {
+                          msg.innerHTML += ". Click Reset to try again with different values."
+                          document.getElementById('start').removeAttribute("disabled");
+                          var mode = document.getElementsByClassName('nw');
+                          for (var i = 0; i < mode.length; i++) {
+                              mode[i].style.display = "block";
+                          }
+                      }
+
+                      //Set weights on weight lines
+                      for (var wt = 1; wt <= 6; wt++) {
+                          var weight = document.getElementById("t" + wt);
+                          switch (wt) {
+                              case 1:
+                                  weight.innerHTML = w11.toFixed(3); break;
+                              case 2:
+                                  weight.innerHTML = w12.toFixed(3); break;
+                              case 3:
+                                  weight.innerHTML = w21.toFixed(3); break;
+                              case 4:
+                                  weight.innerHTML = w22.toFixed(3); break;
+                              case 5:
+                                  weight.innerHTML = v1.toFixed(3); break;
+                              case 6:
+                                  weight.innerHTML = v2.toFixed(3); break;
+                          }
+                      }
+
+                      //Set biases
+                      document.getElementById('b1').innerHTML = b1.toFixed(3);
+                      document.getElementById('b2').innerHTML = b2.toFixed(3);
+                      document.getElementById('b3').innerHTML = b3.toFixed(3);
+
+                      //Set intermediate output
+                      document.getElementById('bef_thresh_op').innerHTML = yin.toFixed(3);
+
+                      //Set final output
+                      document.getElementById('op').innerHTML = y.toFixed(3);
+
+                      for (var j = 0; j < 4; j++) document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
+                      for (var ctr = 1; ctr <= 4; ctr++) {
+                          console.log(outs_hidden_1[ctr] + " " + outs_hidden_2[ctr - 1]);
+                          document.getElementById('h1' + ctr).innerHTML = outs_hidden_1[ctr - 1].toFixed(3);
+                          document.getElementById('h2' + ctr).innerHTML = outs_hidden_2[ctr - 1].toFixed(3);
+                      }
+
+
+                      for (j = 0; j < outs_hidden_1.length; j++) {
+                          if (z[j] == 0)
+                              var finalPoints = board1.create('point', [outs_hidden_1[j], outs_hidden_2[j]], { size: constPointSize, face: 'x', fixed: true, name: 'Group 0' });
+                          else
+                              var finalPoints = board1.create('point', [outs_hidden_1[j], outs_hidden_2[j]], { size: constPointSize, face: '^', fixed: true, name: 'Group 1' });
+                      }
+                      decisionBoundary1 = board.create('line', [b1, Number(w11), Number(w21)], { fixed: true });
+                      decisionBoundary2 = board.create('line', [b2, Number(w12), Number(w22)], { fixed: true });
+                      finalBoundary = board1.create('line', [b3, Number(v1), Number(v2)], { fixed: true });
+
+                      document.getElementById('grph').style.display = "block";
+                      break;
+                  }
+
+                  iterations++;
+              }
+
+              document.getElementById('bef_thresh_op_txt').style.display = "block";
+              document.getElementById('after_threshold_op').style.display = "block";
+              document.getElementById('acc').style.display = "block";
+
+              rms = Math.sqrt(errorRate / 4);
+              rms = rms * 100;
+
+              document.getElementById('acc_val').innerHTML = rms.toFixed(3) + "%";
+          }, 1000);
       }
 
-    }
+      function ebp(j) {
 
-    function start_mlp() {
+          /*document.getElementById('bef_thresh_op_txt').style.display = "block";
+          document.getElementById('after_threshold_op').style.display = "block";*/
 
-      document.getElementById('grph').style.display = "block";
+          //Hidden Neuron computations
+          z1 = x1[j] * w11 + x2[j] * w21 + b1;  // Computation at hidden neuron 1
+          z2 = x1[j] * w21 + x2[j] * w22 + b2;  // Computation at hidden neuron 2
 
-      w11 = parseFloat(document.getElementById('t1').innerHTML);
-      w12 = parseFloat(document.getElementById('t2').innerHTML);
-      b1 = parseFloat(document.getElementById('b1').innerHTML);
+          //Output at hidden layer nuerons
+          var temp = Math.pow(e, -z1);
+          y1 = 1 / (1 + temp);
+          temp = Math.pow(e, -z2);
+          y2 = 1 / (1 + temp);
 
-      w21 = parseFloat(document.getElementById('t3').innerHTML);
-      w22 = parseFloat(document.getElementById('t4').innerHTML);
-      b2 = parseFloat(document.getElementById('b2').innerHTML);
+          //Calculation at output nueron
+          yin = y1 * v1 + y2 * v2 + b3;
 
-      v1 = parseFloat(document.getElementById('t5').innerHTML);
-      v2 = parseFloat(document.getElementById('t6').innerHTML);
-      b3 = parseFloat(document.getElementById('b3').innerHTML);
-      theta = parseFloat(document.getElementById('thresh').innerHTML);
-      z1 = z2 = y = y1 = y2 = yin = 0;
+          //Output at output nueron
+          var temp = Math.pow(e, -yin);
+          y = 1 / (1 + temp);
 
-      //Hide the Accuracy of network text
-      document.getElementById('acc').style.display = "none";
-      
-      //Hide the Dropdown to select network.
-      var mode = document.getElementsByClassName('nw');
-      for(var i=0;i<mode.length;i++){
-        mode[i].style.display = "none";
+          //Calculation of delta values for each neuron
+          var delta1 = y * (1 - y) * (z[j] - y);
+          var delta2 = y1 * (1 - y1) * v1 * delta1;
+          var delta3 = y2 * (1 - y2) * v2 * delta1;
+
+          //Update Bias:
+          b1 = b1 + learningRate * delta2;
+          b2 = b2 + learningRate * delta3;
+          b3 = b3 + learningRate * delta1;
+
+          //Changing weights between input neurons and hidden neurons
+          w11 = w11 + learningRate * x1[j] * delta2;
+          w12 = w12 + learningRate * x1[j] * delta2;
+          w21 = w21 + learningRate * x2[j] * delta3;
+          w22 = w22 + learningRate * x2[j] * delta3;
+
+          // Changing weights between output neurons and hidden neurons
+          v1 = v1 + learningRate * y1 * delta1;
+          v2 = v2 + learningRate * y2 * delta1;
+
+          outs[j] = y;
+          outs_hidden_1[j] = y1;
+          outs_hidden_2[j] = y2;
+
+          errorRate += Math.pow(z[j] - y, 2);
+
       }
 
-      //Last input
-      if (counter == 3) {
-        document.getElementById('start').innerHTML = "Restart simulation";
-        var mode = document.getElementsByClassName('nw');
-        for(var i=0;i<mode.length;i++){
-          mode[i].style.display = "block";
-        }
-      }
+      function init_mlp() {
 
-      //Restarted simulation
-      else if (counter == 4) {
-        for (var i = 1; i <= 4; i++) {
-          document.getElementById('out' + i).innerHTML = "-";
-        }
-        counter = 0;
+          document.getElementById('t1').innerHTML = mlp_s_w11;
+          document.getElementById('t2').innerHTML = mlp_s_w12;
+          document.getElementById('b1').innerHTML = mlp_s_b1;
 
-        /* Hide the outputs of network */
-        document.getElementById('bef_thresh_op_txt').style.display = "none";
-        document.getElementById('after_threshold_op').style.display = "none";
+          document.getElementById('t3').innerHTML = mlp_s_w21;
+          document.getElementById('t4').innerHTML = mlp_s_w22;
+          document.getElementById('b2').innerHTML = mlp_s_b2;
 
-        //Change text of start button
-        document.getElementById('start').innerHTML = "Test next input";
+          document.getElementById('t5').innerHTML = mlp_s_v1;
+          document.getElementById('t6').innerHTML = mlp_s_v2;
+          document.getElementById('b3').innerHTML = mlp_s_b3;
+          document.getElementById('thresh').innerHTML = mlp_s_theta;
 
-        //Re-plot the graph
-        board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-        board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-        OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
-        OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
-        OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
-        OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
-      }
+          //Hide all elements unique to EBP.
+          var ebp_elems = document.getElementsByClassName('ebp_content_only');
+          for (var i = 0; i < ebp_elems.length; i++) {
+              ebp_elems[i].style.display = "none";
+          }
 
-      //Input between 1 and 3
-      else document.getElementById('start').innerHTML = "Test next input";
+          $("#acc_title").html("Accuracy of network: ");
 
-      //Change the input indicator in truth table
-      if (counter != 0) document.getElementById('r' + (counter)).style.background = "transparent";
-      else document.getElementById('r4').style.background = "transparent";
+          counter = 0;
 
-      document.getElementById('r' + (counter + 1)).style.background = "#ff9595";
+          /* Creates the cartesian graph */
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          constPointSize = 5;
+          OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+          OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+          OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+          OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+          x1 = [0, 0, 1, 1];
+          x2 = [0, 1, 0, 1];
+          z = [0, 1, 1, 0];
 
-      //Start animation of weight lines
-      var i;
-      for (i = 1; i <= 6; i++) {
-        $("#w" + i).addClass('animatedLinePurple');
-      }
-      $("#w" + i).addClass('animatedLineGreen');
+          testOneX = 0;
+          testOneY = 0;
 
-      //Disable start button
-      document.getElementById('start').setAttribute("disabled", "disabled");
+          testTwoX = 1;
+          testTwoY = 0;
 
-      //Call mlp() function to calculate output.
-      setTimeout(function () {
-        mlp(counter);
-
-        //Stop animation of lines.
-        for (i = 1; i <= 6; i++) {
-          $("#w" + i).removeClass('animatedLinePurple');
-        }
-        $("#w" + i).removeClass('animatedLineGreen');
-
-        //Enable start button
-        document.getElementById('start').removeAttribute("disabled");
-
-        //If it was the last input
-        if (counter == 4) {
-
-          /* Show accuracy of network */
-          document.getElementById('acc').style.display = "block";
-
-          errorRate = erroneousCount / 4;
-          errorRate = 1 - errorRate;
-
-          errorRate = errorRate * 100;
-
-          document.getElementById('acc_val').innerHTML = errorRate + "%";
+          flag = true;
           erroneousCount = 0;
-        }
-      }, 2000);
 
+          var i;
+          for (i = 1; i <= 7; i++) {
+              $("#w" + i).addClass('StdLine');
+          }
 
-    }
-
-    function mlp(index) {
-      document.getElementById('bef_thresh_op_txt').style.display = "block";
-      document.getElementById('after_threshold_op').style.display = "block";
-      counter++;
-
-      var z11 = x1[index] * w11 + x2[index] * w21 - b1;
-      var z22 = x1[index] * w12 + x2[index] * w22 - b2;
-
-      z1 = z11; z2 = z22;
-
-      y1 = Number(z1);
-      y2 = Number(z2);
-
-      if (z1 >= theta)
-        y1 = 1;
-      else
-        y1 = 0;
-      if (z2 >= theta)
-        y2 = 1;
-      else
-        y2 = 0;
-
-      var yin1 = y1 * v1 + y2 * v2 - b3;
-      yin = yin1;
-
-      yin = Number(yin);
-      document.getElementById('bef_thresh_op').innerHTML = yin;
-
-      if (yin >= theta)
-        y = 1;
-      else
-        y = 0;
-
-      if(z[index]==1)
-        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
-      else
-        HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
-
-      var flagger = false;
-
-      if (y != z[index]) {
-        erroneousCount++;
       }
 
-      decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
-      decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
-      finalBoundary = board1.create('line', [-b3, Number(v1), Number(v2)]);
-      document.getElementById('h1' + (index + 1)).innerHTML = y1;
-      document.getElementById('h2' + (index + 1)).innerHTML = y2;
+      function start_mlp() {
 
-      document.getElementById('op').innerHTML = y;
-      document.getElementById('out' + (index + 1)).innerHTML = y;
-      z1 = z2 = y = y1 = y2 = 0;
-    }
+          document.getElementById('grph').style.display = "block";
+
+          w11 = parseFloat(document.getElementById('t1').innerHTML);
+          w12 = parseFloat(document.getElementById('t2').innerHTML);
+          b1 = parseFloat(document.getElementById('b1').innerHTML);
+
+          w21 = parseFloat(document.getElementById('t3').innerHTML);
+          w22 = parseFloat(document.getElementById('t4').innerHTML);
+          b2 = parseFloat(document.getElementById('b2').innerHTML);
+
+          v1 = parseFloat(document.getElementById('t5').innerHTML);
+          v2 = parseFloat(document.getElementById('t6').innerHTML);
+          b3 = parseFloat(document.getElementById('b3').innerHTML);
+          theta = parseFloat(document.getElementById('thresh').innerHTML);
+          z1 = z2 = y = y1 = y2 = yin = 0;
+
+          //Hide the Accuracy of network text
+          document.getElementById('acc').style.display = "none";
+
+          //Hide the Dropdown to select network.
+          var mode = document.getElementsByClassName('nw');
+          for (var i = 0; i < mode.length; i++) {
+              mode[i].style.display = "none";
+          }
+
+          //Last input
+          if (counter == 3) {
+              document.getElementById('start').innerHTML = "Restart simulation";
+              var mode = document.getElementsByClassName('nw');
+              for (var i = 0; i < mode.length; i++) {
+                  mode[i].style.display = "block";
+              }
+          }
+
+          //Restarted simulation
+          else if (counter == 4) {
+              for (var i = 1; i <= 4; i++) {
+                  document.getElementById('out' + i).innerHTML = "-";
+              }
+              counter = 0;
+
+              /* Hide the outputs of network */
+              document.getElementById('bef_thresh_op_txt').style.display = "none";
+              document.getElementById('after_threshold_op').style.display = "none";
+
+              //Change text of start button
+              document.getElementById('start').innerHTML = "Test next input";
+
+              //Re-plot the graph
+              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+              board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+              OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
+              OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
+              OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
+              OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+          }
+
+          //Input between 1 and 3
+          else document.getElementById('start').innerHTML = "Test next input";
+
+          //Change the input indicator in truth table
+          if (counter != 0) document.getElementById('r' + (counter)).style.background = "transparent";
+          else document.getElementById('r4').style.background = "transparent";
+
+          document.getElementById('r' + (counter + 1)).style.background = "#ff9595";
+
+          //Start animation of weight lines
+          var i;
+          for (i = 1; i <= 6; i++) {
+              $("#w" + i).addClass('animatedLinePurple');
+          }
+          $("#w" + i).addClass('animatedLineGreen');
+
+          //Disable start button
+          document.getElementById('start').setAttribute("disabled", "disabled");
+
+          //Call mlp() function to calculate output.
+          setTimeout(function () {
+              mlp(counter);
+
+              //Stop animation of lines.
+              for (i = 1; i <= 6; i++) {
+                  $("#w" + i).removeClass('animatedLinePurple');
+              }
+              $("#w" + i).removeClass('animatedLineGreen');
+
+              //Enable start button
+              document.getElementById('start').removeAttribute("disabled");
+
+              //If it was the last input
+              if (counter == 4) {
+
+                  /* Show accuracy of network */
+                  document.getElementById('acc').style.display = "block";
+
+                  errorRate = erroneousCount / 4;
+                  errorRate = 1 - errorRate;
+
+                  errorRate = errorRate * 100;
+
+                  document.getElementById('acc_val').innerHTML = errorRate + "%";
+                  erroneousCount = 0;
+              }
+          }, 2000);
+
+
+      }
+
+      function mlp(index) {
+          document.getElementById('bef_thresh_op_txt').style.display = "block";
+          document.getElementById('after_threshold_op').style.display = "block";
+          counter++;
+
+          var z11 = x1[index] * w11 + x2[index] * w21 - b1;
+          var z22 = x1[index] * w12 + x2[index] * w22 - b2;
+
+          z1 = z11; z2 = z22;
+
+          y1 = Number(z1);
+          y2 = Number(z2);
+
+          if (z1 >= theta)
+              y1 = 1;
+          else
+              y1 = 0;
+          if (z2 >= theta)
+              y2 = 1;
+          else
+              y2 = 0;
+
+          var yin1 = y1 * v1 + y2 * v2 - b3;
+          yin = yin1;
+
+          yin = Number(yin);
+          document.getElementById('bef_thresh_op').innerHTML = yin;
+
+          if (yin >= theta)
+              y = 1;
+          else
+              y = 0;
+
+          if (z[index] == 1)
+              HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
+          else
+              HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: 'x', fixed: true });
+
+          var flagger = false;
+
+          if (y != z[index]) {
+              erroneousCount++;
+          }
+
+          decisionBoundary1 = board.create('line', [b1 * -1, Number(w11), Number(w21)]);
+          decisionBoundary2 = board.create('line', [-b2, Number(w12), Number(w22)]);
+          finalBoundary = board1.create('line', [-b3, Number(v1), Number(v2)]);
+          document.getElementById('h1' + (index + 1)).innerHTML = y1;
+          document.getElementById('h2' + (index + 1)).innerHTML = y2;
+
+          document.getElementById('op').innerHTML = y;
+          document.getElementById('out' + (index + 1)).innerHTML = y;
+          z1 = z2 = y = y1 = y2 = 0;
+      }
   </script> 
 
   <style type="text/css">

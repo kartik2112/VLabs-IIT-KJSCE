@@ -20,18 +20,18 @@
         <!-- Simulation scripts start-->
 
         <!-- jQuery 2.2.3 -->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="../../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="../../../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
-        <link href="../src/StyleSheet1.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        
 
 
         <!--Here is the main script that handles the simulation-->
         <script type="text/javascript" src="../../../src/exp1Simulation.js"></script>    
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
-        <link href="../Styles.css" rel="stylesheet" />
+        <link href="../../../../src/Styles.css" rel="stylesheet" />
 
 
         <!--These are used for plotting the graphs-->

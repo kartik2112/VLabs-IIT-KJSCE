@@ -21,7 +21,7 @@
         
         <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <link href="../Styles.css" rel="stylesheet" />
+        <link href="../../../../src/Styles.css" rel="stylesheet" />
         
         <script>
             $(document).ready(function(){
@@ -130,7 +130,7 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
                             
-                        <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
+                        <h3>4. What effect does the learning rate have?</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. Always increases the rate of change of weights<br>
                         <input type="radio" class="optradio4" name="q4" value="2"> B. Always decreases the rate of change of weights<br>

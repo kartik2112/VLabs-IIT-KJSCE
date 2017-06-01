@@ -1,6 +1,6 @@
-	<?php
+<?php
     session_start();
-    $_SESSION["currPage"] = 3;
+    $_SESSION["currPage"] = 7;
 ?>
 <html>
     <head>
@@ -18,10 +18,35 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         
+        
+        <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link href="../../../../src/Styles.css" rel="stylesheet" />
+        
+        <script>
+            $(document).ready(function(){
+                $(".optradio1").click(function(){
+                    ////alert("clicked");
+                    $("#optradio1Ans").slideDown();
+                });
+                $(".optradio2").click(function(){
+                    //alert("clicked");
+                    $("#optradio2Ans").slideDown();
+                });
+                $(".optradio3").click(function(){
+                    //alert("clicked");
+                    $("#optradio3Ans").slideDown();
+                });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                });
+            });
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        
+        
         <?php
             include '../../common/header.html';
             include 'lab_name.php';
@@ -56,7 +81,7 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Pre Test</li>
+                            <li class="active">Post Test</li>
                         </ol>
                     </section>
                 </nav>
@@ -73,86 +98,19 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <h3 style="margin-top:5%">Pre Test</h3>
+                    <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!-- Pre Test content goes here -->
-                        <script>
-                            $(document).ready(function () {
-                                $(".optradio1").click(function () {
-                                    ////alert("clicked");
-                                    $("#optradio1Ans").slideDown();
-                                });
-                                $(".optradio2").click(function () {
-                                    //alert("clicked");
-                                    $("#optradio2Ans").slideDown();
-                                });
-                                $(".optradio3").click(function () {
-                                    //alert("clicked");
-                                    $("#optradio3Ans").slideDown();
-                                });
-
-                            });
-
-            </script>
-              
-            
-              <br>
-            1. If the value of 1/(2*sigma^2) increases in activation function then the size of graph  ?<br>
-              <input class="optradio1" type="radio" name="q1" value="1">
-              A. Decreases
-              <br>
-              <input class="optradio1" type="radio" name="q1" value="2">
-              B. Increases
-              <br>
-              <input class="optradio1" type="radio" name="q1" value="3">
-              C. Remains Constant
-              <br>
-              <input class="optradio1" type="radio" name="q1" value="4">
-              D. None of these
-              <br>
-              <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
-              <br>
-            2. How many hidden layers are there in RBFN?<br>
-              <input class="optradio2" type="radio" name="q2" value="1">
-              A. 0
-              <br>
-              <input class="optradio2" type="radio" name="q2" value="2">
-              B. 1
-              <br>
-              <input class="optradio2" type="radio" name="q2" value="3">
-              C. 2
-              <br>
-              <input class="optradio2" type="radio" name="q2" value="4">
-              D. 3
-              <br>
-              <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p><br>
-            
-			<br>
-            3. RBF neuron activation function is given by ?<br>
-              <input class="optradio3" type="radio" name="q3" value="1">
-                    A. &#934(x)=e<sup>(-&#946 &times ||x- &#956||<sup>2</sup>)</sup>
-              <br>
-              <input class="optradio3" type="radio" name="q3" value="2">
-                    B. &#934(x)=e<sup>(-&#946 &divide ||x- &#956||<sup>2</sup>)</sup>
-              <br>
-              <input class="optradio3" type="radio" name="q3" value="3">
-                    C. &#934(x)=e<sup>(-(&#946 &times ||x- &#956||)<sup>2</sup>)</sup>
-              <br>
-              <input class="optradio3" type="radio" name="q3" value="4">
-                    D. &#934(x)=e<sup>(-&#946^2 &times ||x- &#956||<sup>2</sup>)</sup>
-              <br>
-              <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
-                          
-              <h3 id="a1"></h3>
-              <h3 id="a2"></h3>
-            <h3 id="a3"></h3>
+                        <!-- Post Test content goes here -->
+                        
                     </p>
                 </section>
                 <!-- /.content -->
-            </div>
+        
+        </div>
+            
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
-        </div>
+            </div>
     </body>
 </html>
 <!-- ./wrapper -->
