@@ -20,9 +20,9 @@
         <!-- Simulation scripts start-->
 
         <!-- jQuery 2.2.3 -->
-        <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="../../../plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         
@@ -32,9 +32,9 @@
         <!--Here is the main script that handles the simulation-->
         <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.13.3/math.min.js"></script>-->
         <!--<script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>-->
-        <script type="text/javascript" src="../../../src/exp4Simulation.js"></script>        
+        <script type="text/javascript" src="../../src/exp4Simulation.js"></script>        
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
-        <link href="../../../src/Styles.css" rel="stylesheet" />
+        <link href="../../src/Styles.css" rel="stylesheet" />
 
 
         <!--These are used for plotting the graphs-->
