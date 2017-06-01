@@ -223,7 +223,7 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
     $(".AND-YVal").text(inputY[iterationNo]);
     $("#AND-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
     $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, Y' */
+    var ux = parseFloat( ( w1 * inputX[iterationNo] + w2 * inputY[iterationNo] ).toFixed(4) ); /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
@@ -307,7 +307,7 @@ function simulateORGate(iterationNo, inputX, inputY, w1, w2, threshold, interval
     $(".OR-YVal").text(inputY[iterationNo]);
     $("#OR-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
     $("#OR-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo]; /* Calculate intermediate, Y' */
+    var ux = parseFloat( ( w1 * inputX[iterationNo] + w2 * inputY[iterationNo] ).toFixed(4) ); /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
@@ -388,7 +388,7 @@ function simulateNOTGate(iterationNo, inputX, w1, threshold, interval, timer) {
     */
     $(".NOT-XVal").text(inputX[iterationNo]);
     $("#NOT-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
-    var ux = w1 * inputX[iterationNo]; /* Calculate intermediate, Y' */
+    var ux = parseFloat( ( w1 * inputX[iterationNo] ).toFixed(4) ); /* Calculate intermediate, Y' */
     //alert(w1 + " " + w2 + " " + inputX[iterationNo] + " " + inputY[iterationNo] + " " + ux);
 
     timer1 = window.setTimeout(function () {
