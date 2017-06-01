@@ -8,9 +8,9 @@
         <meta charset="utf-8" />
         <title></title>
         <!-- jQuery 2.2.3 -->
-        <script src="../../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="../../../../plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
