@@ -13,11 +13,7 @@ var lines = [];
 $(document).ready(function () {
     $(".changingBlocks").css("display", "none");
 
-    for (var i = 0; i < weightMatrix.length; i++) {
-        for (var j = 0; j < weightMatrix[i].length; j++) {
-            $(".w" + (i + 1) + "" + (j + 1) + "text").text(weightMatrix[i][j]);
-        }
-    }
+    displayWeightsInNeuralNet();
 
     /* Learning Rate Slider */
     $("#learningRate_slider").slider({
@@ -46,12 +42,21 @@ $(document).ready(function () {
     });
 
     $('[data-toggle="tooltip"]').tooltip();
-    $(".lines").css("cursor","pointer");
+    $(".lines").css("cursor", "pointer");
+    $(".lines").css("pointer-events","auto");
 
     plotGraph();
 
     //learnInput(0);
 });
+
+function displayWeightsInNeuralNet(){
+    for (var i = 0; i < weightMatrix.length; i++) {
+        for (var j = 0; j < weightMatrix[i].length; j++) {
+            $(".w" + (i + 1) + "" + (j + 1) + "text").text(weightMatrix[i][j]);
+        }
+    }
+}
 
 function resetSimulation(){
     for (var i = 0; i < timers.length;i++ ){
@@ -59,6 +64,7 @@ function resetSimulation(){
     }
 
     $(".lines").css("cursor", "pointer");
+    $(".lines").css("pointer-events","auto");
     $(".sliders").slider("enable");
     $("#FirstPartOfExpln").slideUp(500);
     $("#SecondPartOfExpln").slideUp(500);
@@ -71,6 +77,21 @@ function resetSimulation(){
     $("#PercLRNextButton").addClass("disabled");
     $("#PercLRNextButton").removeClass("displayActivatedButton");
     $("#PercLRNextButton").unbind("click");
+
+    $("line.percLRNeur_1_lines").removeClass("animatedLineRegionBlue");
+    $("line.percLRNeur_2_lines").removeClass("animatedLineRegionRed");
+    $("line.percLRNeur_3_lines").removeClass("animatedLineRegionGreen");
+
+    $(".changingTextStyle").text("");
+
+    varweightMatrix = [[-2, 1, -5], [3,2,1], [0,-1,-1.5]];
+    lineColors = ['#3366ff','#ff0000','#009933'];
+    inputs = [[-2,3,1],[-2,2,1],[2,3,1],[2,2,1],[3,4,1],[-2,-2,1],[2,-2,1]];
+    desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
+    desiredOPsProps = [['^','#3366ff'],['^','#3366ff'],['o','#ff0000'],['o','#ff0000'],['o','#ff0000'],['[]','#009933'],['[]','#009933']];
+
+    plotGraph();
+    displayWeightsInNeuralNet();
 }
 
 
@@ -81,13 +102,17 @@ function startSimulation(){
     desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
     desiredOPsProps = [['^','#3366ff'],['^','#3366ff'],['o','#ff0000'],['o','#ff0000'],['o','#ff0000'],['[]','#009933'],['[]','#009933']];
 
+    displayWeightsInNeuralNet();
+
     $(".sliders").slider("disable");
     $(".lines").css("cursor","none");
+    $(".lines").css("pointer-events","none");
 
     $("#PercLRStartSimButton").attr("disabled", "disabled");
     $("#PercLRStartSimButton").addClass("disabled");
     $("#PercLRStopSimButton").removeAttr("disabled");
     $("#PercLRStopSimButton").removeClass("disabled");
+    $(".changingTextStyle").text("");
 
     $("#SecondPartOfExpln").slideUp(500);
     $("#FirstPartOfExpln").slideDown(1000);
@@ -99,11 +124,14 @@ function startSimulation(){
 function learnInput(inputIndex){
     //O=W'X
     //O - OPs, W - Weight Matrix, X - Inputs
+    var input = inputs[inputIndex];
+
+
     $("#PercLRNextButton").attr("disabled");
     $("#PercLRNextButton").addClass("disabled");
     $("#PercLRNextButton").removeClass("displayActivatedButton");
     $("#PercLRNextButton").unbind("click");
-
+    $(".changingTextStyle").text("");
 
     var constPointSize = 5;
     $("#FirstPartOfExpln").css("display","none");
@@ -111,52 +139,59 @@ function learnInput(inputIndex){
 
     $(".changingBlocks").fadeOut(300);
 
+    plotGraph();
+
     /* Scroll to neuralnet */
     $('html, body').animate({
         scrollTop: $("#PercLR_svg").offset().top
     }, 1500);
 
     /* Highlight selected point */
-    window.setTimeout(function () {
+    timers.push(window.setTimeout(function () {
         points[inputIndex].fillColor('#000000');
         points[inputIndex].strokeColor('#000000');
         points[inputIndex].size(25);
-        window.setTimeout(function () {
+        timers.push(window.setTimeout(function () {
             points[inputIndex].fillColor(desiredOPsProps[0][1]);
             points[inputIndex].strokeColor(desiredOPsProps[0][1]);
             points[inputIndex].size(constPointSize);
-            window.setTimeout(function () {
+            timers.push(window.setTimeout(function () {
                 points[inputIndex].fillColor('#000000');
                 points[inputIndex].strokeColor('#000000');
                 points[inputIndex].size(25);
-                window.setTimeout(function () {
+                timers.push(window.setTimeout(function () {
                     points[inputIndex].fillColor(desiredOPsProps[0][1]);
                     points[inputIndex].strokeColor(desiredOPsProps[0][1]);
                     points[inputIndex].size(constPointSize);
-                    window.setTimeout(function () {
+                    timers.push(window.setTimeout(function () {
                         points[inputIndex].fillColor('#000000');
                         points[inputIndex].strokeColor('#000000');
                         points[inputIndex].size(15);
-                    }, 500);
-                }, 500);
-            }, 500);
-        }, 500);
-    }, 500);
+                    }, 500));
+                }, 500));
+            }, 500));
+        }, 500));
+    }, 500));
+
+    /* Display IP values in neuralnet */
+    for (var i = 0; i < input.length-1; i++) {
+        $(".percLRX_inputX" + (i + 1)).text(input[i]);
+    }
 
     /* Show flow animation */
-    window.setTimeout(function(){
+    timers.push(window.setTimeout(function(){
         $("line.percLRNeur_1_lines").addClass("animatedLineRegionBlue");
         $("line.percLRNeur_2_lines").addClass("animatedLineRegionRed");
         $("line.percLRNeur_3_lines").addClass("animatedLineRegionGreen");
-    },2000);
+    },2000));
 
 
     timers.push(window.setTimeout(function () {
         $("#FirstPartOfExpln").slideDown(1000);
-        var input = inputs[inputIndex];
 
         for (var i = 0; i < input.length; i++) {
             $(".inputVector tr." + i + " td.0").text(input[i]);
+            if (i != input.length - 1) { $(".percLRX_inputX" + (i + 1)).text(input[i]); }
         }
 
         for (var i = 0; i < weightMatrix.length; i++) {
@@ -170,7 +205,7 @@ function learnInput(inputIndex){
 
         for (var i = 0; i < weightMatrix.length; i++) {
             for (var j = 0; j < weightMatrix[i].length; j++) {
-                tempOP[i] += weightMatrix[i][j] * input[j];   //W x X
+                tempOP[i] = parseFloat(( tempOP[i] + weightMatrix[i][j] * input[j] ).toFixed(4) );   //W x X
             }
 
             $(".summationVector tr." + i + " td.0").text(tempOP[i]);
@@ -178,10 +213,12 @@ function learnInput(inputIndex){
             if (tempOP[i] >= 0) {
                 $(".outputVector tr." + i + " td.0").text("+1");
                 OP[i] = 1;
+                $(".percLR_outputO"+(i+1)).text("+1");
             }
             else {
                 $(".outputVector tr." + i + " td.0").text("-1");
                 OP[i] = -1;
+                $(".percLR_outputO"+(i+1)).text("-1");
             }
         }
 
@@ -255,7 +292,7 @@ function learnInput(inputIndex){
 
                 for (var i = 0; i < input.length; i++) {
                     //alert();
-                    var tempVal = weightMatrix[calcnIndex][i] + parseFloat((learningRate * (desiredOPs[inputIndex][calcnIndex] - OP[calcnIndex]) * input[i] / 2).toFixed(3));
+                    var tempVal = parseFloat((weightMatrix[calcnIndex][i] + learningRate * (desiredOPs[inputIndex][calcnIndex] - OP[calcnIndex]) * input[i] / 2).toFixed(4) );
                     $("#PercCalcnExplnFor_i_" + calcnIndex + " table.newWtVector tr." + i + " td.0").text(tempVal);  //Changes new weight vectors in carousel
                     $("#SecondPartOfExpln table.newWtVectorW" + calcnIndex + " tr.0 td." + i).text(tempVal);               //Changes new weight vectors displayed after carousel
                     $("#SecondPartOfExpln table.newWeightMatrix tr." + calcnIndex + " td." + i).text(tempVal);
@@ -310,31 +347,41 @@ function learnInput(inputIndex){
                 }, 16000));
 
                 timers.push(window.setTimeout(function () {
+                    $("line.percLRNeur_1_lines").removeClass("animatedLineRegionBlue");
+                    $("line.percLRNeur_2_lines").removeClass("animatedLineRegionRed");
+                    $("line.percLRNeur_3_lines").removeClass("animatedLineRegionGreen");
+
                     $("#SecondPartOfExpln table.newWeightMatrix").slideDown(500);
                     $('html, body').animate({
                         scrollTop: $("#SecondPartOfExpln table.newWeightMatrix").offset().top
                     }, 1500);
-                    window.setTimeout(function () {
+                    timers.push(window.setTimeout(function () {
                         $('html, body').animate({
                             scrollTop: $("#graphDiv").offset().top
                         }, 1500);
-                    }, 3000);
-                    window.setTimeout(function () {
+                    }, 3000));
+                    timers.push(window.setTimeout(function () {
+                        displayWeightsInNeuralNet();
                         plotGraph();
-                        if(inputIndex!=inputs.length){
-                            window.setTimeout(function () {
+
+                        points[inputIndex].fillColor('#000000');
+                        points[inputIndex].strokeColor('#000000');
+                        points[inputIndex].size(15);
+
+                        if (inputIndex != inputs.length) {
+                            timers.push(window.setTimeout(function () {
                                 $("#PercLRNextButton").removeAttr("disabled");
                                 $("#PercLRNextButton").removeClass("disabled");
-                                $("#PercLRNextButton").addClass("displayActivatedButton");                                
+                                $("#PercLRNextButton").addClass("displayActivatedButton");
                                 $("#PercLRNextButton").click(function () {
                                     learnInput(inputIndex + 1);
                                 });
-                            }, 1000);
-                        }    
-                        else{
+                            }, 1000));
+                        }
+                        else {
                             alert("Simulation has been completed! As you can see from the graph, the classifier is converging towards classifying all inputs correctly!")
-                        }                    
-                    }, 4500);
+                        }
+                    }, 4500));
                 }, 18000));
 
             }, 16000);
