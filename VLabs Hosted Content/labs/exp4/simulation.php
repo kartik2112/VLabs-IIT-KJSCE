@@ -20,9 +20,9 @@
         <!-- Simulation scripts start-->
 
         <!-- jQuery 2.2.3 -->
-        <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="../../../plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         
@@ -32,9 +32,9 @@
         <!--Here is the main script that handles the simulation-->
         <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.13.3/math.min.js"></script>-->
         <!--<script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>-->
-        <script type="text/javascript" src="../../../src/exp4Simulation.js"></script>        
+        <script type="text/javascript" src="../../src/exp4Simulation.js"></script>        
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
-        <link href="../../../src/Styles.css" rel="stylesheet" />
+        <link href="../../src/Styles.css" rel="stylesheet" />
 
 
         <!--These are used for plotting the graphs-->
@@ -210,11 +210,11 @@
 
                                 <!--Input texts-->
                                 <text font-size="20" x="5" y="55">X1</text>
-                                <text class="changingTextStyle percLRX_inputX1" font-size="20" x="45" y="55"></text>
+                                <text class="changingTextStyle percLRX_inputX1" font-size="20" x="45" y="57" style="stroke: #ff0000;stroke-width: 1px;"></text>
                                 <text font-size="20" x="5" y="210">X2</text>
-                                <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="255"></text>
+                                <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;"></text>
                                 <text font-size="20" x="10" y="360">1</text>
-                                <text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="455"></text>
+                                <!--<text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="355">0</text>-->
                                 
 								
 								<text font-size="20" x="342" y="55">∑</text>
@@ -241,13 +241,13 @@
 
                                 <!--y(x) related texts-->
                                 <text font-size="20" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
-                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
+                                <text class="changingTextStyle percLR_outputO1" font-size="20" x="670" y="80" style="stroke: #3366ff;"></text>
                                 
                                 <text font-size="20" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
-                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
+                                <text class="changingTextStyle percLR_outputO2" font-size="20" x="670" y="230" style="stroke: #ff0000;"></text>
                                 
                                 <text font-size="20" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
-                                <text class="changingTextStyle" font-size="20" x="610" y="160"></text>
+                                <text class="changingTextStyle percLR_outputO3" font-size="20" x="670" y="380" style="stroke: #009933;"></text>
                     </svg>
 
 
@@ -271,7 +271,7 @@
                     <div id="ExplanationOfCalculation" style="clear: both;">
                         <div id="FirstPartOfExpln" style="display: none;">
                                 <h3>Calculations:</h3>
-                                &emsp;&emsp;O = sgn( W x X )<br/>
+                                &emsp;O = sgn( W x X )<br/>
 
                                 <div class="centerPosOperatorsForMatrices">O = </div>
 
