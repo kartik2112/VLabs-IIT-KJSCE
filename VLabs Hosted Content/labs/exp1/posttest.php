@@ -21,7 +21,7 @@
         
         <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <link href="../Styles.css" rel="stylesheet" />
+        <link href="../../src/Styles.css" rel="stylesheet" />
         
         <script>
             $(document).ready(function(){

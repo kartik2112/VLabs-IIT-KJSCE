@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 3;
+    $_SESSION["currPage"] = 7;
 ?>
 <html>
     <head>
@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Virtual Labs </title>
         <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" class="viewport">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
         <!-- Font Awesome -->
@@ -17,7 +17,9 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-
+        
+        
+        <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link href="../../src/Styles.css" rel="stylesheet" />
         
@@ -35,18 +37,22 @@
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
                 });
-               
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                });
             });
         </script>
-
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
+        
+        
         <?php
             include '../../common/header.html';
             include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];      
-                  ?>
+            $exp_name = $_SESSION['exp_name'];
+            ?>
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
@@ -75,7 +81,7 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Pre Test</li>
+                            <li class="active">Post Test</li>
                         </ol>
                     </section>
                 </nav>
@@ -92,43 +98,19 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <h3 style="margin-top:5%">Pre Test</h3>
+                    <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!-- Pre Test content goes here -->
-                            <h3>How many Layers can be there in FeedForward or EBPMLP algorithms?</h3>
-                            <input class="optradio1" type="radio" name="q1" value="1"> A. 3<br>
-                            <input class="optradio1" type="radio" name="q1" value="2"> B. 1 or more<br />
-                            <input class="optradio1" type="radio" name="q1" value="3"> C. 2 or more<br />
-                            <input class="optradio1" type="radio" name="q1" value="4"> D. 3 or more<br />
-                            <br />
-                            <p id="optradio1Ans" class="testAns" style="display:none;">Ans is D</p>
+                        <!-- Post Test content goes here -->
                         
-                        <div>
-                            <h3>2. Can Ex-OR gate be implemented using single layer perceptron ?</h3>
-                            <input class="optradio2" type="radio" name="q2" value="1"> A. Yes<br>
-                            <input class="optradio2" type="radio" name="q2" value="2"> B. No<br>
-                            <input class="optradio2" type="radio" name="q2" value="3"> C. Cannot be determined<br>
-                            <input class="optradio2" type="radio" name="q2" value="4"> D. Maybe<br>
-                            <br>
-                            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p>
-                        </div>
-
-                        <div>
-                            <h3>3.	Neural Networks are complex ______________ with many parameters.</h3>
-                            <input class="optradio3" type="radio" name="q3" value="1"> A. Linear Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="2"> B. Non-Linear Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="3"> C. Discrete Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="4"> D. Exponential Functions<br>
-                            <br>
-                            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
-                        </div>
                     </p>
                 </section>
                 <!-- /.content -->
-            </div>
+        
+        </div>
+            
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
-        </div>
+            </div>
     </body>
 </html>
 <!-- ./wrapper -->
