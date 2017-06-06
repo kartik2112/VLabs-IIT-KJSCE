@@ -35,6 +35,10 @@
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
                 });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                });
                
             });
         </script>
