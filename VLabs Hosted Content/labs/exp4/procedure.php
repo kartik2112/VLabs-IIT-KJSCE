@@ -80,14 +80,14 @@
                             <li>Change the learning rate if you want to by using the slider for the same.</li>
                             <li>Change the initial weights of the neural network if you want to by clicking on the links connecting the input nodes to summation nodes. You can see the weight changes in the alongside graph.</li>
                             <li><b>Once the simulation is started, these can't be changed</b>.</li>
-                            <li>After making changes if needed, click <button class="btn btn-success">Start Simulation</button> button. Now each input as highlighted in the graph will be chosen and learnt using the learning algorithm.</li>
+                            <li>After making changes as needed, click <button class="btn btn-success">Start Simulation</button> button. Now each input as highlighted in the graph will be chosen and learnt using the learning algorithm.</li>
                             <li>If you want to stop the simulation in between you can do so by clicking the <button class="btn btn-danger">Stop Simulation</button> button. </li>
                             <li>After each input is completely processed, the <button class="btn btn-warning" >Apply next I/P value</button> button will get activated. 
                                 Click on this button to learn using the next input.</li>
                             <li><b>As you will see the regions will converge towards correct classification after each iteration. 
                                 For correct classification, the regions should be such that for each input, the output of only one neuron should be +1 and that of other neurons should be -1. 
                                 Thus, in the graph, each point should fall under one region only. Initially, they will fall under multiple regions. 
-                                But as you will see, the position of the regions changes so that each point falls under one region only.</b></li>
+                                But as you will see, the position of the regions changes after every iteration so that each point falls under one region only.</b></li>
                             <li><b>Thus you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
                         </ol>
 
@@ -114,7 +114,7 @@
                                 <li><b>As you can see the regions are converging towards correct classification after each iteration. 
                                     For correct classification, the regions should be such that for each input, each point should fall under one region only. 
                                     Initially, they were falling under multiple regions. 
-                                    But as you can see, the position of the regions changes so that each point falls under one region only.</b></li>
+                                    But as you can see, the position of the regions changes after every iteration so that each point falls under one region only.</b></li>
                                 <li><b>Thus you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
                             </ol>
                         </div>
