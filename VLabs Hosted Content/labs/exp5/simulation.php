@@ -327,13 +327,13 @@
 
                                         <!--Weights text-->
                                         <text font-size="20"  x="225" y="30" >w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
-                                        <text font-size="20"  x="235" y="75" >w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
+                                        <text font-size="20"  x="215" y="75" >w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
                                         <text font-size="20"  x="303" y="110">w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">1</tspan></text>
-                                        <text font-size="20"  x="285" y="155">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
-                                        <text font-size="20"  x="240" y="195">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
+                                        <text font-size="20"  x="275" y="165">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
+                                        <text font-size="20"  x="223" y="195">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
                                         <text font-size="20"  x="288" y="245">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
                                         <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">1</tspan></text>
-                                        <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
+                                        <text font-size="20"  x="165" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
                                         <text font-size="20"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">1</tspan></text>
 								
 								
@@ -370,7 +370,7 @@
 
                             <button id="hebbLRStartSimButton" class="btn btn-success" onclick="startSimulation('hebbLR')">Start Simulation</button>
                             <button id="hebbLRStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('hebbLR')" disabled>Stop Simulation</button>
-                            <button class="btn btn-warning disabled" id="hebbLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
+                            <button class="btn btn-warning disabled" id="hebbLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
 
                             <div>
                                 Here, the activation function used is tan sigmoid:<br/>
@@ -645,7 +645,7 @@
                                     </div>
                             </div>
                     </div>
-                    
+
                 </section>                
                 <!-- /.content -->
             </div>

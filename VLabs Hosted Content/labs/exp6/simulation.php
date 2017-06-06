@@ -370,7 +370,7 @@
 
                             <button id="corrLRStartSimButton" class="btn btn-success" onclick="startSimulation('corrLR')">Start Simulation</button>
                             <button id="corrLRStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('corrLR')" disabled>Stop Simulation</button>
-                            <button class="btn btn-warning disabled" id="corrLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
+                            <button class="btn btn-warning disabled" id="corrLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
 
                             <div>
                                 Here, the activation function used is signum:<br/>
