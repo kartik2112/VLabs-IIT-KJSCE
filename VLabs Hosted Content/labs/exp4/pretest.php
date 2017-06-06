@@ -35,6 +35,10 @@
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
                 });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                });
                
             });
         </script>
@@ -95,7 +99,45 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
+                                                <h3>1. What are the different algorithms techniques in  machine learning ?</h3>
+
+                        <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. All of the above<br>
+                        <br />
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
                         
+                        <h3>2. Which of the following is not machine learning ?</h3>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. Artificial Intelligence<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. Rule based inference<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. both A and C <br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. Transduction<br>
+
+                        <br />
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p>
+
+                        <h3>3. Which of the following are applications of machine learning ?</h3>
+                    
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. Weather prediction<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. Anomaly detection<br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. Classification <br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. All of the above<br>      
+
+                        <br />
+                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is D</p>
+                            
+                        <h3>4. Which of the following is not the promise of artificial neural network?</h3>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. It can explain result<br>
+                    <br>
+                    <input type="radio" class="optradio4" name="q4" value="2"> B.  It can survive the failure of some nodes<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C.  It has inherent parallelism<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D.  It can handle noise<br><br>
+
+                        <br />
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is A</p>
                     </p>
                 </section>
                 <!-- /.content -->
