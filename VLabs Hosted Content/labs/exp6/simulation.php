@@ -267,7 +267,7 @@
                     <!--Simulation content goes here -->
 
                     <div id="corrLRMainOuterDiv">
-                            <p>&rarr; Click on any line to change its weight</p>
+                            <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
                             <p>&rarr; The blue region in the graph depicts the boundary formed due to neuron 1, red region corresponds to neuron 2, and green region corresponds to neuron 3.</p>
                             <br>
@@ -373,10 +373,12 @@
                             <button class="btn btn-warning disabled" id="corrLRNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
 
                             <div>
-                                Here, the activation function used is signum:<br/>
+                                Here, the activation function used is <span style="font-size: larger; font-weight: bolder">signum</span>:<br/>
                                 f( x ) = 1 , &nbsp; x >= 0<br/>
                                 &emsp;&emsp; = -1 , &nbsp; x < 0
                             </div>
+
+                            <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
 
                             <div id="corrLR_ExplanationOfCalculation" style="clear: both;">
                                 <div id="corrLR_FirstPartOfExpln" style="display: none;">
@@ -481,7 +483,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">W<sub>1,new</sub> = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector">
+                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W1,old">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
@@ -500,7 +502,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
+                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W1,new">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
@@ -516,7 +518,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">W<sub>2,new</sub> = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector">
+                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W2,old">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
@@ -535,7 +537,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
+                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W2,new">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
@@ -551,7 +553,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">W<sub>3,new</sub> = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector">
+                                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W3,old">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
@@ -570,7 +572,7 @@
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
                                                                 <div style="display: inline-block">
-                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector">
+                                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W3,new">
                                                                         <tr class="0"><td class="0">0</td></tr>
                                                                         <tr class="1"><td class="0">0</td></tr>
                                                                         <tr class="2"><td class="0">0</td></tr>
