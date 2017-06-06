@@ -32,6 +32,15 @@
                                 <li class="list-group-item">
                                     <a href="exp3/index.php"> XOR Using Radial Basis Function Network </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="exp4/index.php"> Perceptron Learning Rule </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="exp5/index.php"> Hebbian Learning Rule </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="exp6/index.php"> Correlation Learning Rule </a>
+                                </li>
                             </h3>
                         </ul>
                     </div>
