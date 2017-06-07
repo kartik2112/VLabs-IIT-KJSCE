@@ -22,6 +22,11 @@
         <!-- jQuery 2.2.3 -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link href="../../src/Styles.css" rel="stylesheet" />
+        <style>
+            .optradio1{
+                padding:20px;
+            }
+        </style>
         
         <script>
             $(document).ready(function(){
@@ -100,14 +105,54 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!-- Post Test content goes here -->
+                        <!-- Post Test content goes here -->                        <h3>1. Perceptron learning rule falls under which cayrgory ?</h3>
+
+                        <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
+                        <br />
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
                         
+                        <h3>2. Having multiple perceptrons can actually solve the XOR problem satisfactorily: this is because each perceptron can partition off a linear part of the space itself, and they can then combine their results.</h3>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. True – this works always, and these multiple perceptrons learn to classify even complex problems.<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. False – perceptrons are mathematically incapable of solving linearly inseparable functions, no matter what you do<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. True – perceptrons can do this but are unable to learn to do it – they have to be explicitly hand-coded<br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. False – just having a single perceptron is enough<br>
+
+                        <br />
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p>
+
+                        <h3>3. What is the limitation of perceptron learning rule?</h3>
+                    
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. No limitation it can solve almost any problem<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. it is a weak algorithm<br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. It can only solve problems which are linearly seperable<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if ther exists a solution<br>      
+
+                        <br />
+                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
+                            
+                        <h3>4. What will be the output of the following p1=[1 2] t1=1
+                            p2=[-1 2] t2=0,p3=[0 -1] t3=0? <br>
+                    [ 0 are represented with a light circle , and
+the vector whose target is 1 is represented with a dark circle .]</h3>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG"></image><br>
+                    <br>
+                    <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG"></image><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG"></image><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG"></image><br><br>
+
+                        <br />
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
                     </p>
                 </section>
                 <!-- /.content -->
         
         </div>
-            
+            <div>
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
             </div>
