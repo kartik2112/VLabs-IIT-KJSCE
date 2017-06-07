@@ -17,6 +17,10 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -74,58 +78,75 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
                          <script>
+                             $(document).ready(function () {
+                                 $(".optradio1").click(function () {
+                                     ////alert("clicked");
+                                     $("#optradio1Ans").slideDown();
+                                 });
+                                 $(".optradio2").click(function () {
+                                     //alert("clicked");
+                                     $("#optradio2Ans").slideDown();
+                                 });
+                                 $(".optradio3").click(function () {
+                                     //alert("clicked");
+                                     $("#optradio3Ans").slideDown();
+                                 });
 
-                  function result()
-                  {  
-                      if(document.querySelector('input[name="q1"]:checked').value == 1)
-                          document.getElementById("a1").innerHTML = "1) Correct";
-                      else
-                          document.getElementById("a1").innerHTML =  "1) Wrong";
-                      if(document.querySelector('input[name="q2"]:checked').value == 3)
-                          document.getElementById("a2").innerHTML = "2) Correct";
-                      else
-                          document.getElementById("a2").innerHTML =  "2) Wrong";
-                     
-                      
-               } 
-            
+                             });
+
             </script>
               
             
               <br>
               1. Why RBFN is better than Multi layer Perceptron (MLP)?<br>
-              <input type="radio" name="q1" value="1">
-              "Because RBFN performs classification by measuring the input’s similarity to the examples from the training set"
+              <input class="optradio1" type="radio" name="q1" value="1">
+              Because RBFN performs classification by measuring the input’s similarity to the examples from the training set
               <br>
-              <input type="radio" name="q1" value="2">
-              "Because it is easy to solve complex network problem by RBFN than MLP"
+              <input class="optradio1" type="radio" name="q1" value="2">
+              Because it is easy to solve complex network problem by RBFN than MLP
               <br>
-              <input type="radio" name="q1" value="3">
-              "Because RBFN has one single hidden layer"
+              <input class="optradio1" type="radio" name="q1" value="3">
+              Because RBFN has one single hidden layer
               <br>
-              <input type="radio" name="q1" value="4">
-              "None of these"
-              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="4">
+              None of these
+              <br><p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?<br>
-              <input type="radio" name="q2" value="1">
-              "The response will increase exponentially"
+              <input class="optradio2" type="radio" name="q2" value="1">
+              The response will increase exponentially
               <br>
-              <input type="radio" name="q2" value="2">
-              "The response will increase linearly"
+              <input class="optradio2" type="radio" name="q2" value="2">
+              The response will increase linearly
               <br>
-              <input type="radio" name="q2" value="3">
-              "The response will fall exponentially"
+              <input class="optradio2" type="radio" name="q2" value="3">
+              The response will fall exponentially
               <br>
-              <input type="radio" name="q2" value="4">
-              "The response will not change"
-              <br><br>
-              
+              <input class="optradio2" type="radio" name="q2" value="4">
+              The response will not change
+              <br><p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p><br>
+              <br>
+              3.What are the two stages in radial basis function network ?<br>
+              <input class="optradio3" type="radio" name="q3" value="1">
+              Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  Stage 2: Discover the weights for the output layer.
+              <br>
+              <input class="optradio3" type="radio" name="q3" value="2">
+              Stage 1: Discover the weights for the output layer.<br>
+			  Stage 2: establish a centre and a radii for the RBF layer.
+              <br>
+              <input class="optradio3" type="radio" name="q3" value="3">
+              Stage 1: establish a centre for the RBF layer.<br>
+			  Stage 2: establish a radii for the RBF layer.
+              <br>
+              <input class="optradio3" type="radio" name="q3" value="4">
+              Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  Stage 2: Discover the weights for the hidden layer.
+              <br><p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
             
-              <input type="button" value="Evaluate" onclick="result()">
               
               <h3 id="a1"></h3>
               <h3 id="a2"></h3>
-             
+             <h3 id="a3"></h3>
             
             
                     </p>

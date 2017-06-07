@@ -13,8 +13,11 @@
         <div class="row">
           <div class="col-md-12">
             <div class="jumbotron">
-              <h1 class="text-primary">Lab Name: Machine Learning Lab</h1>
-              <p class="text-primary"><!-- Description --></p>
+              <h1 class="text-primary">Machine Learning Lab</h1>
+              <p class="text-primary">
+                  This lab helps you in understanding the basics of machine learning - 
+                  the types of perceptrons, the learning rules, fuzzy inference engine via visualizations. 
+                  At the same time it also helps you get to know the theory and consolidate it using the pretest and posttest for each experiment.</p>
               <a class="btn btn-primary btn-large" href="labs/explist.php">Explore</a>
             </div>
           </div>
@@ -29,7 +32,7 @@
               <br>
             </p>
             <center>
-              <img src="" alt="" height="90" width="75">
+              <img src="KJSCE_Logo.jpg" alt="" height="90" width="75">
               <p></p>
               <h3>This lab is contributed by K. J. Somaiya College of Engineering</h3>
               <p></p>
