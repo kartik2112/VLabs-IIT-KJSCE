@@ -89,7 +89,31 @@
                       <p>
                         The structure of a self-organizing map involves m output neurons, which correspond to m output clusters, and n input neurons which correspond to the n-dimensionality of the dataset.
                       </p>
-                      <img src="images/ksom_struct.png"/>
+                      <img src="images/ksom_struct.png" />
+                      <p>
+                        The weight vectors define each cluster.
+                        Input patterns are compared to each cluster, and associated with the cluster it best matches.
+                        The comparison is usually based on the square of the minimum Euclidean distance.
+                        When a best match is found, the associated cluster gets its weights updated.
+                        KSOM is based on the Winner-Takes-All learning rule.
+                      </p>
+                      <p>
+                        The learning rate α alpha is a slowly decreased with each epoch.
+                        The size or radius of the neighbourhood around a cluster unit can also decrease during the later epochs.
+                      </p>
+                      <p>
+                        The formation of a map occurs in two stages:
+                        <ol>
+                          <li>The initial formation of the correct order</li>
+                          <li>The final convergence</li>
+                        </ol>
+                        <br />The second stage takes much longer, and usually occurs when the learning rate gets smaller. The initial weights can be random values.
+                      </p>
+                      <p>
+                        Following is the flowchart which shows the algorithm used in KSOM:
+                        <img src="images/ksom_FC.png" />
+                        <br />Stopping Condition here refers to if number of epochs to be performed as been reached, or there are small number of changes in input mappings.
+                      </p>
                     </p>
                 </section>
                 <!-- /.content -->

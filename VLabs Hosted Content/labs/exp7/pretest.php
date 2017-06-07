@@ -20,7 +20,7 @@
 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link href="../../src/Styles.css" rel="stylesheet" />
-        
+
         <script>
             $(document).ready(function(){
                 $(".optradio1").click(function(){
@@ -35,7 +35,7 @@
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
                 });
-               
+
             });
         </script>
 
@@ -45,7 +45,7 @@
             include '../../common/header.html';
             include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];      
+            $exp_name = $_SESSION['exp_name'];
                   ?>
         <div class="wrapper">
             <header class="main-header">
@@ -95,7 +95,33 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
-                        
+                            <h3>1. KSOMs are based on ____________</h3>
+                            <input class="optradio1" type="radio" name="q1" value="1"> A. Perceptron Learning Rule<br>
+                            <input class="optradio1" type="radio" name="q1" value="2"> B. Delta Learning Rule<br />
+                            <input class="optradio1" type="radio" name="q1" value="3"> C. Winner-Takes-All Learning Rule<br />
+                            <input class="optradio1" type="radio" name="q1" value="4"> D. Hebbian Learning Rule<br />
+                            <br />
+                            <p id="optradio1Ans" class="testAns" style="display:none;">Ans is C</p>
+
+                        <div>
+                            <h3>2. Which type of learning is exhibited by the SOM?</h3>
+                            <input class="optradio2" type="radio" name="q2" value="1"> A. Unsupervised Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="2"> B. Supervised Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="3"> C. Reinforcement Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="4"> D. Active Learning<br>
+                            <br>
+                            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+                        </div>
+
+                        <div>
+                            <h3>3. Can we use any other learning technique, instead of the competitive learning for KSOM?</h3>
+                            <input class="optradio3" type="radio" name="q3" value="1"> A. Yes<br>
+                            <input class="optradio3" type="radio" name="q3" value="2"> B. No<br>
+                            <input class="optradio3" type="radio" name="q3" value="3"> C. Maybe<br>
+                            <input class="optradio3" type="radio" name="q3" value="4"> D. Can't say<br>
+                            <br>
+                            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
+                        </div>
                     </p>
                 </section>
                 <!-- /.content -->
@@ -118,4 +144,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-
