@@ -73,19 +73,21 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
                         <ol>
-                            <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
+                            <li><a href="http://mnemstudio.org/neural-networks-kohonen-self-organizing-maps.htm">KSOM</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Self-organizing_map">Wikipedia-Self Organizing Maps</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Winner-take-all_(computing)">Wikipedia-Winner Takes All rule</a></li>
                             <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
-                        </ol>                        
+                        </ol>
                     </p>
                     <b> Developed By :-</b><br>
                     <ol>
                         <li>Kartik Shenoy</li>
                         <li>Meet Mukadam</li>
-                        <li>Vinay Pandya</li>                        
+                        <li>Vinay Pandya</li>
                         <li>Varun Rao</li>
                         <li>Abhishek Mahajani</li>
                         <li>Tejas Dastane</li>
-                        <li>Manmath Paste</li>                        
+                        <li>Manmath Paste</li>
                         <li>Abhishek Ananthakrishnan</li>
                         <li>Nitin Mishra</li>
                     </ol>
@@ -110,4 +112,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-
