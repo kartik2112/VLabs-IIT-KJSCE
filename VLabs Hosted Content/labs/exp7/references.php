@@ -76,6 +76,7 @@
                             <li><a href="http://mnemstudio.org/neural-networks-kohonen-self-organizing-maps.htm">KSOM</a></li>
                             <li><a href="https://en.wikipedia.org/wiki/Self-organizing_map">Wikipedia-Self Organizing Maps</a></li>
                             <li><a href="https://en.wikipedia.org/wiki/Winner-take-all_(computing)">Wikipedia-Winner Takes All rule</a></li>
+                            <li><a href="http://users.ics.aalto.fi/jhollmen/dippa/node9.html">SOM</a></li>
                             <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
                         </ol>
                     </p>
