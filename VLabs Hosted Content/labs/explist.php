@@ -41,6 +41,9 @@
                                 <li class="list-group-item">
                                     <a href="exp6/index.php"> Correlation Learning Rule </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="exp7/index.php"> Kohonen's Self Organizing Maps </a>
+                                </li>
                             </h3>
                         </ul>
                     </div>
