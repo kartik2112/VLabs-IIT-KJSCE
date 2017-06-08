@@ -1,13 +1,13 @@
-var weightMatrix = [[-2,3],[1,2],[-6.5,1]];
-var inputs = [[1,2],[1,1],[3,3],[2,3],[5,6],[1,3]];
+var weightMatrix = [[1,3],[1,2],[5,1]];
+var inputs = [[2,2],[2.5,2.5],[3,2],[0.5,1],[1,0.5],[1,4],[2,4.5]];
 var desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
-var desiredOPsProps = [['^','#3366ff'],['^','#3366ff'],['o','#ff0000'],['o','#ff0000'],['o','#ff0000'],['[]','#009933'],['[]','#009933']];
+var clusterCenterDenotions=[['x','#3366ff'],['+','#1231da'],['<>','#009933']];
 var learningRate=0.2;
 var sel = 1;
 var timers=[];
 
 var points = [];
-var lines = [];
+var clusterCenters = [];
 
 function displayWeightsInNeuralNet(lrString){
     for (var i = 0; i < weightMatrix.length; i++) {
@@ -59,9 +59,7 @@ function resetSimulation(lrString){
 function startSimulation(lrString){
     weightMatrix = [[-2,3],[1,2],[-6.5,1]];
     inputs = [[1,2],[1,1],[3,3],[2,3],[5,6],[1,3]];
-    desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
-    desiredOPsProps = [['^','#3366ff'],['^','#3366ff'],['o','#ff0000'],['o','#ff0000'],['o','#ff0000'],['[]','#009933'],['[]','#009933']];
-
+    var clusterCenterDenotions=[['x','#3366ff'],['+','#1231da'],['<>','#009933']];
     displayWeightsInNeuralNet(lrString);
 
     $(".sliders").slider("disable");
@@ -84,6 +82,11 @@ function startSimulation(lrString){
 
     //learnInput(lrString,0);
 
+}
+
+function learnProc()
+{
+  
 }
 
 function scrollToElement(elem,time){
@@ -110,18 +113,15 @@ function revealBySlideDown(elem,time){
 function plotGraph(lrString){
     points = [];
     lines = [];
-    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-4, 5, 4, -3]});  //Creates the cartesian graph
+    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-7, 7, 7, -7]});  //Creates the cartesian graph
 	  var constPointSize=5;
 
     for(var i=0;i<inputs.length;i++){
-        points[i] = board.create('point',[inputs[i][0],inputs[i][1]]);
+        points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true});
     }
 
-
-    // for(var i=0;i<weightMatrix.length;i++){
-    //     lines[i] = board.create('line', [weightMatrix[i][2], weightMatrix[i][0], weightMatrix[i][1]], { strokeColor: lineColors[i], fixed: true });
-    //     ineq = board.create('inequality', [lines[i]], {inverse:true, fillColor: lineColors[i]});
-    //
-    // }
-
+    for(var i=0;i<weightMatrix.length;i++)
+    {
+        clusterCenters[i]=board.create('point',[weightMatrix[i][0],weightMatrix[i][1]],{fixed:true,color:clusterCenterDenotions[i][1],face:clusterCenterDenotions[i][0]});
+    }
 }

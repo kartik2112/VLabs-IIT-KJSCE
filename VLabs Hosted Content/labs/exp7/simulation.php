@@ -109,7 +109,11 @@
                 min: -5,
                 slide: function (event, ui) {
                     $("#KSOMMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                    weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
+                    if(sel-20>0)
+                      weightMatrix[sel % 20 - 1][1] = parseInt(ui.value);
+                    else {
+                      weightMatrix[sel % 10 - 1][0] = parseInt(ui.value);
+                    }
                     plotGraph("KSOM");
                 }
             });
@@ -217,9 +221,9 @@
                               <!--Weight notations-->
                               <text font-size="20"  x="75" y="85" transform="rotate(-7.9072,75,65)">w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
                               <text font-size="20"  x="115" y="110" transform="rotate(18.435,115,110)">w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
-                              <text font-size="20"  x="70" y="135" transform="rotate(39.8056,70,135)" >w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">1</tspan></text>
-                              <text font-size="20"  x="60" y="275" transform="rotate(-39.8056,60,275)">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
-                              <text font-size="20"  x="130" y="295" transform="rotate(-18.435,130,295)">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
+                              <text font-size="20"  x="70" y="135" transform="rotate(39.8056,70,135)" >w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">5</tspan></text>
+                              <text font-size="20"  x="60" y="275" transform="rotate(-39.8056,60,275)">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">3</tspan></text>
+                              <text font-size="20"  x="130" y="295" transform="rotate(-18.435,130,295)">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">2</tspan></text>
                               <text font-size="20"  x="80" y="325" transform="rotate(7.9072,80,325)">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
                             </svg>
                             <div id="KSOM_SliderOuter" style="position: absolute;width: 170px;height: 100px;background: rgba(0,0,0,0.75);border-radius: 20px;top: 0px;left: 0px;text-align: center;">
