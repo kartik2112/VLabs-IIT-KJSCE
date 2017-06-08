@@ -75,54 +75,61 @@ function startSimulation(lrString){
     //     $("line."+lrString+"Neur_2_lines").addClass("animatedLineRegionRed");
     // },2000));
 
-    learnProc(lrString);
+    learnProc(lrString,0);
     //resetSimulation(lrString);
     //learnInput(lrString,0);
 
 }
-
-function learnProc(lrString)
+var animatro;
+var operatingAlgo;
+function learnProc(lrString,inputIndex)
 {
-    for(var i=0;i<inputs.length;i++)
-    {
-          $("line."+lrString+"Neur_1_lines").addClass("animatedLineRegionBlue");
-          $("line."+lrString+"Neur_2_lines").addClass("animatedLineRegionRed");
-          setTimeout(function(){
-            $("line."+lrString+"Neur_1_lines").removeClass("animatedLineRegionBlue");
-            $("line."+lrString+"Neur_2_lines").removeClass("animatedLineRegionRed");
-          },2000);
-          var distancesFromClusterCenters=[];
-          for(var k=0;k<weightMatrix.length;k++)
+      setTimeout(function(){
+        $("line."+lrString+"Neur_1_lines").addClass("animatedLineRegionBlue");
+        $("line."+lrString+"Neur_2_lines").addClass("animatedLineRegionRed");
+      },2000);
+      var distancesFromClusterCenters=[];
+      for(var k=0;k<weightMatrix.length;k++)
+      {
+          distancesFromClusterCenters[k]=Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2);
+      }
+      var max=10000;
+      var J_min;
+      for(var j=0;j<distancesFromClusterCenters.length;j++)
+      {
+          if(distancesFromClusterCenters[j]<max)
           {
-              distancesFromClusterCenters[k]=Math.pow((inputs[i][0]-weightMatrix[k][0]),2)+Math.pow((inputs[i][1]-weightMatrix[k][1]),2);
+              max=distancesFromClusterCenters[j];
+              J_min=j;
           }
-          var max=10000;
-          var J_min;
-          for(var j=0;j<distancesFromClusterCenters.length;j++)
-          {
-              if(distancesFromClusterCenters[j]<max)
-              {
-                  max=distancesFromClusterCenters[j];
-                  J_min=j;
-              }
-          }
-          var theDiv = document.getElementById("resultCalculations");
-          var x = document.createElement("br");
-          theDiv.appendChild(x);
-          var content = document.createTextNode("Winning neuron to be changed of:"+(J_min+1));
-          theDiv.appendChild(content);
-          for(var j=0;j<inputs[i].length;j++)
-          {
-              weightMatrix[J_min][j]=parseFloat(weightMatrix[J_min][j]+learningRate*(inputs[i][j]-weightMatrix[J_min][j])).toFixed(3);
-          }
-          points[i].setAttribute({color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
-          theDiv = document.getElementById("resultCalculations");
-          x = document.createElement("br");
-          theDiv.appendChild(x);
-          content = document.createTextNode("Updated weights:"+weightMatrix[J_min]);
-          theDiv.appendChild(content);
-          plotGraph("KSOM");
-    }
+      }
+      var theDiv = document.getElementById("resultCalculations");
+      var x = document.createElement("br");
+      theDiv.appendChild(x);
+      var content = document.createTextNode("Winning neuron to be changed of:"+(J_min+1));
+      theDiv.appendChild(content);
+      for(var j=0;j<inputs[inputIndex].length;j++)
+      {
+          weightMatrix[J_min][j]=parseFloat(weightMatrix[J_min][j]+learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j])).toFixed(3);
+      }
+      points[inputIndex].setAttribute({color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
+      theDiv = document.getElementById("resultCalculations");
+      x = document.createElement("br");
+      theDiv.appendChild(x);
+      content = document.createTextNode("Updated weights:"+weightMatrix[J_min]);
+      theDiv.appendChild(content);
+      plotGraph("KSOM");
+      $("line."+lrString+"Neur_1_lines").removeClass("animatedLineRegionBlue");
+      $("line."+lrString+"Neur_2_lines").removeClass("animatedLineRegionRed");
+      if(inputIndex!=inputs.length)
+      {
+          $("#"+lrString+"NextButton").removeAttr("disabled");
+          $("#"+lrString+"NextButton").removeClass("disabled");
+          $("#"+lrString+"NextButton").addClass("displayActivatedButton");
+          $("#"+lrString+"NextButton").click(function () {
+              learnProc(lrString, inputIndex + 1);
+          });
+      }
 }
 
 function scrollToElement(elem,time){
