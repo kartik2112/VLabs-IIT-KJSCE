@@ -240,6 +240,8 @@
                     <button id="KSOMStartSimButton" class="btn btn-success" onclick="startSimulation('KSOM')">Start Simulation</button>
                     <button id="KSOMStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('KSOM')" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="KSOMNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
+                    <div id="resultCalculations">
+                    </div>
                 </section>
                 <!-- /.content -->
             </div>
