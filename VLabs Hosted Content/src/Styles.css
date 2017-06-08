@@ -43,12 +43,16 @@
 }
 
 .StdLine{
-    stroke: #ff6a00; 
-    stroke-width:5; 
+    stroke: #ff6a00;
+    stroke-width:5;
 }
 
 .StdCircle{
     fill: #00b8ff;
+}
+
+.outputNodes{
+    fill: #ff0000;
 }
 
 table.truthTable{
@@ -79,7 +83,7 @@ table.truthTable tr.highlightTTRow{
 }
 
 .changingTextStyle{
-    stroke: #ff4600; 
+    stroke: #ff4600;
     stroke-width: 1;
 }
 
@@ -135,7 +139,7 @@ button.displayActivatedButton{
     border-left: 0px;
 }
 .matrix td {
-    padding: 5px;    
+    padding: 5px;
     text-align: center;
 }
 
@@ -143,23 +147,23 @@ button.displayActivatedButton{
 
 
 .centerPosOperatorsForMatrices{
-    display: inline-block; 
-    margin-left: 10px; 
-    margin-right: 10px; 
-    position: relative; 
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
     bottom: 42px;
 }
 
 .centerPosOperatorsForArrays{
-    display: inline-block; 
-    margin-left: 10px; 
-    margin-right: 10px; 
-    position: relative; 
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
     bottom: 12px;
 }
 
 .carousel-indicators li {
-    background-color: #0091ff; 
+    background-color: #0091ff;
 }
 .carousel-indicators .active {
     background-color: #0781c8;
