@@ -24,7 +24,9 @@ function resetSimulation(lrString){
     document.getElementById("resultCalculations").innerHTML="";
     document.getElementById("x").innerHTML="";
     document.getElementById("y").innerHTML="";
-
+    document.getElementById("op1").style.fill="#ff0000";
+    document.getElementById("op2").style.fill="#ff0000";
+    document.getElementById("op3").style.fill="#ff0000";
 
     $(".lines").css("cursor", "pointer");
     $(".lines").css("pointer-events","auto");
@@ -90,6 +92,9 @@ var animatro;
 var operatingAlgo;
 function learnProc(lrString,inputIndex)
 {
+      document.getElementById("op1").style.fill="#ff0000";
+      document.getElementById("op2").style.fill="#ff0000";
+      document.getElementById("op3").style.fill="#ff0000";
       document.getElementById("resultCalculations").innerHTML="";
       document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
       document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
@@ -135,6 +140,7 @@ function learnProc(lrString,inputIndex)
         theDiv.appendChild(x);
         content = document.createTextNode("Updated weights:"+weightMatrix[J_min]);
         theDiv.appendChild(content);
+        document.getElementById("op"+(J_min+1)).style.fill="#00ff00";
         board.removeObject(points[inputIndex]);
         board.removeObject(clusterCenters[J_min]);
         points[inputIndex]=board.create('point',[inputs[inputIndex][0],inputs[inputIndex][1]],{fixed:true,color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});

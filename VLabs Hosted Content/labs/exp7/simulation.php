@@ -217,9 +217,9 @@
                               <circle class="StdCircle inputNodes" cx="50" cy="300" r="20" fill="blue"/>
                               <text x="50" id="y" y="300" text-anchor="middle" stroke="#000000"></text>
                               <!--Output nodes-->
-                              <circle class="StdCircle outputNodes" cx="350" cy="50" r="20" fill="red"/>
-                              <circle class="StdCircle outputNodes" cx="350" cy="200" r="20" fill="red"/>
-                              <circle class="StdCircle outputNodes" cx="350" cy="350" r="20" fill="red"/>
+                              <circle class="StdCircle outputNodes" id="op1" cx="350" cy="50" r="20" fill="red"/>
+                              <circle class="StdCircle outputNodes" id="op2" cx="350" cy="200" r="20" fill="red"/>
+                              <circle class="StdCircle outputNodes" id="op3" cx="350" cy="350" r="20" fill="red"/>
                               <!--Weight notations-->
                               <text font-size="20"  x="75" y="85" transform="rotate(-7.9072,75,65)">w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
                               <text font-size="20"  x="115" y="110" transform="rotate(18.435,115,110)">w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
