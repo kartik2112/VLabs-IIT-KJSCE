@@ -469,8 +469,8 @@
                                             </table>
                                         </div>
 
-                                        <div class="revealText1 changingBlocks" style="display: none;">According to <span style="font-size: larger; font-weight: bolder">Perceptron Learning Rule</span> : ΔW<sub>i</sub> = η ( D<sub>i</sub> - O<sub>i</sub> ) X / 2</div>
-                                        <div class="revealText2 changingBlocks" style="display: none;">Hence, W<sub>i,new</sub> = W<sub>i,old</sub> + η ( D<sub>i</sub> - O<sub>i</sub> ) X / 2</div>
+                                        <div class="revealText1 changingBlocks" style="display: none;">According to <span style="font-size: larger; font-weight: bolder">Perceptron Learning Rule</span> : ΔW<sub>i</sub> = η ( D<sub>i</sub> - O<sub>i</sub> ) X </div>
+                                        <div class="revealText2 changingBlocks" style="display: none;">Hence, W<sub>i,new</sub> = W<sub>i,old</sub> + η ( D<sub>i</sub> - O<sub>i</sub> ) X </div>
                                         <div class="revealText3 changingBlocks" style="display: none;">The calculations for weight vector for each classifier neuron are as shown below:</div>
                                         <br/>
 
@@ -506,7 +506,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
@@ -542,7 +542,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
@@ -578,7 +578,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 

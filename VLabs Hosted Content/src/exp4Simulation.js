@@ -369,7 +369,7 @@ function learnInput(lrString,inputIndex){
 
                         for (var i = 0; i < input.length; i++) {
                             //alert();
-                            var tempVal = parseFloat((weightMatrix[calcnIndex][i] + learningRate * (desiredOPs[inputIndex][calcnIndex] - OP[calcnIndex]) * input[i] / 2).toFixed(4));
+                            var tempVal = parseFloat((weightMatrix[calcnIndex][i] + learningRate * (desiredOPs[inputIndex][calcnIndex] - OP[calcnIndex]) * input[i]).toFixed(4));
                             $("#"+lrString+"CalcnExplnFor_i_" + calcnIndex + " table.newWtVector tr." + i + " td.0").text(tempVal);  //Changes new weight vectors in carousel
                             $("#"+lrString+"_SecondPartOfExpln table.newWtVectorW" + calcnIndex + " tr.0 td." + i).text(tempVal);               //Changes new weight vectors displayed after carousel
                             $("#"+lrString+"_SecondPartOfExpln table.newWeightMatrix tr." + calcnIndex + " td." + i).text(tempVal);
