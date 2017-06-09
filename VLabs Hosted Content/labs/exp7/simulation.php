@@ -42,7 +42,7 @@
             }
         </style>
         <script type="text/javascript">
-        var LEFT = 650, TOP = 374;
+        var LEFT = 360, TOP = 670;
         $("#KSOM_SliderOuter").hide();
         //$("#hebbLR_SliderOuter").hide();
         //$("#corrLR_SliderOuter").hide();
@@ -110,9 +110,9 @@
                 slide: function (event, ui) {
                     $("#KSOMMainOuterDiv tspan.w" + sel + "text").text(ui.value);
                     if(sel-20>0)
-                      weightMatrix[sel % 20 - 1][1] = parseInt(ui.value);
+                      weightMatrix[sel % 20 - 1][1] = parseFloat(ui.value);
                     else {
-                      weightMatrix[sel % 10 - 1][0] = parseInt(ui.value);
+                      weightMatrix[sel % 10 - 1][0] = parseFloat(ui.value);
                     }
                     plotGraph("KSOM");
                 }

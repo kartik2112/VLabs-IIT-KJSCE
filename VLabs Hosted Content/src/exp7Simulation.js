@@ -97,7 +97,9 @@ function learnProc(lrString,inputIndex)
       document.getElementById("resultCalculations").innerHTML="";
       document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
       document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
-
+      points[inputIndex].size(25);
+      points[inputIndex].fillColor("#00ff00");
+      points[inputIndex].strokeColor("#00ff00");
       var content_to_be_shown="<h2>"+"Considered sample:("+inputs[inputIndex]+")"+"</h2>";
 
       setTimeout(function(){
@@ -141,7 +143,7 @@ function learnProc(lrString,inputIndex)
         document.getElementById("op"+(J_min+1)).style.fill="#00ff00";
         board.removeObject(points[inputIndex]);
         board.removeObject(clusterCenters[J_min]);
-        points[inputIndex]=board.create('point',[inputs[inputIndex][0],inputs[inputIndex][1]],{fixed:true,color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
+        points[inputIndex]=board.create('point',[inputs[inputIndex][0],inputs[inputIndex][1]],{fixed:true,name:'',color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
         clusterCenters[J_min]=board.create('point',[weightMatrix[J_min][0],weightMatrix[J_min][1]],{fixed:true,name:'C'+(J_min+1),color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
         displayWeightsInNeuralNet(lrString);
         //plotGraph("KSOM");
@@ -187,7 +189,7 @@ function plotGraph(lrString){
     board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-7, 7, 7, -7]});  //Creates the cartesian graph
 	  var constPointSize=5;
     for(var i=0;i<inputs.length;i++){
-        points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true});
+        points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true,name:''});
     }
 
     for(var i=0;i<weightMatrix.length;i++)
