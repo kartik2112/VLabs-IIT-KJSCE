@@ -200,6 +200,7 @@
                     <div id="KSOMMainOuterDiv">
                             <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
+                            <p>&rarr; The steps will be written by Tej shortly.</p>
                             <br>
                             <svg id="KSOM_svg" width="500" height="400" style="float: left;clear:left;">
                               <!--Neural network connections-->
