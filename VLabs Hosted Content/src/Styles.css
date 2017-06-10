@@ -1,0 +1,170 @@
+.animatedLine{
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineGreen{
+    stroke: #00d404!important;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLinePurple{
+    stroke: #7100d5!important;
+    stroke-dasharray: 100;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineRegionRed{
+    stroke: #e81e1e!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineRegionBlue{
+    stroke: #3366ff!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
+.animatedLineRegionGreen{
+    stroke: #00a703!important;
+    stroke-dasharray: 50;
+    animation: dash 2s linear infinite;
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to{
+  	    stroke-dashoffset: 0;
+    }
+}
+
+.StdLine{
+    stroke: #ff6a00;
+    stroke-width:5;
+}
+
+.StdCircle{
+    fill: #00b8ff;
+}
+
+.outputNodes{
+    fill: #ff0000;
+}
+
+table.truthTable{
+  	border-collapse: collapse;
+}
+
+table.truthTable tr:nth-child(even){
+  	background-color: #b8f6ff;
+	color: #000;
+}
+
+table.truthTable th{
+  	background-color: #028dff;
+	color: #fff;
+}
+
+table.truthTable td,th{
+    text-align: center;
+}
+
+div.highlightDiv{
+    background-color: #06baf4
+}
+
+table.truthTable tr.highlightTTRow{
+    background-color: #ff4600;
+    color: #fff;
+}
+
+.changingTextStyle{
+    stroke: #ff4600;
+    stroke-width: 1;
+}
+
+/* Not used but kept in case an appealing way to use this has been found*/
+
+
+.sliders{
+    background-color: #ff9718;
+}
+
+button.displayActivatedButton{
+    animation: highlightButtonActivated 500ms;
+}
+
+@keyframes highlightButtonActivated{
+    from{
+        box-shadow: inset 0px 0px 40px 40px #ff6a00;
+    }
+    to{
+        box-shadow: inset 0px 0px 0px 0px #fff;
+    }
+}
+
+.jxgbox{
+    background-color: rgba(236, 240, 245, 0.85)!important;
+}
+
+.testAns{
+    color: #ff4600;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+
+/*The following definitions are used to display matrices Reference: http://jsfiddle.net/NQ6ww/38/ */
+.matrix {
+    position: relative;
+}
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid #000;
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0px;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0px;
+}
+.matrix td {
+    padding: 5px;
+    text-align: center;
+}
+
+
+
+
+.centerPosOperatorsForMatrices{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    bottom: 42px;
+}
+
+.centerPosOperatorsForArrays{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    bottom: 12px;
+}
+
+.carousel-indicators li {
+    background-color: #0091ff;
+}
+.carousel-indicators .active {
+    background-color: #0781c8;
+}

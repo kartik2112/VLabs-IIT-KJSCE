@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>   
 
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
@@ -46,7 +43,7 @@
 
                     </a>
                 </li>
-                
+
                 <?php
                     if($_SESSION["currPage"]==4)
                         echo '<li class="active treeview">';
@@ -85,7 +82,7 @@
                         </span>
                     </a>
                 </li>-->
-                
+
                 <?php
                     if($_SESSION["currPage"]==7)
                         echo '<li class="active treeview">';
@@ -116,5 +113,3 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-
-   
