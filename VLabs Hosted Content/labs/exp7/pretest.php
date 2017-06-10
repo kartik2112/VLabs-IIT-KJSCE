@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 7;
+    $_SESSION["currPage"] = 3;
 ?>
 <html>
     <head>
@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> Virtual Labs </title>
         <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" class="viewport">
         <!-- Bootstrap 3.3.6 -->
         <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
         <!-- Font Awesome -->
@@ -17,12 +17,10 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-        
-        
-        <!-- jQuery 2.2.3 -->
+
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link href="../../src/Styles.css" rel="stylesheet" />
-        
+
         <script>
             $(document).ready(function(){
                 $(".optradio1").click(function(){
@@ -37,22 +35,18 @@
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
                 });
-                $(".optradio4").click(function(){
-                    //alert("clicked");
-                    $("#optradio4Ans").slideDown();
-                });
+
             });
         </script>
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        
-        
         <?php
             include '../../common/header.html';
             include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
             $exp_name = $_SESSION['exp_name'];
-            ?>
+                  ?>
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
@@ -81,7 +75,7 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Post Test</li>
+                            <li class="active">Pre Test</li>
                         </ol>
                     </section>
                 </nav>
@@ -98,59 +92,43 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <h3 style="margin-top:5%">Post Test</h3>
+                    <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!-- Post Test content goes here -->
-                         <h3>1. Hebbian learning rule falls under which cayrgory ?</h3>
+                        <!-- Pre Test content goes here -->
+                            <h3>1. KSOMs are based on ____________</h3>
+                            <input class="optradio1" type="radio" name="q1" value="1"> A. Perceptron Learning Rule<br>
+                            <input class="optradio1" type="radio" name="q1" value="2"> B. Delta Learning Rule<br />
+                            <input class="optradio1" type="radio" name="q1" value="3"> C. Winner-Takes-All Learning Rule<br />
+                            <input class="optradio1" type="radio" name="q1" value="4"> D. Hebbian Learning Rule<br />
+                            <br />
+                            <p id="optradio1Ans" class="testAns" style="display:none;">Ans is C</p>
 
-                        <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
-                        <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
-                        <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
-                        <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
-                        <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
-                        
-                        <h3>2. Which of the following is the property of Hebbian synapse</h3>
-                    
-                        <input type="radio" class="optradio2" name="q2" value="1"> A. It is very much time dependant<br>
-                        <input type="radio" class="optradio2" name="q2" value="2"> B. It is strongly interacting<br>
-                        <input type="radio" class="optradio2" name="q2" value="3"> C. none of the above<br>
-                        <input type="radio" class="optradio2" name="q2" value="4"> D. Both A and B<br>
+                        <div>
+                            <h3>2. Which type of learning is exhibited by the SOM?</h3>
+                            <input class="optradio2" type="radio" name="q2" value="1"> A. Unsupervised Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="2"> B. Supervised Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="3"> C. Reinforcement Learning<br>
+                            <input class="optradio2" type="radio" name="q2" value="4"> D. Active Learning<br>
+                            <br>
+                            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+                        </div>
 
-                        <br />
-                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is D</p>
-
-                        <h3>3. Unsupervised hebbian rule is also known as</h3>
-                    
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. Associative learning<br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. Clustering<br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. K-means<br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D.Perceptron<br>      
-
-                        <br />
-                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
-                            
-                        <h3>4. Which of the foolowing is the coorect definition of the anti neuron theory ?</h3>
-
-                        <input type="radio" class="optradio4" name="q4" value="1"> A. An increase in synaptic efficacy arises from the presynaptic cell's repeated and persistent stimulation of the postsynaptic cell. <br>
-                    <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.   dictating reduction of the strength of synaptic connectivity between neurons following a scenario in which a neuron directly contributes to production of an action potential in another neuron<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. Both A and B<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. none of the above<br><br>
-
-                        <br />
-                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is B</p>
-
-                        
+                        <div>
+                            <h3>3. Can we use any other learning technique, instead of the competitive learning for KSOM?</h3>
+                            <input class="optradio3" type="radio" name="q3" value="1"> A. Yes<br>
+                            <input class="optradio3" type="radio" name="q3" value="2"> B. No<br>
+                            <input class="optradio3" type="radio" name="q3" value="3"> C. Maybe<br>
+                            <input class="optradio3" type="radio" name="q3" value="4"> D. Can't say<br>
+                            <br>
+                            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
+                        </div>
                     </p>
                 </section>
                 <!-- /.content -->
-        
-        </div>
-            
+            </div>
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
-            </div>
+        </div>
     </body>
 </html>
 <!-- ./wrapper -->
@@ -166,4 +144,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

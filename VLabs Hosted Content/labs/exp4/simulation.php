@@ -25,15 +25,15 @@
         <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        
+
 
 
         <!--Math.js has been used for easy Matrix handling-->
         <!--Here is the main script that handles the simulation-->
         <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.13.3/math.min.js"></script>-->
         <script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>
-        <script type="text/javascript" src="../../src/exp4Simulation.js"></script>        
-        <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
+        <script type="text/javascript" src="../../src/exp4Simulation.js"></script>
+        <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->
         <link href="../../src/Styles.css" rel="stylesheet" />
 
 
@@ -53,12 +53,12 @@
         </style>
 
         <script type="text/javascript">
-            
+
             var LEFT = 650, TOP = 374;
             $("#percLR_SliderOuter").hide();
             //$("#hebbLR_SliderOuter").hide();
             //$("#corrLR_SliderOuter").hide();
-            
+
             var changing = 0;
 
             function editWeights(id,lrString) {
@@ -84,8 +84,8 @@
                 e.style.top = t + "px";
                 $("#"+lrString+"_SliderOuter").show();
             }
-            
-            
+
+
             function set(id,lrString) {
                 var e = document.getElementById(lrString+'_SliderOuter');
                 $("#"+lrString+"_line" + id).removeClass("selected");
@@ -93,7 +93,7 @@
                 $("#"+lrString+"_SliderOuter").hide();
                 $("#"+lrString+"_WeightsSlider").slider("value", 0, 0);
                 changing = 0;
-            }       
+            }
 
 
             $(document).ready(function () {
@@ -188,7 +188,7 @@
                     }
                 });*/
 
-                
+
 
                 $('[data-toggle="tooltip"]').tooltip();
 
@@ -283,7 +283,7 @@
 
                             <svg id="percLR_svg" width="700" height="400" style="float: left;clear:left;">
                                         <!--Neural Network connections-->
-                                        <line id="percLR_line11" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(11,'percLR')"x1="50" y1="50" x2="350" y2="50" style=""/>
+                                        <line id="percLR_line11" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(11,'percLR')" x1="50" y1="50" x2="350" y2="50" style=""/>
                                         <line id="percLR_line12" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(12,'percLR')" x1="50" y1="200" x2="350" y2="50" style=""/>
                                         <line id="percLR_line13" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(13,'percLR')" x1="50" y1="350" x2="350" y2="50" style=""/>
 
@@ -291,8 +291,8 @@
                                         <line id="percLR_line22" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(22,'percLR')" x1="50" y1="200" x2="350" y2="200" style=""/>
                                         <line id="percLR_line23" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(23,'percLR')" x1="50" y1="350" x2="350" y2="200" style=""/>
 
-                                        <line id="percLR_line31" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(31,'percLR') "x1="50" y1="50" x2="350" y2="350" style=""/>                                
-                                        <line id="percLR_line32" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(32,'percLR')" x1="50" y1="200" x2="350" y2="350" style=""/>                                
+                                        <line id="percLR_line31" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(31,'percLR') "x1="50" y1="50" x2="350" y2="350" style=""/>
+                                        <line id="percLR_line32" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(32,'percLR')" x1="50" y1="200" x2="350" y2="350" style=""/>
                                         <line id="percLR_line33" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(33,'percLR')" x1="50" y1="350" x2="350" y2="350" style=""/>
 
 								        <!-- @@@@@-->
@@ -300,14 +300,14 @@
                                         <line class="StdLine percLRNeur_2_lines" x1="350" y1="200" x2="610" y2="200" style=""/>
                                         <line class="StdLine percLRNeur_3_lines" x1="350" y1="350" x2="610" y2="350" style=""/>
 								        <!-- @@@@@-->
-                                
+
 
                                         <!--Neural Network nodes-->
                                         <circle class="StdCircle" cx="50" cy="50" r="20"/>
                                         <circle class="StdCircle" cx="50" cy="200" r="20"/>
                                         <circle class="StdCircle" cx="50" cy="350" r="20"/>
 								        <!-- @@@@@ -->
-								
+
                                         <circle class="StdCircle" cx="350" cy="50" r="20"/>
                                         <circle class="StdCircle" cx="350" cy="200" r="20"/>
                                         <circle class="StdCircle" cx="350" cy="350" r="20"/>
@@ -316,9 +316,9 @@
                                         <image x="610" y="25"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
                                         <image x="610" y="175"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
                                         <image x="610" y="325"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                                
 
-                                
+
+
 
                                         <!--Input texts-->
                                         <text font-size="20" x="5" y="55">X1</text>
@@ -327,8 +327,8 @@
                                         <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;"></text>
                                         <text font-size="20" x="10" y="360">1</text>
                                         <!--<text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="355">0</text>-->
-                                
-								
+
+
 								        <text font-size="20" x="342" y="55">∑</text>
                                         <text font-size="20" x="342" y="205">∑</text>
                                         <text font-size="20" x="342" y="355">∑</text>
@@ -343,21 +343,21 @@
                                         <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">1</tspan></text>
                                         <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
                                         <text font-size="20"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">1</tspan></text>
-								
-								
+
+
                                         <!--u(x) related texts-->
                                         <text font-size="20" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*1</text>
                                         <text font-size="20" x="370" y="190">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*1</text>
                                         <text font-size="20" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*1</text>
-                               
+
 
                                         <!--y(x) related texts-->
                                         <text font-size="20" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
                                         <text class="changingTextStyle percLR_outputO1" font-size="20" x="670" y="80" style="stroke: #3366ff;"></text>
-                                
+
                                         <text font-size="20" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
                                         <text class="changingTextStyle percLR_outputO2" font-size="20" x="670" y="230" style="stroke: #ff0000;"></text>
-                                
+
                                         <text font-size="20" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
                                         <text class="changingTextStyle percLR_outputO3" font-size="20" x="670" y="380" style="stroke: #009933;"></text>
                             </svg>
@@ -402,10 +402,10 @@
                                                 <tr class="1"><td class="0">0</td><td class="1">0</td><td class="2">0</td></tr>
                                                 <tr class="2"><td class="0">0</td><td class="1">0</td><td class="2">0</td></tr>
                                             </table>
-                                        </div>                                        
+                                        </div>
 
                                         <div class="centerPosOperatorsForMatrices">
-                                             X 
+                                             X
                                         </div>
 
                                         <div style="display: inline-block">
@@ -415,10 +415,10 @@
                                                 <tr class="2"><td class="0">0</td></tr>
                                             </table>
                                         </div>
-                                        <div class="centerPosOperatorsForMatrices">)</div> 
+                                        <div class="centerPosOperatorsForMatrices">)</div>
 
                                         <div class="centerPosOperatorsForMatrices" style="margin-left: 0px!important; margin-right: 0px!important;">
-                                             = 
+                                             =
                                         </div>
 
                                         <div class="centerPosOperatorsForMatrices">sgn(</div>
@@ -429,7 +429,7 @@
                                                 <tr class="2"><td class="0">0</td></tr>
                                             </table>
                                         </div>
-                                        <div class="centerPosOperatorsForMatrices">)</div> 
+                                        <div class="centerPosOperatorsForMatrices">)</div>
 
                                         <div class="centerPosOperatorsForMatrices" style="margin-left: 0px!important;">
                                              = &nbsp;
@@ -443,13 +443,13 @@
                                             </table>
                                         </div>
                                 </div>
-                        
+
                                 <br/>
 
 
                                 <div id="percLR_SecondPartOfExpln" style="display: none;">
                                         <div class="centerPosOperatorsForMatrices">
-                                            O = 
+                                            O =
                                         </div>
                                         <div style="display: inline-block">
                                             <table class="matrix changingBlocks outputVector" data-toggle="tooltip" data-placement="bottom" title="Actual Output Vector O">
@@ -459,7 +459,7 @@
                                             </table>
                                         </div>
                                         <div class="centerPosOperatorsForMatrices">
-                                            , D = 
+                                            , D =
                                         </div>
                                         <div style="display: inline-block">
                                             <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector O">
@@ -469,8 +469,8 @@
                                             </table>
                                         </div>
 
-                                        <div class="revealText1 changingBlocks" style="display: none;">According to <span style="font-size: larger; font-weight: bolder">Perceptron Learning Rule</span> : ΔW<sub>i</sub> = η ( D<sub>i</sub> - O<sub>i</sub> ) X / 2</div>
-                                        <div class="revealText2 changingBlocks" style="display: none;">Hence, W<sub>i,new</sub> = W<sub>i,old</sub> + η ( D<sub>i</sub> - O<sub>i</sub> ) X / 2</div>
+                                        <div class="revealText1 changingBlocks" style="display: none;">According to <span style="font-size: larger; font-weight: bolder">Perceptron Learning Rule</span> : ΔW<sub>i</sub> = η ( D<sub>i</sub> - O<sub>i</sub> ) X </div>
+                                        <div class="revealText2 changingBlocks" style="display: none;">Hence, W<sub>i,new</sub> = W<sub>i,old</sub> + η ( D<sub>i</sub> - O<sub>i</sub> ) X </div>
                                         <div class="revealText3 changingBlocks" style="display: none;">The calculations for weight vector for each classifier neuron are as shown below:</div>
                                         <br/>
 
@@ -498,7 +498,7 @@
                                                                     </table>
                                                                 </div>
                                                                 <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output"></span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output"></span> ) ) </div>
-                                 
+
                                                                 <div style="display: inline-block">
                                                                     <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
                                                                         <tr class="0"><td class="0">0</td></tr>
@@ -506,7 +506,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
@@ -534,7 +534,7 @@
                                                                     </table>
                                                                 </div>
                                                                 <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output"></span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output"></span> ) ) </div>
-                                 
+
                                                                 <div style="display: inline-block">
                                                                     <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
                                                                         <tr class="0"><td class="0">0</td></tr>
@@ -542,7 +542,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
@@ -570,7 +570,7 @@
                                                                     </table>
                                                                 </div>
                                                                 <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output"></span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output"></span> ) ) </div>
-                                 
+
                                                                 <div style="display: inline-block">
                                                                     <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
                                                                         <tr class="0"><td class="0">0</td></tr>
@@ -578,7 +578,7 @@
                                                                         <tr class="2"><td class="0">0</td></tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class="centerPosOperatorsForMatrices"> / 2</div>
+                                                                <div class="centerPosOperatorsForMatrices"> </div>
                                                                 <br/><br/>
                                                                 <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
 
@@ -603,7 +603,7 @@
                                                 <span class="sr-only">Next</span>
                                             </a>
                                         </div>
-                                
+
                                         <br/>
                                         <div class="revealNewWtLine0 changingBlocks">In the carousel, the cards with <span style="background-color: #CDFFAF">green background</span> indicate the corresponding <b>weight vector has not changed</b> whereas
                                             the cards with <span style="background-color: #FFD6D6">red background</span> indicate the corresponding <b>weight vector has changed</b>.
@@ -640,14 +640,14 @@
                                                 <tr class="1"><td class="0">0</td><td class="1">0</td><td class="2">0</td></tr>
                                                 <tr class="2"><td class="0">0</td><td class="1">0</td><td class="2">0</td></tr>
                                             </table>
-                                        </div>    
+                                        </div>
                                         <br/>
                                         <div class="revealNewWtLine6 changingBlocks" style="font-size: x-large;"></div>
                                     </div>
                             </div>
                     </div>
 
-                </section>                
+                </section>
                 <!-- /.content -->
             </div>
             <?php include 'footer.html'; ?>
@@ -655,7 +655,6 @@
         </div>
     </body>
 </html>
-
 
 
 <!-- Bootstrap 3.3.6 -->
