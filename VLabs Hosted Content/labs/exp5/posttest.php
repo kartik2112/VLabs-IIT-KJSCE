@@ -101,6 +101,46 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
+                         <h3>1. Hebbian learning rule falls under which cayrgory ?</h3>
+
+                        <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
+                        <br />
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
+                        
+                        <h3>2. Which of the following is the property of Hebbian synapse</h3>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. It is very much time dependant<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. It is strongly interacting<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. none of the above<br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. Both A and B<br>
+
+                        <br />
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is D</p>
+
+                        <h3>3. Unsupervised hebbian rule is also known as</h3>
+                    
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. Associative learning<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. Clustering<br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. K-means<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D.Perceptron<br>      
+
+                        <br />
+                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
+                            
+                        <h3>4. Which of the foolowing is the coorect definition of the anti neuron theory ?</h3>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. An increase in synaptic efficacy arises from the presynaptic cell's repeated and persistent stimulation of the postsynaptic cell. <br>
+                    <br>
+                    <input type="radio" class="optradio4" name="q4" value="2"> B.   dictating reduction of the strength of synaptic connectivity between neurons following a scenario in which a neuron directly contributes to production of an action potential in another neuron<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. Both A and B<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. none of the above<br><br>
+
+                        <br />
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is B</p>
+
                         
                     </p>
                 </section>
