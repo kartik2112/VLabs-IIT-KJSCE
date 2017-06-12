@@ -88,8 +88,7 @@ function startSimulation(lrString){
     //learnInput(lrString,0);
 
 }
-var animatro;
-var operatingAlgo;
+
 function learnProc(lrString,inputIndex)
 {
       document.getElementById("op1").style.fill="#ff0000";
@@ -98,6 +97,11 @@ function learnProc(lrString,inputIndex)
       document.getElementById("resultCalculations").innerHTML="";
       document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
       document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
+      points[inputIndex].size(25);
+      points[inputIndex].fillColor("#00ff00");
+      points[inputIndex].strokeColor("#00ff00");
+      var content_to_be_shown="<h2>"+"Considered sample:("+inputs[inputIndex]+")"+"</h2>";
+
       setTimeout(function(){
         $("line."+lrString+"Neur_1_lines").addClass("animatedLineRegionBlue");
         $("line."+lrString+"Neur_2_lines").addClass("animatedLineRegionRed");
@@ -108,9 +112,13 @@ function learnProc(lrString,inputIndex)
         $("#"+lrString+"NextButton").removeClass("displayActivatedButton");
         $("#"+lrString+"NextButton").unbind("click");
         var distancesFromClusterCenters=[];
+        // var header3=document.createElement("h3");
+        // theDiv.appendChild(header3);
+
         for(var k=0;k<weightMatrix.length;k++)
         {
             distancesFromClusterCenters[k]=Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2);
+            content_to_be_shown+="<h3>"+"Distance from C"+(k+1)+":"+distancesFromClusterCenters[k]+"</h3>";
         }
         var max=10000;
         var J_min;
@@ -122,28 +130,20 @@ function learnProc(lrString,inputIndex)
                 J_min=j;
             }
         }
-        var theDiv = document.getElementById("resultCalculations");
-        var x = document.createElement("br");
-        theDiv.appendChild(x);
-        var content = document.createTextNode("Considered sample:"+inputs[inputIndex]);
-        theDiv.appendChild(content);
-        theDiv.appendChild(x);
-        var content = document.createTextNode("Winning neuron to be changed of:"+(J_min+1));
-        theDiv.appendChild(content);
+        content_to_be_shown+="<h3>"+"Closest to the input sample is:"+(J_min+1)+"</h3>";
+        content_to_be_shown+="<h3>"+"Weights to be changed of neuron "+(J_min+1)+"</h3>";
+
         for(var j=0;j<inputs[inputIndex].length;j++)
         {
             weightMatrix[J_min][j]=parseFloat(weightMatrix[J_min][j]+learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j])).toFixed(3);
         }
         points[inputIndex].setAttribute({color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
-        theDiv = document.getElementById("resultCalculations");
-        x = document.createElement("br");
-        theDiv.appendChild(x);
-        content = document.createTextNode("Updated weights:"+weightMatrix[J_min]);
-        theDiv.appendChild(content);
+        content_to_be_shown+="<h3>"+"Updated weights:"+weightMatrix[J_min]+"</h3>";
+        document.getElementById("resultCalculations").innerHTML=content_to_be_shown;
         document.getElementById("op"+(J_min+1)).style.fill="#00ff00";
         board.removeObject(points[inputIndex]);
         board.removeObject(clusterCenters[J_min]);
-        points[inputIndex]=board.create('point',[inputs[inputIndex][0],inputs[inputIndex][1]],{fixed:true,color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
+        points[inputIndex]=board.create('point',[inputs[inputIndex][0],inputs[inputIndex][1]],{fixed:true,name:'',color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
         clusterCenters[J_min]=board.create('point',[weightMatrix[J_min][0],weightMatrix[J_min][1]],{fixed:true,name:'C'+(J_min+1),color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
         displayWeightsInNeuralNet(lrString);
         //plotGraph("KSOM");
@@ -189,7 +189,7 @@ function plotGraph(lrString){
     board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-7, 7, 7, -7]});  //Creates the cartesian graph
 	  var constPointSize=5;
     for(var i=0;i<inputs.length;i++){
-        points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true});
+        points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true,name:''});
     }
 
     for(var i=0;i<weightMatrix.length;i++)

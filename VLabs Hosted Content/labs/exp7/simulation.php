@@ -42,7 +42,7 @@
             }
         </style>
         <script type="text/javascript">
-        var LEFT = 650, TOP = 374;
+        var LEFT = 360, TOP = 670;
         $("#KSOM_SliderOuter").hide();
         //$("#hebbLR_SliderOuter").hide();
         //$("#corrLR_SliderOuter").hide();
@@ -110,9 +110,9 @@
                 slide: function (event, ui) {
                     $("#KSOMMainOuterDiv tspan.w" + sel + "text").text(ui.value);
                     if(sel-20>0)
-                      weightMatrix[sel % 20 - 1][1] = parseInt(ui.value);
+                      weightMatrix[sel % 20 - 1][1] = parseFloat(ui.value);
                     else {
-                      weightMatrix[sel % 10 - 1][0] = parseInt(ui.value);
+                      weightMatrix[sel % 10 - 1][0] = parseFloat(ui.value);
                     }
                     plotGraph("KSOM");
                 }
@@ -200,8 +200,9 @@
                     <div id="KSOMMainOuterDiv">
                             <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
+                            <p>&rarr; The steps will be written by Tej shortly.</p>
                             <br>
-                            <svg id="KSOM_svg" width="700" height="400" style="float: left;clear:left;">
+                            <svg id="KSOM_svg" width="500" height="400" style="float: left;clear:left;">
                               <!--Neural network connections-->
                               <!--From 1st input neuron-->
                               <line id="KSOM_conn11" class="not_sel lines KSOMNeur_1_lines" stroke="#ff6a00" stroke-width="5" onclick="editWeights(11,'KSOM')" x1="50" y1="100" x2="350" y2="50" />
@@ -233,7 +234,7 @@
                                 <div id="KSOM_WeightsSlider" class="sliders" style="margin: 0 10px;height: 10px;background: deepskyblue;"></div>
                                 <button onclick="set(sel,'KSOM')" style="margin: 15px 0;border: none;outline: none;">Set</button>
                             </div>
-                            <div id="KSOMGraphDiv" class="jxgbox" style="width:300px; height:300px;"></div>
+                            <div id="KSOMGraphDiv" class="jxgbox" style="width:500px; height:500px;"></div>
                     </div>
                     <br/><br/>
                     <b>Learning Rate (η) : </b>
