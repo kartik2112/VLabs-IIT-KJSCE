@@ -258,13 +258,13 @@
                         <p class="resContent">Samples & their clusters:</p>
                         <table border="1">
                             <tr><th class="table_res">Sample</th><th class="table_res">Cluster</th></tr>
-                            <tr id="cluster_row1"><td class="table_res">(2,2)</td><td class="table_res" id="cluster1">-</td></tr>
-                            <tr id="cluster_row2"><td class="table_res">(2.5,2.5)</td><td class="table_res" id="cluster2">-</td></tr>
-                            <tr id="cluster_row3"><td class="table_res">(3,2)</td><td class="table_res" id="cluster3">-</td></tr>
-                            <tr id="cluster_row4"><td class="table_res">(0.5,1)</td><td class="table_res" id="cluster4">-</td></tr>
-                            <tr id="cluster_row5"><td class="table_res">(1,0.5)</td><td class="table_res" id="cluster5">-</td></tr>
-                            <tr id="cluster_row6"><td class="table_res">(1,4)</td><td class="table_res" id="cluster6">-</td></tr>
-                            <tr id="cluster_row7"><td class="table_res">(2,4.5)</td><td class="table_res" id="cluster7">-</td></tr>
+                            <tr id="cluster_row1"><td class="table_res">(2, 2)</td><td class="table_res" id="cluster1">-</td></tr>
+                            <tr id="cluster_row2"><td class="table_res">(2.5, 2.5)</td><td class="table_res" id="cluster2">-</td></tr>
+                            <tr id="cluster_row3"><td class="table_res">(3, 2)</td><td class="table_res" id="cluster3">-</td></tr>
+                            <tr id="cluster_row4"><td class="table_res">(0.5, 1)</td><td class="table_res" id="cluster4">-</td></tr>
+                            <tr id="cluster_row5"><td class="table_res">(1, 0.5)</td><td class="table_res" id="cluster5">-</td></tr>
+                            <tr id="cluster_row6"><td class="table_res">(1, 4)</td><td class="table_res" id="cluster6">-</td></tr>
+                            <tr id="cluster_row7"><td class="table_res">(2, 4.5)</td><td class="table_res" id="cluster7">-</td></tr>
                         </table>
                     </div>
                     <br/>
