@@ -72,7 +72,7 @@
                 </section>
                 <!-- Main content -->
                 <section class="content" id="pro" style="font-size: larger">
-                    <h2 style="margin-top:5%">Procedure</h3>
+                    <h2 style="margin-top:5%">Procedure</h2>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
                         <h3>The following procedure is to be followed for the simulation:</h3>
