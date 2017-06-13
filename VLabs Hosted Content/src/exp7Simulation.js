@@ -84,6 +84,7 @@ function startSimulation(lrString){
 
     for(var i=0;i<inputs.length;i++){
         document.getElementById("cluster"+(i+1)).innerHTML = "-";
+        document.getElementById("cluster"+(i+1)).style.background = "inherit";
     }
 
     learnProc(lrString,0);
@@ -109,6 +110,7 @@ function learnProc(lrString,inputIndex)
       points[inputIndex].size(25);
       points[inputIndex].fillColor("#00ff00");
       points[inputIndex].strokeColor("#00ff00");
+      if(inputIndex!=0) document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
       $('html, body').animate({
           scrollTop: $("#KSOMGraphDiv").offset().top
       });
