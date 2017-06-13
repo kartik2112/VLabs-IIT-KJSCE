@@ -78,8 +78,8 @@
                             timeIndex++;
                         });
                     }).progress(function (result) {
-                        document.getElementById("statusProgressBar").innerHTML = ((parseFloat(result["progress"]).toFixed(2)) * 100) + "%";
-                        document.getElementById("statusProgressBar").style.width = ((parseFloat(result["progress"]).toFixed(2)) * 100) + "%";
+                        document.getElementById("statusProgressBar").innerHTML = (parseFloat((result["progress"]* 100).toFixed(2)) ) + "%";
+                        document.getElementById("statusProgressBar").style.width = (parseFloat((result["progress"]* 100).toFixed(2)) ) + "%";
                         document.getElementById("ocr_status").innerText = result["status"];
                     });
             }
