@@ -206,7 +206,6 @@
                     <div id="KSOMMainOuterDiv">
                             <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
-                            <p>&rarr; The steps will be written by Tej shortly.</p>
                             <br>
                             <svg id="KSOM_svg" width="500" height="400" style="float: left;clear:left;">
                               <!--Neural network connections-->
@@ -249,6 +248,9 @@
                     <button id="KSOMStartSimButton" class="btn btn-success" onclick="startSimulation('KSOM')">Start Simulation</button>
                     <button id="KSOMStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('KSOM')" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="KSOMNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
+                    <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
+                    <br/>
+                    <br/>
                     <div>
                         <b class="resContent">We have 7 samples (red dots) which we are going to classify into 3 clusters. </b>
                         <b class="resContent">Each cluster has its own cluster centroid (C1, C2 & C3 respectively).</b>
