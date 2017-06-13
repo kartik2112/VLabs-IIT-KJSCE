@@ -206,7 +206,6 @@
                     <div id="KSOMMainOuterDiv">
                             <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
-                            <p>&rarr; The steps will be written by Tej shortly.</p>
                             <br>
                             <svg id="KSOM_svg" width="500" height="400" style="float: left;clear:left;">
                               <!--Neural network connections-->
@@ -249,6 +248,9 @@
                     <button id="KSOMStartSimButton" class="btn btn-success" onclick="startSimulation('KSOM')">Start Simulation</button>
                     <button id="KSOMStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('KSOM')" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="KSOMNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
+                    <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
+                    <br/>
+                    <br/>
                     <div>
                         <b class="resContent">We have 7 samples (red dots) which we are going to classify into 3 clusters. </b>
                         <b class="resContent">Each cluster has its own cluster centroid (C1, C2 & C3 respectively).</b>
@@ -258,13 +260,13 @@
                         <p class="resContent">Samples & their clusters:</p>
                         <table border="1">
                             <tr><th class="table_res">Sample</th><th class="table_res">Cluster</th></tr>
-                            <tr id="cluster_row1"><td class="table_res">(2,2)</td><td class="table_res" id="cluster1">-</td></tr>
-                            <tr id="cluster_row2"><td class="table_res">(2.5,2.5)</td><td class="table_res" id="cluster2">-</td></tr>
-                            <tr id="cluster_row3"><td class="table_res">(3,2)</td><td class="table_res" id="cluster3">-</td></tr>
-                            <tr id="cluster_row4"><td class="table_res">(0.5,1)</td><td class="table_res" id="cluster4">-</td></tr>
-                            <tr id="cluster_row5"><td class="table_res">(1,0.5)</td><td class="table_res" id="cluster5">-</td></tr>
-                            <tr id="cluster_row6"><td class="table_res">(1,4)</td><td class="table_res" id="cluster6">-</td></tr>
-                            <tr id="cluster_row7"><td class="table_res">(2,4.5)</td><td class="table_res" id="cluster7">-</td></tr>
+                            <tr id="cluster_row1"><td class="table_res">(2, 2)</td><td class="table_res" id="cluster1">-</td></tr>
+                            <tr id="cluster_row2"><td class="table_res">(2.5, 2.5)</td><td class="table_res" id="cluster2">-</td></tr>
+                            <tr id="cluster_row3"><td class="table_res">(3, 2)</td><td class="table_res" id="cluster3">-</td></tr>
+                            <tr id="cluster_row4"><td class="table_res">(0.5, 1)</td><td class="table_res" id="cluster4">-</td></tr>
+                            <tr id="cluster_row5"><td class="table_res">(1, 0.5)</td><td class="table_res" id="cluster5">-</td></tr>
+                            <tr id="cluster_row6"><td class="table_res">(1, 4)</td><td class="table_res" id="cluster6">-</td></tr>
+                            <tr id="cluster_row7"><td class="table_res">(2, 4.5)</td><td class="table_res" id="cluster7">-</td></tr>
                         </table>
                     </div>
                     <br/>
