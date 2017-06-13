@@ -73,7 +73,6 @@
                     <h3 style="margin-top:5%">Theory</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
-                        <h4>
                         <p>The correlation learning rule is based on a similar principle as the Hebbian learning rule.
                         <br>
                         <br> 
@@ -231,8 +230,7 @@
                                 <br>
                                 Finally perform the same steps for each iteration
  
-                         </p>      
-                         </h4>                       
+                         </p>                        
                     </p>
                    
                 </section>

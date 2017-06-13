@@ -73,7 +73,6 @@
                     <h3 style="margin-top:5%">Theory</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
-                        <h4>
                         <p>
                         <b>Hebbian learning</b> is one of the oldest learning algorithms, and is based in large part on the dynamics of biological systems.
                         <br>
@@ -101,10 +100,10 @@
                         <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cc410c6aff9ff68c8e3c4b8b512385b8d7b8fa8d">
                         </p>
 
-                        <p><b>Consider an example given below :</b>
+                        <p><b>Consider an example given below :</b></p>
                         <br>
                            <p>There are two input neurons and their values are denoted by X<sub>1</sub> and X<sub>2</sub> respectively.</p>
-                           </p>
+                           <p>
                            Also consider a bias fixed input as 1.
                            <br>
                            Let X1= -2, X2= 3. Thus the input vector X= [-2 3 1].
@@ -224,8 +223,6 @@
                                 Finally perform the same steps for each iteration
  
                          </p>
-
-                        </h4>
                     </p>
                 </section>
                 <!-- /.content -->

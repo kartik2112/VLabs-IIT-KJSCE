@@ -73,7 +73,6 @@
                     <h3 style="margin-top:5%">Theory</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
-                        <h4>
                         <p>In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. It is a type of linear classifier, i.e. a classification algorithm that makes its predictions based on a linear predictor function combining a set of weights with the feature vector. The algorithm allows for online learning, in that it processes elements in the training set one at a time.</p>
                         <br>
                         <p>
@@ -252,7 +251,6 @@
                         <br>
                         <br>
                         The final weight vector after considering all inputs is [0.6 -0.4 0.1 0.5].
-                        </h4>
                 </section>
                 <!-- /.content -->
             </div>
