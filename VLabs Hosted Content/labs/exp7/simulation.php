@@ -40,6 +40,12 @@
               stroke: #0e95ca;
               stroke-dasharray: 7px;
             }
+            .resContent{
+                font-size: 20px;
+            }
+            .table_res{
+                padding: 5px 10px;
+            }
         </style>
         <script type="text/javascript">
         var LEFT = 360, TOP = 670;
@@ -243,8 +249,33 @@
                     <button id="KSOMStartSimButton" class="btn btn-success" onclick="startSimulation('KSOM')">Start Simulation</button>
                     <button id="KSOMStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('KSOM')" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="KSOMNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
-                    <div id="resultCalculations">
+                    <div>
+                        <b class="resContent">We have 7 samples (red dots) which we are going to classify into 3 clusters. </b>
+                        <b class="resContent">Each cluster has its own cluster centroid (C1, C2 & C3 respectively).</b>
                     </div>
+                    <br/>
+                    <div id="finalClusterOutput">
+                        <p class="resContent">Samples & their clusters:</p>
+                        <table border="1">
+                            <tr><th class="table_res">Sample</th><th class="table_res">Cluster</th></tr>
+                            <tr id="cluster_row1"><td class="table_res">(2,2)</td><td class="table_res" id="cluster1">-</td></tr>
+                            <tr id="cluster_row2"><td class="table_res">(2.5,2.5)</td><td class="table_res" id="cluster2">-</td></tr>
+                            <tr id="cluster_row3"><td class="table_res">(3,2)</td><td class="table_res" id="cluster3">-</td></tr>
+                            <tr id="cluster_row4"><td class="table_res">(0.5,1)</td><td class="table_res" id="cluster4">-</td></tr>
+                            <tr id="cluster_row5"><td class="table_res">(1,0.5)</td><td class="table_res" id="cluster5">-</td></tr>
+                            <tr id="cluster_row6"><td class="table_res">(1,4)</td><td class="table_res" id="cluster6">-</td></tr>
+                            <tr id="cluster_row7"><td class="table_res">(2,4.5)</td><td class="table_res" id="cluster7">-</td></tr>
+                        </table>
+                    </div>
+                    <br/>
+                    <div id="input" class="noshow"></div>
+                    <div id="weightMatrix" class="noshow"></div>
+                    <div id="distFromCentre" class="noshow"></div>
+                    <div id="neuronWeightChange" class="noshow"></div>
+                    <div id="updatedWeight" class="noshow"></div>
+                    <script>
+                        $(".noshow").hide();
+                    </script>
                 </section>
                 <!-- /.content -->
             </div>
