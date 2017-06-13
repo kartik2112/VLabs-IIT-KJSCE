@@ -101,7 +101,47 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
+<h3>1.  Correlation learning rule falls under which cayrgory ?</h3>
+
+                        <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
+                        <br />
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
+                        <h3>2. Correlation learning rule is similar to which rule</h3>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. Hebbian learning rule<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. Instar learning rule<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. Anti-hebbian learning rule<br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. Perceptron learning rule<br>
+
+                        <br />
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+
+                        <h3>3. In correlation learning rule weights are usually initailized with?</h3>
+                    
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. zeros <br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. ones<br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. can't say<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. three<br>      
+
+                        <br />
+                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
+                            
+                        <h3>4. What type of activation function is used in this experiment?</h3>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. Hardlimit activation function <br>
+                    <br>
+                    <input type="radio" class="optradio4" name="q4" value="2"> B. Softlimit activation function<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. Both A and B<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. none of the above<br><br>
+
+                        <br />
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is B</p>
+
+                                                
                     </p>
                 </section>
                 <!-- /.content -->
