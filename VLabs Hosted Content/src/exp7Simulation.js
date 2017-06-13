@@ -226,7 +226,8 @@ function learnProc(lrString,inputIndex)
             points[inputIndex].setAttribute({color:clusterCenterDenotions[J_min][1],face:clusterCenterDenotions[J_min][0]});
             document.getElementById('updatedWeight').innerHTML = new_weight_content + "<br/>";
             new_weight_content = "<p class='resContent'>The sample thus belongs to cluster "+(J_min+1)+". The value has been updated in the table (Highlighted row).";
-            new_weight_content += " Click on 'Apply next I/P value' button to consider the next sample.</p>";
+            if(inputIndex+1<inputs.length) new_weight_content += " Click on 'Apply next I/P value' button to consider the next sample.</p>";
+            else new_weight_content += "Try changing the weights (which will change cluster centroids) and then click on 'Stop Simulation' button to restart the simulation with new parameters.</p>";
             document.getElementById('updatedWeight').innerHTML += new_weight_content + "<br/>";
             $("#updatedWeight").fadeIn(500);
             $('html, body').animate({
