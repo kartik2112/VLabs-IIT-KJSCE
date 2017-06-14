@@ -177,6 +177,7 @@ function learnProc(lrString,inputIndex)
 
         for(var k=0;k<weightMatrix.length;k++)
         {
+            console.log(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+" + "+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)+" = "+(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)));
             distancesFromClusterCenters[k]=(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)).toFixed(3);
             //content_to_be_shown+="<h3>"+"Distance from C"+(k+1)+":"+distancesFromClusterCenters[k]+"</h3>";
         }
@@ -191,9 +192,10 @@ function learnProc(lrString,inputIndex)
         for(var j=0;j<distancesFromClusterCenters.length;j++)
         {
             dist_content += "<tr id='clusterCentre"+(j+1)+"'><td style='padding:5px 8px;'>C"+(j+1)+"</td><td style='padding:3px;'>"+distancesFromClusterCenters[j]+"</td></tr>";
-            if(distancesFromClusterCenters[j]<max)
+            if(parseFloat(distancesFromClusterCenters[j])<max)
             {
-                max=distancesFromClusterCenters[j];
+                console.log(max+" & "+distancesFromClusterCenters[j]);
+                max=parseFloat(distancesFromClusterCenters[j]);
                 J_min=j;
             }
         }
@@ -220,11 +222,7 @@ function learnProc(lrString,inputIndex)
             });
         },7000);
 
-        for(var j=0;j<inputs[inputIndex].length;j++)
-        {
-            console.log(weightMatrix[J_min][j] + " + " + learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j]) + " = " + ((parseFloat(weightMatrix[J_min][j])+parseFloat(learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j])))));
-            weightMatrix[J_min][j]=parseFloat(parseFloat(weightMatrix[J_min][j])+parseFloat(learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j]))).toFixed(3);
-        }
+        for(var j=0;j<inputs[inputIndex].length;j++) weightMatrix[J_min][j]=parseFloat(parseFloat(weightMatrix[J_min][j])+parseFloat(learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j]))).toFixed(3);
 
         // Show the new weight matrix.
         var new_weight_content = "<p class='resContent'>The updated weight matrix:</p>";
