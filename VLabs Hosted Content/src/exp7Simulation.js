@@ -1,3 +1,4 @@
+var savedWeightMatrix = [[1,3],[1,2],[5,1]];
 var weightMatrix = [[1,3],[1,2],[5,1]];
 var inputs = [[2,2],[2.5,2.5],[3,2],[0.5,1],[1,0.5],[1,4],[2,4.5]];
 var clusterCenterDenotions=[['x','#004c64'],['+','#a10900'],['<>','#0d6032']];
@@ -53,6 +54,12 @@ function resetSimulation(lrString){
 
     $(".changingTextStyle").text("");
 
+    for(var i=0;i<3;i++) for(var j=0;j<2;j++) weightMatrix[i][j] = savedWeightMatrix[i][j];
+    for(var i=1;i<8;i++){
+        $("#cluster_row"+i).css("background","inherit");
+        document.getElementById('cluster_row'+i).style.border = "inherit";
+    }
+
     plotGraph(lrString);
     displayWeightsInNeuralNet(lrString);
     simulationStart=false;
@@ -87,6 +94,8 @@ function startSimulation(lrString){
         document.getElementById("cluster"+(i+1)).style.background = "inherit";
     }
 
+    for(var i=0;i<3;i++) for(var j=0;j<2;j++) savedWeightMatrix[i][j] = weightMatrix[i][j];
+
     learnProc(lrString,0);
     //resetSimulation(lrString);
     //learnInput(lrString,0);
@@ -110,7 +119,10 @@ function learnProc(lrString,inputIndex)
       points[inputIndex].size(25);
       points[inputIndex].fillColor("#00ff00");
       points[inputIndex].strokeColor("#00ff00");
-      if(inputIndex!=0) document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
+      if(inputIndex!=0){
+          document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
+          document.getElementById('cluster_row'+inputIndex).style.border = "inherit";
+      }
       $('html, body').animate({
           scrollTop: $("#KSOMGraphDiv").offset().top
       });
@@ -120,10 +132,13 @@ function learnProc(lrString,inputIndex)
       var input_content="<p class='resContent'>"+"Input sample into consideration: ("+inputs[inputIndex]+")"+"</p>";
       res.innerHTML += input_content;
       setTimeout(function(){
-          $("#input").fadeIn(500);
           $('html, body').animate({
-              scrollTop: $("#input").offset().top
+              scrollTop: $("#finalClusterOutput").offset().top
           });
+      },1000);
+
+      setTimeout(function(){
+          $("#input").fadeIn(800);
       },2000);
 
       /* ------ This displays the initial weight matrix ------ */
@@ -143,7 +158,7 @@ function learnProc(lrString,inputIndex)
       // Display the matrix
       setTimeout(function() {
           res.innerHTML += init_weight_content + "<br/><br/>";
-          $("#weightMatrix").fadeIn(500);
+          $("#weightMatrix").fadeIn(800);
           $('html, body').animate({
               scrollTop: $("#weightMatrix").offset().top
           });
@@ -162,7 +177,8 @@ function learnProc(lrString,inputIndex)
 
         for(var k=0;k<weightMatrix.length;k++)
         {
-            distancesFromClusterCenters[k]=Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2);
+            console.log(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+" + "+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)+" = "+(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)));
+            distancesFromClusterCenters[k]=(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)).toFixed(3);
             //content_to_be_shown+="<h3>"+"Distance from C"+(k+1)+":"+distancesFromClusterCenters[k]+"</h3>";
         }
 
@@ -176,16 +192,17 @@ function learnProc(lrString,inputIndex)
         for(var j=0;j<distancesFromClusterCenters.length;j++)
         {
             dist_content += "<tr id='clusterCentre"+(j+1)+"'><td style='padding:5px 8px;'>C"+(j+1)+"</td><td style='padding:3px;'>"+distancesFromClusterCenters[j]+"</td></tr>";
-            if(distancesFromClusterCenters[j]<max)
+            if(parseFloat(distancesFromClusterCenters[j])<max)
             {
-                max=distancesFromClusterCenters[j];
+                console.log(max+" & "+distancesFromClusterCenters[j]);
+                max=parseFloat(distancesFromClusterCenters[j]);
                 J_min=j;
             }
         }
         dist_content += "</table>";
         setTimeout(function(){
             document.getElementById('distFromCentre').innerHTML = dist_content + "<br/>";
-            $("#distFromCentre").fadeIn(500);
+            $("#distFromCentre").fadeIn(800);
             $('html, body').animate({
               scrollTop: $("#distFromCentre").offset().top
             });
@@ -197,17 +214,15 @@ function learnProc(lrString,inputIndex)
         neuron_content+="<p class='resContent'>We will change the weights of this neuron. (Shown in red colour)";
         setTimeout(function(){
             document.getElementById('neuronWeightChange').innerHTML = neuron_content + "<br/>";
-            $("#neuronWeightChange").fadeIn(500);
+            $("#neuronWeightChange").fadeIn(800);
             $("#clusterCentre"+(J_min+1)).css("background","#fa8686");
+            $("#clusterCentre"+(J_min+1)).css("border","2px solid black")
             $('html, body').animate({
               scrollTop: $("#neuronWeightChange").offset().top
             });
         },7000);
 
-        for(var j=0;j<inputs[inputIndex].length;j++)
-        {
-            weightMatrix[J_min][j]=parseFloat(weightMatrix[J_min][j]+learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j])).toFixed(3);
-        }
+        for(var j=0;j<inputs[inputIndex].length;j++) weightMatrix[J_min][j]=parseFloat(parseFloat(weightMatrix[J_min][j])+parseFloat(learningRate*(inputs[inputIndex][j]-weightMatrix[J_min][j]))).toFixed(3);
 
         // Show the new weight matrix.
         var new_weight_content = "<p class='resContent'>The updated weight matrix:</p>";
@@ -229,12 +244,13 @@ function learnProc(lrString,inputIndex)
             if(inputIndex+1<inputs.length) new_weight_content += " Click on 'Apply next I/P value' button to consider the next sample.</p>";
             else new_weight_content += "Try changing the weights (which will change cluster centroids) and then click on 'Stop Simulation' button to restart the simulation with new parameters.</p>";
             document.getElementById('updatedWeight').innerHTML += new_weight_content + "<br/>";
-            $("#updatedWeight").fadeIn(500);
+            $("#updatedWeight").fadeIn(800);
             $('html, body').animate({
               scrollTop: $("#updatedWeight").offset().top
             });
             document.getElementById('cluster'+(inputIndex+1)).innerHTML = (J_min+1);
-            $("#cluster_row"+(inputIndex+1)).css("background","#fa8686")
+            $("#cluster_row"+(inputIndex+1)).css("background","#fa8686");
+            $("#cluster_row"+(inputIndex+1)).css("border","2px solid black");
         },10500);
 
         setTimeout(function(){
