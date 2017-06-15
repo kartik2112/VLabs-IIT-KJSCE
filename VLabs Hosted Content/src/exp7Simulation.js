@@ -177,7 +177,6 @@ function learnProc(lrString,inputIndex)
 
         for(var k=0;k<weightMatrix.length;k++)
         {
-            console.log(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+" + "+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)+" = "+(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)));
             distancesFromClusterCenters[k]=(Math.pow((inputs[inputIndex][0]-weightMatrix[k][0]),2)+Math.pow((inputs[inputIndex][1]-weightMatrix[k][1]),2)).toFixed(3);
             //content_to_be_shown+="<h3>"+"Distance from C"+(k+1)+":"+distancesFromClusterCenters[k]+"</h3>";
         }
