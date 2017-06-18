@@ -41,9 +41,10 @@
             height: 40px;
             padding: 3px 0;
             cursor: pointer;
+            border: 1px solid transparent;
           }
           .add_btn_div:hover{
-            border: 1px solid #999999;
+            border: 1px solid #777777;
           }
           .descr{
             width: 100%;
@@ -61,7 +62,7 @@
           .descr input[type='number']:hover{
             transition-duration: 0.5s;
             background: white;
-            border-radius: 10px;
+            border-radius: 5px;
           }
           .descr input[type='text']{
             float: left;
@@ -177,7 +178,7 @@
                     <input type="number" max="100" min="0" value="67"/>
                     <input type="text" placeholder="Name of descriptor" value="High"/>
                     <input type="number" max="100" min="0" value="100"/>
-                    <button id="q3"><b>-</b></button>
+                    <button id="q3" onclick="rem_descriptor('q',3)"><b>-</b></button>
                   </div>
                 </div>
                 <br>
@@ -188,7 +189,7 @@
               </div>
               <div id="dirt" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
-                <div id="descrs2">
+                <div id="descrs_2">
                   <div class="descr" id="d_d_1">
                     <input type="number" max="100" min="0" value="0"/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
@@ -205,11 +206,11 @@
                     <input type="number" max="100" min="0" value="67"/>
                     <input type="text" placeholder="Name of descriptor" value="High"/>
                     <input type="number" max="100" min="0" value="100"/>
-                    <button id="d3"><b>-</b></button>
+                    <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
                   </div>
                 </div>
                 <br>
-                <div class="add_btn_div" style="width:100%;">
+                <div class="add_btn_div" style="width:100%;" onclick='add_descriptor(2);'>
                   <button id="add_dirt" onclick="" class="add_btn">+</button>
                   <p class="add_txt">Add descriptor</p>
                 </div>
