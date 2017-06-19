@@ -45,7 +45,15 @@
         <!--<script src="http://tenso.rs/tesseract.js"></script>-->
 
         <!-- Simulation scripts end-->
-        
+        <style>
+            .dlImage{
+                border-radius: 50%;      
+                transition: all 0.2s;         
+            }
+            .dlImage:hover{                
+                box-shadow: 3px 3px 10px #8BA7BD;
+            }
+        </style>
         <script>
             function runOCR(url) {
                 document.getElementById("statusProgressBar").classList.add('active');
@@ -232,8 +240,11 @@
 
                     <form action="#">
                         <!--<input type="text" id="url" placeholder="Image URL" />-->
-                        <input type="file" id="fileInput" class="btn btn-warning" style="display:inline-block;"/>
-                        <input type="submit" class="btn btn-success" id="go_button" value="Run" /><br><br>
+                        <input type="file" id="fileInput" class="btn btn-warning" style="display:inline-block;"/>                        
+                        <input type="submit" class="btn btn-success" id="go_button" value="Run" /> 
+                        &emsp;<a href="./images/test1.jpg" download target="_blank"><img src="./images/dl_Link.png" height="40px" class="dlImage" data-toggle="tooltip" data-placement="top" title="Download Sample Image 1 for OCR"/></a>
+                        &emsp;<a href="./images/test2.jpg" download target="_blank"><img src="./images/dl_Link.png" height="40px" class="dlImage" data-toggle="tooltip" data-placement="top" title="Download Sample Image 2 for OCR"/></a>
+                        <br><br>
                     </form>
 
                     <div class="row">

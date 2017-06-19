@@ -44,6 +44,12 @@
                                 <li class="list-group-item">
                                     <a href="exp7/index.php"> Kohonen's Self Organizing Maps </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="expFis/index.php"> Fuzzy Inference System </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="expOcr/index.php"> Optical Character Recognition </a>
+                                </li>
                             </h3>
                         </ul>
                     </div>

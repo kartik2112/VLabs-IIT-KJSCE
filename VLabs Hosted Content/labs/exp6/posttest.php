@@ -113,7 +113,7 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
-<h3>1.  Correlation learning rule falls under which cayrgory ?</h3>
+<h3>1.  Correlation learning rule falls under which category ?</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
