@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php include '../../common/header.html';
@@ -73,10 +74,10 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
                         <ol>
-                            <li><a href="http://mnemstudio.org/neural-networks-kohonen-self-organizing-maps.htm">KSOM</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Self-organizing_map">Wikipedia-Self Organizing Maps</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Winner-take-all_(computing)">Wikipedia-Winner Takes All rule</a></li>
-                            <li><a href="http://users.ics.aalto.fi/jhollmen/dippa/node9.html">SOM</a></li>
+                            <li><a href="http://mnemstudio.org/neural-networks-kohonen-self-organizing-maps.htm" target="_blank" class="hyperlink">KSOM</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Self-organizing_map" target="_blank" class="hyperlink">Wikipedia-Self Organizing Maps</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Winner-take-all_(computing)" target="_blank" class="hyperlink">Wikipedia-Winner Takes All rule</a></li>
+                            <li><a href="http://users.ics.aalto.fi/jhollmen/dippa/node9.html" target="_blank" class="hyperlink">SOM</a></li>
                             <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
                         </ol>
                     </p>
