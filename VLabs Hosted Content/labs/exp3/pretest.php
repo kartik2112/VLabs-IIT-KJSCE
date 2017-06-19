@@ -81,14 +81,23 @@
                                 $(".optradio1").click(function () {
                                     ////alert("clicked");
                                     $("#optradio1Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio1Ans").offset().top-300
+                                    }, 1000);
                                 });
                                 $(".optradio2").click(function () {
                                     //alert("clicked");
                                     $("#optradio2Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio2Ans").offset().top-300
+                                    }, 1000);
                                 });
                                 $(".optradio3").click(function () {
                                     //alert("clicked");
                                     $("#optradio3Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio3Ans").offset().top-300
+                                    }, 1000);
                                 });
 
                             });
@@ -97,7 +106,7 @@
               
             
               <br>
-            1. If the value of 1/(2*sigma^2) increases in activation function then the size of graph  ?<br>
+            1. If the value of 1/(2*σ<sup>2</sup>) increases in activation function then the size of graph  ?<br>
               <input class="optradio1" type="radio" name="q1" value="1">
               A. Decreases
               <br>

@@ -248,7 +248,7 @@
                     <button id="KSOMStartSimButton" class="btn btn-success" onclick="startSimulation('KSOM')">Start Simulation</button>
                     <button id="KSOMStopSimButton" class="btn btn-danger disabled" onclick="resetSimulation('KSOM')" disabled>Stop Simulation</button>
                     <button class="btn btn-warning disabled" id="KSOMNextButton" disabled data-toggle="tooltip" data-placement="right" title="Click this button only when you have understood the calculations for this input">Apply next I/P value</button><br/><br/>
-                    <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
+                    <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" class="hyperlink">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" class="hyperlink">click here</a> or hover your mouse over them.
                     <br/>
                     <br/>
                     <div>

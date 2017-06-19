@@ -26,14 +26,23 @@
                 $(".optradio1").click(function(){
                     ////alert("clicked");
                     $("#optradio1Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio1Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio2").click(function(){
                     //alert("clicked");
                     $("#optradio2Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio2Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio3").click(function(){
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio3Ans").offset().top-300
+                    }, 1000);
                 });
                
             });

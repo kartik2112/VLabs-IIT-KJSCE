@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php include '../../common/header.html';
@@ -75,6 +77,7 @@
                         <ol>
                             <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
                             <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
+                            <li><a href="https://www.slideshare.net/lovebot/off-line-handwritten-optical-character-regonisation-ocr" target="_blank" class="hyperlink">OCR Presentation (Slideshare)</a></li>
                         </ol>                        
                     </p>
                     <b> Developed By :-</b><br>
