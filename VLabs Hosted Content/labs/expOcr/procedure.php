@@ -76,7 +76,8 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
                         <ol>
-                            <li>Click on <input type="file" disabled="disabled" class="btn btn-warning" style="display:inline-block;"/> and select the image on which you want to apply OCR.</li>
+                            <li>Click on <input type="file" disabled="disabled" class="btn btn-warning" style="display:inline-block;"/> and select the image on which you want to apply OCR. Preferably choose a computerized plain text image having big enough font. 
+                                Ensure that the text is not skewed i.e. the sentence lines are horizontal and not at any other angle. Otherwise, recognition will be very inaccurate.</li>
                             <li>Now click <input type="button" class="btn btn-success" value="Run" /></li>
                             <li>Sit back and watch as the text is recognized. The results are obtained using <a href="http://tesseract.projectnaptha.com/" target="_blank" class="hyperlink">Google&copy;'s Tesseract OCR JS API</a>. 
                                 The quality of recognition is dependent on this API's performance.</li>

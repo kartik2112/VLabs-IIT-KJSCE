@@ -113,7 +113,7 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
-                         <h3>1. Hebbian learning rule falls under which cayrgory ?</h3>
+                         <h3>1. Hebbian learning rule falls under which category ?</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
@@ -142,7 +142,7 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                             
-                        <h3>4. Which of the foolowing is the coorect definition of the anti neuron theory ?</h3>
+                        <h3>4. Which of the following is the correct definition of the anti neuron theory ?</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. An increase in synaptic efficacy arises from the presynaptic cell's repeated and persistent stimulation of the postsynaptic cell. <br>
                     <br>
