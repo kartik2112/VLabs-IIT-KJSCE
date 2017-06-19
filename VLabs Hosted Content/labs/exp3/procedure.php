@@ -77,15 +77,15 @@
                     </p>
                     <ol>
                         <li>Choose appropriate weights and threshold values. In this simulation, the means are assumed to be (0,0) and (1,1).</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
+                        <li>Click on <button class="btn btn-success" style="cursor: default;" >Start Simulation</button> button.</li>
                         <li>Now wait and observer how the I/P combination is interpreted by the neural network.</li>
-                        <li>After the neural network completely interprets each I/P combination, the <button class="btn btn-warning disabled" style="cursor: default;" disabled>Apply next set of I/P values</button> button gets enabled. 
+                        <li>After the neural network completely interprets each I/P combination, the <button class="btn btn-warning" style="cursor: default;" >Apply next set of I/P values</button> button gets enabled. 
                             After understanding how this I/P combination was interpreted by the neural network, you can click on this button.
                             After clicking on this button, this button gets disabled until the next input is completely interpreted by the neural network.</li>
                     </ol>
                     <p>After the entire simulation is completed, you will get a popup indicating this completion. 
                         Now you may select another Gate and run the simulation.</p>
-                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
+                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger" style="cursor: default;" >Stop Simulation</button> button.</p>
                     <p>The correct outputs will be obtained by the neural network only for certain ranges of inputs.<br/>
                         You can easily visualize this using the graph.
                         When the line (decision boundary) is such that points that look same are on the same side of line, then correct output has been obtained.</p>

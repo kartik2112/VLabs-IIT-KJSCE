@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -232,7 +233,7 @@
                         Input is x<sub>l</sub>, desired output is d<sub>l</sub>: 
                         <br>
                         <br>
-                        net<sub>1</sub>=w<sub>1<sup>T</sup></sub>X<sub>1</sub>
+                        net<sub>1</sub>=w<sub>1</sub><sup>T</sup>X<sub>1</sub>
                         <br>
                         <br>
                         Correction in this step is necessary since d<sub>1</sub> is not equal to sgn(2.5). We thus obtain updated weight vector 

@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -67,9 +69,9 @@
           <p class="MsoNormal" style="text-align:justify">
 
            <!--Reference content goes here -->
-            <li> <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">  https://en.wikipedia.org/wiki/Multilayer_perceptron</a></li>
-              <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
-              <li> <a href="https://en.wikipedia.org/wiki/Backpropagation">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
+            <li> <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Multilayer_perceptron</a></li>
+              <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
+              <li> <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
             <b>Developed by:</b>
               <ol>
                 <li>Abhishek Mahajani</li>

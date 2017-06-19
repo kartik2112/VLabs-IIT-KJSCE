@@ -72,7 +72,7 @@
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
                         <!--Aim of experiment -->
-                        To understand the learning rules that can be applied for supervised learning of neural network.
+                        To understand the hebbian learning rule that can be applied for supervised learning of neural network.
                     </p>
                 </section>                
             </div>
