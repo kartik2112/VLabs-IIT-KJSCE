@@ -124,7 +124,7 @@
                         <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
                         <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
                         <h3>2. Having multiple perceptrons can actually solve the XOR problem satisfactorily: this is because each perceptron can partition off a linear part of the space itself, and they can then combine their results.</h3>
                     
