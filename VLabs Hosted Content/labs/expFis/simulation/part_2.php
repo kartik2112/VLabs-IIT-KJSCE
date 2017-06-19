@@ -73,7 +73,7 @@
                                 }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
-          <a href="JavaScript:newPopup('procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
+          <a href="JavaScript:newPopup('../procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
           <br>
           <br>
           <a href="" style="color:green; font-size: 16px"><img src="../../../dist/img/fork.png" style="height:20px; width:20px; "></a>
