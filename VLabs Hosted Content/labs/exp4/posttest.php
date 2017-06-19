@@ -125,7 +125,7 @@
                         <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
                         <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
                         <h3>2. Having multiple perceptrons can actually solve the XOR problem satisfactorily: this is because each perceptron can partition off a linear part of the space itself, and they can then combine their results.</h3>
                     
@@ -142,7 +142,7 @@
                         <input type="radio" class="optradio3" name="q3" value="1"> A. No limitation it can solve almost any problem<br>
                         <input type="radio" class="optradio3" name="q3" value="2"> B. it is a weak algorithm<br>
                         <input type="radio" class="optradio3" name="q3" value="3"> C. It can only solve problems which are linearly seperable<br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if ther exists a solution<br>      
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if there exists a solution<br>      
 
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>

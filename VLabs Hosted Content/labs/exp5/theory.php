@@ -18,6 +18,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <link href="../../src/Styles.css" rel="stylesheet" />
+        <script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -95,7 +96,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/20f25ecb34dbe39ea1419dfd1781e43208f8749b">
                         <br>
                         <br>
-                        or the change in the <b>ith</b> synaptic weight w<sub>i</sub> is equal to a learning rate <b>c</b> times the <b>ith</b> input <b>x<sub>i</sub></b> times the postsynaptic response <b>y</b>. Often cited is the case of a linear neuron,
+                        or the change in the <b>ith</b> synaptic weight w<sub>i</sub> is equal to a learning rate <b>c</b> times the <b>ith</b> input <b>x<sub>i</sub></b> times the postsynaptic response <b>y</b> or <b>o</b>. Often cited is the case of a linear neuron,
                         <br>
                         <br>
                         <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cc410c6aff9ff68c8e3c4b8b512385b8d7b8fa8d">
@@ -111,7 +112,23 @@
                            <br>
                            
                            Here the activation function used is tan sigmoid:
-                           f(x) = 2 1 + e-x - 1</p>
+                           <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
+                                    <mi>f( x )</mi> <mo>=</mo>
+                                    <mrow>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>2</mn>
+                                            </mrow>
+                                            <mrow>
+                                                <mn>1</mn>
+                                                <mo>+</mo>
+                                                <msup><mi>e</mi><mi>-x</mi></msup>                                                
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>-</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </math>
                         <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      <svg id="percLR_svg" width="700" height="400" style="margin-left: 200px">
                                         <!--Neural Network connections-->
