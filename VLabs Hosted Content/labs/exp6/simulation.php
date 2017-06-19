@@ -378,7 +378,7 @@
                                 &emsp;&emsp; = -1 , &nbsp; x < 0
                             </div>
 
-                            <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
+                            <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" class="hyperlink">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" class="hyperlink">click here</a> or hover your mouse over them.
 
                             <div id="corrLR_ExplanationOfCalculation" style="clear: both;">
                                 <div id="corrLR_FirstPartOfExpln" style="display: none;">
