@@ -1,7 +1,7 @@
 var n_descriptor_grease = 3;    //To keep track for new id assignment
-var n_descriptor_dirt = 3;
-var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3];  //To keep track of ids of each descriptor
-var dirt_descriptors = [], grease_descriptors = [];
+var n_descriptor_dirt = 3, n_descriptor_wash = 3;
+var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3];  //To keep track of ids of each descriptor
+var dirt_descriptors = [], grease_descriptors = [], wash_descriptors = [];
 
 $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
 $(".descr input[type='number']").tooltip({placement: "right"});
@@ -41,6 +41,21 @@ function add_descriptor(who){
         $("#d_no").html(dirt_descriptor_ids.length);
         if(dirt_descriptor_ids.length==5) $("#d_txt").css('color','red');
     }
+    else if(who==3){
+        document.getElementById('t_add').removeAttribute('onclick');
+        if(wash_descriptor_ids.length == 5){
+            alert('Maximum limit for descriptors reached!');
+            return;
+        }
+        n_descriptor_wash++;
+        var html_content_to_be_added = '<div class="descr" style="display: none;" id="t_d_'+n_descriptor_wash+'"><input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor" value="High"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>\</div>';
+        document.getElementById('descrs_3').innerHTML += html_content_to_be_added;
+        wash_descriptor_ids.push(n_descriptor_wash);
+        $("#t_d_"+n_descriptor_wash).fadeIn(700);
+        setTimeout(function(){document.getElementById('t_add').setAttribute('onclick','add_descriptor(3);');},700);
+        $("#t_no").html(wash_descriptor_ids.length);
+        if(wash_descriptor_ids.length==5) $("#t_txt").css('color','red');
+    }
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
     $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
@@ -75,9 +90,27 @@ function rem_descriptor(who,which){
             if(which == n_descriptor_dirt) n_descriptor_dirt--;
         },900);
     }
+    else if(who == 't'){
+        var parent = document.getElementById('descrs_3')
+        var elem = document.getElementById('t_d_'+which);
+        $("#t_d_"+which).fadeOut(700);
+        $("#t_no").html(wash_descriptor_ids.length-1);
+        $("#t_txt").css('color','inherit');
+        document.getElementById('t'+which).removeAttribute('onclick');
+        setTimeout(function(){
+            parent.removeChild(elem);
+            var index = wash_descriptor_ids.indexOf(which);
+            wash_descriptor_ids.splice(index,1);
+            if(which == n_descriptor_wash) n_descriptor_wash--;
+        },900);
+    }
 }
 
 function save(){
+    dirt_descriptors = [];
+    grease_descriptors = [];
+    wash_descriptors = [];
+
     for(var i=0;i<grease_descriptor_ids.length;i++){
         var x = document.getElementById('g_d_'+grease_descriptor_ids[i]);
         // Retreive the start value, end value and name of descriptor related HTML elements
@@ -96,6 +129,15 @@ function save(){
         if(i == 0) s = 999;
         var descriptor = {'id': dirt_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': elems[2].value};
         dirt_descriptors.push(descriptor);
+    }
+
+    for(var i=0;i<wash_descriptor_ids.length;i++){
+        var x = document.getElementById('t_d_'+wash_descriptor_ids[i]);
+        var elems = x.children;
+        var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
+        if(i == 0) s = 999;
+        var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': elems[2].value};
+        wash_descriptors.push(descriptor);
     }
 }
 
