@@ -77,7 +77,7 @@
                                 }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
-          <a href="JavaScript:newPopup('procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
+          <a href="JavaScript:newPopup('../procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
           <br>
           <br>
           <a href="" style="color:green; font-size: 16px"><img src="../../../dist/img/fork.png" style="height:20px; width:20px; "></a>
@@ -93,6 +93,7 @@
                 <li>You can also edit the starting and ending values for each descriptor</li>
                 <li>Default values are also provided.</li>
                 <li><b>You can only add upto 5 descriptors for any variable</b></li>
+                <li><u>Format:</u> (start value) (Descriptor name) (end value)</li>
               </ul>
               <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
