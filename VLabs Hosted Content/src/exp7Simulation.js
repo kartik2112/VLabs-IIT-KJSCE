@@ -116,9 +116,9 @@ function learnProc(lrString,inputIndex)
       res.innerHTML="<p class='resContent'><b>Calculations:</b></p>";
       document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
       document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
-      points[inputIndex].size(25);
+      points[inputIndex].size(10);
       points[inputIndex].fillColor("#00ff00");
-      points[inputIndex].strokeColor("#00ff00");
+      points[inputIndex].strokeColor("#000000");
       if(inputIndex!=0){
           document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
           document.getElementById('cluster_row'+inputIndex).style.border = "inherit";
@@ -126,6 +126,18 @@ function learnProc(lrString,inputIndex)
       $('html, body').animate({
           scrollTop: $("#KSOMGraphDiv").offset().top
       });
+
+      //Blinking point
+      setTimeout(function(){
+        points[inputIndex].size(5);
+        points[inputIndex].fillColor("#ff0000");
+        points[inputIndex].strokeColor("#ff0000");
+      },500);
+      setTimeout(function(){
+        points[inputIndex].size(10);
+        points[inputIndex].fillColor("#00ff00");
+        points[inputIndex].strokeColor("#000000");
+      },900);
 
       // Show what is the input!
       var input_content="";
@@ -135,11 +147,11 @@ function learnProc(lrString,inputIndex)
           $('html, body').animate({
               scrollTop: $("#finalClusterOutput").offset().top
           });
-      },1000);
+      },1500);
 
       setTimeout(function(){
           $("#input").fadeIn(800);
-      },2000);
+      },2500);
 
       /* ------ This displays the initial weight matrix ------ */
       res = document.getElementById('weightMatrix');
