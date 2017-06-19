@@ -101,7 +101,7 @@
             <div id="descriptor_div" style="width: 90%;display: none;">
               <a id="show_instr" href="#" onclick="show_instrs();">Show instructions</a>
               <h4>Add/Remove descriptors</h4>
-              <div id="grease" class="descr_box" style="margin-right: 25px;">
+              <div id="grease" class="descr_box" style="margin-right: 12.5px;">
                 <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
                 <br>
                 <div id="descrs_1" style="height: 210px;">
@@ -129,7 +129,7 @@
                 </div>
                 <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
-              <div id="dirt" class="descr_box">
+              <div id="dirt" class="descr_box" style="margin-right: 12.5px;">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
                 <div id="descrs_2" style="height: 210px;">
@@ -156,6 +156,34 @@
                   <p>Add descriptor</p>
                 </div>
                 <p id="d_txt" style="float: right;margin: 10px;">Total: <span id="d_no">3</span></p>
+              </div>
+              <div id="wash_time" class="descr_box">
+                <h4 style="text-align: center;">Descriptors for Wash time (in mins)</h4>
+                <br>
+                <div id="descrs_3" style="height: 210px;">
+                  <div class="descr" id="t_d_1">
+                    <input type="number" max="120" min="0" placeholder="inf" disabled/>
+                    <input type="text" placeholder="Name of descriptor" value="Low"/>
+                    <input type="number" max="120" min="0" value="33" title="When descriptor's membership value reaches zero"/>
+                  </div>
+                  <div class="descr" id="t_d_2">
+                    <input type="number" max="120" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="text" placeholder="Name of descriptor" value="Medium"/>
+                    <input type="number" max="120" min="0" value="66" title="When descriptor's membership value reaches zero"/>
+                  </div>
+                  <div class="descr" id="t_d_3">
+                    <input type="number" max="120" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="text" placeholder="Name of descriptor" value="High" />
+                    <input type="number" max="120" min="0" value="100" title="When descriptor's membership value reaches zero"/>
+                    <button id="t3" onclick="rem_descriptor('t',3)"><b>-</b></button>
+                  </div>
+                </div>
+                <br>
+                <div id="t_add" class="add_btn_div" onclick="add_descriptor(3);">
+                  <button>+</button>
+                  <p>Add descriptor</p>
+                </div>
+                <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
               </div>
               <div style="clear: both;">
                 <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">Save</button>
