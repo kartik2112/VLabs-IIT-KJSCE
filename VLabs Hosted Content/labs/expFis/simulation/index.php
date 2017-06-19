@@ -13,90 +13,23 @@
         <link rel="stylesheet" href="../../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
+        <!-- Custom stylesheet used -->
+        <link rel="stylesheet" href="../style.css">
+        <!-- jQuery 2.2.3 -->
+        <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../../../bootstrap/js/bootstrap.min.js"></script>
         <!-- Simulation scripts start-->
-          <script src="../../src/math.ob.js"></script>
-
-          <script src="../../src/numcheck.ob.js"></script>
-          <script src="../../src/canvasjschart.ob.js"></script>
-          <script src="../../src/bracket.ob.js"></script>
-          <link href="../../src/StyleSheet1.css" rel="stylesheet" />
+          <script src="../../../src/canvasjschart.ob.js"></script>
         <style>
-          .add_btn{
-            width: 30px;
-            height: 30px;
-            float: left;
-            font-size: 20px;
-            margin-right: 20px;
-            border: none;
-            background: #AFAFAF;
-            margin-left: 10px;
-            margin-bottom: 10px;
-            outline: none;
-          }
-          .add_txt{
-            font-size: 17px;
-            float: left;
-          }
-          .add_btn_div{
-            height: 40px;
-            padding: 3px 0;
-            cursor: pointer;
-            border: 1px solid transparent;
-          }
-          .add_btn_div:hover{
-            border: 1px solid #777777;
-          }
-          .descr{
-            width: 100%;
-            padding: 5px;
-          }
-          .descr input[type='number']{
-            width: 50px;
-            float: left;
-            margin: auto 10px;
-            text-align: center;
-            background: none;
-            border: 1px solid #999999;
-            transition-duration: 0.5s;
-          }
-          .descr input[type='number']:hover{
-            transition-duration: 0.5s;
-            background: white;
-            border-radius: 5px;
-          }
-          .descr input[type='text']{
-            float: left;
-            text-align: center;
-          }
-          .descr button{
-            background: #fa4c4c;
-            width: 25px;
-            font-size: 15px;
-            color: white;
-            text-align: center;
-            height: 23px;
-            outline: none;
-            border: 1px solid transparent;
-            border-radius: 5px;
-          }
-          .descr button:hover{
-            transition-duration: 1s;
-            border-radius: 0px;
-          }
-          .descr_box{
-            width:48%;
-            float: left;
-            border: 0.4px solid black;
-            box-shadow: 0.5px 0.5px 4px black;
-            padding: 3px;
-          }
+          
         </style>
     <!-- Simulation scripts end-->
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-        include '../../../common/header.html';
+        include '../header.html';
         include '../lab_name.php';
         $lab_name = $_SESSION['lab_name'];
         $exp_name = $_SESSION['exp_name'];
@@ -151,69 +84,84 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <h3 style="margin-top:5%">Simulation</h3>
+          <h3 id="title" style="margin-top:5%">What is to be done?</h3>
            
             <!--Simulation content goes here -->
-            <div id="instr_div">
-              <p>Write what is about to come next</p>
+            <div id="instr_div" style="font-size: 17px;">
+              <ul>
+                <li>Edit the name of descriptors for each variable.</li>
+                <li>You can also edit the starting and ending values for each descriptor</li>
+                <li>Default values are also provided.</li>
+                <li><b>You can only add upto 5 descriptors for any variable</b></li>
+              </ul>
+              <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
             <br/>
-            <div id="descriptor_div" style="width: 90%">
-              <div id="qty" class="descr_box" style="margin-right: 5px;">
-                <h4 style="text-align: center;">Descriptors for Quantity (in %)</h4>
-                <div id="descrs_1">
-                  <div class="descr" id="q_d_1">
-                    <input type="number" max="100" min="0" value="0"/>
+            <div id="descriptor_div" style="width: 90%;display: none;">
+              <a id="show_instr" href="#" onclick="show_instrs();">Show instructions</a>
+              <h4>Add/Remove descriptors</h4>
+              <div id="grease" class="descr_box" style="margin-right: 25px;">
+                <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
+                <br>
+                <div id="descrs_1" style="height: 210px;">
+                  <div class="descr" id="g_d_1">
+                    <input type="number" max="100" min="0" placeholder="inf" disabled/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="100" min="0" value="33"/>
+                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
                   </div>
-                  <br>
-                  <div class="descr" id="q_d_2">
-                    <input type="number" max="100" min="0" value="34"/>
+                  <div class="descr" id="g_d_2">
+                    <input type="number" max="100" min="0" value="34" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="100" min="0" value="66"/>
+                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
                   </div>
-                  <br>
-                  <div class="descr" id="q_d_3">
-                    <input type="number" max="100" min="0" value="67"/>
-                    <input type="text" placeholder="Name of descriptor" value="High"/>
-                    <input type="number" max="100" min="0" value="100"/>
-                    <button id="q3" onclick="rem_descriptor('q',3)"><b>-</b></button>
+                  <div class="descr" id="g_d_3">
+                    <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="text" placeholder="Name of descriptor" value="High" />
+                    <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
+                    <button id="g3" onclick="rem_descriptor('g',3)"><b>-</b></button>
                   </div>
                 </div>
                 <br>
-                <div class="add_btn_div" onclick="add_descriptor(1);">
-                  <button onclick="" class="add_btn" id="add_qty">+</button>
-                  <p class="add_txt">Add descriptor</p>
+                <div id="g_add" class="add_btn_div" onclick="add_descriptor(1);">
+                  <button>+</button>
+                  <p>Add descriptor</p>
                 </div>
+                <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
               <div id="dirt" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
-                <div id="descrs_2">
+                <br>
+                <div id="descrs_2" style="height: 210px;">
                   <div class="descr" id="d_d_1">
-                    <input type="number" max="100" min="0" value="0"/>
-                    <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="100" min="0" value="33"/>
+                    <input type="number" max="100" min="0" placeholder="inf" disabled/>
+                    <input type="text" placeholder="Name of descriptor" value="Low" />
+                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
                   </div>
-                  <br>
                   <div class="descr" id="d_d_2">
-                    <input type="number" max="100" min="0" value="34"/>
-                    <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="100" min="0" value="66"/>
+                    <input type="number" max="100" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="text" placeholder="Name of descriptor" value="Medium" />
+                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
                   </div>
-                  <br>
                   <div class="descr" id="d_d_3">
-                    <input type="number" max="100" min="0" value="67"/>
-                    <input type="text" placeholder="Name of descriptor" value="High"/>
-                    <input type="number" max="100" min="0" value="100"/>
+                    <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="text" placeholder="Name of descriptor" value="High" />
+                    <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
                     <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
                   </div>
                 </div>
                 <br>
-                <div class="add_btn_div" style="width:100%;" onclick='add_descriptor(2);'>
-                  <button id="add_dirt" onclick="" class="add_btn">+</button>
-                  <p class="add_txt">Add descriptor</p>
+                <div id="d_add" class="add_btn_div" onclick='add_descriptor(2);'>
+                  <button>+</button>
+                  <p>Add descriptor</p>
                 </div>
+                <p id="d_txt" style="float: right;margin: 10px;">Total: <span id="d_no">3</span></p>
+              </div>
+              <div style="clear: both;">
+                <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">Save</button>
+              </div>
+              <br>
+              <div id="graph_div">
+                <!-- Graph goes here -->
               </div>
             </div>
 
@@ -227,12 +175,6 @@
 </html>
 
 <!-- ./wrapper -->
-<!-- jQuery 2.2.3 -->
-<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../../../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
 <script src="../../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
