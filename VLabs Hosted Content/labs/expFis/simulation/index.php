@@ -109,7 +109,22 @@
                 <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
                 <br>
                 <div id="descrs_1" style="height: 210px;">
-                  <div class="descr" id="g_d_1">
+                  <script type="text/javascript">
+                    for (var i = 0; i < grease_descriptors.length; i++) {
+                      document.writeln("<div class=\"descr\" id=\"g_d_"+grease_descriptors[i].id+"\">");
+                      if(i==0)
+                      {
+                          document.writeln('<input type="number" max="100" min="0" placeholder="inf" disabled />');
+                      }
+                      else{
+                          document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
+                      }
+                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
+                      document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      document.writeln("</div>");
+                    }
+                  </script>
+                  <!-- <div class="descr" id="g_d_1">
                     <input type="number" max="100" min="0" placeholder="inf" disabled/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
                     <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
@@ -124,7 +139,7 @@
                     <input type="text" placeholder="Name of descriptor" value="High" />
                     <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
                     <button id="g3" onclick="rem_descriptor('g',3)"><b>-</b></button>
-                  </div>
+                  </div> -->
                 </div>
                 <br>
                 <div id="g_add" class="add_btn_div" onclick="add_descriptor(1);">
