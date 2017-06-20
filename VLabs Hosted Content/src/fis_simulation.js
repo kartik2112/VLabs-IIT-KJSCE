@@ -17,8 +17,13 @@ function add_descriptor(who){
             return;
         }
         n_descriptor_grease++;
-        var html_content_to_be_added = '<div class="descr" style="display: none;" id="g_d_'+n_descriptor_grease+'"><input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button></div>';
-        document.getElementById('descrs_1').innerHTML += html_content_to_be_added;
+        var div = document.createElement("div");
+        div.setAttribute("class","descr");
+        div.style.display = "none";
+        div.setAttribute("id","g_d_"+n_descriptor_grease);
+        div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
+        var parent = document.getElementById('descrs_1');
+        parent.appendChild(div);
         grease_descriptor_ids.push(n_descriptor_grease);
         $("#g_d_"+n_descriptor_grease).fadeIn(700);
         setTimeout(function(){document.getElementById('g_add').setAttribute('onclick','add_descriptor(1);');},700);
@@ -33,8 +38,13 @@ function add_descriptor(who){
             return;
         }
         n_descriptor_dirt++;
-        var html_content_to_be_added = '<div class="descr" style="display: none;" id="d_d_'+n_descriptor_dirt+'"><input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor" value="High"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>\</div>';
-        document.getElementById('descrs_2').innerHTML += html_content_to_be_added;
+        var div = document.createElement("div");
+        div.setAttribute("class","descr");
+        div.style.display = "none";
+        div.setAttribute("id","d_d_"+n_descriptor_dirt);
+        div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
+        var parent = document.getElementById('descrs_2');
+        parent.appendChild(div);
         dirt_descriptor_ids.push(n_descriptor_dirt);
         $("#d_d_"+n_descriptor_dirt).fadeIn(700);
         setTimeout(function(){document.getElementById('d_add').setAttribute('onclick','add_descriptor(2);');},700);
@@ -48,8 +58,13 @@ function add_descriptor(who){
             return;
         }
         n_descriptor_wash++;
-        var html_content_to_be_added = '<div class="descr" style="display: none;" id="t_d_'+n_descriptor_wash+'"><input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor" value="High"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>\</div>';
-        document.getElementById('descrs_3').innerHTML += html_content_to_be_added;
+        var div = document.createElement("div");
+        div.setAttribute("class","descr");
+        div.style.display = "none";
+        div.setAttribute("id","t_d_"+n_descriptor_wash);
+        div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
+        var parent = document.getElementById('descrs_3');
+        parent.appendChild(div);
         wash_descriptor_ids.push(n_descriptor_wash);
         $("#t_d_"+n_descriptor_wash).fadeIn(700);
         setTimeout(function(){document.getElementById('t_add').setAttribute('onclick','add_descriptor(3);');},700);
