@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION["currPage"] = 5;
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -64,7 +68,7 @@
           </section>
         </nav>
       </header>
-            <?php include '../pane.html'; ?>
+            <?php include '../pane.php'; ?>
            <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -236,3 +240,7 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
+<<<<<<< HEAD
+=======
+<script src="../../../src/fis_simulation.js"></script>
+>>>>>>> origin/master

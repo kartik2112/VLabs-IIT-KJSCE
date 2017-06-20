@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION["currPage"] = 6;
+?>
 <html>
     <head>
         <meta charset="utf-8">
