@@ -207,7 +207,7 @@ function save(){
         if(i == 0) s = 999; //Because start value of first descriptor is not defined
         var descriptor = {'id': grease_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         grease_descriptors.push(descriptor);
-        console.log(grease_descriptors[i].name);
+        //console.log(grease_descriptors[i].name);
     }
 
     for(var i=0;i<dirt_descriptor_ids.length;i++){
@@ -227,7 +227,53 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         wash_descriptors.push(descriptor);
     }
-    plotGraph();
+  plotGraph();
+    table()
+}
+function table(){
+    d=dirt_descriptors;
+    g=grease_descriptors;
+    console.log(g.length);
+    var v=[[],[]];
+    for(var i=0;i<d.length;i++){
+        for(var j=0;j<g.length;j++){
+           if(d[i].name=='Low'){
+               if(g[j].name=='Low'){
+                   v[i][j]='Very Small'
+               }
+               if(g[j].name=='Medium'){
+                   v[i][j]='Small'
+               }
+               if(g[j].name=='High'){
+                   v[i][j]='Large'
+               }
+           }
+            if(d[i].name=='Medium'){
+               if(g[j].name=='Low'){
+                   v[i][j]='Small'
+               }
+               if(g[j].name=='Medium'){
+                   v[i][j]='Medium'
+               }
+               if(g[j].name=='High'){
+                   v[i][j]='Large'
+               }
+           }
+            if(d[i].name=='High'){
+               if(g[j].name=='Low'){
+                   v[i][j]='Medium'
+               }
+               if(g[j].name=='Medium'){
+                   v[i][j]='Large'
+               }
+               if(g[j].name=='High'){
+                   v[i][j]='Very large'
+               }
+           }
+        }
+   
+    }
+     console.log(v);
 }
 
 function hide_instrs(arg){
