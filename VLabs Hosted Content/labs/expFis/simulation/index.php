@@ -124,7 +124,8 @@
                           document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
                       document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
-                      document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"inf\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
+                      else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
                   </script>
@@ -170,7 +171,7 @@
                   <div class="descr" id="d_d_3">
                     <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="100" min="0" placeholder="inf" title="When descriptor's membership value reaches zero" disabled/>
                     <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
                   </div>
                 </div>
@@ -198,7 +199,7 @@
                   <div class="descr" id="t_d_3">
                     <input type="number" max="120" min="0" value="67" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="120" min="0" value="100" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" placeholder="inf" disabled title="When descriptor's membership value reaches zero"/>
                     <button id="t3" onclick="rem_descriptor('t',3)"><b>-</b></button>
                   </div>
                 </div>
