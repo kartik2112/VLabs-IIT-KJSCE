@@ -1,7 +1,86 @@
 var n_descriptor_grease = 3;    //To keep track for new id assignment
 var n_descriptor_dirt = 3, n_descriptor_wash = 3;
 var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3];  //To keep track of ids of each descriptor
-var dirt_descriptors = [], grease_descriptors = [], wash_descriptors = [];
+var dirt_descriptors = [];
+var grease_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
+                          {'id':2, 'name':"Medium", 'start': 34, 'end': 66},
+                          {'id':3, 'name':"High", 'start': 67, 'end': 100}];
+var wash_descriptors = [];
+var grease_lines_up=[],grease_lines_down=[];
+var dirt_lines_up=[],dirt_lines_down=[];
+var washing_lines_up=[],washing_lines_down=[];
+var board;
+function plotGraph(){
+    var graphEnds=100;
+    board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    for (var i = 0; i < grease_descriptors.length; i++) {
+        var start=grease_descriptors[i].start;
+        var end=grease_descriptors[i].end;
+        if(start==999)
+        {
+            //First descriptor Line:
+            grease_lines_down.push(board.create('line',[[0,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+        else if (end==100) {
+            //Last descriptor Line:
+            grease_lines_up.push(board.create('line',[[start,0],[end,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            var horiz_line=board.create('line',[[1,end],[1,end+100]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+        }
+        else {
+            var mid=parseFloat((start+end)/2).toFixed(2);
+            console.log(mid);
+            grease_lines_up.push(board.create('line',[[start,0],[mid,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            grease_lines_down.push(board.create('line',[[mid,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+    }
+    //Following is to draw graph for Dirt descriptors
+    var board_dirt = JXG.JSXGraph.initBoard('dirt_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    for (var i = 0; i < dirt_descriptors.length; i++) {
+        var start=dirt_descriptors[i].start;
+        var end=dirt_descriptors[i].end;
+        if(start==999)
+        {
+            //First descriptor Line:
+            dirt_lines_down.push(board_dirt.create('line',[[0,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+        else if (end==100) {
+            //Last descriptor Line:
+            dirt_lines_up.push(board_dirt.create('line',[[start,0],[end,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            horiz_line_dirt=board_dirt.create('line',[[1,end],[1,end+100]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+        }
+        else {
+            var mid=parseFloat((start+end)/2).toFixed(2);
+            console.log(mid);
+            dirt_lines_up.push(board_dirt.create('line',[[start,0],[mid,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            dirt_lines_down.push(board_dirt.create('line',[[mid,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+    }
+    //Following is to draw graph for Wash time descriptors
+    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
+    console.log(graphEnds);
+    var board_washing = JXG.JSXGraph.initBoard('washing_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10,-0.1]});
+
+    for (var i = 0; i < wash_descriptors.length; i++) {
+        var start=wash_descriptors[i].start;
+        var end=wash_descriptors[i].end;
+        if(start==999)
+        {
+            //First descriptor Line:
+            washing_lines_down.push(board_washing.create('line',[[0,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+        else if (end==100) {
+            //Last descriptor Line:
+            washing_lines_up.push(board_washing.create('line',[[start,0],[end,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            horiz_line_washing=board_washing.create('line',[[1,end],[1,end+100]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+        }
+        else {
+            var mid=parseFloat((start+end)/2).toFixed(2);
+            console.log(mid);
+            washing_lines_up.push(board_washing.create('line',[[start,0],[mid,1]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            washing_lines_down.push(board_washing.create('line',[[mid,1],[end,0]],{straightFirst:false, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+    }
+}
 
 $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
 $(".descr input[type='number']").tooltip({placement: "right"});
@@ -10,6 +89,7 @@ $("#save").tooltip({placement: 'bottom'});
 
 function add_descriptor(who){
     // Add a descriptor for Grease.
+    save();
     if(who==1){
         document.getElementById('g_add').removeAttribute('onclick');
         if(grease_descriptor_ids.length == 5){
@@ -110,14 +190,22 @@ function save(){
     dirt_descriptors = [];
     grease_descriptors = [];
     wash_descriptors = [];
-
+    for (var i = 0; i < grease_lines_up.length; i++) {
+      board.removeObject(grease_lines_up[i]);
+    }
+    grease_lines_up=[];
+    for (var i = 0; i < grease_lines_down.length; i++) {
+      board.removeObject(grease_lines_down[i]);
+    }
+    grease_lines_down=[];
     for(var i=0;i<grease_descriptor_ids.length;i++){
         var x = document.getElementById('g_d_'+grease_descriptor_ids[i]);
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
+
         var s = parseInt(elems[0].value);
         if(i == 0) s = 999; //Because start value of first descriptor is not defined
-        var descriptor = {'id': grease_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': elems[2].value};
+        var descriptor = {'id': grease_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         grease_descriptors.push(descriptor);
         //console.log(grease_descriptors[i].name);
     }
@@ -127,7 +215,7 @@ function save(){
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
         if(i == 0) s = 999;
-        var descriptor = {'id': dirt_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': elems[2].value};
+        var descriptor = {'id': dirt_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         dirt_descriptors.push(descriptor);
     }
 
@@ -136,9 +224,16 @@ function save(){
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
         if(i == 0) s = 999;
-        var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': elems[2].value};
+        var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         wash_descriptors.push(descriptor);
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plotGraph();
+=======
+=======
+  plotGraph();
+>>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
     table()
 }
 function table(){
@@ -185,6 +280,10 @@ function table(){
    
     }
      console.log(v);
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
 }
 
 function hide_instrs(arg){
@@ -202,6 +301,7 @@ function hide_instrs(arg){
         $('#hide_instr').html("Hide");
         document.getElementById('hide_instr').setAttribute('onclick','hide_instrs(1);');
     },1000);
+    plotGraph();
 }
 
 function show_instrs(){

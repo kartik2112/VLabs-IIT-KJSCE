@@ -24,9 +24,13 @@
         <!-- Bootstrap 3.3.6 -->
         <script src="../../../bootstrap/js/bootstrap.min.js"></script>
         <!-- Simulation scripts start-->
-          <script src="../../../src/canvasjschart.ob.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+        <script type="text/javascript" src="../../../plugins/jsxgraphcore.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+        <script src="../../../src/fis_simulation.js"></script>
+        <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
         <style>
-          
+
         </style>
     <!-- Simulation scripts end-->
     </head>
@@ -71,8 +75,8 @@
         <section class="content-header">
             <h1 align="center"><?php echo $exp_name?></h1>
             <!-- Write your experiment name -->
-           
-         
+
+
         </section>
         <script type="text/javascript">
           // Popup window code
@@ -89,7 +93,7 @@
         <!-- Main content -->
         <section class="content">
           <h3 id="title" style="margin-top:5%">What is to be done?</h3>
-           
+
             <!--Simulation content goes here -->
             <div id="instr_div" style="font-size: 17px;">
               <ul>
@@ -109,7 +113,22 @@
                 <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
                 <br>
                 <div id="descrs_1" style="height: 210px;">
-                  <div class="descr" id="g_d_1">
+                  <script type="text/javascript">
+                    for (var i = 0; i < grease_descriptors.length; i++) {
+                      document.writeln("<div class=\"descr\" id=\"g_d_"+grease_descriptors[i].id+"\">");
+                      if(i==0)
+                      {
+                          document.writeln('<input type="number" max="100" min="0" placeholder="inf" disabled />');
+                      }
+                      else{
+                          document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
+                      }
+                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
+                      document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      document.writeln("</div>");
+                    }
+                  </script>
+                  <!-- <div class="descr" id="g_d_1">
                     <input type="number" max="100" min="0" placeholder="inf" disabled/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
                     <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
@@ -124,7 +143,7 @@
                     <input type="text" placeholder="Name of descriptor" value="High" />
                     <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
                     <button id="g3" onclick="rem_descriptor('g',3)"><b>-</b></button>
-                  </div>
+                  </div> -->
                 </div>
                 <br>
                 <div id="g_add" class="add_btn_div" onclick="add_descriptor(1);">
@@ -133,6 +152,7 @@
                 </div>
                 <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
+
               <div id="dirt" class="descr_box" style="margin-right: 12.5px;">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
@@ -195,6 +215,12 @@
               <br>
               <div id="graph_div">
                 <!-- Graph goes here -->
+              <h3>Graph for Grease descriptors</h3>
+              <div id="grease_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
+              <h3>Graph for Dirt descriptors</h3>
+              <div id="dirt_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
+              <h3>Graph for Wash time descriptors</h3>
+              <div id="washing_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
             </div>
 
@@ -214,4 +240,10 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 <script src="../../../src/fis_simulation.js"></script>
+>>>>>>> origin/master
+=======
+>>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
