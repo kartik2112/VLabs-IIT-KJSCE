@@ -39,7 +39,7 @@
 
         <!--These are used for plotting the graphs-->
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
+ 		    <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
 
         <!-- Simulation scripts end-->
         <style>

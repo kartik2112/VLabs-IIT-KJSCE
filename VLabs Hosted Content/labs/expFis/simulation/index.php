@@ -20,9 +20,13 @@
         <!-- Bootstrap 3.3.6 -->
         <script src="../../../bootstrap/js/bootstrap.min.js"></script>
         <!-- Simulation scripts start-->
-          <script src="../../../src/canvasjschart.ob.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+        <script type="text/javascript" src="../../../plugins/jsxgraphcore.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+        <script src="../../../src/fis_simulation.js"></script>
+        <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
         <style>
-          
+
         </style>
     <!-- Simulation scripts end-->
     </head>
@@ -67,8 +71,8 @@
         <section class="content-header">
             <h1 align="center"><?php echo $exp_name?></h1>
             <!-- Write your experiment name -->
-           
-         
+
+
         </section>
         <script type="text/javascript">
           // Popup window code
@@ -85,7 +89,7 @@
         <!-- Main content -->
         <section class="content">
           <h3 id="title" style="margin-top:5%">What is to be done?</h3>
-           
+
             <!--Simulation content goes here -->
             <div id="instr_div" style="font-size: 17px;">
               <ul>
@@ -129,6 +133,7 @@
                 </div>
                 <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
+
               <div id="dirt" class="descr_box" style="margin-right: 12.5px;">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
@@ -191,6 +196,7 @@
               <br>
               <div id="graph_div">
                 <!-- Graph goes here -->
+              <div id="grease_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
             </div>
 
@@ -210,4 +216,3 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
-<script src="../../../src/fis_simulation.js"></script>
