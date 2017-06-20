@@ -104,6 +104,13 @@ function add_descriptor(who){
         div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_1');
         parent.appendChild(div);
+
+        var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
+        var inp_elem = prev.children[2];
+        inp_elem.removeAttribute("placeholder");
+        inp_elem.removeAttribute('disabled');
+        inp_elem.value = 100;
+
         grease_descriptor_ids.push(n_descriptor_grease);
         $("#g_d_"+n_descriptor_grease).fadeIn(700);
         setTimeout(function(){document.getElementById('g_add').setAttribute('onclick','add_descriptor(1);');},700);
@@ -122,9 +129,16 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","d_d_"+n_descriptor_dirt);
-        div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="inf"  title="When descriptor\'s membership value reaches zero" disabled/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_2');
         parent.appendChild(div);
+        
+        var prev = document.getElementById('d_d_'+dirt_descriptor_ids[dirt_descriptor_ids.length-1]);
+        var inp_elem = prev.children[2];
+        inp_elem.removeAttribute("placeholder");
+        inp_elem.removeAttribute('disabled');
+        inp_elem.value = 100;
+
         dirt_descriptor_ids.push(n_descriptor_dirt);
         $("#d_d_"+n_descriptor_dirt).fadeIn(700);
         setTimeout(function(){document.getElementById('d_add').setAttribute('onclick','add_descriptor(2);');},700);
@@ -145,6 +159,13 @@ function add_descriptor(who){
         div.innerHTML = '<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_3');
         parent.appendChild(div);
+
+        var prev = document.getElementById('t_d_'+wash_descriptor_ids[wash_descriptor_ids.length-1]);
+        var inp_elem = prev.children[2];
+        inp_elem.removeAttribute("placeholder");
+        inp_elem.removeAttribute('disabled');
+        inp_elem.value = 100;
+
         wash_descriptor_ids.push(n_descriptor_wash);
         $("#t_d_"+n_descriptor_wash).fadeIn(700);
         setTimeout(function(){document.getElementById('t_add').setAttribute('onclick','add_descriptor(3);');},700);
@@ -168,7 +189,14 @@ function rem_descriptor(who,which){
             parent.removeChild(elem);
             var index = grease_descriptor_ids.indexOf(which);
             grease_descriptor_ids.splice(index,1);
-            if(which == n_descriptor_grease) n_descriptor_grease--;
+            if(which == n_descriptor_grease) {
+                var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
+                var inp_elem = prev.children[2];
+                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.value = "";
+                inp_elem.setAttribute("disabled","disabled");
+                n_descriptor_grease--;
+            }
         },900);
     }
     else if(who == 'd'){
@@ -182,7 +210,14 @@ function rem_descriptor(who,which){
             parent.removeChild(elem);
             var index = dirt_descriptor_ids.indexOf(which);
             dirt_descriptor_ids.splice(index,1);
-            if(which == n_descriptor_dirt) n_descriptor_dirt--;
+            if(which == n_descriptor_dirt){
+                var prev = document.getElementById('d_d_'+dirt_descriptor_ids[dirt_descriptor_ids.length-1]);
+                var inp_elem = prev.children[2];
+                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.value = "";
+                inp_elem.setAttribute("disabled","disabled");
+                n_descriptor_dirt--;
+            }
         },900);
     }
     else if(who == 't'){
@@ -196,7 +231,14 @@ function rem_descriptor(who,which){
             parent.removeChild(elem);
             var index = wash_descriptor_ids.indexOf(which);
             wash_descriptor_ids.splice(index,1);
-            if(which == n_descriptor_wash) n_descriptor_wash--;
+            if(which == n_descriptor_wash){
+                var prev = document.getElementById('t_d_'+wash_descriptor_ids[wash_descriptor_ids.length-1]);
+                var inp_elem = prev.children[2];
+                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.value = "";
+                inp_elem.setAttribute("disabled","disabled");
+                n_descriptor_wash--;
+            }
         },900);
     }
 }
