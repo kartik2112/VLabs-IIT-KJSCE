@@ -196,7 +196,12 @@
               <br>
               <div id="graph_div">
                 <!-- Graph goes here -->
+              <h3>Graph for Grease descriptors</h3>
               <div id="grease_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
+              <h3>Graph for Dirt descriptors</h3>
+              <div id="dirt_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
+              <h3>Graph for Wash time descriptors</h3>
+              <div id="washing_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
             </div>
 
