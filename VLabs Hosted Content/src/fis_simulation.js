@@ -263,7 +263,7 @@ function save(){
         var s = parseInt(elems[0].value);
         var e = parseInt(elems[2].value);
         if(i == 0) s = 999; //Because start value of first descriptor is not defined
-        if(i==grease_descriptor_ids.length-1) e = 999;  //Because end value of last descriptor is not defined
+        if(i==grease_descriptor_ids.length-1) e = 100;  //Because end value of last descriptor is not defined
         var descriptor = {'id': grease_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
         grease_descriptors.push(descriptor);
         //console.log(grease_descriptors[i].name);
@@ -273,7 +273,7 @@ function save(){
         var x = document.getElementById('d_d_'+dirt_descriptor_ids[i]);
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
-        if(i==dirt_descriptor_ids.length-1) e = 999;  //Because end value of last descriptor is not defined
+        if(i==dirt_descriptor_ids.length-1) e = 100;  //Because end value of last descriptor is not defined
         if(i == 0) s = 999;
         var descriptor = {'id': dirt_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
         dirt_descriptors.push(descriptor);
@@ -283,7 +283,7 @@ function save(){
         var x = document.getElementById('t_d_'+wash_descriptor_ids[i]);
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
-        if(i==wash_descriptor_ids.length-1) e = 999;  //Because end value of last descriptor is not defined
+        if(i==wash_descriptor_ids.length-1) e = 120;  //Because end value of last descriptor is not defined
         if(i == 0) s = 999;
         var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
