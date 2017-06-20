@@ -242,15 +242,10 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': parseInt(elems[2].value)};
         wash_descriptors.push(descriptor);
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     plotGraph();
-=======
-=======
-  plotGraph();
->>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
-    table()
 }
+
 function table(){
     d=dirt_descriptors;
     g=grease_descriptors;
@@ -295,10 +290,6 @@ function table(){
    
     }
      console.log(v);
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
 }
 
 function hide_instrs(arg){
