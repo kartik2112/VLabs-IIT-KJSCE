@@ -288,13 +288,8 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
     }
-<<<<<<< HEAD
-    plotGraph();
-    table()
-=======
 
     plotGraph();
->>>>>>> refs/remotes/origin/master
 }
 
 function table(){
@@ -338,7 +333,7 @@ function table(){
                }
            }
         }
-
+   
     }
      console.log(v);
 }
