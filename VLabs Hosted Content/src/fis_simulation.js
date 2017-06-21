@@ -2,15 +2,15 @@ var n_descriptor_grease = 3;    //To keep track for new id assignment
 var n_descriptor_dirt = 3, n_descriptor_wash = 3;
 var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3];  //To keep track of ids of each descriptor
 var dirt_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
-                          {'id':2, 'name':"Medium", 'start': 34, 'end': 66},
-                          {'id':3, 'name':"High", 'start': 67, 'end': 100}];
+                          {'id':2, 'name':"Medium", 'start': 33, 'end': 66},
+                          {'id':3, 'name':"High", 'start': 66, 'end': 100}];
 
 var grease_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
-                          {'id':2, 'name':"Medium", 'start': 34, 'end': 66},
-                          {'id':3, 'name':"High", 'start': 67, 'end': 100}];
-var wash_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
-                          {'id':2, 'name':"Medium", 'start': 34, 'end': 66},
-                          {'id':3, 'name':"High", 'start': 67, 'end': 100}];
+                          {'id':2, 'name':"Medium", 'start': 33, 'end': 66},
+                          {'id':3, 'name':"High", 'start': 66, 'end': 100}];
+var wash_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 40},
+                          {'id':2, 'name':"Medium", 'start': 40, 'end': 80},
+                          {'id':3, 'name':"High", 'start': 80, 'end': 120}];
 var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
@@ -108,7 +108,7 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","g_d_"+n_descriptor_grease);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="inf" disabled title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100" disabled title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_1');
         parent.appendChild(div);
 
@@ -137,7 +137,7 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","d_d_"+n_descriptor_dirt);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="inf"  title="When descriptor\'s membership value reaches zero" disabled/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100"  title="When descriptor\'s membership value reaches zero" disabled/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_2');
         parent.appendChild(div);
 
@@ -160,12 +160,12 @@ function add_descriptor(who){
             return;
         }
         n_descriptor_wash++;
-        m=parseInt((wash_descriptors[wash_descriptors.length-1].start+100)/2);
+        m=parseInt((wash_descriptors[wash_descriptors.length-1].start+120)/2);
         var div = document.createElement("div");
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","t_d_"+n_descriptor_wash);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="inf" disabled title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="120" disabled title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_3');
         parent.appendChild(div);
 
@@ -201,7 +201,7 @@ function rem_descriptor(who,which){
             if(which == n_descriptor_grease) {
                 var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
                 var inp_elem = prev.children[2];
-                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.setAttribute("placeholder","100");
                 inp_elem.value = "";
                 inp_elem.setAttribute("disabled","disabled");
                 n_descriptor_grease--;
@@ -222,7 +222,7 @@ function rem_descriptor(who,which){
             if(which == n_descriptor_dirt){
                 var prev = document.getElementById('d_d_'+dirt_descriptor_ids[dirt_descriptor_ids.length-1]);
                 var inp_elem = prev.children[2];
-                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.setAttribute("placeholder","100");
                 inp_elem.value = "";
                 inp_elem.setAttribute("disabled","disabled");
                 n_descriptor_dirt--;
@@ -243,7 +243,7 @@ function rem_descriptor(who,which){
             if(which == n_descriptor_wash){
                 var prev = document.getElementById('t_d_'+wash_descriptor_ids[wash_descriptor_ids.length-1]);
                 var inp_elem = prev.children[2];
-                inp_elem.setAttribute("placeholder","inf");
+                inp_elem.setAttribute("placeholder","120");
                 inp_elem.value = "";
                 inp_elem.setAttribute("disabled","disabled");
                 n_descriptor_wash--;

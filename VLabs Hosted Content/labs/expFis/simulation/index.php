@@ -98,10 +98,11 @@
             <div id="instr_div" style="font-size: 17px;">
               <ul>
                 <li>Edit the name of descriptors for each variable.</li>
-                <li>You can also edit the starting and ending values for each descriptor</li>
+                <li>You can also edit the starting and ending values for each descriptor.</li>
                 <li>Default values are also provided.</li>
-                <li><b>You can only add upto 5 descriptors for any variable</b></li>
+                <li><b>You can only add upto 5 descriptors for any variable.</b></li>
                 <li><u>Format:</u> (start value) (Descriptor name) (end value)</li>
+                <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum 120 mins.</li>
               </ul>
               <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
@@ -124,7 +125,7 @@
                           document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
                       document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
-                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"inf\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
+                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
@@ -164,14 +165,14 @@
                     <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="d_d_2">
-                    <input type="number" max="100" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="Medium" />
                     <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="d_d_3">
-                    <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="100" min="0" placeholder="inf" title="When descriptor's membership value reaches zero" disabled/>
+                    <input type="number" max="100" min="0" placeholder="100" title="When descriptor's membership value reaches zero" disabled/>
                     <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
                   </div>
                 </div>
@@ -189,17 +190,17 @@
                   <div class="descr" id="t_d_1">
                     <input type="number" max="120" min="0" placeholder="inf" disabled/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="120" min="0" value="33" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="t_d_2">
-                    <input type="number" max="120" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="120" min="0" value="66" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="t_d_3">
-                    <input type="number" max="120" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="120" min="0" placeholder="inf" disabled title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" placeholder="120" disabled title="When descriptor's membership value reaches zero"/>
                     <button id="t3" onclick="rem_descriptor('t',3)"><b>-</b></button>
                   </div>
                 </div>
@@ -211,7 +212,7 @@
                 <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
               </div>
               <div style="clear: both;">
-                <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">Save</button>
+                <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
               </div>
               <br>
               <div id="graph_div">
