@@ -213,6 +213,9 @@
               <div style="clear: both;">
                 <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">Save</button>
               </div>
+                <hr>
+            
+                <div id="table_data"></div>
               <br>
               <div id="graph_div">
                 <!-- Graph goes here -->
