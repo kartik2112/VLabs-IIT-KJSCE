@@ -336,7 +336,7 @@ function save(){
 function table(){
     var option_content = "";
     for(var k=0;k<wash_descriptors.length;k++){
-        option_content += "<option>"+wash_descriptors[k].name+"</option>";
+        option_content += "<option value='"+wash_descriptors[k].id+"'>"+wash_descriptors[k].name+"</option>";
     }
 
     var htm_to_add='<p style="text-align: center;">Table</p>'+'<div>'+'<table class="fam" border="1">'
@@ -350,7 +350,7 @@ function table(){
             else if(j==-1){
                 htm_to_add += "<th>"+dirt_descriptors[i].name+"</th>";
             }
-            else htm_to_add += "<td class='selector' title='Output descriptor for "+grease_descriptors[j].name+" grease and "+dirt_descriptors[i].name+" dirt'><select>"+option_content+"</select></td>";
+            else htm_to_add += "<td class='selector' title='Output descriptor for "+grease_descriptors[j].name+" grease and "+dirt_descriptors[i].name+" dirt'><select id='sel"+i+j+"'>"+option_content+"</select></td>";
         }
         htm_to_add+='</tr>'
     }
@@ -399,4 +399,17 @@ function edit_descr(){
     $("#matrix_div").fadeOut(1200);
     $("#descriptor_div").fadeIn(1200);
     $('#title').html("Step 1: Describe our inputs and outputs");
+}
+
+var inference_table = [];
+function proceed(){
+    inference_table = [];
+    for(var i=0;i<grease_descriptors.length;i++){
+        var inference_row = [];
+        for(var j=0;j<dirt_descriptors.length;j++){
+            var x = document.getElementById('sel'+j+i);
+            inference_row.push(x.value);
+        }
+        inference_table.push(inference_row);
+    }
 }
