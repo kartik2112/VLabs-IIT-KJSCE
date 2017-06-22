@@ -119,7 +119,7 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <h3 id="title" style="margin-top:5%">What is to be done?</h3>
+          <h3 id="title" style="margin-top:5%">What is to be done for step 1?</h3>
 
             <!--Simulation content goes here -->
             <div id="instr_div" style="font-size: 17px;">

@@ -360,7 +360,7 @@ function table(){
     if(dirt_descriptors.length > 4 || grease_descriptors.length > 4){
         $('.fam td').css("padding","13px");
     }
-    $("#title").html("Deciding the wash time...");
+    $("#title").html("Step 2: Deciding the wash time...");
 }
 
 function hide_instrs(arg){
@@ -372,7 +372,7 @@ function hide_instrs(arg){
         return;
     }
     setTimeout(function(){
-        $("#title").html("Describe our inputs and outputs");
+        $("#title").html("Step 1: Describe our inputs and outputs");
         $('#descriptor_div').fadeIn(500);
         $('#hide_instr').html("Hide");
         document.getElementById('hide_instr').setAttribute('onclick','hide_instrs(1);');
@@ -398,4 +398,5 @@ function next(){
 function edit_descr(){
     $("#matrix_div").fadeOut(1200);
     $("#descriptor_div").fadeIn(1200);
+    $('#title').html("Step 1: Describe our inputs and outputs");
 }
