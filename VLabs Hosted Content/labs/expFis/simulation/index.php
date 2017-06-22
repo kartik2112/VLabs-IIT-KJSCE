@@ -242,10 +242,4 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <script src="../../../src/fis_simulation.js"></script>
->>>>>>> origin/master
-=======
->>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
