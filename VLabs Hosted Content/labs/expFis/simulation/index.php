@@ -30,7 +30,34 @@
         <script src="../../../src/fis_simulation.js"></script>
         <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
         <style>
-
+          .fam td, .fam th{
+            padding: 20px;
+            text-align: center;
+          }
+          .fam th{
+            background: #cacdd1;
+            color: black;
+          }
+          #empty{
+            background: none;
+            border: none;
+          }
+          .fam{
+            margin: auto;
+          }
+          .fam select{
+            padding: 5px;
+            margin: auto;
+            background: none;
+            border: 1px solid transparent;
+            transition-duration: 0.5s;
+          }
+          .fam select:hover{
+            background: white;
+            border: 1px solid black;
+            transition-duration: 0.5s;
+            border-radius: 5px;
+          }
         </style>
     <!-- Simulation scripts end-->
     </head>
@@ -100,9 +127,9 @@
                 <li>Edit the name of descriptors for each variable.</li>
                 <li>You can also edit the starting and ending values for each descriptor.</li>
                 <li><b>You can only add upto 5 descriptors for any variable.</b></li>
-                <li><u>Format of a descriptor:</u> (start value) (Descriptor name) (end value)</li>
+                <li>Format of a descriptor: (start value) (Descriptor name) (end value)</li>
                 <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum of 120 mins.</li>
-                <li>To see changes in the graph, press the <button class="btn-success btn-sm">View changes</button> button</li>
+                <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button</li>
               </ul>
               <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
@@ -226,8 +253,15 @@
               <div id="washing_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
             </div>
-            <div id="matrix_div" style="display: none;">
-              <div id="table_data"></div>
+            <div id="matrix_div" style="display: none;width: 100%;">
+              <h4>
+                Fill the table below with desired output descriptor for each combination of input descriptors.
+              </h4>
+              <div id="table_data" style="margin: auto;"></div>
+              <br>
+              <h4>Congratulations! You have designed a virtual Washing Machine!</h4>
+              <button class="btn-warning btn-md" style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
+              <button class="btn-success btn-md">Proceed</button>
             </div>
 
         </section>
@@ -246,4 +280,3 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
-<script src="../../../src/fis_simulation.js"></script>
