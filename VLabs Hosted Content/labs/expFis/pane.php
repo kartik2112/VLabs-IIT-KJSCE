@@ -59,7 +59,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="<?php if($_SESSION["currPage"]!=5) echo "simulation/"?>index.php">
+                    <a href="<?php if($_SESSION["currPage"]!=5) echo "simulation/index.php"?>">
                         <i class="fa fa-laptop"></i>
                         <span>Simulation</span>
                         <span class="pull-right-container">

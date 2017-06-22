@@ -30,7 +30,34 @@
         <script src="../../../src/fis_simulation.js"></script>
         <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
         <style>
-
+          .fam td, .fam th{
+            padding: 20px;
+            text-align: center;
+          }
+          .fam th{
+            background: #cacdd1;
+            color: black;
+          }
+          #empty{
+            background: none;
+            border: none;
+          }
+          .fam{
+            margin: auto;
+          }
+          .fam select{
+            padding: 5px;
+            margin: auto;
+            background: none;
+            border: 1px solid transparent;
+            transition-duration: 0.5s;
+          }
+          .fam select:hover{
+            background: white;
+            border: 1px solid black;
+            transition-duration: 0.5s;
+            border-radius: 5px;
+          }
         </style>
     <!-- Simulation scripts end-->
     </head>
@@ -80,9 +107,9 @@
         </section>
         <script type="text/javascript">
           // Popup window code
-                                function newPopup(url) {
-                                  popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
-                                }
+          function newPopup(url) {
+            popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+          }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
           <a href="JavaScript:newPopup('../procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
@@ -92,16 +119,17 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <h3 id="title" style="margin-top:5%">What is to be done?</h3>
+          <h3 id="title" style="margin-top:5%">What is to be done for step 1?</h3>
 
             <!--Simulation content goes here -->
             <div id="instr_div" style="font-size: 17px;">
               <ul>
                 <li>Edit the name of descriptors for each variable.</li>
-                <li>You can also edit the starting and ending values for each descriptor</li>
-                <li>Default values are also provided.</li>
-                <li><b>You can only add upto 5 descriptors for any variable</b></li>
-                <li><u>Format:</u> (start value) (Descriptor name) (end value)</li>
+                <li>You can also edit the starting and ending values for each descriptor.</li>
+                <li><b>You can only add upto 5 descriptors for any variable.</b></li>
+                <li>Format of a descriptor: (start value) (Descriptor name) (end value)</li>
+                <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum of 120 mins.</li>
+                <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button</li>
               </ul>
               <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
@@ -109,7 +137,7 @@
             <div id="descriptor_div" style="width: 90%;display: none;">
               <a id="show_instr" href="#" onclick="show_instrs();">Show instructions</a>
               <h4>Add/Remove descriptors</h4>
-              <div id="grease" class="descr_box" style="margin-right: 12.5px;">
+              <div id="grease" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
                 <br>
                 <div id="descrs_1" style="height: 210px;">
@@ -124,7 +152,7 @@
                           document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
                       document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
-                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"inf\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
+                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
@@ -154,7 +182,7 @@
                 <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
 
-              <div id="dirt" class="descr_box" style="margin-right: 12.5px;">
+              <div id="dirt" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
                 <div id="descrs_2" style="height: 210px;">
@@ -164,14 +192,14 @@
                     <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="d_d_2">
-                    <input type="number" max="100" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="Medium" />
                     <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="d_d_3">
-                    <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="100" min="0" placeholder="inf" title="When descriptor's membership value reaches zero" disabled/>
+                    <input type="number" max="100" min="0" placeholder="100" title="When descriptor's membership value reaches zero" disabled/>
                     <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
                   </div>
                 </div>
@@ -189,17 +217,17 @@
                   <div class="descr" id="t_d_1">
                     <input type="number" max="120" min="0" placeholder="inf" disabled/>
                     <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="120" min="0" value="33" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="t_d_2">
-                    <input type="number" max="120" min="0" value="34" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="120" min="0" value="66" title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value reaches zero"/>
                   </div>
                   <div class="descr" id="t_d_3">
-                    <input type="number" max="120" min="0" value="67" title="When descriptor's membership value begins to rise"/>
+                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value begins to rise"/>
                     <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="120" min="0" placeholder="inf" disabled title="When descriptor's membership value reaches zero"/>
+                    <input type="number" max="120" min="0" placeholder="120" disabled title="When descriptor's membership value reaches zero"/>
                     <button id="t3" onclick="rem_descriptor('t',3)"><b>-</b></button>
                   </div>
                 </div>
@@ -211,7 +239,8 @@
                 <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
               </div>
               <div style="clear: both;">
-                <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">Save</button>
+                <button id="save" class="btn-warning btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
+                <a class="btn-success btn-md" onclick="next();">Continue >></a>
               </div>
               <br>
               <div id="graph_div">
@@ -223,6 +252,16 @@
               <h3>Graph for Wash time descriptors</h3>
               <div id="washing_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
+            </div>
+            <div id="matrix_div" style="display: none;width: 100%;">
+              <h4>
+                Fill the table below with desired output descriptor for each combination of input descriptors.
+              </h4>
+              <div id="table_data" style="margin: auto;"></div>
+              <br>
+              <h4>Congratulations! You have designed a virtual Washing Machine!</h4>
+              <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
+              <button class="btn-success btn-md" onclick='proceed();'>Proceed</button>
             </div>
 
         </section>
@@ -241,10 +280,3 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<script src="../../../src/fis_simulation.js"></script>
->>>>>>> origin/master
-=======
->>>>>>> 2bed6b83cb054740174831ffa268682bb9953d14
