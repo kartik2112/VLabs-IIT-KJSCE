@@ -325,7 +325,6 @@ function save(){
     }
     
     plotGraph();
-    table();
 }
 
 function table(){
@@ -334,15 +333,15 @@ function table(){
     console.log(g.length);
     
     var htm_to_add='     <h3 style="text-align: center;">Table for dirt and grease descriptors</h3>'+'<div class="well table-responsive">'+'<table class="table">'
-for(var i=0;i<d.length;i++){
-    htm_to_add+='<tr class="danger">'
-    for(var j=0;j<g.length;j++){
-        htm_to_add+='<td>'+'<div class="well">'+'<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="'+"low"+'"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/>'+'</div>'+'</td>';
+    for(var i=0;i<d.length;i++){
+        htm_to_add+='<tr class="danger">'
+        for(var j=0;j<g.length;j++){
+            htm_to_add+='<td>'+'<div class="well">'+'<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="'+"low"+'"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/>'+'</div>'+'</td>';
+        }
+        htm_to_add+='</tr>'
     }
-    htm_to_add+='</tr>'
-}
-htm_to_add+='</table>'+'</div>'
-document.getElementById("table_data").innerHTML=htm_to_add;
+    htm_to_add+='</table>'+'</div>';
+    document.getElementById("table_data").innerHTML=htm_to_add;
 }
 
 function hide_instrs(arg){
@@ -366,4 +365,13 @@ function hide_instrs(arg){
 function show_instrs(){
     $("#instr_div").fadeIn(700);
     $("#show_instr").css('visibility','hidden');
+}
+
+function next(){
+    save();
+    $('#descriptor_div').fadeOut(800);
+    setTimeout(function(){
+        $('#matrix_div').fadeIn(800);
+        table();
+    },1000);
 }

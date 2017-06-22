@@ -212,11 +212,9 @@
                 <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
               </div>
               <div style="clear: both;">
-                <button id="save" class="btn-success btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
+                <button id="save" class="btn-warning btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
+                <a class="btn-success btn-md" onclick="next();">Continue >></a>
               </div>
-                <hr>
-            
-                <div id="table_data"></div>
               <br>
               <div id="graph_div">
                 <!-- Graph goes here -->
@@ -227,6 +225,9 @@
               <h3>Graph for Wash time descriptors</h3>
               <div id="washing_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
               </div>
+            </div>
+            <div id="matrix_div" style="display: none;">
+              <?php include 'matrix.php'?>
             </div>
 
         </section>
