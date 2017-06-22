@@ -101,8 +101,12 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
-        m=parseInt((grease_descriptors[grease_descriptors.length-1].start+100)/2);
-
+        var x = document.getElementById('g_d_'+grease_descriptor_ids[n_descriptor_grease-1]);
+        // Retreive the start value, end value and name of descriptor related HTML elements
+        var elems = x.children;
+        var prevStart=Number(parseInt(elems[0].value));
+        m=parseInt((prevStart+100)/2);
+        console.log(prevStart+";"+m);
         n_descriptor_grease++;
         var div = document.createElement("div");
         div.setAttribute("class","descr");
@@ -131,8 +135,12 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
+        var x = document.getElementById('d_d_'+dirt_descriptor_ids[n_descriptor_dirt-1]);
+        // Retreive the start value, end value and name of descriptor related HTML elements
+        var elems = x.children;
+        var prevStart=Number(parseInt(elems[0].value));
+        m=parseInt((prevStart+100)/2);
         n_descriptor_dirt++;
-        m=parseInt((dirt_descriptors[dirt_descriptors.length-1].start+100)/2);
         var div = document.createElement("div");
         div.setAttribute("class","descr");
         div.style.display = "none";
@@ -159,8 +167,12 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
+        var x = document.getElementById('t_d_'+wash_descriptor_ids[n_descriptor_wash-1]);
+        // Retreive the start value, end value and name of descriptor related HTML elements
+        var elems = x.children;
+        var prevStart=Number(parseInt(elems[0].value));
+        m=parseInt((prevStart+120)/2);
         n_descriptor_wash++;
-        m=parseInt((wash_descriptors[wash_descriptors.length-1].start+120)/2);
         var div = document.createElement("div");
         div.setAttribute("class","descr");
         div.style.display = "none";
@@ -329,7 +341,7 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
     }
-    
+
     plotGraph();
 }
 
