@@ -227,7 +227,7 @@
               </div>
             </div>
             <div id="matrix_div" style="display: none;">
-              <?php include 'matrix.php'?>
+              <div id="table_data"></div>
             </div>
 
         </section>
