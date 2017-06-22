@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION["currPage"] = 5;
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -83,6 +87,9 @@
           <h3 style="margin-top:5%">Simulation</h3>
            
             <!--Simulation Part 2 content goes here -->
+            <div id="table_data">
+
+            </div>
 
         </section>
         <!-- /.content -->
@@ -106,3 +113,4 @@
 <script src="../../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../dist/js/app.min.js"></script>
+<script src="../../../src/fis_simulation.js"></script>

@@ -26,17 +26,17 @@
     border: 1px solid #777777;
 }
 .descr{
-    width: 330px;
+    width: 100%;
     margin: auto;
     padding: 5px;
     height: 30px;
     margin-bottom: 10px;
 }
 .descr input[type='number']{
-    width: 50px;
+    width: 20%;
     height: 30px;
     float: left;
-    margin: auto 9px;
+    margin: auto 2%;
     text-align: center;
     background: none;
     border: 1px solid transparent;
@@ -51,6 +51,7 @@
 .descr input[type='text']{
     float: left;
     height: 30px;
+    width: 42%;
     text-align: center;
 }
 .descr button{
@@ -70,12 +71,13 @@
     border-radius: 0px;
 }
 .descr_box{
-    width:330px;
+    width:32%;
     float: left;
     border: 0.4px solid black;
     box-shadow: 0.5px 0.5px 4px black;
     padding: 3px;
     margin-bottom: 10px;
+    margin-right: 1%;
 }
 .btn-success{
     border: none;

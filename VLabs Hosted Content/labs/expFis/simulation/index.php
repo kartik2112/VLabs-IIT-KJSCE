@@ -110,7 +110,7 @@
             <div id="descriptor_div" style="width: 90%;display: none;">
               <a id="show_instr" href="#" onclick="show_instrs();">Show instructions</a>
               <h4>Add/Remove descriptors</h4>
-              <div id="grease" class="descr_box" style="margin-right: 12.5px;">
+              <div id="grease" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Grease (in %)</h4>
                 <br>
                 <div id="descrs_1" style="height: 210px;">
@@ -155,7 +155,7 @@
                 <p id="g_txt" style="float: right;margin: 10px;">Total: <span id="g_no">3</span></p>
               </div>
 
-              <div id="dirt" class="descr_box" style="margin-right: 12.5px;">
+              <div id="dirt" class="descr_box">
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
                 <div id="descrs_2" style="height: 210px;">
