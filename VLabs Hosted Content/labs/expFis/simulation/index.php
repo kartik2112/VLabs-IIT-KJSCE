@@ -80,9 +80,9 @@
         </section>
         <script type="text/javascript">
           // Popup window code
-                                function newPopup(url) {
-                                  popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
-                                }
+          function newPopup(url) {
+            popupWindow = window.open(url,'popUpWindow','height=500,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+          }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
           <a href="JavaScript:newPopup('../procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
@@ -99,10 +99,10 @@
               <ul>
                 <li>Edit the name of descriptors for each variable.</li>
                 <li>You can also edit the starting and ending values for each descriptor.</li>
-                <li>Default values are also provided.</li>
                 <li><b>You can only add upto 5 descriptors for any variable.</b></li>
-                <li><u>Format:</u> (start value) (Descriptor name) (end value)</li>
-                <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum 120 mins.</li>
+                <li><u>Format of a descriptor:</u> (start value) (Descriptor name) (end value)</li>
+                <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum of 120 mins.</li>
+                <li>To see changes in the graph, press the <button class="btn-success btn-sm">View changes</button> button</li>
               </ul>
               <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
