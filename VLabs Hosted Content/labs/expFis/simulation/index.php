@@ -157,22 +157,6 @@
                       document.writeln("</div>");
                     }
                   </script>
-                  <!-- <div class="descr" id="g_d_1">
-                    <input type="number" max="100" min="0" placeholder="inf" disabled/>
-                    <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="g_d_2">
-                    <input type="number" max="100" min="0" value="34" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="g_d_3">
-                    <input type="number" max="100" min="0" value="67" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="100" min="0" value="100" title="When descriptor's membership value reaches zero"/>
-                    <button id="g3" onclick="rem_descriptor('g',3)"><b>-</b></button>
-                  </div> -->
                 </div>
                 <br>
                 <div id="g_add" class="add_btn_div" onclick="add_descriptor(1);">
@@ -186,22 +170,22 @@
                 <h4 style="text-align: center;">Descriptors for Dirt (in %)</h4>
                 <br>
                 <div id="descrs_2" style="height: 210px;">
-                  <div class="descr" id="d_d_1">
-                    <input type="number" max="100" min="0" placeholder="inf" disabled/>
-                    <input type="text" placeholder="Name of descriptor" value="Low" />
-                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="d_d_2">
-                    <input type="number" max="100" min="0" value="33" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="Medium" />
-                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="d_d_3">
-                    <input type="number" max="100" min="0" value="66" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="100" min="0" placeholder="100" title="When descriptor's membership value reaches zero" disabled/>
-                    <button id="d3" onclick="rem_descriptor('d',3);"><b>-</b></button>
-                  </div>
+                  <script type="text/javascript">
+                    for (var i = 0; i < dirt_descriptors.length; i++) {
+                      document.writeln("<div class=\"descr\" id=\"d_d_"+dirt_descriptors[i].id+"\">");
+                      if(i==0)
+                      {
+                          document.writeln('<input type="number" max="100" min="0" placeholder="inf" disabled />');
+                      }
+                      else{
+                          document.writeln('<input type="number" max="100" min="0" value='+dirt_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
+                      }
+                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+dirt_descriptors[i].name+" />");
+                      if(i==dirt_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"d3\" onclick=\"rem_descriptor('d',3)\"><b>-</b></button>");
+                      else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+dirt_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      document.writeln("</div>");
+                    }
+                  </script>
                 </div>
                 <br>
                 <div id="d_add" class="add_btn_div" onclick='add_descriptor(2);'>
@@ -214,22 +198,22 @@
                 <h4 style="text-align: center;">Descriptors for Wash time (in mins)</h4>
                 <br>
                 <div id="descrs_3" style="height: 210px;">
-                  <div class="descr" id="t_d_1">
-                    <input type="number" max="120" min="0" placeholder="inf" disabled/>
-                    <input type="text" placeholder="Name of descriptor" value="Low"/>
-                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="t_d_2">
-                    <input type="number" max="120" min="0" value="40" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="Medium"/>
-                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value reaches zero"/>
-                  </div>
-                  <div class="descr" id="t_d_3">
-                    <input type="number" max="120" min="0" value="80" title="When descriptor's membership value begins to rise"/>
-                    <input type="text" placeholder="Name of descriptor" value="High" />
-                    <input type="number" max="120" min="0" placeholder="120" disabled title="When descriptor's membership value reaches zero"/>
-                    <button id="t3" onclick="rem_descriptor('t',3)"><b>-</b></button>
-                  </div>
+                  <script type="text/javascript">
+                    for (var i = 0; i < wash_descriptors.length; i++) {
+                      document.writeln("<div class=\"descr\" id=\"t_d_"+wash_descriptors[i].id+"\">");
+                      if(i==0)
+                      {
+                          document.writeln('<input type="number" max="100" min="0" placeholder="inf" disabled />');
+                      }
+                      else{
+                          document.writeln('<input type="number" max="100" min="0" value='+wash_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
+                      }
+                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+wash_descriptors[i].name+" />");
+                      if(i==wash_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"120\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"t3\" onclick=\"rem_descriptor('t',3)\"><b>-</b></button>");
+                      else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+wash_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      document.writeln("</div>");
+                    }
+                  </script>
                 </div>
                 <br>
                 <div id="t_add" class="add_btn_div" onclick="add_descriptor(3);">
@@ -263,7 +247,28 @@
               <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
               <button class="btn-success btn-md" onclick='proceed();'>Proceed</button>
             </div>
-
+          <div id="trial_div" style="display:none;width: 100%">
+            <h4>
+              Provide a grease percent and dirt percent as input, and you can see how your virtual washing machine will get you the wash time.
+            </h4>
+            <div class="form-group row">
+              <div class="col-xs-2">
+                <label for="grease_trial">Grease:</label>
+                <input class="form-control" type="number" min=0 max=100 id="grease_trial" />
+              </div>
+              <div class="col-xs-2">
+                <label for="dirt_trial">Dirt:</label>
+                <input class="form-control" type="number" min=0 max=100 id="dirt_trial">
+              </div><br />
+            </div>
+            <button class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
+            <div id="greaseFuzzy">
+            </div>
+            <div id="dirtFuzzy">
+            </div>
+            <div id="washFuzzy">
+            </div>
+          </div>
         </section>
         <!-- /.content -->
       </div>

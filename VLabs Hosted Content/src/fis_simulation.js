@@ -1,16 +1,17 @@
 var n_descriptor_grease = 3;    //To keep track for new id assignment
 var n_descriptor_dirt = 3, n_descriptor_wash = 3;
-var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3];  //To keep track of ids of each descriptor
-var dirt_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
-                          {'id':2, 'name':"Medium", 'start': 33, 'end': 66},
-                          {'id':3, 'name':"High", 'start': 66, 'end': 100}];
+var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3,4];  //To keep track of ids of each descriptor
+var dirt_descriptors = [{id:1,name:"Low",start:999,end:65},
+                    {id:2,name:"Medium",start:15,end:75},
+                    {id:3,name:"High",start:50,end:100}];
 
-var grease_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 33},
-                          {'id':2, 'name':"Medium", 'start': 33, 'end': 66},
-                          {'id':3, 'name':"High", 'start': 66, 'end': 100}];
-var wash_descriptors = [{'id':1, 'name':"Low", 'start': 999, 'end': 40},
-                          {'id':2, 'name':"Medium", 'start': 40, 'end': 80},
-                          {'id':3, 'name':"High", 'start': 80, 'end': 120}];
+var grease_descriptors = [{id:1,name:"Low",start:999,end:45},
+                      {id:2,name:"Medium",start:15,end:85},
+                      {id:3,name:"High",start:55,end:100}];
+var wash_descriptors = [{id:1,name:"Low",start:999,end:45},
+                    {id:2,name:"Medium",start:35,end:55},
+                    {id:3,name:"High",start:45,end:75},
+                    {id:4,name:"Very High",start:65,end:120}];
 var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
@@ -422,9 +423,158 @@ function proceed(){
     for(var i=0;i<grease_descriptors.length;i++){
         var inference_row = [];
         for(var j=0;j<dirt_descriptors.length;j++){
-            var x = document.getElementById('sel'+j+i);
+            var x = document.getElementById('sel'+i+j);
             inference_row.push(x.value);
         }
         inference_table.push(inference_row);
     }
+    $("#matrix_div").fadeOut(1200);
+    $("#trial_div").fadeIn(1200);
+    $("#title").html("Step 3: Trial of your washing machine...");
+}
+
+var fuzzyGrease=[];
+var fuzzyDirt=[];
+var fuzzyWash=[];
+function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
+    var grease=parseInt(Number(g));
+    var dirt=parseInt(d);
+    console.log(grease+","+dirt);
+    //Find fuzzy input using the values
+    for (var i = 0; i < grease_descriptors.length; i++) {
+        var start=grease_descriptors[i].start;
+        var end=grease_descriptors[i].end;
+        var id=grease_descriptors[i].id;
+        var fuzzyVal=0;
+        if(i==0)
+        {
+            start=0;
+            if(grease>start&&grease<end)
+            {
+                fuzzyVal=Number(parseFloat((end-grease)/(end-start)).toFixed(3));
+            }
+            else if (grease==start) {
+                fuzzyVal=1;
+            }
+        }
+        else if(end==100)
+        {
+            if(grease>start&&grease<end)
+            {
+                fuzzyVal=Number(parseFloat((grease-start)/(end-start)).toFixed(3));
+            }
+            else if (grease==end) {
+                fuzzyVal=1;
+            }
+        }
+        else
+        {
+            var mid=Number(parseFloat((start+end)/2).toFixed(3));
+            if(grease>=start&&grease<=mid)
+            {
+                fuzzyVal=Number(parseFloat((grease-start)/(mid-start)).toFixed(3));
+            }
+            else if (grease>mid&&grease<end)
+            {
+                fuzzyVal=Number(parseFloat((end-grease)/(end-mid)).toFixed(3));
+            }
+        }
+        var descriptor={'id':id,'name':grease_descriptors[i].name,'fuzzyVal':fuzzyVal};
+        fuzzyGrease.push(descriptor);
+    }
+    var str="<h5>Fuzzy set for Grease:</h5>";
+    str+="<table class='fuzzySet'><tr>";
+    for (var i = 0; i < fuzzyGrease.length; i++) {
+      str+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyGrease[i].fuzzyVal+"</td>";
+      if(i!=fuzzyGrease.length-1)
+        str+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
+    }
+    str+="</tr><tr>";
+    for (var i = 0; i < fuzzyGrease.length; i++) {
+      str+="<td style=\"text-align:center\">"+fuzzyGrease[i].name+"</td>";
+    }
+    str+="</tr></table>";
+    document.getElementById("greaseFuzzy").innerHTML=str;
+    for (var i = 0; i < dirt_descriptors.length; i++) {
+        var start=dirt_descriptors[i].start;
+        var end=dirt_descriptors[i].end;
+        var id=dirt_descriptors[i].id;
+        var fuzzyVal=0;
+        if(i==0)
+        {
+            start=0;
+            if(dirt>start&&dirt<end)
+            {
+                fuzzyVal=Number(parseFloat((end-dirt)/(end-start)).toFixed(3));
+            }
+            else if (dirt==start) {
+                fuzzyVal=1;
+            }
+        }
+        else if(end==100)
+        {
+            if(dirt>start&&dirt<end)
+            {
+                fuzzyVal=Number(parseFloat((dirt-start)/(end-start)).toFixed(3));
+            }
+            else if(dirt==end)
+            {
+                fuzzyVal=1;
+            }
+        }
+        else
+        {
+            var mid=Number(parseFloat((start+end)/2).toFixed(3));
+            if(dirt>=start&&dirt<=mid)
+            {
+                fuzzyVal=Number(parseFloat((dirt-start)/(mid-start)).toFixed(3));
+            }
+            else if (dirt>mid&&dirt<end)
+            {
+                fuzzyVal=Number(parseFloat((end-dirt)/(end-mid)).toFixed(3));
+            }
+        }
+        var descriptor={'id':id,'name':dirt_descriptors[i].name,'fuzzyVal':fuzzyVal};
+        fuzzyDirt.push(descriptor);
+    }
+    var str="<h5>Fuzzy set for Dirt:</h5>";
+    str+="<table class='fuzzySet'><tr>";
+    for (var i = 0; i < fuzzyDirt.length; i++) {
+      str+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyDirt[i].fuzzyVal+"</td>";
+      if(i!=fuzzyDirt.length-1)
+        str+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
+    }
+    str+="</tr><tr>";
+    for (var i = 0; i < fuzzyDirt.length; i++) {
+      str+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
+    }
+    str+="</tr></table>";
+    document.getElementById("dirtFuzzy").innerHTML=str;
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
+    }
+    for (var i = 0; i < fuzzyGrease.length; i++) {
+      for (var j = 0; j < fuzzyDirt.length; j++) {
+          var colIndex=fuzzyGrease[i].id-1;
+          var rowIndex=fuzzyDirt[j].id-1;
+          var resultDescriptor=inference_table[rowIndex][colIndex];
+          var resultFuzzy=Math.min(fuzzyGrease[i].fuzzyVal,fuzzyDirt[j].fuzzyVal);
+          var newFuzzyVal=Math.max(resultFuzzy,fuzzyWash[resultDescriptor-1].fuzzyVal);
+          fuzzyWash[resultDescriptor-1].fuzzyVal=newFuzzyVal;
+      }
+    }
+    var str="<h4>Using extension principle on above two sets, Fuzzy set on washing time:</h4>";
+    str+="<table class='fuzzySet'><tr>";
+    for (var i = 0; i < fuzzyWash.length; i++) {
+      str+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyWash[i].fuzzyVal+"</td>";
+      if(i!=fuzzyWash.length-1)
+        str+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
+    }
+    str+="</tr><tr>";
+    for (var i = 0; i < fuzzyWash.length; i++) {
+      str+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
+    }
+    str+="</tr></table>";
+    document.getElementById("washFuzzy").innerHTML=str;
+    defuzzify();
 }
