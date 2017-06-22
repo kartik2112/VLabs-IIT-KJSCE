@@ -270,10 +270,12 @@ function save(){
         var elems = x.children;
 
         var s = parseInt(elems[0].value);
+        var n = elems[1].value;
+        if(n=="") n = "Grease Descriptor #"+(i+1);
         var e = parseInt(elems[2].value);
         if(i == 0) s = 999; //Because start value of first descriptor is not defined
         if(i==grease_descriptor_ids.length-1) e = 100;  //Because end value of last descriptor is not defined
-        var descriptor = {'id': grease_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
+        var descriptor = {'id': grease_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         grease_descriptors.push(descriptor);
         //console.log(grease_descriptors[i].name);
     }
@@ -289,6 +291,8 @@ function save(){
         var x = document.getElementById('d_d_'+dirt_descriptor_ids[i]);
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
+        var n = elems[1].value;
+        if(n=="") n = "Dirt Descriptor #"+(i+1);
         if(i==dirt_descriptor_ids.length-1)
         {
             var e = 100;  //Because end value of last descriptor is not defined
@@ -297,7 +301,7 @@ function save(){
             var e = parseInt(elems[2].value);
         }
         if(i == 0) s = 999;
-        var descriptor = {'id': dirt_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
+        var descriptor = {'id': dirt_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         dirt_descriptors.push(descriptor);
     }
     for (var i = 0; i < washing_lines_up.length; i++) {
@@ -312,6 +316,8 @@ function save(){
         var x = document.getElementById('t_d_'+wash_descriptor_ids[i]);
         var elems = x.children;
         var s = parseInt(elems[0].value); //Because start value of first descriptor is not defined
+        var n = elems[1].value;
+        if(n=="") n = "Wash Descriptor #"+(i+1);
         if(i==wash_descriptor_ids.length-1)
         {
             e = 120;  //Because end value of last descriptor is not defined
@@ -320,33 +326,44 @@ function save(){
             var e = parseInt(elems[2].value);
         }
         if(i == 0) s = 999;
-        var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
+        var descriptor = {'id': wash_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
     }
     
     plotGraph();
-    table();
 }
 
 function table(){
-    d=dirt_descriptors;
-    g=grease_descriptors;
-    console.log(g.length);
-    
-    var htm_to_add='     <h3 style="text-align: center;">Table for dirt and grease descriptors</h3>'+'<div class="well table-responsive">'+'<table class="table">'
-for(var i=0;i<d.length;i++){
-    htm_to_add+='<tr class="danger">'
-    for(var j=0;j<g.length;j++){
-        htm_to_add+='<td>'+'<div class="well">'+'<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="'+"low"+'"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/>'+'</div>'+'</td>';
+    var option_content = "";
+    for(var k=0;k<wash_descriptors.length;k++){
+        option_content += "<option>"+wash_descriptors[k].name+"</option>";
     }
-    htm_to_add+='</tr>'
-}
-htm_to_add+='</table>'+'</div>'
-document.getElementById("table_data").innerHTML=htm_to_add;
+
+    var htm_to_add='<p style="text-align: center;">Table</p>'+'<div>'+'<table class="fam" border="1">'
+    for(var i=-1;i<dirt_descriptors.length;i++){
+        htm_to_add+='<tr>'
+        for(var j=-1;j<grease_descriptors.length;j++){
+            if(i==-1){
+                if(j==-1) htm_to_add += "<th id='empty'>Grease descriptors &rarr;<br>Dirt descriptors &darr;</th>"
+                else htm_to_add += "<th>"+grease_descriptors[j].name+"</th>";
+            }
+            else if(j==-1){
+                htm_to_add += "<th>"+dirt_descriptors[i].name+"</th>";
+            }
+            else htm_to_add += "<td class='selector' title='Output descriptor for "+grease_descriptors[j].name+" grease and "+dirt_descriptors[i].name+" dirt'><select>"+option_content+"</select></td>";
+        }
+        htm_to_add+='</tr>'
+    }
+    htm_to_add+='</table>'+'</div>';
+    document.getElementById("table_data").innerHTML=htm_to_add;
+
+    if(dirt_descriptors.length > 4 || grease_descriptors.length > 4){
+        $('.fam td').css("padding","13px");
+    }
+    $("#title").html("Step 2: Deciding the wash time...");
 }
 
 function hide_instrs(arg){
-    console.log(arg);
     $('#instr_div').fadeOut(500);
     if(arg==1){
         setTimeout(function(){
@@ -355,7 +372,7 @@ function hide_instrs(arg){
         return;
     }
     setTimeout(function(){
-        $("#title").html("Simulation");
+        $("#title").html("Step 1: Describe our inputs and outputs");
         $('#descriptor_div').fadeIn(500);
         $('#hide_instr').html("Hide");
         document.getElementById('hide_instr').setAttribute('onclick','hide_instrs(1);');
@@ -366,4 +383,20 @@ function hide_instrs(arg){
 function show_instrs(){
     $("#instr_div").fadeIn(700);
     $("#show_instr").css('visibility','hidden');
+}
+
+function next(){
+    save();
+    $('#descriptor_div').fadeOut(800);
+    setTimeout(function(){
+        $('#matrix_div').fadeIn(800);
+        table();
+    },1000);
+}
+
+
+function edit_descr(){
+    $("#matrix_div").fadeOut(1200);
+    $("#descriptor_div").fadeIn(1200);
+    $('#title').html("Step 1: Describe our inputs and outputs");
 }
