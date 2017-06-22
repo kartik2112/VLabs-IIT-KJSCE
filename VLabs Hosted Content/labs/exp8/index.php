@@ -72,7 +72,7 @@
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
                         <!--Aim of experiment -->
-                        To understand the basics of how neural network works using AND, OR, NOT Gates implemented using a single neuron of neural network
+                        To understand the concept of Fuzzy Logic, Fuzzy Sets and Fuzzification.
                     </p>
                 </section>                
             </div>

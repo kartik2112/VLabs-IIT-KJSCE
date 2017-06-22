@@ -1,5 +1,5 @@
 <?php 
-$lab_name = "Machine Learning Lab";
+$lab_name = "Machine Learning";
 
 $exp_name = "Fuzzification";
 
