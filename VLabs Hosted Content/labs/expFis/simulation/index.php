@@ -260,7 +260,7 @@
               <div id="table_data" style="margin: auto;"></div>
               <br>
               <h4>Congratulations! You have designed a virtual Washing Machine!</h4>
-              <button class="btn-warning btn-md" style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
+              <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
               <button class="btn-success btn-md" onclick='proceed();'>Proceed</button>
             </div>
 

@@ -396,9 +396,12 @@ function next(){
 
 
 function edit_descr(){
-    $("#matrix_div").fadeOut(1200);
-    $("#descriptor_div").fadeIn(1200);
-    $('#title').html("Step 1: Describe our inputs and outputs");
+    var msg = confirm('You will lose all progress you made in this page. Continue?');
+    if(msg==true){
+        $("#matrix_div").fadeOut(1200);
+        $("#descriptor_div").fadeIn(1200);
+        $('#title').html("Step 1: Describe our inputs and outputs");
+    }
 }
 
 var inference_table = [];
