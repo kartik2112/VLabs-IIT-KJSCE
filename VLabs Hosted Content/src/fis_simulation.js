@@ -323,54 +323,26 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': elems[1].value, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
     }
-
+    
     plotGraph();
+    table();
 }
 
 function table(){
     d=dirt_descriptors;
     g=grease_descriptors;
     console.log(g.length);
-    var v=[[],[]];
-    for(var i=0;i<d.length;i++){
-        for(var j=0;j<g.length;j++){
-           if(d[i].name=='Low'){
-               if(g[j].name=='Low'){
-                   v[i][j]='Very Small'
-               }
-               if(g[j].name=='Medium'){
-                   v[i][j]='Small'
-               }
-               if(g[j].name=='High'){
-                   v[i][j]='Large'
-               }
-           }
-            if(d[i].name=='Medium'){
-               if(g[j].name=='Low'){
-                   v[i][j]='Small'
-               }
-               if(g[j].name=='Medium'){
-                   v[i][j]='Medium'
-               }
-               if(g[j].name=='High'){
-                   v[i][j]='Large'
-               }
-           }
-            if(d[i].name=='High'){
-               if(g[j].name=='Low'){
-                   v[i][j]='Medium'
-               }
-               if(g[j].name=='Medium'){
-                   v[i][j]='Large'
-               }
-               if(g[j].name=='High'){
-                   v[i][j]='Very large'
-               }
-           }
-        }
-
+    
+    var htm_to_add='     <h3 style="text-align: center;">Table for dirt and grease descriptors</h3>'+'<div class="well table-responsive">'+'<table class="table">'
+for(var i=0;i<d.length;i++){
+    htm_to_add+='<tr class="danger">'
+    for(var j=0;j<g.length;j++){
+        htm_to_add+='<td>'+'<div class="well">'+'<input type="number" max="100" min="0" value="0"  title="When descriptor\'s membership value begins to rise"/><input type="text" placeholder="'+"low"+'"/><input type="number" max="100" min="0" value="100"  title="When descriptor\'s membership value reaches zero"/>'+'</div>'+'</td>';
     }
-     console.log(v);
+    htm_to_add+='</tr>'
+}
+htm_to_add+='</table>'+'</div>'
+document.getElementById("table_data").innerHTML=htm_to_add;
 }
 
 function hide_instrs(arg){
