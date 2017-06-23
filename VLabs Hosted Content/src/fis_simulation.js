@@ -373,7 +373,6 @@ function table(){
     if(dirt_descriptors.length > 4 || grease_descriptors.length > 4){
         $('.fam td').css("padding","13px");
     }
-    $("#title").html("Step 2: Deciding the wash time...");
 }
 
 function hide_instrs(arg){
@@ -403,6 +402,7 @@ function next(){
     $('#descriptor_div').fadeOut(800);
     setTimeout(function(){
         $('#matrix_div').fadeIn(800);
+        $("#title").html("Step 2: Deciding the wash time...");
         table();
     },1000);
 }
@@ -420,17 +420,19 @@ function edit_descr(){
 var inference_table = [];
 function proceed(){
     inference_table = [];
-    for(var i=0;i<grease_descriptors.length;i++){
+    for(var i=0;i<dirt_descriptors.length;i++){
         var inference_row = [];
-        for(var j=0;j<dirt_descriptors.length;j++){
+        for(var j=0;j<grease_descriptors.length;j++){
             var x = document.getElementById('sel'+i+j);
             inference_row.push(x.value);
         }
         inference_table.push(inference_row);
     }
-    $("#matrix_div").fadeOut(1200);
-    $("#trial_div").fadeIn(1200);
-    $("#title").html("Step 3: Trial of your washing machine...");
+    $("#matrix_div").fadeOut(800);
+    setTimeout(function(){
+        $("#trial_div").fadeIn(1200);
+        $("#title").html("Step 3: Trial of your washing machine...");
+    },1000);
 }
 
 var fuzzyGrease=[];
@@ -495,6 +497,7 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     }
     str+="</tr></table>";
     document.getElementById("greaseFuzzy").innerHTML=str;
+    $("#greaseFuzzy").fadeIn(800);
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
         var end=dirt_descriptors[i].end;
@@ -537,19 +540,22 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
         var descriptor={'id':id,'name':dirt_descriptors[i].name,'fuzzyVal':fuzzyVal};
         fuzzyDirt.push(descriptor);
     }
-    var str="<h5>Fuzzy set for Dirt:</h5>";
-    str+="<table class='fuzzySet'><tr>";
+    var str2="<h5>Fuzzy set for Dirt:</h5>";
+    str2+="<table class='fuzzySet'><tr>";
     for (var i = 0; i < fuzzyDirt.length; i++) {
-      str+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyDirt[i].fuzzyVal+"</td>";
+      str2+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyDirt[i].fuzzyVal+"</td>";
       if(i!=fuzzyDirt.length-1)
-        str+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
+        str2+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
     }
-    str+="</tr><tr>";
+    str2+="</tr><tr>";
     for (var i = 0; i < fuzzyDirt.length; i++) {
-      str+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
+      str2+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
     }
-    str+="</tr></table>";
-    document.getElementById("dirtFuzzy").innerHTML=str;
+    str2+="</tr></table>";
+    setTimeout(function(){
+        document.getElementById("dirtFuzzy").innerHTML=str2;
+        $('#dirtFuzzy').fadeIn(800);
+    },1500);
     for (var i = 0; i < wash_descriptors.length; i++) {
       fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
     }
@@ -563,18 +569,27 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
           fuzzyWash[resultDescriptor-1].fuzzyVal=newFuzzyVal;
       }
     }
-    var str="<h4>Using extension principle on above two sets, Fuzzy set on washing time:</h4>";
-    str+="<table class='fuzzySet'><tr>";
+    var str3="<h4>Using extension principle on above two sets, Fuzzy set on washing time:</h4>";
+    str3+="<table class='fuzzySet'><tr>";
     for (var i = 0; i < fuzzyWash.length; i++) {
-      str+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyWash[i].fuzzyVal+"</td>";
+      str3+="<td style=\"border-bottom:1px solid black;text-align:center\">"+fuzzyWash[i].fuzzyVal+"</td>";
       if(i!=fuzzyWash.length-1)
-        str+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
+        str3+="<td rowspan=2 style=\"padding-left:13px;padding-right:13px;text-align:center\">+</td>";
     }
-    str+="</tr><tr>";
+    str3+="</tr><tr>";
     for (var i = 0; i < fuzzyWash.length; i++) {
-      str+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
+      str3+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
     }
-    str+="</tr></table>";
-    document.getElementById("washFuzzy").innerHTML=str;
+    str3+="</tr></table>";
+    setTimeout(function(){
+        document.getElementById("washFuzzy").innerHTML=str3;
+        $('#washFuzzy').fadeIn(800);
+    },3000);
     defuzzify();
+}
+
+function back(){
+    $('#trial_div').fadeOut(1200);
+    $('#matrix_div').fadeIn(1200);
+    $("#title").html("Step 2: Deciding the wash time...");
 }

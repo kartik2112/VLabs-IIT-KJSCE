@@ -208,7 +208,8 @@
                       else{
                           document.writeln('<input type="number" max="100" min="0" value='+wash_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+wash_descriptors[i].name+" />");
+                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
+                      console.log(wash_descriptors[i].name);
                       if(i==wash_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"120\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"t3\" onclick=\"rem_descriptor('t',3)\"><b>-</b></button>");
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+wash_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
@@ -261,12 +262,13 @@
                 <input class="form-control" type="number" min=0 max=100 id="dirt_trial">
               </div><br />
             </div>
+            <button class="btn-warning btn-md" onclick="back()"><<< Edit Inference Table</button>
             <button class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
-            <div id="greaseFuzzy">
+            <div id="greaseFuzzy" style="display: none;">
             </div>
-            <div id="dirtFuzzy">
+            <div id="dirtFuzzy" style="display: none;">
             </div>
-            <div id="washFuzzy">
+            <div id="washFuzzy" style="display: none;">
             </div>
           </div>
         </section>
