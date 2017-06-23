@@ -435,13 +435,16 @@ function proceed(){
     },1000);
 }
 
-var fuzzyGrease=[];
-var fuzzyDirt=[];
-var fuzzyWash=[];
+
 function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
+    var fuzzyGrease=[];
+    var fuzzyDirt=[];
+    var fuzzyWash=[];
     var grease=parseInt(Number(g));
     var dirt=parseInt(d);
-    console.log(grease+","+dirt);
+    document.getElementById("greaseFuzzy").innerHTML="";
+    document.getElementById("dirtFuzzy").innerHTML="";
+    document.getElementById("washFuzzy").innerHTML="";
     //Find fuzzy input using the values
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
