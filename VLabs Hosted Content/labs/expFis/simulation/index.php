@@ -270,8 +270,7 @@
             </div>
             <div id="washFuzzy">
             </div>
-            <div id="defuzzifierOP_GraphDiv"></div>
-            <!-- class="jxgbox" style="width:600px; height:300px;" -->
+            <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
           </div>
         </section>
         <!-- /.content -->
