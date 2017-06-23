@@ -264,12 +264,14 @@
             </div>
             <button class="btn-warning btn-md" onclick="back()"><<< Edit Inference Table</button>
             <button class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
-            <div id="greaseFuzzy" style="display: none;">
+            <div id="greaseFuzzy">
             </div>
-            <div id="dirtFuzzy" style="display: none;">
+            <div id="dirtFuzzy">
             </div>
-            <div id="washFuzzy" style="display: none;">
+            <div id="washFuzzy">
             </div>
+            <div id="defuzzifierOP_GraphDiv"></div>
+            <!-- class="jxgbox" style="width:600px; height:300px;" -->
           </div>
         </section>
         <!-- /.content -->
