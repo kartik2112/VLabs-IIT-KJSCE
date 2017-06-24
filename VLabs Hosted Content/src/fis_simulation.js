@@ -435,6 +435,9 @@ function proceed(){
     },1000);
 }
 
+var fuzzyGrease=[];
+var fuzzyDirt=[];
+var fuzzyWash=[];
 
 function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
     var fuzzyGrease=[];
@@ -500,7 +503,6 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     }
     str+="</tr></table>";
     document.getElementById("greaseFuzzy").innerHTML=str;
-    $("#greaseFuzzy").fadeIn(800);
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
         var end=dirt_descriptors[i].end;
@@ -555,10 +557,11 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str2+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
     }
     str2+="</tr></table>";
-    setTimeout(function(){
-        document.getElementById("dirtFuzzy").innerHTML=str2;
-        $('#dirtFuzzy').fadeIn(800);
-    },1500);
+    document.getElementById("dirtFuzzy").innerHTML=str2;
+    // setTimeout(function(){
+    //
+    //
+    // },1500);
     for (var i = 0; i < wash_descriptors.length; i++) {
       fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
     }
@@ -584,11 +587,143 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str3+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
     }
     str3+="</tr></table>";
-    setTimeout(function(){
-        document.getElementById("washFuzzy").innerHTML=str3;
-        $('#washFuzzy').fadeIn(800);
-    },3000);
-    defuzzify();
+    document.getElementById("washFuzzy").innerHTML=str3;
+    // setTimeout(function(){
+    //
+    // },3000);
+    defuzzify(fuzzyWash);
+}
+var p1,p2,p3,p4;
+
+function defuzzify(fuzzyWash)
+{
+    var A=[];
+    var C=[];
+    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
+    var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
+
+    for (var i = 0; i < wash_descriptors.length; i++) {
+        var start=wash_descriptors[i].start;
+        var end=wash_descriptors[i].end;
+        if(start==999)
+        {
+            //First descriptor Line:
+            washing_lines_down.push(board_washing.create('line',[[0,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+        else if (i==wash_descriptors.length-1) {
+            //Last descriptor Line:
+            washing_lines_up.push(board_washing.create('line',[[start,0],[end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            horiz_line_washing=board_washing.create('line',[[end,1],[end+100,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+        }
+        else {
+            var mid=parseFloat((start+end)/2).toFixed(2);
+            console.log(mid);
+            washing_lines_up.push(board_washing.create('line',[[start,0],[mid,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+            washing_lines_down.push(board_washing.create('line',[[mid,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+        }
+    }
+    for (var i = 0; i < fuzzyWash.length; i++) {
+      A.push(0);
+      C.push(0);
+    }
+
+    for (var i = 0; i < fuzzyWash.length; i++) {
+        if(fuzzyWash[i].fuzzyVal!=0)
+        {
+            if (i==0) {
+              start=0;
+            }
+            else {
+                var start=wash_descriptors[i].start;
+            }
+            var end=wash_descriptors[i].end;
+            var fixedSize=0;
+            var showLines=false;
+            var shouldPointsBeSeen=false;
+            p1=board_washing.create('point',[start,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+            p4=board_washing.create('point',[end,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+            if(i==0)
+            {
+                p2=board_washing.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                start=0;
+                if(fuzzyWash[i].fuzzyVal==1)
+                {
+                    A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
+                    C[i]=Number(parseFloat((end-start)/3+start).toFixed(3));
+                    var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
+                }
+                else
+                {
+                    x1=Number(parseFloat(end-parseFloat(fuzzyWash[i].fuzzyVal*(end-start))).toFixed(3));
+                    console.log(x1);
+                    p3=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    var a1=Number(parseFloat((x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
+                    var c1=Number(parseFloat((start+x1)/2).toFixed(3));
+                    console.log(a1+":"+c1);
+                    var a2=Number(parseFloat(0.5*(end-x1)*fuzzyWash[i].fuzzyVal).toFixed(3));
+                    var c2=Number(parseFloat((end-x1)/3+x1).toFixed(3));
+                    console.log(a2+":"+c2);
+                    A[i]=Number(parseFloat(a1+a2).toFixed(3));
+                    C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
+                    var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+                }
+
+            }
+            else if (i==fuzzyWash.length-1) {
+              p3=board_washing.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+              if(fuzzyWash[i].fuzzyVal==1)
+              {
+                  A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
+                  C[i]=Number(parseFloat(end-(end-start)/3).toFixed(3));
+                  var pol = board_washing.create('polygon', [p1, p3, p4],{withLines:showLines});
+              }
+              else
+              {
+                  x1=Number(parseFloat(start+fuzzyWash[i].fuzzyVal*(end-start)).toFixed(3));
+                  p2=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                  var a1=Number(parseFloat((end-x1)*fuzzyWash[i].fuzzyVal).toFixed(3));
+                  var c1=Number(parseFloat((x1+end)/2).toFixed(3));
+                  var a2=Number(parseFloat(0.5*(x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
+                  var c2=Number(parseFloat(x1-(x1-start)/3).toFixed(3));
+                  A[i]=Number(parseFloat(a1+a2).toFixed(3));
+                  C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
+                  var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+              }
+            }
+            else {
+                C[i]=Number(parseFloat((start+end)/2).toFixed(3));
+                if(fuzzyWash[i].fuzzyVal==1)
+                {
+                    A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
+                    p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
+                }
+                else
+                {
+                    var mid=Number(parseFloat((start+end)/2).toFixed(3));
+                    x1=Number(parseFloat(start+Number(parseFloat(fuzzyWash[i].fuzzyVal*(mid-start)).toFixed(3))).toFixed(3));
+                    p2=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    x2=Number(parseFloat(end-Number(parseFloat(fuzzyWash[i].fuzzyVal*(end-mid)).toFixed(3))).toFixed(3));
+                    p3=board_washing.create('point',[x2,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    var a=Number(parseFloat(x2-x1).toFixed(3));
+                    var b=Number(parseFloat(end-start).toFixed(3));
+                    A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
+                    var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+                }
+            }
+            var ptName="C"+(i+1);
+            var pt=board_washing.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
+        }
+
+        console.log("Area:"+A[i]+" Centroid:"+C[i]);
+    }
+    var num=0;
+    var den=0;
+    for (var i = 0; i < A.length; i++) {
+        num+=Number(parseFloat(A[i]*C[i]).toFixed(3));
+        den+=A[i];
+    }
+    var washTime=Number(parseFloat(num/den).toFixed(3));
 }
 
 function back(){
