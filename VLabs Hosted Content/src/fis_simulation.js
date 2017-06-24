@@ -638,6 +638,7 @@ function defuzzify(fuzzyWash)
             }
             var end=wash_descriptors[i].end;
             var fixedSize=0;
+            var showLines=false;
             var shouldPointsBeSeen=false;
             p1=board_washing.create('point',[start,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
             p4=board_washing.create('point',[end,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
@@ -649,7 +650,7 @@ function defuzzify(fuzzyWash)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                     C[i]=Number(parseFloat((end-start)/3+start).toFixed(3));
-                    var pol = board_washing.create('polygon', [p1, p2, p4]);
+                    var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
                 }
                 else
                 {
@@ -664,7 +665,7 @@ function defuzzify(fuzzyWash)
                     console.log(a2+":"+c2);
                     A[i]=Number(parseFloat(a1+a2).toFixed(3));
                     C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
-                    var pol = board_washing.create('polygon', [p1, p2, p3, p4]);
+                    var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                 }
 
             }
@@ -674,7 +675,7 @@ function defuzzify(fuzzyWash)
               {
                   A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                   C[i]=Number(parseFloat(end-(end-start)/3).toFixed(3));
-                  var pol = board_washing.create('polygon', [p1, p3, p4]);
+                  var pol = board_washing.create('polygon', [p1, p3, p4],{withLines:showLines});
               }
               else
               {
@@ -686,7 +687,7 @@ function defuzzify(fuzzyWash)
                   var c2=Number(parseFloat(x1-(x1-start)/3).toFixed(3));
                   A[i]=Number(parseFloat(a1+a2).toFixed(3));
                   C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
-                  var pol = board_washing.create('polygon', [p1, p2, p3, p4]);
+                  var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
               }
             }
             else {
@@ -695,7 +696,7 @@ function defuzzify(fuzzyWash)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                     p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                    var pol = board_washing.create('polygon', [p1, p2, p4]);
+                    var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
                 }
                 else
                 {
@@ -707,7 +708,7 @@ function defuzzify(fuzzyWash)
                     var a=Number(parseFloat(x2-x1).toFixed(3));
                     var b=Number(parseFloat(end-start).toFixed(3));
                     A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
-                    var pol = board_washing.create('polygon', [p1, p2, p3, p4]);
+                    var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                 }
             }
             var ptName="C"+(i+1);
