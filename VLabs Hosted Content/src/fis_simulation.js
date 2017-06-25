@@ -594,12 +594,16 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     defuzzify(fuzzyWash);
 }
 var p1,p2,p3,p4;
-
+var explnBoards=[];
 function defuzzify(fuzzyWash)
 {
+    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
-    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
+      explnBoards.push(b);
+    }
     var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
 
     for (var i = 0; i < wash_descriptors.length; i++) {
