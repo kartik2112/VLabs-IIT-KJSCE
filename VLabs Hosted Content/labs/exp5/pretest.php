@@ -26,14 +26,30 @@
                 $(".optradio1").click(function(){
                     ////alert("clicked");
                     $("#optradio1Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio1Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio2").click(function(){
                     //alert("clicked");
                     $("#optradio2Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio2Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio3").click(function(){
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio3Ans").offset().top-300
+                    }, 1000);
+                });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio4Ans").offset().top-300
+                    }, 1000);
                 });
                
             });
@@ -98,7 +114,7 @@
                                                                         <h3>1. What are the advantages of neural networks over conventional computers?
                                                                             <br/>(i) They have the ability to learn by example
                                                                             <br/>(ii) They are more fault tolerant
-                                                                            (<br/>iii)They are more suited for real time operation due to their high ‘computational’ rates</h3>
+                                                                            <br/>(iii)They are more suited for real time operation due to their high ‘computational’ rates</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. (i) and (ii) are true<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B.(i) and (iii) are true<br>

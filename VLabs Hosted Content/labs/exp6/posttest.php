@@ -28,18 +28,30 @@
                 $(".optradio1").click(function(){
                     ////alert("clicked");
                     $("#optradio1Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio1Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio2").click(function(){
                     //alert("clicked");
                     $("#optradio2Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio2Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio3").click(function(){
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio3Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio4").click(function(){
                     //alert("clicked");
                     $("#optradio4Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio4Ans").offset().top-300
+                    }, 1000);
                 });
             });
         </script>
@@ -101,7 +113,7 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->
-<h3>1.  Correlation learning rule falls under which cayrgory ?</h3>
+                        <h3>1.  Correlation learning rule falls under which category ?</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>

@@ -33,18 +33,30 @@
                 $(".optradio1").click(function(){
                     ////alert("clicked");
                     $("#optradio1Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio1Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio2").click(function(){
                     //alert("clicked");
                     $("#optradio2Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio2Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio3").click(function(){
                     //alert("clicked");
                     $("#optradio3Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio3Ans").offset().top-300
+                    }, 1000);
                 });
                 $(".optradio4").click(function(){
                     //alert("clicked");
                     $("#optradio4Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio4Ans").offset().top-300
+                    }, 1000);
                 });
             });
         </script>
@@ -105,14 +117,15 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!-- Post Test content goes here -->                        <h3>1. Perceptron learning rule falls under which cayrgory ?</h3>
+                        <!-- Post Test content goes here -->                        
+                        <h3>1. Perceptron learning rule falls under which category ?</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. Supervised learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B. Unsupervised learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="3">C. Reinforcement learning rule<br>
                         <input type="radio" class="optradio1" name="q1" value="4">D. None of the above<br>
                         <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
                         <h3>2. Having multiple perceptrons can actually solve the XOR problem satisfactorily: this is because each perceptron can partition off a linear part of the space itself, and they can then combine their results.</h3>
                     
@@ -129,7 +142,7 @@
                         <input type="radio" class="optradio3" name="q3" value="1"> A. No limitation it can solve almost any problem<br>
                         <input type="radio" class="optradio3" name="q3" value="2"> B. it is a weak algorithm<br>
                         <input type="radio" class="optradio3" name="q3" value="3"> C. It can only solve problems which are linearly seperable<br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if ther exists a solution<br>      
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if there exists a solution<br>      
 
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>

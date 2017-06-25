@@ -39,7 +39,7 @@
 
         <!--These are used for plotting the graphs-->
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
+ 		    <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
 
         <!-- Simulation scripts end-->
         <style>
@@ -386,7 +386,7 @@
                                 &emsp;&emsp;&emsp; = -1 , &nbsp; x < 0
                             </div>
 
-                            <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" style="color:#f00;font-size: 16px; text-decoration: underline;">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" style="color:#f00;font-size: 16px; text-decoration: underline;">click here</a> or hover your mouse over them.
+                            <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" class="hyperlink">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" class="hyperlink">click here</a> or hover your mouse over them.
 
                             <div id="percLR_ExplanationOfCalculation" style="clear: both;">
                                 <div id="percLR_FirstPartOfExpln" style="display: none;">

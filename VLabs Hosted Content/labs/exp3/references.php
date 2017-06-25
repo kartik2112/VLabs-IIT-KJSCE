@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php include '../../common/header.html';
@@ -72,8 +74,8 @@
                     <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
-                         <li> <a href="http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/">http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></li>
-              <li> <a href="https://en.wikipedia.org/wiki/Radial_basis_function">https://en.wikipedia.org/wiki/Radial_basis_function</a></li>
+                         <li> <a href="http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/" target="_blank" class="hyperlink">http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></li>
+              <li> <a href="https://en.wikipedia.org/wiki/Radial_basis_function" target="_blank" class="hyperlink">https://en.wikipedia.org/wiki/Radial_basis_function</a></li>
               <b>Developed by:</b>
               <ol>
                 <li>Abhishek Mahajani</li>

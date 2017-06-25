@@ -82,14 +82,23 @@
                                  $(".optradio1").click(function () {
                                      ////alert("clicked");
                                      $("#optradio1Ans").slideDown();
+                                     $('html, body').animate({
+                                        scrollTop: $("#optradio1Ans").offset().top-300
+                                     }, 1000);
                                  });
                                  $(".optradio2").click(function () {
                                      //alert("clicked");
                                      $("#optradio2Ans").slideDown();
+                                     $('html, body').animate({
+                                        scrollTop: $("#optradio2Ans").offset().top-300
+                                     }, 1000);
                                  });
                                  $(".optradio3").click(function () {
                                      //alert("clicked");
                                      $("#optradio3Ans").slideDown();
+                                     $('html, body').animate({
+                                        scrollTop: $("#optradio3Ans").offset().top-300
+                                     }, 1000);
                                  });
 
                              });
@@ -100,47 +109,47 @@
               <br>
               1. Why RBFN is better than Multi layer Perceptron (MLP)?<br>
               <input class="optradio1" type="radio" name="q1" value="1">
-              Because RBFN performs classification by measuring the input’s similarity to the examples from the training set
+              A. Because RBFN performs classification by measuring the input’s similarity to the examples from the training set
               <br>
               <input class="optradio1" type="radio" name="q1" value="2">
-              Because it is easy to solve complex network problem by RBFN than MLP
+              B. Because it is easy to solve complex network problem by RBFN than MLP
               <br>
               <input class="optradio1" type="radio" name="q1" value="3">
-              Because RBFN has one single hidden layer
+              C. Because RBFN has one single hidden layer
               <br>
               <input class="optradio1" type="radio" name="q1" value="4">
-              None of these
+              D. None of these
               <br><p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?<br>
               <input class="optradio2" type="radio" name="q2" value="1">
-              The response will increase exponentially
+              A. The response will increase exponentially
               <br>
               <input class="optradio2" type="radio" name="q2" value="2">
-              The response will increase linearly
+              B. The response will increase linearly
               <br>
               <input class="optradio2" type="radio" name="q2" value="3">
-              The response will fall exponentially
+              C. The response will fall exponentially
               <br>
               <input class="optradio2" type="radio" name="q2" value="4">
-              The response will not change
+              D. The response will not change
               <br><p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               <br>
               3.What are the two stages in radial basis function network ?<br>
               <input class="optradio3" type="radio" name="q3" value="1">
-              Stage 1: establish a centre and a radii for the RBF layer.<br>
-			  Stage 2: Discover the weights for the output layer.
+              A. Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  &emsp;&emsp;Stage 2: Discover the weights for the output layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="2">
-              Stage 1: Discover the weights for the output layer.<br>
-			  Stage 2: establish a centre and a radii for the RBF layer.
+              B. Stage 1: Discover the weights for the output layer.<br>
+			  &emsp;&emsp;Stage 2: establish a centre and a radii for the RBF layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="3">
-              Stage 1: establish a centre for the RBF layer.<br>
-			  Stage 2: establish a radii for the RBF layer.
+              C. Stage 1: establish a centre for the RBF layer.<br>
+			  &emsp;&emsp;Stage 2: establish a radii for the RBF layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="4">
-              Stage 1: establish a centre and a radii for the RBF layer.<br>
-			  Stage 2: Discover the weights for the hidden layer.
+              D. Stage 1: establish a centre and a radii for the RBF layer.<br>
+			  &emsp;&emsp;Stage 2: Discover the weights for the hidden layer.
               <br><p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
             
               

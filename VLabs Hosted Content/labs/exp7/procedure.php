@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -75,7 +76,60 @@
                         <!--Theory content goes here -->
                         The following procedure is to be followed for the simulation:
                     </p>
-                                    
+                    <ol>
+                        <li>Change the learning rate if you want to by using the slider for the same.</li>
+                        <li>Change the initial weights by clicking on any links connecting the input to the output neuron. You will see the changes in cluster centroids as you do the same.</li>
+                            <li><b>Once the simulation is started, these can't be changed.</b></li>
+                            <li>After making changes as needed, click <button class="btn btn-success">Start Simulation</button> button. Now each input as highlighted in the graph will be chosen and classified into one of the three clusters.</li>
+                            <li>If you want to stop the simulation in between you can do so by clicking the <button class="btn btn-danger">Stop Simulation</button> button. </li>
+                            <li>After each input is completely processed, the <button class="btn btn-warning" >Apply next I/P value</button> button will get activated. 
+                            Click on this button to classify the next input.</li>
+                        <li>The weights of only the winning neuron (whose cluster centroid is closest to the input) are changed. Other neuron's weights remain the same.</li>
+                        <li>You can see the cluster of each input in the table provided below the model. The cluster of each consequent input will get updated as they get classified.</li>
+                        <li>The graph also gets updated each time an input is assigned a cluster.</li>
+                        <li>You can see the calculations as an input is processed for classification. They provide step by step procedure of what is being calculated.</li>
+                        <li><i>The page scrolls automatically towards the relevant information, so you may sit tight and observe these changes.</i></li>
+                </ol>
+                    <div id="expln">
+                        <h3>The following calculations take place whenever an input is taken under consideration.</h3>
+                        <ol>
+                            <li>The input sample is located on the graph with a green dot.</li>
+                            <li>Difference between the input sample and each neuron's weights (i.e. Distance between sample and each cluster centroid in the graph) is calculated using:<br/>sqrt( ( W<sub>i1</sub> - X<sub>i1</sub> )<sup>2</sup> + ( W<sub>i2</sub> - X<sub>i2</sub>)<sup>2</sup>)</li>
+                            <li>The distance between the sample and each cluster centroid calculated using the above formula are depicted in a table</li>
+                            <li>The neuron whose weights are closest to the input sample is the winning neuron.</li>
+                            <li>The winning neuron can be seen in <span style='background:lightgreen'>green colour</span> unpke other neurons which have <span style="background: red;color: white">red colour</span>.</li>
+                            <li>Also, you can see the minimum difference highlighted in the table</li>
+                            <li>The sample is assigned the cluster corresponding to the winning neuron. <i>(Eg. if 2 is winning neuron, then sample is assigned to cluster 2).</i></li>
+                            <li>The weights of the winning neuron are updated using the formula:<br/>W<sub>i</sub>&nbsp = W<sub>i</sub> + c * (W<sub>i</sub> - X<sub>i</sub>)</li>
+                            <li>An entry is made in the table, which contains clusters for each input sample, corresponding to the current input sample, and is highlighted in <span style="background: red;color: white">red colour</span>.</li>
+                            <li>You can then press the <button class="btn btn-warning" >Apply next I/P value</button> button for the next input.</li>
+                            <li>Once all inputs are processed, press the <button class="btn btn-danger">Stop Simulation</button> button. Make changes to the weights and/or learning rate to see the effect in classification.</li>
+                        </ol>
+                    </div>
+                    <div id="repn">
+                        <h3>Representations used:</h3><br>
+                        <div>By hovering your mouse over the vectors and matrices in the simulation you can come to know what they represent.</div>
+                        <div class="centerPosOperatorsForMatrices">
+                            W (Weight Matrix) = 
+                        </div>
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks" data-toggle="tooltip" data-placement="bottom" title="Weight Matrix W">
+                                <tr class="0"><td class="0">W<sub>11</sub></td><td class="1">W<sub>12</sub></td></tr>
+                                <tr class="1"><td class="0">W<sub>21</sub></td><td class="1">W<sub>22</sub></td></tr>
+                                <tr class="2"><td class="0">W<sub>31</sub></td><td class="1">W<sub>32</sub></td></tr>
+                            </table>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="centerPosOperatorsForMatrices">
+                            X (Input Vector) = [ X<sub>1</sub> X<sub>2</sub> ]
+                        </div>
+                        <div>c = learning rate</div>
+                    </div>
+
+                        
+                    </div>
                 </section>
                 <!-- /.content -->
             </div>

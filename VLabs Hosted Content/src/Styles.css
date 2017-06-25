@@ -82,6 +82,15 @@ table.truthTable tr.highlightTTRow{
     color: #fff;
 }
 
+table.fuzzySet{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr.numerator{
+  border-bottom: 1px solid black;
+}
+
 .changingTextStyle{
     stroke: #ff4600;
     stroke-width: 1;
@@ -230,6 +239,21 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-} 
+}
 
 
+.hyperlink{
+    color:#f00;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.hyperlink:hover{
+    color:#c50505;
+    text-decoration: underline;
+}
+
+.hyperlink:active{
+    color:#fd3838;
+    text-decoration: underline;
+}

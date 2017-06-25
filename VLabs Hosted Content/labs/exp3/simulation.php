@@ -103,12 +103,7 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-                    <div class="form-group" style="display: inline-block;">
-                        <label for="selGate">Select gate:</label>
-                        <select class="form-control" id="selGate" onchange="displayDiv(this.value)" style="width: 150px">
-                            <option value="AND" selected>XOR Gate</option>
-                        </select>
-                    </div>
+                    
                     <button id="startSimButton" class="btn btn-success" onclick="startSimulation(1000)">Start Simulation</button>
                     <button id="stopSimButton" class="btn btn-danger disabled" onclick="stopSimulation()" disabled>Stop Simulation</button><br/>
                     <div>
