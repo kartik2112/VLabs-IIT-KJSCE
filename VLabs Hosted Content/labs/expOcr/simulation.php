@@ -59,6 +59,9 @@
                 document.getElementById("statusProgressBar").classList.add('active');
                 Tesseract.recognize(url)
                     .then(function (result) {
+                        if (result.text == "") {
+                            alert("The selected image is of poor quality! No text has been detected! To see the recognition in action either upload a clearer image or use the downloadable images provided on this page!");
+                        }
                         document.getElementById("ocr_results").innerHTML = result.html;
                         console.log(result);
                         $("#ocr_results").fadeIn(1000);
@@ -86,8 +89,8 @@
                             timeIndex++;
                         });
                     }).progress(function (result) {
-                        document.getElementById("statusProgressBar").innerHTML = (parseFloat((result["progress"]* 100).toFixed(2)) ) + "%";
-                        document.getElementById("statusProgressBar").style.width = (parseFloat((result["progress"]* 100).toFixed(2)) ) + "%";
+                        document.getElementById("statusProgressBar").innerHTML = (parseFloat((result["progress"] * 100).toFixed(2))) + "%";
+                        document.getElementById("statusProgressBar").style.width = (parseFloat((result["progress"] * 100).toFixed(2))) + "%";
                         document.getElementById("ocr_status").innerText = result["status"];
                     });
             }
