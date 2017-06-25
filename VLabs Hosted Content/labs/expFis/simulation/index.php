@@ -293,13 +293,13 @@
                 </script>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" style="margin: auto; height: 400px; width: 350px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                <div class="carousel-inner" style="margin: auto; height: 475px; width: 510px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
                   <script type="text/javascript">
                     for (var i = 0; i < wash_descriptors.length; i++) {
                         var str='<div class="item';
                         if(i==0)
                           str+=' active';
-                        str+='" style="padding: 15px;">';
+                        str+='" style="padding: 50px;">';
                         str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:318px; height:176px;"></div>';
                         str+='<div id="ExplnPart'+i+'"></div>';
                         str+='</div>';

@@ -698,6 +698,7 @@ function defuzzify(fuzzyWash)
 
             }
             else if (i==fuzzyWash.length-1) {
+              str="";
               p3=board_washing.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
               pc3=currBoard.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
               if(fuzzyWash[i].fuzzyVal==1)
@@ -723,10 +724,13 @@ function defuzzify(fuzzyWash)
               }
             }
             else {
+                var str="<p>The figure above is symmetric with respect to the X-axis. Hence we can take the midpoint of the start and end of the descriptor as the centroid.</p>";
                 C[i]=Number(parseFloat((start+end)/2).toFixed(3));
+                str+="The Centroid of the above shaded region is <b>"+C[i]+"</b>.";
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
+                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i]+"</p>";
                     p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     pc2=currBoard.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
@@ -744,15 +748,20 @@ function defuzzify(fuzzyWash)
                     var a=Number(parseFloat(x2-x1).toFixed(3));
                     var b=Number(parseFloat(end-start).toFixed(3));
                     A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
+                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=</b>"+A[i]+"</b></p>";
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
+                    str+="<h3>Area of the shaded figure is "+A[i]+" and centroid of this region is "+C[i]+".</h3>"
                 }
             }
             var ptName="C"+(i+1);
             var pt=board_washing.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
             var ptc=currBoard.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
         }
-
+        else {
+          var str="<p>The fuzzy component for this descriptor is zero. Hence the area and centroid is zero.</p><h3>The area and centroid of this desciptor is 0</h3>";
+        }
+        document.getElementById('ExplnPart'+i).innerHTML=str;
         // console.log("Area:"+A[i]+" Centroid:"+C[i]);  Debugging purposes.
     }
     var num=0;
