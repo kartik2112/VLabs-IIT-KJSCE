@@ -58,6 +58,9 @@
             transition-duration: 0.5s;
             border-radius: 5px;
           }
+          .carousel-indicators {
+              bottom: -5px;
+          }
           .carousel-indicators li {
               background-color: #0091ff;
           }
@@ -300,7 +303,7 @@
                         if(i==0)
                           str+=' active';
                         str+='" style="padding: 50px;">';
-                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:318px; height:176px;"></div>';
+                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:318px; height:380px;"></div>';
                         str+='<div id="ExplnPart'+i+'"></div>';
                         str+='</div>';
                         document.writeln(str);
