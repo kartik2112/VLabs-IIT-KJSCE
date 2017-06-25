@@ -602,6 +602,24 @@ function defuzzify(fuzzyWash)
     var C=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
       var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
+      var start=wash_descriptors[i].start;
+      var end=wash_descriptors[i].end;
+      if(start==999)
+      {
+          //First descriptor Line:
+          washing_lines_down.push(b.create('line',[[0,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+      }
+      else if (i==wash_descriptors.length-1) {
+          //Last descriptor Line:
+          washing_lines_up.push(b.create('line',[[start,0],[end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+          horiz_line_washing=b.create('line',[[end,1],[end+100,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+      }
+      else {
+          var mid=parseFloat((start+end)/2).toFixed(2);
+          console.log(mid);
+          washing_lines_up.push(b.create('line',[[start,0],[mid,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+          washing_lines_down.push(b.create('line',[[mid,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+      }
       explnBoards.push(b);
     }
     var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
