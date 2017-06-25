@@ -16,7 +16,8 @@
 
         <!--These are used for plotting the graphs-->
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+ 		<!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>-->
+        <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
 
         <script>
             var weightMatrix = [[-2, 1, -6.5], [3,2,1], [0,-1,-1.5]];
@@ -29,7 +30,7 @@
             var lines = [];
 
             $(document).ready(function () {
-                    var board = JXG.JSXGraph.initBoard('graphDiv', { axis: true, boundingbox: [-4, 5, 4, -3] });  //Creates the cartesian graph
+                    /*var board = JXG.JSXGraph.initBoard('graphDiv', { axis: true, boundingbox: [-4, 5, 4, -3] });  //Creates the cartesian graph
                     var constPointSize = 5;
 
                     for (var i = 0; i < inputs.length; i++) {
@@ -39,14 +40,20 @@
                     for (var i = 0; i < weightMatrix.length; i++) {
                         lines[i] = board.create('line', [weightMatrix[i][2], weightMatrix[i][0], weightMatrix[i][1]], { strokeColor: lineColors[i], fixed: true , withLabel: true, name: function () { return weightMatrix[i][0]+'x + '+weightMatrix[i][1]+'y + '+weightMatrix[i][2]+' = 0';}, label: {position: 'lrb', offsets: [-20, 40]},display: 'internal' } );
                         ineq = board.create('inequality', [lines[i]], { fillColor: lineColors[i] });
-                        /*if (weightMatrix[i][2] <= 0) {
-                            ineq = board.create('inequality', [lines[i]], { inverse: true, fillColor: lineColors[i] });
-                        }
-                        else {
-                            ineq = board.create('inequality', [lines[i]], { fillColor: lineColors[i] });
-                        }*/
+                        
 
-                    }
+                    }*/
+
+                    var b = JXG.JSXGraph.initBoard('graphDiv', {boundingbox: [-5, 5, 5, -5], axis:true, grid: true});
+                    /*var c = b.create('slider', [[-3,4], [2,4], [-5,1,5]]),
+                    line1 = b.create('line', [function() { return [c.Value(), 0, -1]; }],),
+                    ineq1 = b.create('inequality', [line1], {inverse: true}),*/
+
+                    var line1 = b.create('line', [3, 2, -1]), // Line y = 2x + 3 or 2x - 1y + 3 = 0
+                    ineq1 = b.create('inequality', [line1], {fillColor: 'yellow'});  //This would plot the inequality 2x - y + 3 <= 0
+
+                    var line2 = b.create('line', [-3, 1, 0], {strokeColor: 'black'}); // Line x = 3 or 1x + 0y - 3 = 0
+                    var ineq2 = b.create('inequality', [line2], {inverse: true, fillColor: 'red'});  //This would plot the inequality 1x + 0y - 3 >= 0
             });
 
             
@@ -54,7 +61,7 @@
     </head>
     <body>
         <div id="graph-outer">
-			<div id="graphDiv" class="jxgbox" style="width:300px; height:300px;"></div>
+			<div id="graphDiv" class="" style="width:300px; height:300px;"></div>
 		</div>
     </body>
 </html>
