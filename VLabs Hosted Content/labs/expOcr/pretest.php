@@ -112,6 +112,32 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
                         
+                        <h3>1. Techniques used in 'character recognition' includes</h3>
+
+                        <input type="radio" class="optradio1" name="q1" value="1"> A. optical character recognition<br>
+                        <input type="radio" class="optradio1" name="q1" value="2"> B. magnetic ink character recognition<br>
+                        <input type="radio" class="optradio1" name="q1" value="3"> C. optical mark reading<br>
+                        <input type="radio" class="optradio1" name="q1" value="4"> D. both a and b<br>
+
+                        <br />
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
+                    
+                        <h3>2. OCR (Optical Character Recognition) uses NLP.</h3>
+                    
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. True<br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B. False<br>
+                        <br />
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+                    
+                        <h3>3. What kind of perception is used in printing?</h3>
+
+                        <input type="radio" class="optradio3" name="q3" value="1">A. Optical character recognition<br>
+                        <input type="radio" class="optradio3" name="q3" value="2">B. Speech recognition<br>
+                        <input type="radio" class="optradio3" name="q3" value="3">C. Perception<br>
+                        <input type="radio" class="optradio3" name="q3" value="4">D. None of the mentioned<br>
+                        <br />
+                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
+                        
                     </p>
                 </section>
                 <!-- /.content -->
