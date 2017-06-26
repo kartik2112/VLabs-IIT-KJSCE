@@ -157,3 +157,37 @@
 .carousel-control.right{
     right: -210px;
 }
+.m_input{
+    background: transparent;
+    width: 100px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    transition-duration: 0.2s;
+    font-size: 17px;
+}
+.m_label{
+    font-size: 17px;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition-duration: 0.2s;
+    cursor: text;
+}
+.m_input:focus ~ .m_label, .m_input:valid ~ .m_label{
+    font-size: 15px;
+    top: -10px;
+    transition-duration: 0.2s;
+    color: rgba(2, 28, 104, 0.67);
+}
+.m_input:focus{
+    border-bottom: 2px solid rgba(2, 28, 104, 0.67);
+    transition-duration: 0.2s;
+}
+.material-input{
+    position: relative;
+    height: 40px;
+    padding: 10px 0;
+    margin: 10px 30px;
+    float: left;
+}

@@ -16,6 +16,13 @@ var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
 var board;
+$(document).ready(function(){
+    $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
+    $(".descr input[type='number']").tooltip({placement: "right"});
+    $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
+    $("[data-toggle='input']").tooltip();
+});
+
 function plotGraph(){
     var graphEnds=100;
     board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
@@ -440,6 +447,10 @@ var fuzzyDirt=[];
 var fuzzyWash=[];
 
 function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
+    var inputs = document.getElementsByClassName('m_input');
+    for(var i=0;i<inputs.length;i++){
+        if(inputs[i].value == "") inputs[i].value = "0";
+    }
     var fuzzyGrease=[];
     var fuzzyDirt=[];
     var fuzzyWash=[];
@@ -453,6 +464,10 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     $("#washFuzzy").fadeOut(400);
     $("#defuzzifierOP_GraphDiv").fadeOut(400);
     $("#FIS_Carousel").fadeOut(400);
+    $("#Final_calculation").fadeOut(400);
+    $("#Final_result").fadeOut(400);
+    $("#defuzz-description").fadeOut(400);
+    $("#defuzzifier_graph_title").fadeOut(400);
     document.getElementById('proceed').setAttribute('disabled','disabled');
     //Find fuzzy input using the values
     for (var i = 0; i < grease_descriptors.length; i++) {
@@ -601,12 +616,15 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
         $("#defuzzifier_graph_title").fadeIn(800);
         $("#defuzzifierOP_GraphDiv").fadeIn(800);
         $("#FIS_Carousel").fadeIn(800);
+        $("#Final_calculation").fadeIn(400);
+        $("#Final_result").fadeIn(400);
         defuzzify(fuzzyWash);
     },4500);
 }
 var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
 function defuzzify(fuzzyWash)
 {
+    $("#defuzz-description").fadeIn(800);
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
@@ -935,7 +953,7 @@ function defuzzify(fuzzyWash)
     $('#Final_calculation').fadeIn(1500);
     document.getElementById('Final_calculation').innerHTML=finalCalc;
     var finalRes="";
-    finalRes+="<h2>The final washing time required for the clothes is "+washTime+" minutes. Happy Washing!</h2>";
+    finalRes+="<h3>The final washing time required for the clothes is "+washTime+" minutes. Happy Washing!</h3>";
     $('#Final_result').fadeIn(1700);
     document.getElementById('Final_result').innerHTML=finalRes;
 }
@@ -944,4 +962,11 @@ function back(){
     $('#trial_div').fadeOut(1200);
     $('#matrix_div').fadeIn(1200);
     $("#title").html("Step 2: Deciding the wash time...");
+}
+
+function check_vals(elem){
+    var x = elem.value; 
+    if(x>100) x=100; 
+    if(x<0) x=0; 
+    elem.value=x;
 }
