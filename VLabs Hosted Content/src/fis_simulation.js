@@ -911,6 +911,8 @@ function defuzzify(fuzzyWash)
     finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
     finalCalc+="<td class='numerator'>"+numCalc+"</td>";
     finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>"+num+"</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
     finalCalc+="<td rowspan=2 class='equalSign'><b>"+washTime+"</b></td>";
     finalCalc+="</tr>";
     var numCalc="";
@@ -927,6 +929,7 @@ function defuzzify(fuzzyWash)
     }
     finalCalc+="</td>";
     finalCalc+="<td class='denominator'>"+numCalc+"</td>";
+    finalCalc+="<td class='denominator'>"+den+"</td>";
     finalCalc+="</tr>";
     finalCalc+="</table></h3>";
     $('#Final_calculation').fadeIn(1500);
