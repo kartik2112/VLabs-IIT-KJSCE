@@ -448,6 +448,12 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     document.getElementById("greaseFuzzy").innerHTML="";
     document.getElementById("dirtFuzzy").innerHTML="";
     document.getElementById("washFuzzy").innerHTML="";
+    $("#greaseFuzzy").fadeOut(400);
+    $("#dirtFuzzy").fadeOut(400);
+    $("#washFuzzy").fadeOut(400);
+    $("#defuzzifierOP_GraphDiv").fadeOut(400);
+    $("#FIS_Carousel").fadeOut(400);
+    document.getElementById('proceed').setAttribute('disabled','disabled');
     //Find fuzzy input using the values
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
@@ -502,6 +508,7 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str+="<td style=\"text-align:center\">"+fuzzyGrease[i].name+"</td>";
     }
     str+="</tr></table>";
+    $("#greaseFuzzy").fadeIn(800);
     document.getElementById("greaseFuzzy").innerHTML=str;
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
@@ -557,11 +564,10 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str2+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
     }
     str2+="</tr></table>";
-    document.getElementById("dirtFuzzy").innerHTML=str2;
-    // setTimeout(function(){
-    //
-    //
-    // },1500);
+    setTimeout(function(){
+        $("#dirtFuzzy").fadeIn(800);
+        document.getElementById("dirtFuzzy").innerHTML=str2;
+    },1500);
     for (var i = 0; i < wash_descriptors.length; i++) {
       fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
     }
@@ -587,26 +593,29 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str3+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
     }
     str3+="</tr></table>";
-    document.getElementById("washFuzzy").innerHTML=str3;
-    // setTimeout(function(){
-    //
-    // },3000);
-    defuzzify(fuzzyWash);
+    setTimeout(function(){
+        $("#washFuzzy").fadeIn(800);
+        document.getElementById("washFuzzy").innerHTML=str3;
+    },3000);
+    setTimeout(function(){
+        $("#defuzzifier_graph_title").fadeIn(800);
+        $("#defuzzifierOP_GraphDiv").fadeIn(800);
+        $("#FIS_Carousel").fadeIn(800);
+        defuzzify(fuzzyWash);
+    },4500);
 }
-
+var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
 function defuzzify(fuzzyWash)
 {
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
-    var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
     var explnBoards=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
       var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
       var start=wash_descriptors[i].start;
       var end=wash_descriptors[i].end;
-      if(start==999)
-      {
+      if(start==999){
           //First descriptor Line:
           washing_lines_down.push(b.create('line',[[0,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
       }
@@ -669,21 +678,28 @@ function defuzzify(fuzzyWash)
             if(i==0)
             {
                 p2=board_washing.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                pc2=currBoard.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                pc2=currBoard.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'B',size:1});
+                var str="";
                 start=0;
+                pc1.setAttribute({name:'A',size:1,visible:true});
+                pc4.setAttribute({name:'E',size:1,visible:true});
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                     C[i]=Number(parseFloat((end-start)/3+start).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc4],{withLines:showLines});
+                    str+="<p>The above figure is a right angled triangle. Here we are only concerned with the X-co-ordinate of the centroid. The centroid for the right angled triangle is at a distance of 1/3<sup>rd</sup> of the base from the perpendicular.</p>";
+                    str+="The centroid comes out to be <b>"+C[i]+"</b><br />";
+                    str+="The area of the triangle can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i];
+                    str+="<h3>The area of this desciptor is "+A[i]+" and the centroid is at "+C[i]+".</h3>";
                 }
                 else
                 {
+                    str+="<p>The above figure does look like a trapezium. So the area calculation is very straight-forward. But since the figure is assymetric about the X-axis, the centroid calculation is not. We therefore take two parts and then calculate the centroid.</p>"
                     x1=Number(parseFloat(end-parseFloat(fuzzyWash[i].fuzzyVal*(end-start))).toFixed(3));
-                    console.log(x1);
                     p3=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                    pc3=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc3=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'C',size:1});
                     var a1=Number(parseFloat((x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
                     var c1=Number(parseFloat((start+x1)/2).toFixed(3));
                     console.log(a1+":"+c1);
@@ -694,33 +710,134 @@ function defuzzify(fuzzyWash)
                     C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
+                    var temp_point=currBoard.create('point',[x1,0],{fixed:true,name:'D',size:1});
+                    var temp_line=currBoard.create('line',[temp_point,pc3],{fixed:true,dash:1,straightFirst:false,straightLast:false});
+                    str+="<table>";
+                    str+="<tr>";
+                    str+="<td class='explnRightSide'>";
+                    str+="<p>Consider the rectangle ABCD.</p>";
+                    str+="<p>This rectangle is symmetric about the X-axis. Therefore, the centroid can be taken as the midpoint of the base.</p>";
+                    str+="The centroid for the rectangle is <b>"+c1+"</b>";
+                    str+="<p>The area of the rectangle is:<br />A<sub>1</sub>=("+x1+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a1+"</b></p>";
+                    str+="<h4>The area of the rectangle is "+a1+" and centroid is "+c1+".</h4>";
+                    str+="</td>";
+                    str+="<td class='explnLeftSide'>";
+                    str+="<p>Consider the triangle DCE.</p>";
+                    str+="<p>This is a right angled triangle. Therefore, the X-co-ordinate of the centroid can be taken as the 1/3<sup>rd</sup> from the perpendicular.</p>";
+                    str+="The centroid for the triangle is <b>"+c2+"</b>";
+                    str+="<p>The area of the triangle is:<br />A<sub>2</sub>=0.5*("+end+"-"+x1+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a2+"</b></p>";
+                    str+="<h4>The area of the triangle is "+a2+" and centroid is "+c2+".</h4>";
+                    str+="</td>";
+                    str+="</tr>";
+                    str+="</table>";
+                    str+="<p>Finally we calculate the centroid with the formula:</p>";
+                    str+="<table class='formula'>";
+                    str+="<tr>";
+                    str+="<td rowspan=2>C</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td class='numerator'>";
+                    str+="A<sub>1</sub>C<sub>1</sub>+A<sub>2</sub>C<sub>2</sub>";
+                    str+="</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td class='numerator'>";
+                    str+="("+a1+"*"+c1+")+("+a2+"*"+c2+")";
+                    str+="</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td rowspan=2><b>"+C[i]+"</b></td>";
+                    str+="</tr>";
+                    str+="<tr>";
+                    str+="<td class='denominator'>";
+                    str+="A<sub>1</sub>+A<sub>2</sub>";
+                    str+="</td>";
+                    str+="<td class='denominator'>";
+                    str+="("+a1+")+("+a2+")";
+                    str+="</td>";
+                    str+="</tr>";
+                    str+="</table>";
+                    str+="<p>The area is simple sum of the rectangle and triangle areas.</p>";
+                    str+="<h3>Thus, the area for this descriptor is "+A[i]+" and the centroid as calculated is "+C[i]+".</h3>";
                 }
 
             }
             else if (i==fuzzyWash.length-1) {
               str="";
+              pc1.setAttribute({name:'A',size:1,visible:true});
+              pc4.setAttribute({name:'D',size:1,visible:true});
               p3=board_washing.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-              pc3=currBoard.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+              pc3=currBoard.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'C',size:1});
               if(fuzzyWash[i].fuzzyVal==1)
               {
                   A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                   C[i]=Number(parseFloat(end-(end-start)/3).toFixed(3));
                   var pol = board_washing.create('polygon', [p1, p3, p4],{withLines:showLines});
                   var polc = currBoard.create('polygon', [pc1, pc3, pc4],{withLines:showLines});
+                  str+="<p>The above figure is a right angled triangle. Here we are only concerned with the X-co-ordinate of the centroid. The centroid for the right angled triangle is at a distance of 1/3<sup>rd</sup> of the base from the perpendicular.</p>";
+                  str+="The centroid comes out to be <b>"+C[i]+"</b><br />";
+                  str+="The area of the triangle can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i];
+                  str+="<h3>The area of this desciptor is "+A[i]+" and the centroid is at "+C[i]+".</h3>";
               }
               else
               {
+                  str+="<p>The above figure does look like a trapezium. So the area calculation is very straight-forward. But since the figure is assymetric about the X-axis, the centroid calculation is not. We therefore take two parts and then calculate the centroid.</p>";
                   x1=Number(parseFloat(start+fuzzyWash[i].fuzzyVal*(end-start)).toFixed(3));
                   p2=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                  pc2=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                  pc2=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'B',size:1});
+                  //Centroid and area of rectangle
                   var a1=Number(parseFloat((end-x1)*fuzzyWash[i].fuzzyVal).toFixed(3));
                   var c1=Number(parseFloat((x1+end)/2).toFixed(3));
+                  //Centroid and area of triangle
                   var a2=Number(parseFloat(0.5*(x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
                   var c2=Number(parseFloat(x1-(x1-start)/3).toFixed(3));
                   A[i]=Number(parseFloat(a1+a2).toFixed(3));
                   C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
                   var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                   var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
+                  var temp_point=currBoard.create('point',[x1,0],{fixed:true,name:'E',size:1});
+                  var temp_line=currBoard.create('line',[temp_point,pc2],{fixed:true,dash:1,straightFirst:false,straightLast:false});
+                  str+="<table>";
+                  str+="<tr>";
+                  str+="<td class='explnRightSide'>";
+                  str+="<p>Consider the triangle ABE.</p>";
+                  str+="<p>This is a right angled triangle. Therefore, the X-co-ordinate of the centroid can be taken as the 1/3<sup>rd</sup> from the perpendicular.</p>";
+                  str+="The centroid for the triangle is <b>"+c2+"</b>";
+                  str+="<p>The area of the triangle is:<br />A<sub>2</sub>=0.5*("+x1+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a2+"</b></p>";
+                  str+="<h4>The area of the triangle is "+a2+" and centroid is "+c2+".</h4>";
+                  str+="</td>";
+                  str+="<td class='explnLeftSide'>";
+                  str+="<p>Consider the rectangle BCDE.</p>";
+                  str+="<p>This rectangle is symmetric about the X-axis. Therefore, the centroid can be taken as the midpoint of the base.</p>";
+                  str+="The centroid for the rectangle is <b>"+c1+"</b>";
+                  str+="<p>The area of the rectangle is:<br />A<sub>1</sub>=("+end+"-"+x1+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a1+"</b></p>";
+                  str+="<h4>The area of the rectangle is "+a1+" and centroid is "+c1+".</h4>";
+                  str+="</td>";
+                  str+="</tr>";
+                  str+="</table>";
+                  str+="<p>Finally we calculate the centroid with the formula:</p>";
+                  str+="<table class='formula'>";
+                  str+="<tr>";
+                  str+="<td rowspan=2>C</td>";
+                  str+="<td rowspan=2 class='equalSign'>=</td>";
+                  str+="<td class='numerator'>";
+                  str+="A<sub>1</sub>C<sub>1</sub>+A<sub>2</sub>C<sub>2</sub>";
+                  str+="</td>";
+                  str+="<td rowspan=2 class='equalSign'>=</td>";
+                  str+="<td class='numerator'>";
+                  str+="("+a2+"*"+c2+")+("+a1+"*"+c1+")";
+                  str+="</td>";
+                  str+="<td rowspan=2 class='equalSign'>=</td>";
+                  str+="<td rowspan=2><b>"+C[i]+"</b></td>";
+                  str+="</tr>";
+                  str+="<tr>";
+                  str+="<td class='denominator'>";
+                  str+="A<sub>1</sub>+A<sub>2</sub>";
+                  str+="</td>";
+                  str+="<td class='denominator'>";
+                  str+="("+a2+")+("+a1+")";
+                  str+="</td>";
+                  str+="</tr>";
+                  str+="</table>";
+                  str+="<p>The area is simple sum of the rectangle and triangle areas.</p>";
+                  str+="<h3>Thus, the area for this descriptor is "+A[i]+" and the centroid as calculated is "+C[i]+".</h3>";
               }
             }
             else {
@@ -730,7 +847,7 @@ function defuzzify(fuzzyWash)
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
-                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i]+"</p>";
+                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+A[i]+"</b></p>";
                     p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     pc2=currBoard.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
@@ -748,20 +865,22 @@ function defuzzify(fuzzyWash)
                     var a=Number(parseFloat(x2-x1).toFixed(3));
                     var b=Number(parseFloat(end-start).toFixed(3));
                     A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
-                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=</b>"+A[i]+"</b></p>";
+                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=<b>"+A[i]+"</b></p>";
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
                     str+="<h3>Area of the shaded figure is "+A[i]+" and centroid of this region is "+C[i]+".</h3>"
                 }
             }
             var ptName="C"+(i+1);
-            var pt=board_washing.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
-            var ptc=currBoard.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
+            var pt=board_washing.create('point',[C[i],0],{fixed:true,name:ptName,face:'^'});
+            var ptc=currBoard.create('point',[C[i],0],{fixed:true,name:ptName,face:'^'});
         }
         else {
           var str="<p>The fuzzy component for this descriptor is zero. Hence the area and centroid is zero.</p><h3>The area and centroid of this desciptor is 0</h3>";
         }
         document.getElementById('ExplnPart'+i).innerHTML=str;
+        $(".carousel-inner").css("height","auto");
+        document.getElementById("proceed").removeAttribute('disabled');
         // console.log("Area:"+A[i]+" Centroid:"+C[i]);  Debugging purposes.
     }
     var num=0;
@@ -771,6 +890,54 @@ function defuzzify(fuzzyWash)
         den+=A[i];
     }
     var washTime=Number(parseFloat(num/den).toFixed(3));
+    //Real calculations are finished here. Below is the display part.
+    var numCalc="";
+    var finalCalc="";
+    finalCalc="<h3><table class='formula'>";
+    finalCalc+="<tr>";
+    finalCalc+="<td rowspan=2>Final Centroid</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      finalCalc+="A<sub>"+wash_descriptors[i].name+"</sub>C<sub>"+wash_descriptors[i].name+"</sub>";
+      numCalc+="("+A[i]+"*"+C[i]+")";
+      if(i!=wash_descriptors.length-1)
+      {
+        finalCalc+="+";
+        numCalc+="+";
+      }
+    }
+    finalCalc+="</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>"+numCalc+"</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>"+num+"</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'><b>"+washTime+"</b></td>";
+    finalCalc+="</tr>";
+    var numCalc="";
+    finalCalc+="<tr>";
+    finalCalc+="<td class='denominator'>";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      finalCalc+="A<sub>"+wash_descriptors[i].name+"</sub>";
+      numCalc+=A[i];
+      if(i!=wash_descriptors.length-1)
+      {
+        finalCalc+="+";
+        numCalc+="+";
+      }
+    }
+    finalCalc+="</td>";
+    finalCalc+="<td class='denominator'>"+numCalc+"</td>";
+    finalCalc+="<td class='denominator'>"+den+"</td>";
+    finalCalc+="</tr>";
+    finalCalc+="</table></h3>";
+    $('#Final_calculation').fadeIn(1500);
+    document.getElementById('Final_calculation').innerHTML=finalCalc;
+    var finalRes="";
+    finalRes+="<h2>The final washing time required for the clothes is "+washTime+" minutes. Happy Washing!</h2>";
+    $('#Final_result').fadeIn(1700);
+    document.getElementById('Final_result').innerHTML=finalRes;
 }
 
 function back(){
