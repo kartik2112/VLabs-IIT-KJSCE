@@ -58,6 +58,15 @@
             transition-duration: 0.5s;
             border-radius: 5px;
           }
+          .carousel-indicators {
+              bottom: -5px;
+          }
+          .carousel-indicators li {
+              background-color: #0091ff;
+          }
+          .carousel-indicators .active {
+              background-color: #0781c8;
+          }
         </style>
     <!-- Simulation scripts end-->
     </head>
@@ -271,6 +280,47 @@
             <div id="washFuzzy">
             </div>
             <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
+            <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel" style="width: 550px;">
+                <!-- Indicators generated dynamically-->
+                <script type="text/javascript">
+                  var str='<ol class="carousel-indicators">';
+                  document.writeln(str);
+                  for (var i = 0; i < wash_descriptors.length; i++) {
+                      var str='<li data-target="#FIS_Carousel" data-slide-to="'+i+'" ';
+                      if(i==0)
+                        str+='class="active" ';
+                      str+='data-toggle="tooltip" data-placement="bottom" title="Area and centroid calculation for '+wash_descriptors[i].name+' descriptor."></li>';
+                      document.writeln(str);
+                  }
+                  document.writeln('</ol>');
+                </script>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="margin: auto; height: 475px; width: 510px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                  <script type="text/javascript">
+                    for (var i = 0; i < wash_descriptors.length; i++) {
+                        var str='<div class="item';
+                        if(i==0)
+                          str+=' active';
+                        str+='" style="padding: 50px;">';
+                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:395px; height:180px;"></div>';
+                        str+='<div id="ExplnPart'+i+'"></div>';
+                        str+='</div>';
+                        document.writeln(str);
+                    }
+                  </script>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#FIS_Carousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" style="color: #006ed7"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#FIS_Carousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" style="color: #006ed7"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
           </div>
         </section>
         <!-- /.content -->

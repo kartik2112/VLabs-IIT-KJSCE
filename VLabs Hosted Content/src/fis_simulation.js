@@ -593,15 +593,37 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     // },3000);
     defuzzify(fuzzyWash);
 }
-var p1,p2,p3,p4;
 
 function defuzzify(fuzzyWash)
 {
+    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
-    graphEnds=wash_descriptors[wash_descriptors.length-1].end;
+    var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
+    var explnBoards=[];
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
+      var start=wash_descriptors[i].start;
+      var end=wash_descriptors[i].end;
+      if(start==999)
+      {
+          //First descriptor Line:
+          washing_lines_down.push(b.create('line',[[0,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+      }
+      else if (i==wash_descriptors.length-1) {
+          //Last descriptor Line:
+          washing_lines_up.push(b.create('line',[[start,0],[end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+          horiz_line_washing=b.create('line',[[end,1],[end+100,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+      }
+      else {
+          var mid=parseFloat((start+end)/2).toFixed(2);
+          console.log(mid);
+          washing_lines_up.push(b.create('line',[[start,0],[mid,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+          washing_lines_down.push(b.create('line',[[mid,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
+      }
+      explnBoards.push(b);
+    }
     var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
-
     for (var i = 0; i < wash_descriptors.length; i++) {
         var start=wash_descriptors[i].start;
         var end=wash_descriptors[i].end;
@@ -626,10 +648,10 @@ function defuzzify(fuzzyWash)
       A.push(0);
       C.push(0);
     }
-
     for (var i = 0; i < fuzzyWash.length; i++) {
         if(fuzzyWash[i].fuzzyVal!=0)
         {
+            var currBoard=explnBoards[i];
             if (i==0) {
               start=0;
             }
@@ -642,21 +664,26 @@ function defuzzify(fuzzyWash)
             var shouldPointsBeSeen=false;
             p1=board_washing.create('point',[start,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
             p4=board_washing.create('point',[end,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+            pc1=currBoard.create('point',[start,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+            pc4=currBoard.create('point',[end,0],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
             if(i==0)
             {
                 p2=board_washing.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                pc2=currBoard.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                 start=0;
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                     C[i]=Number(parseFloat((end-start)/3+start).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
+                    var polc = currBoard.create('polygon', [pc1, pc2, pc4],{withLines:showLines});
                 }
                 else
                 {
                     x1=Number(parseFloat(end-parseFloat(fuzzyWash[i].fuzzyVal*(end-start))).toFixed(3));
                     console.log(x1);
                     p3=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc3=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var a1=Number(parseFloat((x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
                     var c1=Number(parseFloat((start+x1)/2).toFixed(3));
                     console.log(a1+":"+c1);
@@ -666,21 +693,26 @@ function defuzzify(fuzzyWash)
                     A[i]=Number(parseFloat(a1+a2).toFixed(3));
                     C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+                    var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
                 }
 
             }
             else if (i==fuzzyWash.length-1) {
+              str="";
               p3=board_washing.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+              pc3=currBoard.create('point',[end,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
               if(fuzzyWash[i].fuzzyVal==1)
               {
                   A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
                   C[i]=Number(parseFloat(end-(end-start)/3).toFixed(3));
                   var pol = board_washing.create('polygon', [p1, p3, p4],{withLines:showLines});
+                  var polc = currBoard.create('polygon', [pc1, pc3, pc4],{withLines:showLines});
               }
               else
               {
                   x1=Number(parseFloat(start+fuzzyWash[i].fuzzyVal*(end-start)).toFixed(3));
                   p2=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                  pc2=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                   var a1=Number(parseFloat((end-x1)*fuzzyWash[i].fuzzyVal).toFixed(3));
                   var c1=Number(parseFloat((x1+end)/2).toFixed(3));
                   var a2=Number(parseFloat(0.5*(x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
@@ -688,34 +720,49 @@ function defuzzify(fuzzyWash)
                   A[i]=Number(parseFloat(a1+a2).toFixed(3));
                   C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
                   var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+                  var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
               }
             }
             else {
+                var str="<p>The figure above is symmetric with respect to the X-axis. Hence we can take the midpoint of the start and end of the descriptor as the centroid.</p>";
                 C[i]=Number(parseFloat((start+end)/2).toFixed(3));
+                str+="The Centroid of the above shaded region is <b>"+C[i]+"</b>.";
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
+                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i]+"</p>";
                     p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc2=currBoard.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
+                    var polc = currBoard.create('polygon', [pc1, pc2, pc4],{withLines:showLines});
                 }
                 else
                 {
                     var mid=Number(parseFloat((start+end)/2).toFixed(3));
                     x1=Number(parseFloat(start+Number(parseFloat(fuzzyWash[i].fuzzyVal*(mid-start)).toFixed(3))).toFixed(3));
                     p2=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc2=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     x2=Number(parseFloat(end-Number(parseFloat(fuzzyWash[i].fuzzyVal*(end-mid)).toFixed(3))).toFixed(3));
                     p3=board_washing.create('point',[x2,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc3=currBoard.create('point',[x2,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var a=Number(parseFloat(x2-x1).toFixed(3));
                     var b=Number(parseFloat(end-start).toFixed(3));
                     A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
+                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=</b>"+A[i]+"</b></p>";
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
+                    var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
+                    str+="<h3>Area of the shaded figure is "+A[i]+" and centroid of this region is "+C[i]+".</h3>"
                 }
             }
             var ptName="C"+(i+1);
             var pt=board_washing.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
+            var ptc=currBoard.create('point',[C[i],parseFloat(fuzzyWash[i].fuzzyVal/2)],{fixed:true,name:ptName,face:'^'});
         }
-
-        console.log("Area:"+A[i]+" Centroid:"+C[i]);
+        else {
+          var str="<p>The fuzzy component for this descriptor is zero. Hence the area and centroid is zero.</p><h3>The area and centroid of this desciptor is 0</h3>";
+        }
+        document.getElementById('ExplnPart'+i).innerHTML=str;
+        // console.log("Area:"+A[i]+" Centroid:"+C[i]);  Debugging purposes.
     }
     var num=0;
     var den=0;
