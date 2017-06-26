@@ -448,6 +448,12 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     document.getElementById("greaseFuzzy").innerHTML="";
     document.getElementById("dirtFuzzy").innerHTML="";
     document.getElementById("washFuzzy").innerHTML="";
+    $("#greaseFuzzy").fadeOut(400);
+    $("#dirtFuzzy").fadeOut(400);
+    $("#washFuzzy").fadeOut(400);
+    $("#defuzzifierOP_GraphDiv").fadeOut(400);
+    $("#FIS_Carousel").fadeOut(400);
+    document.getElementById('proceed').setAttribute('disabled','disabled');
     //Find fuzzy input using the values
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
@@ -502,6 +508,7 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str+="<td style=\"text-align:center\">"+fuzzyGrease[i].name+"</td>";
     }
     str+="</tr></table>";
+    $("#greaseFuzzy").fadeIn(800);
     document.getElementById("greaseFuzzy").innerHTML=str;
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
@@ -557,11 +564,10 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str2+="<td style=\"text-align:center\">"+fuzzyDirt[i].name+"</td>";
     }
     str2+="</tr></table>";
-    document.getElementById("dirtFuzzy").innerHTML=str2;
-    // setTimeout(function(){
-    //
-    //
-    // },1500);
+    setTimeout(function(){
+        $("#dirtFuzzy").fadeIn(800);
+        document.getElementById("dirtFuzzy").innerHTML=str2;
+    },1500);
     for (var i = 0; i < wash_descriptors.length; i++) {
       fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
     }
@@ -587,11 +593,16 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
       str3+="<td style=\"text-align:center\">"+fuzzyWash[i].name+"</td>";
     }
     str3+="</tr></table>";
-    document.getElementById("washFuzzy").innerHTML=str3;
-    // setTimeout(function(){
-    //
-    // },3000);
-    defuzzify(fuzzyWash);
+    setTimeout(function(){
+        $("#washFuzzy").fadeIn(800);
+        document.getElementById("washFuzzy").innerHTML=str3;
+    },3000);
+    setTimeout(function(){
+        $("#defuzzifier_graph_title").fadeIn(800);
+        $("#defuzzifierOP_GraphDiv").fadeIn(800);
+        $("#FIS_Carousel").fadeIn(800);
+        defuzzify(fuzzyWash);
+    },4500);
 }
 var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
 function defuzzify(fuzzyWash)
@@ -604,8 +615,7 @@ function defuzzify(fuzzyWash)
       var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
       var start=wash_descriptors[i].start;
       var end=wash_descriptors[i].end;
-      if(start==999)
-      {
+      if(start==999){
           //First descriptor Line:
           washing_lines_down.push(b.create('line',[[0,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
       }
@@ -814,6 +824,8 @@ function defuzzify(fuzzyWash)
           var str="<p>The fuzzy component for this descriptor is zero. Hence the area and centroid is zero.</p><h3>The area and centroid of this desciptor is 0</h3>";
         }
         document.getElementById('ExplnPart'+i).innerHTML=str;
+        $(".carousel-inner").css("height","auto");
+        document.getElementById("proceed").removeAttribute('disabled');
         // console.log("Area:"+A[i]+" Centroid:"+C[i]);  Debugging purposes.
     }
     var num=0;

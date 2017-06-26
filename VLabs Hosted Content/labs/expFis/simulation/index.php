@@ -29,69 +29,6 @@
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
         <script src="../../../src/fis_simulation.js"></script>
         <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
-        <style>
-          .fam td, .fam th{
-            padding: 20px;
-            text-align: center;
-          }
-          .fam th{
-            background: #cacdd1;
-            color: black;
-          }
-          #empty{
-            background: none;
-            border: none;
-          }
-          .fam{
-            margin: auto;
-          }
-          .fam select{
-            padding: 5px;
-            margin: auto;
-            background: none;
-            border: 1px solid transparent;
-            transition-duration: 0.5s;
-          }
-          .fam select:hover{
-            background: white;
-            border: 1px solid black;
-            transition-duration: 0.5s;
-            border-radius: 5px;
-          }
-          .carousel-indicators {
-              bottom: -5px;
-          }
-          .carousel-indicators li {
-              background-color: #0091ff;
-          }
-          .formula{
-            text-align: center;
-          }
-          .equalSign
-          {
-            padding-left: 13px;
-            padding-right: 13px;
-          }
-          .numerator{
-            border-bottom: 1px solid black;
-            padding-bottom: 5px;
-          }
-          .denominator{
-            border-top: 1px solid black;
-            padding-top: 5px;
-          }
-          .carousel-indicators .active {
-              background-color: #0781c8;
-          }
-          .explnRightSide{
-              border-right: 1px solid black;
-              padding-right: 10px;
-          }
-          .explnLeftSide{
-            border-left: 1px solid black;
-            padding-left: 10px;
-          }
-        </style>
     <!-- Simulation scripts end-->
     </head>
 
@@ -258,7 +195,7 @@
               </div>
               <div style="clear: both;">
                 <button id="save" class="btn-warning btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
-                <a class="btn-success btn-md" onclick="next();">Continue >></a>
+                <a class="btn-success btn-md" onclick="next();">Continue &rarr;</a>
               </div>
               <br>
               <div id="graph_div">
@@ -278,7 +215,7 @@
               <div id="table_data" style="margin: auto;"></div>
               <br>
               <h4>Congratulations! You have designed a virtual Washing Machine!</h4>
-              <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> <<< Edit descriptors</button>
+              <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> &larr; Edit descriptors</button>
               <button class="btn-success btn-md" onclick='proceed();'>Proceed</button>
             </div>
           <div id="trial_div" style="display:none;width: 100%">
@@ -295,16 +232,18 @@
                 <input class="form-control" type="number" min=0 max=100 id="dirt_trial">
               </div><br />
             </div>
-            <button class="btn-warning btn-md" onclick="back()"><<< Edit Inference Table</button>
-            <button class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
-            <div id="greaseFuzzy">
+            <button class="btn-warning btn-md" onclick="back()">&larr; Edit Inference Table</button>
+            <button id="proceed" class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
+            <div id="greaseFuzzy" style="display: none;margin-bottom: 30px;margin-top: 20px;">
             </div>
-            <div id="dirtFuzzy">
+            <div id="dirtFuzzy" style="display: none;margin-bottom: 30px;">
             </div>
-            <div id="washFuzzy">
+            <div id="washFuzzy" style="display: none;margin-bottom: 30px;">
             </div>
-            <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;"></div>
-            <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel" style="width: 550px;">
+            <h4 id="defuzzifier_graph_title" style="display: none;">Graph:</h4>
+            <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;display: none;margin-bottom: 30px;">
+            </div>
+            <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel" style="width: 550px;display:none;">
                 <!-- Indicators generated dynamically-->
                 <script type="text/javascript">
                   var str='<ol class="carousel-indicators">';
