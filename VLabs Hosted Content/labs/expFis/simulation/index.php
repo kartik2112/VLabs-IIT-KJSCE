@@ -180,7 +180,7 @@
                       }
                       document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
                       console.log(wash_descriptors[i].name);
-                      if(i==wash_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"120\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"t3\" onclick=\"rem_descriptor('t',3)\"><b>-</b></button>");
+                      if(i>=wash_descriptors.length-2) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"120\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"t"+(i+1)+"\" onclick=\"rem_descriptor('t',"+(i+1)+")\"><b>-</b></button>");
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+wash_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
@@ -223,13 +223,13 @@
               Provide a grease percent and dirt percent as input, and you can see how your virtual washing machine will get you the wash time.
             </h4>
             <div class="form-group row">
-              <div class="col-xs-2">
-                <label for="grease_trial">Grease:</label>
-                <input class="form-control" type="number" min=0 max=100 id="grease_trial" />
+              <div class="material-input"  title="How much grease does your clothes have?">
+                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" step="10" onchange="var x = this.value; if(x>100) x=100; if(x<0) x=0; this.value=x;" required/>
+                <label class="m_label" for="grease_trial">Grease %</label>
               </div>
-              <div class="col-xs-2">
-                <label for="dirt_trial">Dirt:</label>
-                <input class="form-control" type="number" min=0 max=100 id="dirt_trial">
+              <div class="material-input"  title="How much dirt does your clothes have?">
+                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" step="10" onchange="var x = this.value; if(x>100) x=100; if(x<0) x=0; this.value=x;" required>
+                <label class="m_label" for="dirt_trial">Dirt %</label>
               </div><br />
             </div>
             <button class="btn-warning btn-md" onclick="back()">&larr; Edit Inference Table</button>
