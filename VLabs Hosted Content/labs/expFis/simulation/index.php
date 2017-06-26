@@ -243,7 +243,9 @@
             <h4 id="defuzzifier_graph_title" style="display: none;">Graph:</h4>
             <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;display: none;margin-bottom: 30px;">
             </div>
-            <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel" style="width: 550px;display:none;">
+            <p>We can calculate the defuzzified output using the centroid method. For that we'll need to calculate the areas and the centroids for all descriptors.</p>
+            <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel"
+            data-interval="false" style="width: 550px;display:none;">
                 <!-- Indicators generated dynamically-->
                 <script type="text/javascript">
                   var str='<ol class="carousel-indicators">';
@@ -259,7 +261,7 @@
                 </script>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" style="margin: 0 auto; height: 725px; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                <div class="carousel-inner" style="margin: 0 auto; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
                   <script type="text/javascript">
                     for (var i = 0; i < wash_descriptors.length; i++) {
                         var str='<div class="item';
@@ -284,6 +286,8 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            <div id="Final_calculation" style="display:none;padding-top: 25px"></div>
+            <div id="Final_result" style="display:none;padding-top: 15px"></div>
           </div>
         </section>
         <!-- /.content -->
