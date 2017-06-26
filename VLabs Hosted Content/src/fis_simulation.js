@@ -890,6 +890,51 @@ function defuzzify(fuzzyWash)
         den+=A[i];
     }
     var washTime=Number(parseFloat(num/den).toFixed(3));
+    //Real calculations are finished here. Below is the display part.
+    var numCalc="";
+    var finalCalc="";
+    finalCalc="<h3><table class='formula'>";
+    finalCalc+="<tr>";
+    finalCalc+="<td rowspan=2>Final Centroid</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      finalCalc+="A<sub>"+wash_descriptors[i].name+"</sub>C<sub>"+wash_descriptors[i].name+"</sub>";
+      numCalc+="("+A[i]+"*"+C[i]+")";
+      if(i!=wash_descriptors.length-1)
+      {
+        finalCalc+="+";
+        numCalc+="+";
+      }
+    }
+    finalCalc+="</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td class='numerator'>"+numCalc+"</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'>=</td>";
+    finalCalc+="<td rowspan=2 class='equalSign'><b>"+washTime+"</b></td>";
+    finalCalc+="</tr>";
+    var numCalc="";
+    finalCalc+="<tr>";
+    finalCalc+="<td class='denominator'>";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+      finalCalc+="A<sub>"+wash_descriptors[i].name+"</sub>";
+      numCalc+=A[i];
+      if(i!=wash_descriptors.length-1)
+      {
+        finalCalc+="+";
+        numCalc+="+";
+      }
+    }
+    finalCalc+="</td>";
+    finalCalc+="<td class='denominator'>"+numCalc+"</td>";
+    finalCalc+="</tr>";
+    finalCalc+="</table></h3>";
+    $('#Final_calculation').fadeIn(1500);
+    document.getElementById('Final_calculation').innerHTML=finalCalc;
+    var finalRes="";
+    finalRes+="<h2>The final washing time required for the clothes is "+washTime+" minutes. Happy Washing!</h2>";
+    $('#Final_result').fadeIn(1700);
+    document.getElementById('Final_result').innerHTML=finalRes;
 }
 
 function back(){

@@ -286,7 +286,8 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
+            <div id="Final_calculation" style="display:none;padding-top: 25px"></div>
+            <div id="Final_result" style="display:none;padding-top: 15px"></div>
           </div>
         </section>
         <!-- /.content -->
