@@ -64,8 +64,32 @@
           .carousel-indicators li {
               background-color: #0091ff;
           }
+          .formula{
+            text-align: center;
+          }
+          .equalSign
+          {
+            padding-left: 13px;
+            padding-right: 13px;
+          }
+          .numerator{
+            border-bottom: 1px solid black;
+            padding-bottom: 5px;
+          }
+          .denominator{
+            border-top: 1px solid black;
+            padding-top: 5px;
+          }
           .carousel-indicators .active {
               background-color: #0781c8;
+          }
+          .explnRightSide{
+              border-right: 1px solid black;
+              padding-right: 10px;
+          }
+          .explnLeftSide{
+            border-left: 1px solid black;
+            padding-left: 10px;
           }
         </style>
     <!-- Simulation scripts end-->
@@ -296,14 +320,14 @@
                 </script>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" style="margin: auto; height: 475px; width: 510px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                <div class="carousel-inner" style="margin: 0 auto; height: 725px; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
                   <script type="text/javascript">
                     for (var i = 0; i < wash_descriptors.length; i++) {
                         var str='<div class="item';
                         if(i==0)
                           str+=' active';
                         str+='" style="padding: 50px;">';
-                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:395px; height:180px;"></div>';
+                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:570px; height:180px;"></div>';
                         str+='<div id="ExplnPart'+i+'"></div>';
                         str+='</div>';
                         document.writeln(str);
