@@ -101,7 +101,7 @@
                 <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum of 120 mins.</li>
                 <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button</li>
               </ul>
-              <button id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
+              <button data-toggle="tooltip" title="I have read the above instructions" data-placement="bottom" id="hide_instr" class="btn-success" onclick="hide_instrs(0);">Continue</button>
             </div>
             <br/>
             <div id="descriptor_div" style="width: 90%;display: none;">
@@ -194,8 +194,8 @@
                 <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
               </div>
               <div style="clear: both;">
-                <button id="save" class="btn-warning btn-md" onclick="save();" title="You will see the effect of your changes below">View changes</button>
-                <a class="btn-success btn-md" onclick="next();">Continue &rarr;</a>
+                <button id="save" class="btn-warning btn-md" onclick="save();" data-toggle="tooltip" title="You will see the effect of your changes below">View changes</button>
+                <a data-toggle="tooltip" title="Go to step 2" class="btn-success btn-md" onclick="next();">Continue &rarr;</a>
               </div>
               <br>
               <div id="graph_div">
@@ -215,25 +215,25 @@
               <div id="table_data" style="margin: auto;"></div>
               <br>
               <h4>Congratulations! You have designed a virtual Washing Machine!</h4>
-              <button class="btn-warning btn-md" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> &larr; Edit descriptors</button>
-              <button class="btn-success btn-md" onclick='proceed();'>Proceed</button>
+              <button class="btn-warning btn-md" data-toggle="tooltip" title="Change descriptors. You will lose your progress here." style="float: left;margin-right: 10px;" onclick="edit_descr()"> &larr; Edit descriptors</button>
+              <button data-toggle="tooltip" title="Go step 3: The trial!" class="btn-success btn-md" onclick='proceed();'>Proceed</button>
             </div>
           <div id="trial_div" style="display:none;width: 100%">
             <h4>
               Provide a grease percent and dirt percent as input, and you can see how your virtual washing machine will get you the wash time.
             </h4>
             <div class="form-group row">
-              <div class="material-input"  title="How much grease does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" step="10" onchange="var x = this.value; if(x>100) x=100; if(x<0) x=0; this.value=x;" required/>
+              <div class="material-input" data-toggle="tooltip" title="How much grease does your clothes have?">
+                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" step="10" onchange="check_vals(this);" required/>
                 <label class="m_label" for="grease_trial">Grease %</label>
               </div>
-              <div class="material-input"  title="How much dirt does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" step="10" onchange="var x = this.value; if(x>100) x=100; if(x<0) x=0; this.value=x;" required>
+              <div class="material-input" data-toggle="tooltip" title="How much dirt does your clothes have?">
+                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" step="10" onchange="check_vals(this);" required>
                 <label class="m_label" for="dirt_trial">Dirt %</label>
               </div><br />
             </div>
-            <button class="btn-warning btn-md" onclick="back()">&larr; Edit Inference Table</button>
-            <button id="proceed" class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
+            <button class="btn-warning btn-md" onclick="back()" data-toggle="tooltip" title="You wont lose your numbers!" style="margin-right: 15px;">&larr; Edit Inference Table</button>
+            <button data-toggle="tooltip" title="Let's start our Washing machine!" id="proceed" class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
             <div id="greaseFuzzy" style="display: none;margin-bottom: 30px;margin-top: 20px;">
             </div>
             <div id="dirtFuzzy" style="display: none;margin-bottom: 30px;">
@@ -243,7 +243,7 @@
             <h4 id="defuzzifier_graph_title" style="display: none;">Graph:</h4>
             <div id="defuzzifierOP_GraphDiv" class="jxgbox" style="width:600px; height:300px;display: none;margin-bottom: 30px;">
             </div>
-            <p>We can calculate the defuzzified output using the centroid method. For that we'll need to calculate the areas and the centroids for all descriptors.</p>
+            <p id="defuzz-description" style="margin: 20px 0;font-size: 17px;display: none;">We can calculate the defuzzified output using the centroid method. For that we'll need to calculate the areas and the centroids for all descriptors.</p>
             <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel"
             data-interval="false" style="width: 550px;display:none;">
                 <!-- Indicators generated dynamically-->
