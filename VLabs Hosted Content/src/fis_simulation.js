@@ -593,13 +593,12 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     // },3000);
     defuzzify(fuzzyWash);
 }
-
+var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
 function defuzzify(fuzzyWash)
 {
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
-    var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
     var explnBoards=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
       var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
@@ -669,7 +668,8 @@ function defuzzify(fuzzyWash)
             if(i==0)
             {
                 p2=board_washing.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                pc2=currBoard.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                pc2=currBoard.create('point',[0,fuzzyWash[i].fuzzyVal],{fixed:true,name:'B',size:1});
+                var str="";
                 start=0;
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
@@ -677,13 +677,19 @@ function defuzzify(fuzzyWash)
                     C[i]=Number(parseFloat((end-start)/3+start).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc4],{withLines:showLines});
+                    str+="<p>The above figure is a right angled triangle. Here we are only concerned with the X-co-ordinate of the centroid. The centroid for the right angled triangle is at a distance of 1/3<sup>rd</sup> of the base from the perpendicular.</p>";
+                    str+="The centroid comes out to be <b>"+C[i]+"</b>";
+                    str+="The area of the triangle can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i];
+                    str="<h3>The area of this desciptor is "+A[i]+" and the centroid is at "+C[i]+".</h3>"
                 }
                 else
                 {
+                    pc1.setAttribute({name:'A',size:1,visible:true});
+                    pc4.setAttribute({name:'E',size:1,visible:true});
+                    str+="<p>The above figure does look like a trapezium. So the area calculation is very straight-forward. But since the figure is assymetric about the X-axis, the centroid calculation is not. We therefore take two parts and then calculate the centroid.</p>"
                     x1=Number(parseFloat(end-parseFloat(fuzzyWash[i].fuzzyVal*(end-start))).toFixed(3));
-                    console.log(x1);
                     p3=board_washing.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
-                    pc3=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
+                    pc3=currBoard.create('point',[x1,fuzzyWash[i].fuzzyVal],{fixed:true,name:'C',size:1});
                     var a1=Number(parseFloat((x1-start)*fuzzyWash[i].fuzzyVal).toFixed(3));
                     var c1=Number(parseFloat((start+x1)/2).toFixed(3));
                     console.log(a1+":"+c1);
@@ -694,6 +700,52 @@ function defuzzify(fuzzyWash)
                     C[i]=Number(parseFloat((a1*c1+a2*c2)/(a1+a2)).toFixed(3));
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
+                    var temp_point=currBoard.create('point',[x1,0],{fixed:true,name:'D',size:1});
+                    var temp_line=currBoard.create('line',[temp_point,pc3],{fixed:true,dash:1,straightFirst:false,straightLast:false});
+                    str+="<table>";
+                    str+="<tr>";
+                    str+="<td class='explnRightSide'>";
+                    str+="<p>Consider the rectangle ABCD.</p>";
+                    str+="<p>This rectangle is symmetric about the X-axis. Therefore, the centroid can be taken as the midpoint of the base.</p>";
+                    str+="The centroid for the rectangle is <b>"+c1+"</b>";
+                    str+="<p>The area of the rectangle is:<br />A<sub>1</sub>=("+x1+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a1+"</b></p>";
+                    str+="<h4>The area of the rectangle is "+a1+" and centroid is "+c1+".</h4>";
+                    str+="</td>";
+                    str+="<td class='explnLeftSide'>";
+                    str+="<p>Consider the triangle DCE.</p>";
+                    str+="<p>This is a right angled triangle. Therefore, the X-co-ordinate of the centroid can be taken as the 1/3<sup>rd</sup> from the perpendicular.</p>";
+                    str+="The centroid for the triangle is <b>"+c2+"</b>";
+                    str+="<p>The area of the triangle is:<br />A<sub>2</sub>=0.5*("+end+"-"+x1+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+a2+"</b></p>";
+                    str+="<h4>The area of the triangle is "+a2+" and centroid is "+c2+".</h4>";
+                    str+="</td>";
+                    str+="</tr>";
+                    str+="</table>";
+                    str+="<p>Finally we calculate the centroid with the formula:</p>";
+                    str+="<table class='formula'>";
+                    str+="<tr>";
+                    str+="<td rowspan=2>C</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td class='numerator'>";
+                    str+="A<sub>1</sub>C<sub>1</sub>+A<sub>2</sub>C<sub>2</sub>";
+                    str+="</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td class='numerator'>";
+                    str+="("+a1+"*"+c1+")+("+a2+"*"+c2+")";
+                    str+="</td>";
+                    str+="<td rowspan=2 class='equalSign'>=</td>";
+                    str+="<td rowspan=2><b>"+C[i]+"</b></td>";
+                    str+="</tr>";
+                    str+="<tr>";
+                    str+="<td class='denominator'>";
+                    str+="A<sub>1</sub>+A<sub>2</sub>";
+                    str+="</td>";
+                    str+="<td class='denominator'>";
+                    str+="("+a1+")+("+a2+")";
+                    str+="</td>";
+                    str+="</tr>";
+                    str+="</table>";
+                    str+="<p>The area is simple sum of the rectangle and triangle areas.</p>";
+                    str+="<h3>Thus, the area for this descriptor is "+A[i]+" and the centroid as calculated is "+C[i]+".</h3>";
                 }
 
             }
