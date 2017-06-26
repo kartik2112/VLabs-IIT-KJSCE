@@ -119,6 +119,7 @@
 }
 .carousel-inner{
     height: auto;
+    transition: height 0.15s ease-out;
 }
 .carousel-indicators li {
     background-color: #0091ff;

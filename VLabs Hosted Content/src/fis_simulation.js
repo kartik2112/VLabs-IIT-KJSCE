@@ -792,7 +792,7 @@ function defuzzify(fuzzyWash)
                 if(fuzzyWash[i].fuzzyVal==1)
                 {
                     A[i]=Number(parseFloat(0.5*(end-start)).toFixed(3));
-                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"="+A[i]+"</p>";
+                    str+="<p>The figure is a triangle. The area can be calculated as <br />A=0.5*("+end+"-"+start+")*"+fuzzyWash[i].fuzzyVal+"=<b>"+A[i]+"</b></p>";
                     p2=board_washing.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     pc2=currBoard.create('point',[C[i],fuzzyWash[i].fuzzyVal],{fixed:true,name:'',size:fixedSize,visible:shouldPointsBeSeen});
                     var pol = board_washing.create('polygon', [p1, p2, p4],{withLines:showLines});
@@ -810,7 +810,7 @@ function defuzzify(fuzzyWash)
                     var a=Number(parseFloat(x2-x1).toFixed(3));
                     var b=Number(parseFloat(end-start).toFixed(3));
                     A[i]=Number(parseFloat((a+b)*0.5*fuzzyWash[i].fuzzyVal).toFixed(3));
-                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=</b>"+A[i]+"</b></p>";
+                    str+="<p>The figure is a trapezium. The area can be calculated as <br />A=0.5*(("+end+"-"+start+")+("+x2+"-"+x1+"))*"+fuzzyWash[i].fuzzyVal+"=<b>"+A[i]+"</b></p>";
                     var pol = board_washing.create('polygon', [p1, p2, p3, p4],{withLines:showLines});
                     var polc = currBoard.create('polygon', [pc1, pc2, pc3, pc4],{withLines:showLines});
                     str+="<h3>Area of the shaded figure is "+A[i]+" and centroid of this region is "+C[i]+".</h3>"
