@@ -233,7 +233,7 @@
               </div><br />
             </div>
             <button class="btn-warning btn-md" onclick="back()">&larr; Edit Inference Table</button>
-            <button class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
+            <button id="proceed" class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button>
             <div id="greaseFuzzy" style="display: none;margin-bottom: 30px;margin-top: 20px;">
             </div>
             <div id="dirtFuzzy" style="display: none;margin-bottom: 30px;">

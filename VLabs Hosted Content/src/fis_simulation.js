@@ -453,6 +453,7 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     $("#washFuzzy").fadeOut(400);
     $("#defuzzifierOP_GraphDiv").fadeOut(400);
     $("#FIS_Carousel").fadeOut(400);
+    document.getElementById('proceed').setAttribute('disabled','disabled');
     //Find fuzzy input using the values
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
@@ -824,6 +825,7 @@ function defuzzify(fuzzyWash)
         }
         document.getElementById('ExplnPart'+i).innerHTML=str;
         $(".carousel-inner").css("height","auto");
+        document.getElementById("proceed").removeAttribute('disabled');
         // console.log("Area:"+A[i]+" Centroid:"+C[i]);  Debugging purposes.
     }
     var num=0;
