@@ -303,7 +303,7 @@
                         if(i==0)
                           str+=' active';
                         str+='" style="padding: 50px;">';
-                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:318px; height:380px;"></div>';
+                        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:395px; height:180px;"></div>';
                         str+='<div id="ExplnPart'+i+'"></div>';
                         str+='</div>';
                         document.writeln(str);
