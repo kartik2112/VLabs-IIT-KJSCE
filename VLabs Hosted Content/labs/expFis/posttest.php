@@ -111,12 +111,12 @@
             <br />
             <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
 
-            <h3>2. What will happen if the learning rate is not decreased with every epoch, i.e. the decay rate is set to zero?</h3>
-            <input type="radio" class="optradio2" name="q2" value="1"> A. The solution, will not be generalized as the network shall then have learnt the training set but not the pattern. Thus, the error on the test data set will be large.<br>
-            <input type="radio" class="optradio2" name="q2" value="2"> B. No effect<br>
-            <input type="radio" class="optradio2" name="q2" value="3"> C. Maybe an effect, but cannot say what it will be<br>
+            <h3>2. What will happen when the crisp input for either grease or dirt or both, cannot be represented as a linguistic term? (Say the Low value for dirt is from 0 to 10%, and Medium value for dirt is 30% to 60%, what will happen if you provide 20% as input?)</h3>
+            <input type="radio" class="optradio2" name="q2" value="1"> A. No effect<br>
+            <input type="radio" class="optradio2" name="q2" value="2"> B. The washing machine will simply ignore that input.<br>
+            <input type="radio" class="optradio2" name="q2" value="3"> C. The fuzzy set generated for that input will be zero, and the washing machine will not be able to operate on those inputs.<br>
             <br />
-            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p>
 
             <h3>3. What is another name for Fuzzy Inference Systems?</h3>
             <input type="radio" class="optradio3" name="q3" value="1"> A. Fuzzy Expert System.<br>
