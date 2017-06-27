@@ -67,6 +67,128 @@
 
             <p class="MsoNormal" style="text-align:justify">
               <!--Theory content goes here -->
+              <p>
+              Fuzzy logic is basically a multi-valued logic that allows intermediate value to be defined between conventional evaluations
+			  like yes/no, true/false and black/white. Notions like warm cold or very cold can be formulated mathematically and processed by
+              computers.
+              </p>
+              <p>
+              <b>Fuzzy inference</b> (reasoning) is the actual process of mapping from a given input to an output using fuzzy logic. 
+              <br>
+              The process involves all the pieces that we have discussed in the previous sections:
+              membership functions, fuzzy logic operators, and if-then rules
+              </p>
+              <p>
+             
+              <b>Fuzzy Interference Systems</b>
+              <br>
+              <p>
+              Fuzzy inference systems have been successfully applied in fields such as automatic control, data classification, decision analysis,
+              expert systems, and computer vision.
+              </p>
+              <p>
+              Because of its multi-disciplinary nature, the fuzzy inference system is known by a number of names, such as fuzzy-rule-based system,
+              fuzzy expert system,
+              fuzzy model,
+              fuzzy associative memory,
+              fuzzy logic controller,
+              and simply fuzzy system. 
+              </p>
+              
+              <p>
+
+              <b>The steps of fuzzy reasoning performed by FISs are:</b>
+<br>
+<br>
+<b>1.</b> Compare the input variables with the membership functions on the antecedent
+part to obtain the membership values of each linguistic label. (this step is often
+called fuzzification.)
+<br>
+<b>2.</b> Combine (usually multiplication or min) the membership values on the premise
+part to get firing strength (deree of fullfillment) of each rule.
+<br>
+<b>3.</b> Generate the qualified consequents (either fuzzy or crisp) or each rule depending
+on the firing strength.
+<br>
+<b>4.</b> Aggregate the qualified consequents to produce a crisp output. (This step is called
+defuzzification.)
+              </p>
+              <p>
+              <b>Architecture</b>
+              <p>
+              <img src="fisarchi.png">
+              </p>
+              <p>
+              <b>Fuzzy Rule Base</b>: Rule base that ontains a number of fuzzy rules.
+              <br>
+              <b>Fuzzification</b>: A process to convert the crisp input to a linguistic variable using
+the membership functions stored in the fuzzy.
+              <br>
+              <b>Inference Engine</b>: Using the fuzzy rules converts the fuzzy
+input to the fuzzy output.
+              <br>
+              <b>Defuzzification</b>: A process to convert the fuzzy output of the inference engine
+to crisp using membership functions analogous to
+the ones used by the fuzzifier.
+              <br>
+              Here we will be using the <b>washing machine</b> which is a common feature in an Indian household.
+              <br>
+               We will formulate a precise mathematical relationship between amount of greese, dirt and the duration of
+washing time required.
+              <br>
+              The input parameters used to solve the above mention problem
+are:
+<ul>
+<li> Greese
+<li> Dirt
+</ul>
+The fuzzy controller takes two inputs, processes the information
+and gives output as washing time.
+<br>
+<p>The two crisp inputs,greese and dirtiness vary from 0 to 100 and
+presented as fuzzy sets defined by their respective membership
+functions.Let the output;washing time be allowed to have three
+linguistic values less,medium and high.Similarly, let the input
+variable; greese be expressed as low,average and
+large and dirtiness of clothes be described as being less,medium
+and high
+</p>
+<br>
+
+<b>Rules</b>
+<p>
+The decision which the fuzzy controller makes is derived from the
+rules which are stored in the database.These are stored in the set
+of rules.Basically the rules are if-then statements that are intuitive
+and easy to understand, since they are nothing but common English
+statements.The set of rules used here to derive the output are:
+<ol>
+<li> if(dirtiness is less) and (greese is low) then (washingtime
+is less).
+<li> if(dirtiness is less) and (greese is average) then (washingtime
+is less).
+<li> if (dirtiness is less) and (greese is large) then (washingtime
+is medium).
+<li> if (dirtiness is medium) and (greese is low) then (washingtime
+is less).
+<li> if (dirtiness is medium) and (greese is average) then
+(washing- time is medium).
+<li> if dirtiness is medium) and (greese is large) then (washingtime
+is high).
+<li> if (dirtiness is high) and (greese is low) then (washingtime
+is medium).
+<li> if (dirtiness is high) and (greese is medium) then (washingtime
+is high).
+<li> if(dirtiness is less) and (greese is high) then (washing- time
+is high).
+
+</ol>
+<br>
+The rules too have been defined in imprecise sense and hence they
+too are not crisp but fuzzy values.The two input parameters after
+being read from the sensors are fuzzified as per the membership
+functon of the respective variables.At last the crisp value of
+washing time is obtained as a answer.
             </p>
         </section>
         <!-- /.content -->
@@ -74,7 +196,7 @@
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
-    </body>
+    </body>to
 </html>
 
 <!-- ./wrapper -->
