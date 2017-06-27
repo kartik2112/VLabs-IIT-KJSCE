@@ -965,8 +965,8 @@ function back(){
 }
 
 function check_vals(elem){
-    var x = elem.value; 
-    if(x>100) x=100; 
-    if(x<0) x=0; 
+    var x = elem.value;
+    if(x>100) x=100;
+    if(x<0) x=0;
     elem.value=x;
 }
