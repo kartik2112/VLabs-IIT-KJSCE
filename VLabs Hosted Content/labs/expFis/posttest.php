@@ -119,13 +119,14 @@
             <br />
             <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
 
-            <h3>3. Why do you think these networks are called Self-Organizing?</h3>
+            <h3>3. What is another name for Fuzzy Inference Systems?</h3>
 
-            <input type="radio" class="optradio3" name="q3" value="1"> A. Unsupervised learning, so there is no need to provide the network with input-output pairs.<br>
-            <input type="radio" class="optradio3" name="q3" value="2"> B. The neurons arrange themselves spatially according to the affinity to the clusters.<br>
-            <input type="radio" class="optradio3" name="q3" value="3"> C. None of the mentioned.<br>
+            <input type="radio" class="optradio3" name="q3" value="1"> A. Fuzzy Expert System.<br>
+            <input type="radio" class="optradio3" name="q3" value="2"> B. Fuzzy Logic Controller.<br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. All of the above.<br>
+            <input type="radio" class="optradio3" name="q3" value="4"> D. None of the above.<br>
             <br />
-            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
+            <p id="optradio3Ans" class="testAns" style="display:none;">Ans is C</p>
 
             <h3>4.	Where have Fuzzy Inference Systems been implemented?</h3>
 
@@ -135,7 +136,7 @@
             <input type="radio" class="optradio4" name="q4" value="4"> D. Automatic control, decision analysis and data classification.<br>
 
             <br />
-            <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
+            <p id="optradio4Ans" class="testAns" style="display:none;">Ans is D</p>
 
             <br><br>
           </p>
