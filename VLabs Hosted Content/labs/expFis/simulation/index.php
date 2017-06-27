@@ -232,11 +232,11 @@
             </h4>
             <div class="form-group row">
               <div class="material-input" data-toggle="tooltip" title="How much grease does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" step="10" onchange="check_vals(this);" required/>
+                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" onchange="check_vals(this);" required/>
                 <label class="m_label" for="grease_trial">Grease %</label>
               </div>
               <div class="material-input" data-toggle="tooltip" title="How much dirt does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" step="10" onchange="check_vals(this);" required>
+                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" onchange="check_vals(this);" required>
                 <label class="m_label" for="dirt_trial">Dirt %</label>
               </div><br />
             </div>
