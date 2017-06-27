@@ -116,14 +116,14 @@
                       document.writeln("<div class=\"descr\" id=\"g_d_"+grease_descriptors[i].id+"\">");
                       if(i==0)
                       {
-                          document.writeln('<input type="number" max="100" min="0" placeholder="inf" disabled />');
+                          document.writeln('<input class="line_input" type="number" max="100" min="0" placeholder="inf" disabled />');
                       }
                       else{
-                          document.writeln('<input type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
+                          document.writeln('<input class="line_input" type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
-                      if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
-                      else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
+                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
+                      if(i==grease_descriptors.length-1) document.writeln("<input class='line_input' type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
+                      else document.writeln("<input class='line_input' type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
                   </script>
@@ -150,7 +150,7 @@
                       else{
                           document.writeln('<input type="number" max="100" min="0" value='+dirt_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value="+dirt_descriptors[i].name+" />");
+                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value="+dirt_descriptors[i].name+" />");
                       if(i==dirt_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"d3\" onclick=\"rem_descriptor('d',3)\"><b>-</b></button>");
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+dirt_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
@@ -178,9 +178,17 @@
                       else{
                           document.writeln('<input type="number" max="100" min="0" value='+wash_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input type=\"text\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
+                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
                       console.log(wash_descriptors[i].name);
-                      if(i>=wash_descriptors.length-2) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"120\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"t"+(i+1)+"\" onclick=\"rem_descriptor('t',"+(i+1)+")\"><b>-</b></button>");
+                      if(i>=wash_descriptors.length-2) {
+                        var str_to_put = "<input type=\"number\" max=\"100\" min=\"0\" ";
+                        if(i == wash_descriptors.length-1){
+                          str_to_put += "placeholder=\"120\" disabled ";
+                        }
+                        else str_to_put += "value='75'";
+                        str_to_put += "title=\"When descriptor's membership value reaches zero\" /><button id=\"t"+(i+1)+"\" onclick=\"rem_descriptor('t',"+(i+1)+")\"><b>-</b></button>";
+                        document.writeln(str_to_put);
+                      }
                       else document.writeln("<input type=\"number\" max=\"100\" min=\"0\" value="+wash_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
                     }
@@ -191,7 +199,7 @@
                   <button>+</button>
                   <p>Add descriptor</p>
                 </div>
-                <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">3</span></p>
+                <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">4</span></p>
               </div>
               <div style="clear: both;">
                 <button id="save" class="btn-warning btn-md" onclick="save();" data-toggle="tooltip" title="You will see the effect of your changes below">View changes</button>

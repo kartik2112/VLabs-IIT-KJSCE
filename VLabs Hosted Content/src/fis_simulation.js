@@ -1,5 +1,5 @@
 var n_descriptor_grease = 3;    //To keep track for new id assignment
-var n_descriptor_dirt = 3, n_descriptor_wash = 3;
+var n_descriptor_dirt = 3, n_descriptor_wash = 4;
 var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3,4];  //To keep track of ids of each descriptor
 var dirt_descriptors = [{id:1,name:"Low",start:999,end:65},
                     {id:2,name:"Medium",start:15,end:75},
