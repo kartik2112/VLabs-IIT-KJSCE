@@ -17,6 +17,38 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <script>
+            $(document).ready(function(){
+                $(".optradio1").click(function(){
+                    ////alert("clicked");
+                    $("#optradio1Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio1Ans").offset().top-300
+                    }, 1000);
+                });
+                $(".optradio2").click(function(){
+                    //alert("clicked");
+                    $("#optradio2Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio2Ans").offset().top-300
+                    }, 1000);
+                });
+                $(".optradio3").click(function(){
+                    //alert("clicked");
+                    $("#optradio3Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio3Ans").offset().top-300
+                    }, 1000);
+                });
+                $(".optradio4").click(function(){
+                    //alert("clicked");
+                    $("#optradio4Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio4Ans").offset().top-300
+                    }, 1000);
+                });
+            });
+        </script>
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -53,7 +85,7 @@
         </nav>
       </header>
             <?php include 'pane.php'; ?>
-            
+
             <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -66,9 +98,41 @@
         <section class="content">
           <h3 style="margin-top:5%">Post Test</h3>
           <p class="MsoNormal" style="text-align:justify">
+            <h3>1. What do you think is the use of the learning rate?</h3>
+            <input type="radio" class="optradio1" name="q1" value="1">A. Always increases the weights<br>
+            <input type="radio" class="optradio1" name="q1" value="2">B. Always decreases the weights<br>
+            <input type="radio" class="optradio1" name="q1" value="3">C. Adjusts the weights with respect to the input<br>
+            <input type="radio" class="optradio1" name="q1" value="4">D. No effect<br>
+            <br />
+            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is C</p>
 
-            <!-- Post Test content goes here -->
-            
+            <h3>2. What will happen if the learning rate is not decreased with every epoch, i.e. the decay rate is set to zero?</h3>
+
+            <input type="radio" class="optradio2" name="q2" value="1"> A. The solution, will not be generalized as the network shall then have learnt the training set but not the pattern. Thus, the error on the test data set will be large.<br>
+            <input type="radio" class="optradio2" name="q2" value="2"> B. No effect<br>
+            <input type="radio" class="optradio2" name="q2" value="3"> C. Maybe an effect, but cannot say what it will be<br>
+            <br />
+            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
+
+            <h3>3. Why do you think these networks are called Self-Organizing?</h3>
+
+            <input type="radio" class="optradio3" name="q3" value="1"> A. Unsupervised learning, so there is no need to provide the network with input-output pairs.<br>
+            <input type="radio" class="optradio3" name="q3" value="2"> B. The neurons arrange themselves spatially according to the affinity to the clusters.<br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. None of the mentioned.<br>
+            <br />
+            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
+
+            <h3>4.	Where have Fuzzy Inference Systems been implemented?</h3>
+
+            <input type="radio" class="optradio4" name="q4" value="1"> A. Wireless services, heat control and printers.<br>
+            <input type="radio" class="optradio4" name="q4" value="2"> B. Restrict power usage, telephone lines and sort data.<br>
+            <input type="radio" class="optradio4" name="q4" value="3"> C. Simulink, boiler and CD recording.<br>
+            <input type="radio" class="optradio4" name="q4" value="4"> D. Automatic control, decision analysis and data classification.<br>
+
+            <br />
+            <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
+
+            <br><br>
           </p>
         </section>
         <!-- /.content -->
