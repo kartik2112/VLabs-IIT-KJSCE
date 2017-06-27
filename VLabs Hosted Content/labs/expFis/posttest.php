@@ -103,16 +103,15 @@
         <section class="content">
           <h3 style="margin-top:5%">Post Test</h3>
           <p class="MsoNormal" style="text-align:justify">
-            <h3>1. What do you think is the use of the learning rate?</h3>
-            <input type="radio" class="optradio1" name="q1" value="1">A. Always increases the weights<br>
-            <input type="radio" class="optradio1" name="q1" value="2">B. Always decreases the weights<br>
-            <input type="radio" class="optradio1" name="q1" value="3">C. Adjusts the weights with respect to the input<br>
-            <input type="radio" class="optradio1" name="q1" value="4">D. No effect<br>
+            <h3>1. What does the final washing time depend on?</h3>
+            <input type="radio" class="optradio1" name="q1" value="1">A. Inference rules.<br>
+            <input type="radio" class="optradio1" name="q1" value="2">B. Grease and dirt percent.<br>
+            <input type="radio" class="optradio1" name="q1" value="3">C. Membership functions of grease, dirt and wash time.<br>
+            <input type="radio" class="optradio1" name="q1" value="4">D. No effect.<br>
             <br />
-            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is C</p>
+            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
 
             <h3>2. What will happen if the learning rate is not decreased with every epoch, i.e. the decay rate is set to zero?</h3>
-
             <input type="radio" class="optradio2" name="q2" value="1"> A. The solution, will not be generalized as the network shall then have learnt the training set but not the pattern. Thus, the error on the test data set will be large.<br>
             <input type="radio" class="optradio2" name="q2" value="2"> B. No effect<br>
             <input type="radio" class="optradio2" name="q2" value="3"> C. Maybe an effect, but cannot say what it will be<br>
@@ -120,7 +119,6 @@
             <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
 
             <h3>3. What is another name for Fuzzy Inference Systems?</h3>
-
             <input type="radio" class="optradio3" name="q3" value="1"> A. Fuzzy Expert System.<br>
             <input type="radio" class="optradio3" name="q3" value="2"> B. Fuzzy Logic Controller.<br>
             <input type="radio" class="optradio3" name="q3" value="3"> C. All of the above.<br>
@@ -129,12 +127,10 @@
             <p id="optradio3Ans" class="testAns" style="display:none;">Ans is C</p>
 
             <h3>4.	Where have Fuzzy Inference Systems been implemented?</h3>
-
             <input type="radio" class="optradio4" name="q4" value="1"> A. Wireless services, heat control and printers.<br>
             <input type="radio" class="optradio4" name="q4" value="2"> B. Restrict power usage, telephone lines and sort data.<br>
             <input type="radio" class="optradio4" name="q4" value="3"> C. Simulink, boiler and CD recording.<br>
             <input type="radio" class="optradio4" name="q4" value="4"> D. Automatic control, decision analysis and data classification.<br>
-
             <br />
             <p id="optradio4Ans" class="testAns" style="display:none;">Ans is D</p>
 
