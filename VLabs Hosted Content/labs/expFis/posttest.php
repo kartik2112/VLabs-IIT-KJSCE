@@ -107,9 +107,9 @@
             <input type="radio" class="optradio1" name="q1" value="1">A. Inference rules.<br>
             <input type="radio" class="optradio1" name="q1" value="2">B. Grease and dirt percent.<br>
             <input type="radio" class="optradio1" name="q1" value="3">C. Membership functions of grease, dirt and wash time.<br>
-            <input type="radio" class="optradio1" name="q1" value="4">D. No effect.<br>
+            <input type="radio" class="optradio1" name="q1" value="4">D. All of the above.<br>
             <br />
-            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
+            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
 
             <h3>2. What will happen if the learning rate is not decreased with every epoch, i.e. the decay rate is set to zero?</h3>
             <input type="radio" class="optradio2" name="q2" value="1"> A. The solution, will not be generalized as the network shall then have learnt the training set but not the pattern. Thus, the error on the test data set will be large.<br>
