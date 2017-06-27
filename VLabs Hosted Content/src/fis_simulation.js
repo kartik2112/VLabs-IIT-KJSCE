@@ -621,13 +621,32 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
         defuzzify(fuzzyWash);
     },4500);
 }
-var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
 function defuzzify(fuzzyWash)
 {
     $("#defuzz-description").fadeIn(800);
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     var A=[];
     var C=[];
+    var str="";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+        str+='<li data-target="#FIS_Carousel" data-slide-to="'+i+'" ';
+        if(i==0)
+          str+='class="active" ';
+        str+='data-toggle="tooltip" data-placement="bottom" title="Area and centroid calculation for '+wash_descriptors[i].name+' descriptor."></li>';
+    }
+    document.getElementById('indicator').innerHTML=str;
+    str="";
+    for (var i = 0; i < wash_descriptors.length; i++) {
+        str+='<div class="item';
+        if(i==0)
+          str+=' active';
+        str+='" style="padding: 50px;">';
+        str+='<div id="expln'+i+'_GraphDiv" class="jxgbox" style="width:570px; height:180px;"></div>';
+        str+='<div id="ExplnPart'+i+'"></div>';
+        str+='</div>';
+    }
+    document.getElementById('slides').innerHTML=str;
+    var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
     var explnBoards=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
       var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
