@@ -232,11 +232,11 @@
             </h4>
             <div class="form-group row">
               <div class="material-input" data-toggle="tooltip" title="How much grease does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" step="10" onchange="check_vals(this);" required/>
+                <input class="m_input" class="form-control" type="number" min=0 max=100 id="grease_trial" onchange="check_vals(this);" required/>
                 <label class="m_label" for="grease_trial">Grease %</label>
               </div>
               <div class="material-input" data-toggle="tooltip" title="How much dirt does your clothes have?">
-                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" step="10" onchange="check_vals(this);" required>
+                <input class="m_input" class="form-control" type="number" min="0" max="100" id="dirt_trial" onchange="check_vals(this);" required>
                 <label class="m_label" for="dirt_trial">Dirt %</label>
               </div><br />
             </div>
@@ -254,22 +254,20 @@
             <p id="defuzz-description" style="margin: 20px 0;font-size: 17px;display: none;">We can calculate the defuzzified output using the centroid method. For that we'll need to calculate the areas and the centroids for all descriptors.</p>
             <div id="FIS_Carousel" class="carousel slide changingBlocks" data-ride="carousel"
             data-interval="false" style="width: 550px;display:none;">
-                <!-- Indicators generated dynamically-->
-                <script type="text/javascript">
-                  var str='<ol class="carousel-indicators">';
-                  document.writeln(str);
-                  for (var i = 0; i < wash_descriptors.length; i++) {
-                      var str='<li data-target="#FIS_Carousel" data-slide-to="'+i+'" ';
-                      if(i==0)
-                        str+='class="active" ';
-                      str+='data-toggle="tooltip" data-placement="bottom" title="Area and centroid calculation for '+wash_descriptors[i].name+' descriptor."></li>';
-                      document.writeln(str);
-                  }
-                  document.writeln('</ol>');
-                </script>
-
+              <ol id="indicator" class="carousel-indicators">
+              </ol>
+              <div  id='slides' class="carousel-inner" style="margin: 0 auto; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+              </div>
+              <a class="left carousel-control" href="#FIS_Carousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" style="color: #006ed7"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#FIS_Carousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" style="color: #006ed7"></span>
+                <span class="sr-only">Next</span>
+              </a>
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" style="margin: 0 auto; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                <!-- <div class="carousel-inner" style="margin: 0 auto; width: 740px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
                   <script type="text/javascript">
                     for (var i = 0; i < wash_descriptors.length; i++) {
                         var str='<div class="item';
@@ -282,17 +280,10 @@
                         document.writeln(str);
                     }
                   </script>
-                </div>
+                </div> -->
 
                 <!-- Left and right controls -->
-                <a class="left carousel-control" href="#FIS_Carousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" style="color: #006ed7"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#FIS_Carousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" style="color: #006ed7"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+
             </div>
             <div id="Final_calculation" style="display:none;padding-top: 25px"></div>
             <div id="Final_result" style="display:none;padding-top: 15px"></div>

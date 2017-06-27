@@ -126,11 +126,12 @@
 }
 .formula{
     text-align: center;
+    white-space: nowrap;
 }
 .equalSign
 {
-    padding-left: 13px;
-    padding-right: 13px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .numerator{
     border-bottom: 1px solid black;
@@ -192,12 +193,12 @@
     float: left;
 }
 .line_input{
-    border: none;
+    border: 0.3px solid transparent;
     background: transparent;
     border-bottom: 1px solid black;
     transition-duration: 1s;
 }
-.line_input:hover{
+.line_input:hover, .line_input:focus{
     border: 0.3px solid #999999;
     background: white;
     transition-duration: 1s;
