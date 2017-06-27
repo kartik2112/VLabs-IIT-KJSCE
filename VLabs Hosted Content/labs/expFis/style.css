@@ -197,7 +197,7 @@
     border-bottom: 1px solid black;
     transition-duration: 1s;
 }
-.line_input:hover{
+.line_input:hover, .line_input:focus{
     border: 0.3px solid #999999;
     background: white;
     transition-duration: 1s;
