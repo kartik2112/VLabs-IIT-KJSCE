@@ -145,7 +145,7 @@ are:
 The fuzzy controller takes two inputs, processes the information
 and gives output as washing time.
 <br>
-<p>The two crisp inputs,quantity and dirtiness vary from 0 to 10 and
+<p>The two crisp inputs,greese and dirtiness vary from 0 to 100 and
 presented as fuzzy sets defined by their respective membership
 functions.Let the output;washing time be allowed to have three
 linguistic values less,medium and high.Similarly, let the input
@@ -159,7 +159,7 @@ and high
 <p>
 The decision which the fuzzy controller makes is derived from the
 rules which are stored in the database.These are stored in the set
-of rules.Basically the rules are if-rhen statements that are intuitive
+of rules.Basically the rules are if-then statements that are intuitive
 and easy to understand, since they are nothing but common English
 statements.The set of rules used here to derive the output are:
 <ol>
