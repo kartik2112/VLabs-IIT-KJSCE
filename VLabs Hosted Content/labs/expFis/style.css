@@ -192,7 +192,7 @@
     float: left;
 }
 .line_input{
-    border: none;
+    border: 0.3px solid transparent;
     background: transparent;
     border-bottom: 1px solid black;
     transition-duration: 1s;
