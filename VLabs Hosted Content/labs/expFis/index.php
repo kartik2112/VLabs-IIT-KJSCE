@@ -64,7 +64,7 @@
                     <section class="content">
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
-
+                    Simulating how fuzzy logic can be used to infer the time required to run a Washing machine, given the amount dirt and grease on clothes.
                     <!--Aim of experiment -->
                     </p>
                 </section>
