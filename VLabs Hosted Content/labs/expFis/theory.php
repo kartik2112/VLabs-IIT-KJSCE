@@ -17,6 +17,11 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <style>
+          p,b,li{
+            font-size: 15px;
+          }
+        </style>
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -131,55 +136,56 @@ input to the fuzzy output.
 to crisp using membership functions analogous to
 the ones used by the fuzzifier.
               <br>
+              <br>
               Here we will be using the <b>washing machine</b> which is a common feature in an Indian household.
               <br>
-               We will formulate a precise mathematical relationship between amount of greese, dirt and the duration of
+               We will formulate a precise mathematical relationship between amount of grease, dirt and the duration of
 washing time required.
               <br>
               The input parameters used to solve the above mention problem
 are:
 <ul>
-<li> Greese
+<li> Grease
 <li> Dirt
 </ul>
 The fuzzy controller takes two inputs, processes the information
 and gives output as washing time.
 <br>
-<p>The two crisp inputs,greese and dirtiness vary from 0 to 100 and
+<p>The two crisp inputs, grease and dirtiness vary from 0 to 100 and
 presented as fuzzy sets defined by their respective membership
-functions.Let the output;washing time be allowed to have three
-linguistic values less,medium and high.Similarly, let the input
-variable; greese be expressed as low,average and
+functions. Let the output: washing time be allowed to have three
+linguistic values less, medium and high. Similarly, let the input
+variable: grease be expressed as low, average and
 large and dirtiness of clothes be described as being less,medium
-and high
+and high.
 </p>
 <br>
 
 <b>Rules</b>
 <p>
 The decision which the fuzzy controller makes is derived from the
-rules which are stored in the database.These are stored in the set
+rules which are stored in the database. These are stored in the set
 of rules.Basically the rules are if-then statements that are intuitive
 and easy to understand, since they are nothing but common English
-statements.The set of rules used here to derive the output are:
+statements. For example, the set of rules that can be used to derive the output:
 <ol>
-<li> if(dirtiness is less) and (greese is low) then (washingtime
+<li> if(dirtiness is less) and (grease is low) then (washingtime
 is less).
-<li> if(dirtiness is less) and (greese is average) then (washingtime
+<li> if(dirtiness is less) and (grease is average) then (washingtime
 is less).
-<li> if (dirtiness is less) and (greese is large) then (washingtime
+<li> if (dirtiness is less) and (grease is large) then (washingtime
 is medium).
-<li> if (dirtiness is medium) and (greese is low) then (washingtime
+<li> if (dirtiness is medium) and (grease is low) then (washingtime
 is less).
-<li> if (dirtiness is medium) and (greese is average) then
+<li> if (dirtiness is medium) and (grease is average) then
 (washing- time is medium).
-<li> if dirtiness is medium) and (greese is large) then (washingtime
+<li> if dirtiness is medium) and (grease is large) then (washingtime
 is high).
-<li> if (dirtiness is high) and (greese is low) then (washingtime
+<li> if (dirtiness is high) and (grease is low) then (washingtime
 is medium).
-<li> if (dirtiness is high) and (greese is medium) then (washingtime
+<li> if (dirtiness is high) and (grease is medium) then (washingtime
 is high).
-<li> if(dirtiness is less) and (greese is high) then (washing- time
+<li> if(dirtiness is less) and (grease is high) then (washing- time
 is high).
 
 </ol>
