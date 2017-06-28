@@ -17,6 +17,17 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="style.css"/>
+        <style>
+          .options{
+            font-size: 16px;
+            margin-left: 20px;
+          }
+          input{
+            float: left;
+          }
+        </style>
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -67,7 +78,13 @@
           <p class="MsoNormal" style="text-align:justify">
 
             <!-- Pre Test content goes here -->
+            <h3>1. What is Fuzzy Inference System?</h3>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">The process of formulating the mapping from a given input to an output using fuzzy logic.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Changing the output value to match the input value to give it an equal balance.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Having a larger output than the input.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Having a smaller output than the input.</p>
             
+            <button class="btn-success" onclick="check()">Check</button>
           </p>
         </section>
         <!-- /.content -->
@@ -75,6 +92,21 @@
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
+        <script>
+          function check(){
+            correct = [0];
+            for(var q=1;q<=correct.length;q++){
+              var ans1 = document.getElementsByClassName('q'+q);
+              var op = document.getElementsByClassName('options'+q);
+              for(var i=0;i<ans1.length;i++){
+                if(ans1[i].checked && i!=correct[q-1]){
+                  op[i].style.color = "red";
+                }
+              }
+              op[correct[q-1]].style.color = "green";
+            }
+          }
+        </script>
     </body>
 </html>
 
