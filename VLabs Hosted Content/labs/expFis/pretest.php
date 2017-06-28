@@ -96,6 +96,12 @@
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">C. Both A & B</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">D. None of these</p>
 
+            <h3>If there are 3 descriptors for dirt and 2 descriptors for grease, how many rules must be defined in Fuzzy rule base?</h3>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">A. 5</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">B. 6</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">C. Depends on implementation</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">D. None of these</p>
+
             <button class="btn-success" onclick="check()">Check</button>
           </p>
         </section>
@@ -106,7 +112,7 @@
         </div>
         <script>
           function check(){
-            correct = [0,2,2];
+            correct = [0,2,2,1];
             for(var q=1;q<=correct.length;q++){
               var ans1 = document.getElementsByClassName('q'+q);
               var op = document.getElementsByClassName('options'+q);
