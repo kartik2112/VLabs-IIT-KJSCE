@@ -79,11 +79,23 @@
 
             <!-- Pre Test content goes here -->
             <h3>1. What is Fuzzy Inference System?</h3>
-            <input type="radio" class="q1" name="q1"/> <p class="options1 options">The process of formulating the mapping from a given input to an output using fuzzy logic.</p>
-            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Changing the output value to match the input value to give it an equal balance.</p>
-            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Having a larger output than the input.</p>
-            <input type="radio" class="q1" name="q1"/> <p class="options1 options">Having a smaller output than the input.</p>
-            
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">A. The process of formulating the mapping from a given input to an output using fuzzy logic.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">B. Changing the output value to match the input value to give it an equal balance.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">C. Having a larger output than the input.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">D. Having a smaller output than the input.</p>
+            <br>
+            <h3>What are the 2 types of Fuzzy Inference Systems?</h3>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">A. Model-Type and System-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">B. Momfred-Type and Semigi-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">C. Mamdani-Type and Sugeno-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">D. Mihni-Type and Sujgani-Type</p>
+            <br>
+            <h3>What operations are performed during inference in a Fuzzy Inference System?</h3>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">A. Fuzzification</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">B. Defuzzification</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">C. Both A & B</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">D. None of these</p>
+
             <button class="btn-success" onclick="check()">Check</button>
           </p>
         </section>
@@ -94,7 +106,7 @@
         </div>
         <script>
           function check(){
-            correct = [0];
+            correct = [0,2,2];
             for(var q=1;q<=correct.length;q++){
               var ans1 = document.getElementsByClassName('q'+q);
               var op = document.getElementsByClassName('options'+q);
@@ -104,6 +116,7 @@
                 }
               }
               op[correct[q-1]].style.color = "green";
+              op[correct[q-1]].style.fontWeight = "bold";
             }
           }
         </script>
