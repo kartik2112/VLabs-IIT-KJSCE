@@ -67,7 +67,23 @@
           <p class="MsoNormal" style="text-align:justify">
 
            <!--Reference content goes here -->
-            
+                <ol>
+                      <li><a href="http://www.ijcst.com/vol42/2/yousuf.pdf">http://www.ijcst.com/vol42/2/yousuf.pdf</a></li>
+                      <li><a href="https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf">https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf</a></li>
+                        </ol>                        
+                    </p>
+                    <b> Developed By :-</b><br>
+                    <ol>
+                        <li>Kartik Shenoy</li>
+                        <li>Meet Mukadam</li>
+                        <li>Vinay Pandya</li>                        
+                        <li>Varun Rao</li>
+                        <li>Abhishek Mahajani</li>
+                        <li>Tejas Dastane</li>
+                        <li>Manmath Paste</li>                        
+                        <li>Abhishek Ananthakrishnan</li>
+                        <li>Nitin Mishra</li>
+                    </ol>
           </p>
         </section>
         <!-- /.content -->
