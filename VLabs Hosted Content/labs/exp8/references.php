@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 4;
+    $_SESSION["currPage"] = 8;
 ?>
 <html>
     <head>
@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        <?php
-            include '../../common/header.html';
+        <?php include '../../common/header.html';
             include 'lab_name.php';
             $lab_name = $_SESSION['lab_name'];
             $exp_name = $_SESSION['exp_name'];
@@ -53,7 +52,7 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Procedure</li>
+                            <li class="active">References</li>
                         </ol>
                     </section>
                 </nav>
@@ -69,24 +68,28 @@
                     </h1>
                 </section>
                 <!-- Main content -->
-                <section class="content" id="pro" style="font-size: larger">
-                    <h3 style="margin-top:5%">Procedure</h3>
+                <section class="content">
+                    <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!--Theory content goes here -->
-                        
-                        There are namely three sets: Cold, Warm & Hot.<br />
-                        The following procedure is to be followed for the simulation:
+                        <!--Reference content goes here -->
+                        <ol>
+                            <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
+                            <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
+                        </ol>                        
                     </p>
+                    <b> Developed By :-</b><br>
                     <ol>
-                        <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
-                        <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
-                        <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
-                        <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>
+                        <li>Manmath Paste</li>
+                        <li>Nitin Mishra</li>
+                        <li>Meet Mukadam</li>
+                        <li>Kartik Shenoy</li>
+                        <li>Vinay Pandya</li> 
+                        <li>Abhishek Ananthakrishnan</li>                       
+                        <li>Varun Rao</li>
+                        <li>Abhishek Mahajani</li>
+                        <li>Tejas Dastane</li>               
+                        
                     </ol>
-                    <p>After the entire simulation is completed, 
-                        you may select other values for each set & I/P and the  run the simulation.</p>
-                                       
                 </section>
                 <!-- /.content -->
             </div>

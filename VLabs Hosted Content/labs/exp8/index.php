@@ -1,7 +1,8 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 4;
+    $_SESSION["currPage"] = 1;
 ?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -53,45 +54,28 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Procedure</li>
+                            <li class="active">Aim</li>
                         </ol>
                     </section>
                 </nav>
             </header>
             <?php include 'pane.php'; ?>
-            <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
+                        <?php echo $exp_name?> 
                     </h1>
                 </section>
                 <!-- Main content -->
-                <section class="content" id="pro" style="font-size: larger">
-                    <h3 style="margin-top:5%">Procedure</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!--Theory content goes here -->
-                        
-                        There are namely three sets: Cold, Warm & Hot.<br />
-                        The following procedure is to be followed for the simulation:
-                    </p>
-                    <ol>
-                        <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
-                        <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
-                        <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
-                        <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>
-                    </ol>
-                    <p>After the entire simulation is completed, 
-                        you may select other values for each set & I/P and the  run the simulation.</p>
-                                       
-                </section>
-                <!-- /.content -->
+                <section class="content">
+                    <h3 style="margin-top:5%"> Aim </h3>
+                    <p style="font-size:130%; margin-top:2%">
+                        <!--Aim of experiment -->
+                        To understand the concept of Fuzzy Logic, Fuzzy Sets and Fuzzification.
+                </section>                
             </div>
             <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
         </div>
     </body>
 </html>
@@ -108,4 +92,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

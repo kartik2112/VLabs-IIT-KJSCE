@@ -72,7 +72,7 @@
                     <h3 style="margin-top:5%"> Aim </h3>
                     <p style="font-size:130%; margin-top:2%">
                         <!--Aim of experiment -->
-                        To understand the concept of Fuzzy Logic, Fuzzy Sets and Fuzzification.
+                        To understand the concept of Defuzzification.
                 </section>                
             </div>
             <?php include 'footer.html'; ?>

@@ -52,7 +52,7 @@
           </section>
         </nav>
       </header>
-            <?php include 'pane.php'; ?>
+            <?php include 'pane.html'; ?>
              <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->

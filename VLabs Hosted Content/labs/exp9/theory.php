@@ -73,68 +73,31 @@
                     <h3 style="margin-top:5%">Theory</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
-                        <h3>Introduction to Fuzzy Logic:</h3>
+                        <h3>Defuzzification:</h3>
                         <p>
-                        Fuzzy Logic is a form of multi-valued logic to deal with reasoning that is approximate rather than precise. This is in contradiction with <strong>crisp logic</strong> that deals with precise values. Also, binary sets have binary or Boolean logic (either 0 or 1), which finds solution to a particular set of problems. Fuzzy logic variables may have a truth value that ranges between 0 and 1 and is not constrained to the two truth values of classic propositional logic.
+                        Defuzzification is the process of producing a quantifiable result in Crisp logic, given fuzzy sets and corresponding membership degrees. It is the process that maps a fuzzy set to a crisp set. It is typically needed in fuzzy control systems. These will have a number of rules that transform a number of variables into a fuzzy result, that is, the result is described in terms of membership in fuzzy sets. Defuzzification is the conversion of a fuzzy
+                        quantity to a precise quantity, just as
+                        fuzzification is the conversion of a precise
+                        quantity to a fuzzy quantity. µ
                         <br />
-                        Also, as linguistic variables are used in fuzzy logic, these degrees have to managed by specific functions.</p>
-                        <br /><p>
-                        Fuzzy logic is a mathematical tool for dealing with uncertainty. It provides a technique to handle imprecision and information granularity. The fuzzy theory provides a mechanism for representing linguistic constructs such as <strong>high</strong>, <strong>low</strong>, <strong>tall</strong>, <strong>short</strong>, <strong>many</strong>. All these terms are called as <strong>linguistic variables</strong> which represent the uncertainty in the system. In general, fuzzy logic provides an inference structure that enables appropriate human reasoning capabilities. On the contrary, the traditional binary set theory describes crisp events, that is, events that either do or do not occur. It uses probability theory to explain if event will occur, measuring the chance with which a given event is expected to occur. The theory of fuzzy logic is based upon the notion of relative graded membership and so are the functions of cognitive processes. The utility of fuzzy sets lies in their ability to model uncertain or ambiguous data and to provide suitable decisions as in <strong>Fig1.</strong></p>
-                        <br />
-                        <img src="images/Fuzzy_Logic_System.png" height="130" width="400" />
-                        <br /><br />
-                        <strong>Fig1: </strong>A fuzzy logic system accepting imprecise data and providing a decision.
-                        <br /><br />
-                        <h3>Fuzzy Set: </h3>
-                        <p><b>Fuzzy Sets</b> are sets whose elements have degrees of membership. For example, a <b>classic set</b> can be written as { 1, 2, 3, 4 } whereas a ,<b>Fuzzy Set</b> can be written as { (1,0.4), (2,0.7), (3,0.1), (4,0.2)} where in every pair <b>(X,Y), X represents the value of the element whereas Y represents the degree of membership of the element in the set.</b>
-                        <h3>Fuzzification:</h3>
-                        <p><strong>Fuzzification </strong>is the process of changing a real scalar value into a fuzzy value. This is done by the help of fuzzifiers (membership functions).<br />
-                        A <strong>membership function (MF)</strong> is a curve that defines how each point in the input space is mapped to a membership value (or degree of membership) between 0 and 1.</p>
-                        <p>Let us consider an example of temperature ranges to understand the concept of fuzzy sets even better:-
-                        <br />
-                        Fuzzy Linguistic Variables are used to represent qualities spanning a particular spectrum
-                        <br />
-                        Question: What is the temperature?
-                        <br />
-                        Answer: It is warm.
-                        <br />
-                        Question: How warm is it?
-                        <br /><br />
-                        <strong>Temp: {Freezing, Cool, Warm, Hot}</strong><br />
-                        <br />
-                        <img src="images/Temperature_Main.png" height="200" width="400" />
-                        <br />These values (30, 50, 70, 90) can be changed<br />
-                        How cool is 36°F?<br />
-                        It is 30% Cold & 70% Freezing
-                        <br /><br />
-                        <img src="images/Temperature_Ex.png" height="200" width="400" />
-                        <br /><br />
-                        Thus we can say that the value 36°F has a membership value of 0.3 in the Cold set and 0.7 in the Freezing set.
-                        <h4>Membership Functions:
-                        </h4>
-                        The only condition a membership function must really satisfy is that it must vary between 0 and 1. The function itself can be an arbitrary curve whose shape we can define as a function that suits us from the point of view of simplicity, convenience, speed, and efficiency.
-
-                        A classical set might be expressed as<br /><br />
-
-                        A = {x | x > 6} <br /><br />
-
-                        A fuzzy set is an extension of a classical set. If X is the sample space and its elements are denoted by x, then a fuzzy set A in X is defined as a set of ordered pairs. <br /><br />
-
-                        A = {x, µA(x) | x ∊ X}<br /><br />
-
-                        µA(x) is called the membership function (or MF) of x in A. The membership function maps each element of X to a membership value between 0 and 1.<br /><br />
-                        <strong>Following are the different types of membership functions:-</strong>
-                        <br />The simplest membership functions are formed using straight lines. Of these, the simplest is the triangular membership function, and it has the function name <strong>trimf</strong>. It's nothing more than a collection of three points forming a triangle. The trapezoidal membership function, <strong>trapmf</strong>, has a flat top and really is just a truncated triangle curve. These straight line membership functions have the advantage of simplicity.<br /> 
-                        <img src="images/MF1.png" height="200" width="650" /><br />
-                        Two membership functions are built on the Gaussian distribution curve: a simple Gaussian curve and a two-sided composite of two different Gaussian curves. The two functions are <strong>gaussmf</strong> and <strong>gauss2mf</strong>.
-                        The generalized bell membership function is specified by three parameters and has the function name gbellmf. The bell membership function has one more parameter than the Gaussian membership function, so it can approach a non-fuzzy set if the free parameter is tuned. Because of their smoothness and concise notation, Gaussian and bell membership functions <strong>gbellmf</strong> are popular methods for specifying fuzzy sets. Both of these curves have the advantage of being smooth and nonzero at all points.<br /> 
-                        <img src="images/MF2.png" height="200" width="750" /><br />
-                        Although the Gaussian membership functions and bell membership functions achieve smoothness, they are unable to specify asymmetric membership functions, which are important in certain applications. Next we define the sigmoidal membership function <strong>sigmf</strong>, which is either open left or right. Asymmetric and closed (i.e. not open to the left or right) membership functions can be synthesized using two sigmoidal functions, so in addition to the basic sigmf, we also have the difference between two sigmoidal functions, <strong>dsigmf</strong>, and the product of two sigmoidal functions <strong>psigmf</strong>.<br /> 
-                        <img src="images/MF3.png" height="200" width="750" /><br />
-                        Polynomial based curves account for several of the membership functions in the toolbox. Three related membership functions are the Z, S, and Pi curves, all named because of their shape. The function <strong>zmf</strong> is the asymmetrical polynomial curve open to the left, <strong>smf</strong> is the mirror-image function that opens to the right, and <strong>pimf</strong> is zero on both extremes with a rise in the middle.<br /> 
-                        <img src="images/MF4.png" height="200" width="750" /><br /><br />
-                        <strong>A suitable membership function can be chosen based on the application and the requirement of the fuzzy system.</strong></p>
-
+                        <p>
+                        For example, <b>Fig (a)</b> shows the first part of the Fuzzy output and <b>Fig (b)</b> shows the second part of the Fuzzy output.<br /><br />
+                        <img src="images/1.png" height="250" width="400"><img src="images/2.png" height="250" width="400"><br /><br />
+                        Then <b>Fig (c)</b>  shows the union of the two parts (a) and (b).<br /><br /><img src="images/3.png" height="250" width="400"><br /><br />
+                        A fuzzy output process may involve many output parts, and the membership function representing each part of the output can have any shape. The membership function of the fuzzy output need not be normal always.</p>
+                        <h3>Defuzzification Methods: </h3>
+                        <p><b>1. Max-Membership Principle</b><br />
+                        This method is also known as height method and is limited to peak output functions. This method is given by the algebraic expression <br /><b >µ</b>(z*) >= <b>µ</b>(z) for all z ∊ Z.<br /><br /><img src="images/DFM1.jpg" height="200" width="300"><br /><br />
+                        <b>2. Centroid Method</b><br />
+                        This method is also known as center of mass, center of area or center of gravity . It is the most commonly used defuzzification method. The defuzzified output z* is given by <br /><b >z* = ∫µ(z).zdz / ∫µ(z)dz</b><br /><br /><img src="images/DFM2.png" height="200" width="300"><br /><br />
+                        <b>3. Weighted Average Method</b><br />
+                        This method is valid for symmetrical output membership functions only. Each membership function is weighted by its maximum membership value. The output in the case is given by <br /><b >z* = ∑µ(z').z' / ∑µ(z') </b> ; where z' is the maximum value of the membership function.<br /><br /><img src="images/DFM3.png" height="200" width="300"><br /><br />
+                        <b>4. Mean-Max Membership</b><br />
+                        This method is also knows as middle of the maxima. This is closely related to the max-membership method, except that the locations of the maximum membership can be nonunique. The output here is given by <br /><b >z* = ∑z' / n </b> ; where z' is the maximum value of the membership function.<br /><br /><img src="images/DFM4.jpg" height="200" width="300"><br /><br />
+                        <b>5. Center of Sums</b><br />
+                        This method employs the algebraic sum of the individual fuzzy subsets instead of their union. The calculations here are very fast, but the main drawback is that the intersecting areas are added twice. The defuzzified value z* is given by<br /><b >z* = ∫ z*∑µ(z).zdz / ∫ ∑µ(z)dz </b><br /><br /><img src="images/DFM5.jpg" height="200" width="300"><br /><br />
+                        <b>6. Center of Largest Area</b><br />
+                        This method can be adopted whent the output of at least two convex fuzzy subsets which are not overlapping. The output in this case is baised towwards a side of one membership function. When output fuzzy st has at least two convex regions, then the center of gravity of the convex fuzzy subregion having the largest are is used to obtain the defuzzified value z*. The value is given by<br /><b >z* = ∫ µc(z).zdz / ∫ ∑µc(z)dz </b><br /><br /><img src="images/DFM6.jpg" height="200" width="300"><br /><br /></p>
                     </p>
                 </section>
                 <!-- /.content -->
@@ -157,3 +120,4 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
+

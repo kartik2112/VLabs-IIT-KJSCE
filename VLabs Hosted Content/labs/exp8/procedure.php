@@ -73,20 +73,20 @@
                     <h3 style="margin-top:5%">Procedure</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
-                        
-                        There are namely three sets: Cold, Warm & Hot.<br />
+                        This particular simulation is based on the example mentioned in the <b>Theory</b> section of the experiment.
+                    	There are namely three sets: Cold, Warm & Hot.<br />
                         The following procedure is to be followed for the simulation:
                     </p>
                     <ol>
                         <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
                         <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
-                        <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
-                        <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
-                        <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>
+                        <li>Now wait and observe how the I/P is mapped on the graph and the membership values are calculated.</li>
+                        
                     </ol>
-                    <p>After the entire simulation is completed, 
-                        you may select other values for each set & I/P and the  run the simulation.</p>
-                                       
+                    <p>After the entire simulation is completed, you will get a popup indicating this completion. 
+                        Now you may select other values for each set & I/P and the  run the simulation.</p>
+                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
+                                        
                 </section>
                 <!-- /.content -->
             </div>

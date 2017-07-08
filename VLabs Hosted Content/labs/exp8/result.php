@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 8;
+    $_SESSION["currPage"] = 6;
 ?>
 <html>
     <head>
@@ -20,11 +20,12 @@
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
-        <?php include '../../common/header.html';
-              include 'lab_name.php';
-              $lab_name = $_SESSION['lab_name'];
-              $exp_name = $_SESSION['exp_name'];
-         ?>
+        <?php
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
 
         <div class="wrapper">
         <header class="main-header">
@@ -46,14 +47,13 @@
               <li>
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
               </li>
-              <li class="active">References</li>
+              <li class="active">Result</li>
             </ol>
           </section>
         </nav>
       </header>
             <?php include 'pane.php'; ?>
-            
-            <!-- Content Wrapper. Contains page content -->
+             <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -63,34 +63,17 @@
         </section>
         <!-- Main content -->
         <section class="content">
-          <h3 style="margin-top:5%">References</h3>
+          <h3 style="margin-top:5%">Result</h3>
           <p class="MsoNormal" style="text-align:justify">
 
-           <!--Reference content goes here -->
-                <ol>
-                      <li><a href="http://www.ijcst.com/vol42/2/yousuf.pdf">http://www.ijcst.com/vol42/2/yousuf.pdf</a></li>
-                      <li><a href="https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf">https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf</a></li>
-                        </ol>                        
-                    </p>
-                    <b> Developed By :-</b><br>
-                    <ol>
-                        <li>Kartik Shenoy</li>
-                        <li>Meet Mukadam</li>
-                        <li>Vinay Pandya</li>                        
-                        <li>Varun Rao</li>
-                        <li>Abhishek Mahajani</li>
-                        <li>Tejas Dastane</li>
-                        <li>Manmath Paste</li>                        
-                        <li>Abhishek Ananthakrishnan</li>
-                        <li>Nitin Mishra</li>
-                    </ol>
+            <!-- Result content goes here -->
+            
           </p>
         </section>
         <!-- /.content -->
       </div>
       <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
-            
         </div>
     </body>
 </html>

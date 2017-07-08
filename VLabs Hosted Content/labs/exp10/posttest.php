@@ -4,30 +4,24 @@
 ?>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Virtual Labs </title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-        
-        
-        <!-- jQuery 2.2.3 -->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <link href="../../src/Styles.css" rel="stylesheet" />
-        <style>
-            .optradio1{
-                padding:20px;
-            }
-        </style>
-        
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title> Virtual Labs </title>
+      <!-- Tell the browser to be responsive to screen width -->
+      <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <!-- Bootstrap 3.3.6 -->
+      <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+      <!-- Theme style -->
+      <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
+      <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+      <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+
+      <!-- jQuery 2.2.3 -->
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <link href="../../src/Styles.css" rel="stylesheet" />
         <script>
             $(document).ready(function(){
                 $(".optradio1").click(function(){
@@ -61,112 +55,96 @@
             });
         </script>
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
-        
-        
         <?php
-            include '../../common/header.html';
-            include 'lab_name.php';
-            $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
+
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;">
-                        <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
-                        </b>
-                    </p>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <section class="content-header">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
-                                </a>
-                            </li>
-                            <li class="active">Post Test</li>
-                        </ol>
-                    </section>
-                </nav>
-            </header>
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
+        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+    </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+              </li>
+              <li>
+                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+              </li>
+              <li class="active">Post Test</li>
+            </ol>
+          </section>
+        </nav>
+      </header>
             <?php include 'pane.php'; ?>
+
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
-                    </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content">
-                    <h3 style="margin-top:5%">Post Test</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!-- Post Test content goes here -->                        
-						<h3>1.The lambyda(&#955;)-cut set of relation A is given by ?</h3><br>
-                        <input type="radio" class="optradio1" name="q1" value="1">A. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="2">B. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="3">C. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="4">D. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)<=&#955;</sub>}<br><br>
-                        <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
-                        
-                        <h3>2.Which of the following  defuzzification method would be suitable for a given problem </h3>
-						<img src="images/defuzzi1.PNG"><br><br>
-						<h3>i. Weighted average method.</h3>
-						<h3>ii. Mean-max Method.</h3>
-						
-                        <input type="radio" class="optradio2" name="q4" value="1"> A. Both i and ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="2"> B. Only i <br><br>
-                        <input type="radio" class="optradio2" name="q4" value="3"> C. Only ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="4"> D. None of these <br><br>
-                        <br />
-                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is c</p>
-                    </p>
-                        <h3>3.Consider s fuzzy set A <sub>&#816;</sub> ={ 0.2/x1, 0.3/x2, 0.4/x3, 0.7/x4 , 0.1/x5 } then (A)<sub>0.3</sub> is given by</h3>
-                       
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. (A)<sub>0.3</sub>={ x1, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. (A)<sub>0.3</sub>={ x2, x3, x4 } <br><br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. (A)<sub>0.3</sub>={ x1, x2, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. (A)<sub>0.3</sub>={ x3, x4 }<br>      
-                        <br />
-                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
-                            
-                        <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>
-                        <img src="images/dfinal.PNG"><br><br>
-						
-                        <input type="radio" class="optradio4" name="q2" value="1"> A. z<sup>*</sup>=1.2<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="2"> B. z<sup>*</sup>=0.0<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="3"> C. z<sup>*</sup>=4.6<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="4"> D. z<sup>*</sup>=5.41<br><br>
-                        <br />
-                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
-                    </p>
-                </section>
-                <!-- /.content -->
-        
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 align="center"><?php echo $exp_name?>
+            <!-- Write your experiment name -->
+          </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <h3 style="margin-top:5%">Post Test</h3>
+          <p class="MsoNormal" style="text-align:justify">
+            <h3>1. What does the final washing time depend on?</h3>
+            <input type="radio" class="optradio1" name="q1" value="1">A. Inference rules.<br>
+            <input type="radio" class="optradio1" name="q1" value="2">B. Grease and dirt percent.<br>
+            <input type="radio" class="optradio1" name="q1" value="3">C. Membership functions of grease, dirt and wash time.<br>
+            <input type="radio" class="optradio1" name="q1" value="4">D. All of the above.<br>
+            <br />
+            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
+
+            <h3>2. What will happen when the crisp input for either grease or dirt or both, cannot be represented as a linguistic term? (Say the Low value for dirt is from 0 to 10%, and Medium value for dirt is 30% to 60%, what will happen if you provide 20% as input?)</h3>
+            <input type="radio" class="optradio2" name="q2" value="1"> A. No effect<br>
+            <input type="radio" class="optradio2" name="q2" value="2"> B. The washing machine will simply ignore that input.<br>
+            <input type="radio" class="optradio2" name="q2" value="3"> C. The fuzzy set generated for that input will be zero, and the washing machine will not be able to operate on those inputs.<br>
+            <br />
+            <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p>
+
+            <h3>3. What is another name for Fuzzy Inference Systems?</h3>
+            <input type="radio" class="optradio3" name="q3" value="1"> A. Fuzzy Expert System.<br>
+            <input type="radio" class="optradio3" name="q3" value="2"> B. Fuzzy Logic Controller.<br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. All of the above.<br>
+            <input type="radio" class="optradio3" name="q3" value="4"> D. None of the above.<br>
+            <br />
+            <p id="optradio3Ans" class="testAns" style="display:none;">Ans is C</p>
+
+            <h3>4.	Where have Fuzzy Inference Systems been implemented?</h3>
+            <input type="radio" class="optradio4" name="q4" value="1"> A. Wireless services, heat control and printers.<br>
+            <input type="radio" class="optradio4" name="q4" value="2"> B. Restrict power usage, telephone lines and sort data.<br>
+            <input type="radio" class="optradio4" name="q4" value="3"> C. Simulink, boiler and CD recording.<br>
+            <input type="radio" class="optradio4" name="q4" value="4"> D. Automatic control, decision analysis and data classification.<br>
+            <br />
+            <p id="optradio4Ans" class="testAns" style="display:none;">Ans is D</p>
+
+            <br><br>
+          </p>
+        </section>
+        <!-- /.content -->
+      </div>
+      <?php include 'footer.html'; ?>
+      <!-- /.content-wrapper -->
         </div>
-            <div>
-            <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
-            </div>
     </body>
 </html>
+
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -180,4 +158,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

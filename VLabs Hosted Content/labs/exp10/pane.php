@@ -15,7 +15,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="index.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>index.php">
                         <i class="fa fa-files-o"></i> <span>Aim</span>
 
                     </a>
@@ -26,7 +26,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="theory.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>theory.php">
                         <i class="fa fa-files-o"></i>
                         <span>Theory</span>
                     </a>
@@ -37,7 +37,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="pretest.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>pretest.php">
                         <i class="fa fa-files-o"></i> <span>Pre Test</span>
 
                     </a>
@@ -49,7 +49,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="procedure.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>procedure.php">
                         <i class="fa fa-files-o"></i> <span>Procedure</span>
                     </a>
                 </li>
@@ -59,7 +59,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="simulation.php">
+                    <a href="<?php if($_SESSION["currPage"]!=5) echo "simulation/index.php"?>">
                         <i class="fa fa-laptop"></i>
                         <span>Simulation</span>
                         <span class="pull-right-container">
@@ -88,7 +88,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="posttest.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>posttest.php">
                         <i class="fa fa-files-o"></i>
                         <span>Post Test</span>
                         <span class="pull-right-container">
@@ -101,7 +101,7 @@
                     else
                         echo '<li class="treeview">';
                 ?>
-                    <a href="references.php">
+                    <a href="<?php if($_SESSION["currPage"]==5) echo "../"?>references.php">
                         <i class="fa fa-files-o"></i>
                         <span>References</span>
                         <span class="pull-right-container">

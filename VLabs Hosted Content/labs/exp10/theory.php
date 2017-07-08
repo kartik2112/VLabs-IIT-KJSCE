@@ -17,96 +17,194 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        <style>
+          p,b,li{
+            font-size: 15px;
+          }
+        </style>
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-            include '../../common/header.html';
-            include 'lab_name.php';
-            $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
+
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;">
-                        <b>
-                            <?php echo $lab_name?><!-- Write your lab name --> 
-                        </b>
-                    </p>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <section class="content-header">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
-                                </a>
-                            </li>
-                            <li class="active">Theory</li>
-                        </ol>
-                    </section>
-                </nav>
-            </header>
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
+        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+    </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+              </li>
+              <li>
+                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+              </li>
+              <li class="active">Theory</li>
+            </ol>
+          </section>
+        </nav>
+      </header>
             <?php include 'pane.php'; ?>
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
-                    </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content">
-                    <h3 style="margin-top:5%">Theory</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!--Theory content goes here -->
-                        <h3>Defuzzification:</h3>
-                        <p>
-                        Defuzzification is the process of producing a quantifiable result in Crisp logic, given fuzzy sets and corresponding membership degrees. It is the process that maps a fuzzy set to a crisp set. It is typically needed in fuzzy control systems. These will have a number of rules that transform a number of variables into a fuzzy result, that is, the result is described in terms of membership in fuzzy sets. Defuzzification is the conversion of a fuzzy
-                        quantity to a precise quantity, just as
-                        fuzzification is the conversion of a precise
-                        quantity to a fuzzy quantity. µ
-                        <br />
-                        <p>
-                        For example, <b>Fig (a)</b> shows the first part of the Fuzzy output and <b>Fig (b)</b> shows the second part of the Fuzzy output.<br /><br />
-                        <img src="images/1.png" height="250" width="400"><img src="images/2.png" height="250" width="400"><br /><br />
-                        Then <b>Fig (c)</b>  shows the union of the two parts (a) and (b).<br /><br /><img src="images/3.png" height="250" width="400"><br /><br />
-                        A fuzzy output process may involve many output parts, and the membership function representing each part of the output can have any shape. The membership function of the fuzzy output need not be normal always.</p>
-                        <h3>Defuzzification Methods: </h3>
-                        <p><b>1. Max-Membership Principle</b><br />
-                        This method is also known as height method and is limited to peak output functions. This method is given by the algebraic expression <br /><b >µ</b>(z*) >= <b>µ</b>(z) for all z ∊ Z.<br /><br /><img src="images/DFM1.jpg" height="200" width="300"><br /><br />
-                        <b>2. Centroid Method</b><br />
-                        This method is also known as center of mass, center of area or center of gravity . It is the most commonly used defuzzification method. The defuzzified output z* is given by <br /><b >z* = ∫µ(z).zdz / ∫µ(z)dz</b><br /><br /><img src="images/DFM2.png" height="200" width="300"><br /><br />
-                        <b>3. Weighted Average Method</b><br />
-                        This method is valid for symmetrical output membership functions only. Each membership function is weighted by its maximum membership value. The output in the case is given by <br /><b >z* = ∑µ(z').z' / ∑µ(z') </b> ; where z' is the maximum value of the membership function.<br /><br /><img src="images/DFM3.png" height="200" width="300"><br /><br />
-                        <b>4. Mean-Max Membership</b><br />
-                        This method is also knows as middle of the maxima. This is closely related to the max-membership method, except that the locations of the maximum membership can be nonunique. The output here is given by <br /><b >z* = ∑z' / n </b> ; where z' is the maximum value of the membership function.<br /><br /><img src="images/DFM4.jpg" height="200" width="300"><br /><br />
-                        <b>5. Center of Sums</b><br />
-                        This method employs the algebraic sum of the individual fuzzy subsets instead of their union. The calculations here are very fast, but the main drawback is that the intersecting areas are added twice. The defuzzified value z* is given by<br /><b >z* = ∫ z*∑µ(z).zdz / ∫ ∑µ(z)dz </b><br /><br /><img src="images/DFM5.jpg" height="200" width="300"><br /><br />
-                        <b>6. Center of Largest Area</b><br />
-                        This method can be adopted whent the output of at least two convex fuzzy subsets which are not overlapping. The output in this case is baised towwards a side of one membership function. When output fuzzy st has at least two convex regions, then the center of gravity of the convex fuzzy subregion having the largest are is used to obtain the defuzzified value z*. The value is given by<br /><b >z* = ∫ µc(z).zdz / ∫ ∑µc(z)dz </b><br /><br /><img src="images/DFM6.jpg" height="200" width="300"><br /><br /></p>
-                    </p>
-                </section>
-                <!-- /.content -->
-            </div>
-            <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
+             <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 align="center"> <?php echo $exp_name?>
+            <!-- Write your experiment name -->
+          </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <h3 style="margin-top:5%">Theory</h3>
+
+            <p class="MsoNormal" style="text-align:justify">
+              <!--Theory content goes here -->
+              <p>
+              Fuzzy logic is basically a multi-valued logic that allows intermediate value to be defined between conventional evaluations
+			  like yes/no, true/false and black/white. Notions like warm cold or very cold can be formulated mathematically and processed by
+              computers.
+              </p>
+              <p>
+              <b>Fuzzy inference</b> (reasoning) is the actual process of mapping from a given input to an output using fuzzy logic. 
+              <br>
+              The process involves all the pieces that we have discussed in the previous sections:
+              membership functions, fuzzy logic operators, and if-then rules
+              </p>
+              <p>
+             
+              <b>Fuzzy Interference Systems</b>
+              <br>
+              <p>
+              Fuzzy inference systems have been successfully applied in fields such as automatic control, data classification, decision analysis,
+              expert systems, and computer vision.
+              </p>
+              <p>
+              Because of its multi-disciplinary nature, the fuzzy inference system is known by a number of names, such as fuzzy-rule-based system,
+              fuzzy expert system,
+              fuzzy model,
+              fuzzy associative memory,
+              fuzzy logic controller,
+              and simply fuzzy system. 
+              </p>
+              
+              <p>
+
+              <b>The steps of fuzzy reasoning performed by FISs are:</b>
+<br>
+<br>
+<b>1.</b> Compare the input variables with the membership functions on the antecedent
+part to obtain the membership values of each linguistic label. (this step is often
+called fuzzification.)
+<br>
+<b>2.</b> Combine (usually multiplication or min) the membership values on the premise
+part to get firing strength (deree of fullfillment) of each rule.
+<br>
+<b>3.</b> Generate the qualified consequents (either fuzzy or crisp) or each rule depending
+on the firing strength.
+<br>
+<b>4.</b> Aggregate the qualified consequents to produce a crisp output. (This step is called
+defuzzification.)
+              </p>
+              <p>
+              <b>Architecture</b>
+              <p>
+              <img src="fisarchi.png">
+              </p>
+              <p>
+              <b>Fuzzy Rule Base</b>: Rule base that ontains a number of fuzzy rules.
+              <br>
+              <b>Fuzzification</b>: A process to convert the crisp input to a linguistic variable using
+the membership functions stored in the fuzzy.
+              <br>
+              <b>Inference Engine</b>: Using the fuzzy rules converts the fuzzy
+input to the fuzzy output.
+              <br>
+              <b>Defuzzification</b>: A process to convert the fuzzy output of the inference engine
+to crisp using membership functions analogous to
+the ones used by the fuzzifier.
+              <br>
+              <br>
+              Here we will be using the <b>washing machine</b> which is a common feature in an Indian household.
+              <br>
+               We will formulate a precise mathematical relationship between amount of grease, dirt and the duration of
+washing time required.
+              <br>
+              The input parameters used to solve the above mention problem
+are:
+<ul>
+<li> Grease
+<li> Dirt
+</ul>
+The fuzzy controller takes two inputs, processes the information
+and gives output as washing time.
+<br>
+<p>The two crisp inputs, grease and dirtiness vary from 0 to 100 and
+presented as fuzzy sets defined by their respective membership
+functions. Let the output: washing time be allowed to have three
+linguistic values less, medium and high. Similarly, let the input
+variable: grease be expressed as low, average and
+large and dirtiness of clothes be described as being less,medium
+and high.
+</p>
+<br>
+
+<b>Rules</b>
+<p>
+The decision which the fuzzy controller makes is derived from the
+rules which are stored in the database. These are stored in the set
+of rules.Basically the rules are if-then statements that are intuitive
+and easy to understand, since they are nothing but common English
+statements. For example, the set of rules that can be used to derive the output:
+<ol>
+<li> if(dirtiness is less) and (grease is low) then (washingtime
+is less).
+<li> if(dirtiness is less) and (grease is average) then (washingtime
+is less).
+<li> if (dirtiness is less) and (grease is large) then (washingtime
+is medium).
+<li> if (dirtiness is medium) and (grease is low) then (washingtime
+is less).
+<li> if (dirtiness is medium) and (grease is average) then
+(washing- time is medium).
+<li> if dirtiness is medium) and (grease is large) then (washingtime
+is high).
+<li> if (dirtiness is high) and (grease is low) then (washingtime
+is medium).
+<li> if (dirtiness is high) and (grease is medium) then (washingtime
+is high).
+<li> if(dirtiness is less) and (grease is high) then (washing- time
+is high).
+
+</ol>
+<br>
+The rules too have been defined in imprecise sense and hence they
+too are not crisp but fuzzy values.The two input parameters after
+being read from the sensors are fuzzified as per the membership
+functon of the respective variables.At last the crisp value of
+washing time is obtained as a answer.
+            </p>
+        </section>
+        <!-- /.content -->
+      </div>
+      <?php include 'footer.html'; ?>
+      <!-- /.content-wrapper -->
         </div>
-    </body>
+    </body>to
 </html>
+
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -120,4 +218,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

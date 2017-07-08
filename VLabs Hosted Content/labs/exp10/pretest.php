@@ -1,4 +1,4 @@
-	<?php
+<?php
     session_start();
     $_SESSION["currPage"] = 3;
 ?>
@@ -17,146 +17,169 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-        
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <link href="../../src/Styles.css" rel="stylesheet" />
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="style.css"/>
+        <!-- jQuery 2.2.3 -->
+        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <style>
+          .options{
+            font-size: 16px;
+            margin-left: 20px;
+          }
+          input{
+            float: left;
+          }
+          #status{
+            font-weight: bold;
+            font-size: 17px;
+          }
+        </style>
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-            include '../../common/header.html';
-            include 'lab_name.php';
-            $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
+
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;">
-                        <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
-                        </b>
-                    </p>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <section class="content-header">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
-                                </a>
-                            </li>
-                            <li class="active">Pre Test</li>
-                        </ol>
-                    </section>
-                </nav>
-            </header>
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
+        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+    </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+              </li>
+              <li>
+                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+              </li>
+              <li class="active">Pre Test</li>
+            </ol>
+          </section>
+        </nav>
+      </header>
             <?php include 'pane.php'; ?>
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
-                    </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content">
-                    <h3 style="margin-top:5%">Pre Test</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!-- Pre Test content goes here -->
-                        <script>
-                            $(document).ready(function () {
-                                $(".optradio1").click(function () {
-                                    ////alert("clicked");
-                                    $("#optradio1Ans").slideDown();
-                                    $('html, body').animate({
-                                        scrollTop: $("#optradio1Ans").offset().top-300
-                                    }, 1000);
-                                });
-                                $(".optradio2").click(function () {
-                                    //alert("clicked");
-                                    $("#optradio2Ans").slideDown();
-                                    $('html, body').animate({
-                                        scrollTop: $("#optradio2Ans").offset().top-300
-                                    }, 1000);
-                                });
-                                $(".optradio3").click(function () {
-                                    //alert("clicked");
-                                    $("#optradio3Ans").slideDown();
-                                    $('html, body').animate({
-                                        scrollTop: $("#optradio3Ans").offset().top-300
-                                    }, 1000);
-                                });
+             <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 align="center"><?php echo $exp_name?>
+            <!-- Write your experiment name -->
+          </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <h3 style="margin-top:5%">Pre Test</h3>
+          <p class="MsoNormal" style="text-align:justify">
 
-                            });
+            <!-- Pre Test content goes here -->
+            <h3>1. What is Fuzzy Inference System?</h3>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">A. The process of formulating the mapping from a given input to an output using fuzzy logic.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">B. Changing the output value to match the input value to give it an equal balance.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">C. Having a larger output than the input.</p>
+            <input type="radio" class="q1" name="q1"/> <p class="options1 options">D. Having a smaller output than the input.</p>
+            
+            <h3>What are the 2 types of Fuzzy Inference Systems?</h3>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">A. Model-Type and System-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">B. Momfred-Type and Semigi-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">C. Mamdani-Type and Sugeno-Type</p>
+            <input type="radio" class="q2" name="q2"/> <p class="options2 options">D. Mihni-Type and Sujgani-Type</p>
+            
+            <h3>What operations are performed during inference in a Fuzzy Inference System?</h3>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">A. Fuzzification</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">B. Defuzzification</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">C. Both A & B</p>
+            <input type="radio" class="q3" name="q3"/> <p class="options3 options">D. None of these</p>
 
-            </script>
+            <h3>If there are 3 descriptors for dirt and 2 descriptors for grease, how many rules must be defined in Fuzzy rule base?</h3>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">A. 5</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">B. 6</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">C. Depends on implementation</p>
+            <input type="radio" class="q4" name="q4"/> <p class="options4 options">D. None of these</p>
             <br>
-            <h3>1.If A={ 0/x1,0.4/x2,1/x3,0.5/x4 } and B={ 1/x1,0.5/x2,1/x3,0.6/x4 } then &#956 <sub>A &#8745; B</sub> </h3>
-            <input type="radio" class="optradio1" name="q4" value="1"> A. &#956 <sub>A&#8745;B</sub>={ 0.6/X1, 0.8/X2, 1/X3, 0.2/X4 } <br><br>
-            <input type="radio" class="optradio1" name="q4" value="2"> B. &#956 <sub>A&#8745;B</sub>={ 0/X1, 0.5/X2, 1/X3, 0.6/X4 }  <br><br>
-            <input type="radio" class="optradio1" name="q4" value="3"> C. &#956 <sub>A&#8745;B</sub>={ 1/X1, 0.5/X2, 1/X3, 0.6/X4 } <br><br>
-            <input type="radio" class="optradio1" name="q4" value="4"> D. &#956 <sub>A&#8745;B</sub>={ 0/X1, 0.4/X2, 1/X3, 0.5/X4 } <br><br>
-             <br>
-            <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
-             <br>
-            <h3>2. What is the main difference between probability and fuzzy logic ?</h3><br>
-              <input class="optradio2" type="radio" name="q2" value="1">
-              A.  Fuzzy logic is probability in disguise.
-              <br><br>
-              <input class="optradio2" type="radio" name="q2" value="2">
-              B. Fuzzy logic is the likelihood of an event occuring and probablility is the extent of that event.
-              <br><br>
-              <input class="optradio2" type="radio" name="q2" value="3">
-              C. Probability is ADDITIVE, meaning all its values must add up to one.
-              <br><br>
-              <input class="optradio2" type="radio" name="q2" value="4">
-              D. Probability dissipates with decreasing information.
-              <br><br>
-              <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p><br>
-			<br>
-			<h3>3.The bounded sum (A &#8853; B) of two fuzzy set A<sub>&#816;</sub> and BA<sub>&#816;</sub> is defined as </h3>
-                       
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. &#956; <sub>A<sub>&#816;</sub> &#8853; B<sub>&#816;</sub></sub>(x)=min{1,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)}<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. &#956; <sub>A<sub>&#816;</sub> &#8857; B<sub>&#816;</sub></sub>(x)=max{0,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)} <br><br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. &#956; <sub>A<sub>&#816;</sub> + B<sub>&#816;</sub></sub>(x)=&#956; <sub>A<sub>&#816;</sub></sub>(x)+&#956; <sub>B<sub>&#816;</sub></sub>(x)-&#956; <sub>A<sub>&#816;</sub></sub>(x).&#956; <sub>B<sub>&#816;</sub></sub>(x)<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. None of these<br>      
-                        <br />
-                        <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
-                        
-             
-                    </p>
-                </section>
-                <!-- /.content -->
-            </div>
-            <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
+            <p id="status"></p>
+            <button style="cursor: no-drop;" id="check" class="btn-success" onclick="check()" disabled>Check</button>
+          </p>
+        </section>
+        <!-- /.content -->
+      </div>
+      <?php include 'footer.html'; ?>
+      <!-- /.content-wrapper -->
         </div>
+        <script>
+          var answered = [false,false,false,false];
+          function check(){
+            correct = [0,2,2,1];
+            var wrong = 0;
+            for(var q=1;q<=correct.length;q++){
+              var ans1 = document.getElementsByClassName('q'+q);
+              var op = document.getElementsByClassName('options'+q);
+              for(var i=0;i<ans1.length;i++){
+                if(ans1[i].checked && i!=correct[q-1]){
+                  op[i].style.color = "red";
+                  wrong++;
+                }
+              }
+              op[correct[q-1]].style.color = "green";
+              op[correct[q-1]].style.fontWeight = "bold";
+            }
+            if(wrong==0){
+              $("#status").html("All answers correct! Proceed to reading procedure for simulation.");
+              $("#status").css("color","green");
+            }
+            else if(wrong==correct.length){
+              $("#status").html("All answers wrong! Refresh page to try again.");
+              $("#status").css("color","red");
+            }
+            else $("#status").html("You got "+(correct.length-wrong)+" answer(s) correct! Refresh page to try again.");
+          }
+
+          $(document).ready(function(){
+            $(".q1").click(function(){
+              answered[0] = true;
+              validate();
+            });
+            $('.q2').click(function(){
+              answered[1] = true;
+              validate();
+            });
+            $('.q3').click(function(){
+              answered[2] = true;
+              validate();
+            });
+            $('.q4').click(function(){
+              answered[3] = true;
+              validate();
+            });
+          });
+
+          function validate(){
+            for(var i=0;i<answered.length;i++) if(answered[i]==false) return;
+            document.getElementById('check').removeAttribute("disabled");
+            document.getElementById('check').style.cursor = "pointer";
+          }
+          $("#check").tooltip({title: "Check my answers", placement: "bottom"});
+        </script>
     </body>
 </html>
+
 <!-- ./wrapper -->
-<!-- jQuery 2.2.3 -->
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
 <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

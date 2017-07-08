@@ -118,44 +118,43 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->                        
-						<h3>1.The lambyda(&#955;)-cut set of relation A is given by ?</h3><br>
-                        <input type="radio" class="optradio1" name="q1" value="1">A. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="2">B. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="3">C. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="4">D. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)<=&#955;</sub>}<br><br>
+                        <h3>1.What is the core region in a graph ?</h3><br>
+                         <img src="images/fuzzy2.jpg"><br><br>
+                        <input type="radio" class="optradio1" name="q1" value="1">A. (a,d)<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. [b,c]<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. [a,b)<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. [c,d]<br>
                         <br />
-                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
+                        <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
                         
-                        <h3>2.Which of the following  defuzzification method would be suitable for a given problem </h3>
-						<img src="images/defuzzi1.PNG"><br><br>
-						<h3>i. Weighted average method.</h3>
-						<h3>ii. Mean-max Method.</h3>
-						
-                        <input type="radio" class="optradio2" name="q4" value="1"> A. Both i and ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="2"> B. Only i <br><br>
-                        <input type="radio" class="optradio2" name="q4" value="3"> C. Only ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="4"> D. None of these <br><br>
+                        <h3>2.Which of the following graphs yields the result of the operation A OR B.</h3>
+                        <img src="images/ques21.PNG"><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. <image src="images/que2a.PNG"></image><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B.  <image src="images/ques2b.PNG"></image><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. <image src="images/ques2c.PNG"></image><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. None Of the above<br><br>
                         <br />
-                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is c</p>
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
                     </p>
-                        <h3>3.Consider s fuzzy set A <sub>&#816;</sub> ={ 0.2/x1, 0.3/x2, 0.4/x3, 0.7/x4 , 0.1/x5 } then (A)<sub>0.3</sub> is given by</h3>
-                       
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. (A)<sub>0.3</sub>={ x1, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. (A)<sub>0.3</sub>={ x2, x3, x4 } <br><br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. (A)<sub>0.3</sub>={ x1, x2, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. (A)<sub>0.3</sub>={ x3, x4 }<br>      
+                        <h3>3.Considering a graphical representation of the `tallness' of people using its appropriate member function, which of the following combinations are true ?</h3>
+                        <h3>i. TALL is usually the fuzzy subset.</h3>
+                        <h3>ii. HEIGHT is usually the fuzzy set.</h3>
+                        <h3>iii. PEOPLE is usually the universe of discourse.</h3><br>
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. i, ii & iii<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. i & ii only <br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. i, iii only<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. ii & iii.<br>      
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
                             
-                        <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>
-                        <img src="images/dfinal.PNG"><br><br>
-						
-                        <input type="radio" class="optradio4" name="q2" value="1"> A. z<sup>*</sup>=1.2<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="2"> B. z<sup>*</sup>=0.0<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="3"> C. z<sup>*</sup>=4.6<br><br>
-                        <input type="radio" class="optradio4" name="q2" value="4"> D. z<sup>*</sup>=5.41<br><br>
+                        <h3>4.If A={ 0/x1,0.4/x2,1/x3,0.5/x4 } and B={ 1/x1,0.5/x2,1/x3,0.6/x4 } then &#956 <sub>AuB</sub> </h3>
+
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. &#956 <sub>AuB</sub>={ 0.6/X1, 0.8/X2, 1/X3, 0.2/X4 } <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B. &#956 <sub>AuB</sub>={ 0.9/X1, 0.7/X2, 0.1/X3, 1/X4 }  <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. &#956 <sub>AuB</sub>={ 1/X1, 0.5/X2, 1/X3, 0.6/X4 } <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. &#956 <sub>AuB</sub>={ 1/X1, 0.9/X2, 0.6/X3, 0.1/X4 } <br><br>
                         <br />
-                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is C</p>
                     </p>
                 </section>
                 <!-- /.content -->

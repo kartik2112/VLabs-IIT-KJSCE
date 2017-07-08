@@ -18,83 +18,87 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-            include '../../common/header.html';
-            include 'lab_name.php';
-            $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+        include '../../common/header.html';
+        include 'lab_name.php';
+        $lab_name = $_SESSION['lab_name'];
+        $exp_name = $_SESSION['exp_name'];
+        ?>
+
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;">
-                        <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
-                        </b>
-                    </p>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <section class="content-header">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
-                                </a>
-                            </li>
-                            <li class="active">Procedure</li>
-                        </ol>
-                    </section>
-                </nav>
-            </header>
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
+        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+    </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+              </li>
+              <li>
+                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+              </li>
+              <li class="active">Procedure</li>
+            </ol>
+          </section>
+        </nav>
+      </header>
             <?php include 'pane.php'; ?>
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
-                    </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content" id="pro" style="font-size: larger">
-                    <h3 style="margin-top:5%">Procedure</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!--Theory content goes here -->
-                        
-                        There are namely three sets: Cold, Warm & Hot.<br />
-                        The following procedure is to be followed for the simulation:
-                    </p>
-                    <ol>
-                        <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
-                        <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
-                        <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
-                        <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>
-                    </ol>
-                    <p>After the entire simulation is completed, 
-                        you may select other values for each set & I/P and the  run the simulation.</p>
-                                       
-                </section>
-                <!-- /.content -->
-            </div>
-            <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 align="center"><?php echo $exp_name?>
+            <!-- Write your experiment name -->
+          </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content" id="pro">
+          <h3 style="margin-top:5%">Procedure</h3>
+          <p class="MsoNormal" style="text-align:justify">
+                     The Procedures to be followed for the simulation are:
+                     <br>
+                     <br>
+                     <b>Step 1</b>
+                     <ol>
+                     <li> We can edit the descriptor name, start and end value of the descriptor. Also we can add more descriptors upto a total count of 5. The maximum value for greese and dirt input is 100% and for the washing time it is 120 mins.
+                     <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button.</li>
+                     <br>
+                     <li>To proceed to the next step, press the <button data-toggle="tooltip" title="" class="btn-success btn-md" onclick="next();">Continue &rarr;</button> button.
+                     </ol>
+                     <b>Step 2</b>
+                     <ol>
+                     <li>Fill the table shown by choosing the desired output descriptor for each combination of input descriptors.
+                     <li>If you need to make changes to the descriptors, you can do so by clicking the <button class="btn-warning btn-md" data-toggle="tooltip" title="" style=""> &larr; Edit descriptors</button> button.
+                     <li>If you want to proceed to the next step, click the <button data-toggle="tooltip" title="" class="btn-success btn-md" onclick='proceed();'>Proceed</button> button.
+                     </ol>
+                     <br>
+                     <b>Step 3</b>
+                     <ol>
+                     <li>
+                     Here finally you can provide a grease percent and dirt percent as input, and get the required wash time as output.
+                     <li>If you want any changes to be made to the inference table, you can do so by clicking the  <button class="btn-warning btn-md" onclick="back()" data-toggle="tooltip" title="" style="">&larr; Edit Inference Table</button> button.
+                     <li>Once you are completely sure regarding the inference table and descriptors, you can click the <button data-toggle="tooltip" title="" id="proceed" class="btn-success btn-md" onclick="fuzzify(document.getElementById('grease_trial').value,document.getElementById('dirt_trial').value)">Find Wash Time</button> button to get your wash time.
+                     <li>Now the defuzzified output is calculated using the centroid method which would requires the calculation of areas and centroids for all descriptors. The display of calculations involved is displayed in a sequential manner which explains the defuzzification process and the formula involved. Finally the output wash time is displayed as the output.
+          </p>
+        </section>
+        <!-- /.content -->
+      </div>
+      <?php include 'footer.html'; ?>
+      <!-- /.content-wrapper -->
         </div>
     </body>
 </html>
+
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -108,4 +112,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

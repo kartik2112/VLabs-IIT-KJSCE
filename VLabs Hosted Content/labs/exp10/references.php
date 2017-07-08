@@ -18,86 +18,83 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     </head>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <?php include '../../common/header.html';
-            include 'lab_name.php';
-            $lab_name = $_SESSION['lab_name'];
-            $exp_name = $_SESSION['exp_name'];
-            ?>
+              include 'lab_name.php';
+              $lab_name = $_SESSION['lab_name'];
+              $exp_name = $_SESSION['exp_name'];
+         ?>
+
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../explist.php" class="logo">
-                    <p align="center" style="font-size:1em;">
-                        <b>
-                            <?php echo $lab_name?><!-- Write your lab name -->
-                        </b>
-                    </p>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <section class="content-header">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="../explist.php">
-                                    <i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name -->
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <?php echo $exp_name?><!-- Write your experiment name -->
-                                </a>
-                            </li>
-                            <li class="active">References</li>
-                        </ol>
-                    </section>
-                </nav>
-            </header>
+        <header class="main-header">
+        <!-- Logo -->
+        <a href="../explist.php" class="logo">
+        <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
+    </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+              </li>
+              <li>
+                <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
+              </li>
+              <li class="active">References</li>
+            </ol>
+          </section>
+        </nav>
+      </header>
             <?php include 'pane.php'; ?>
+            
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1 align="center">
-                        <?php echo $exp_name?>
-                        <!-- Write your experiment name -->
-                    </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content">
-                    <h3 style="margin-top:5%">References</h3>
-                    <p class="MsoNormal" style="text-align:justify">
-                        <!--Reference content goes here -->
-                        <ol>
-                            <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
-                            <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 align="center"><?php echo $exp_name?>
+            <!-- Write your experiment name -->
+          </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <h3 style="margin-top:5%">References</h3>
+          <p class="MsoNormal" style="text-align:justify">
+
+           <!--Reference content goes here -->
+                <ol>
+                      <li><a href="http://www.ijcst.com/vol42/2/yousuf.pdf">http://www.ijcst.com/vol42/2/yousuf.pdf</a></li>
+                      <li><a href="https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf">https://www.ibu.edu.ba/assets/userfiles/it/2012/eee-Fuzzy-5.pdf</a></li>
                         </ol>                        
                     </p>
                     <b> Developed By :-</b><br>
                     <ol>
-                        <li>Manmath Paste</li>
-                        <li>Nitin Mishra</li>
-                        <li>Meet Mukadam</li>
                         <li>Kartik Shenoy</li>
-                        <li>Vinay Pandya</li> 
-                        <li>Abhishek Ananthakrishnan</li>                       
+                        <li>Meet Mukadam</li>
+                        <li>Vinay Pandya</li>                        
                         <li>Varun Rao</li>
                         <li>Abhishek Mahajani</li>
-                        <li>Tejas Dastane</li>               
-                        
+                        <li>Tejas Dastane</li>
+                        <li>Manmath Paste</li>                        
+                        <li>Abhishek Ananthakrishnan</li>
+                        <li>Nitin Mishra</li>
                     </ol>
-                </section>
-                <!-- /.content -->
-            </div>
-            <?php include 'footer.html'; ?>
-            <!-- /.content-wrapper -->
+          </p>
+        </section>
+        <!-- /.content -->
+      </div>
+      <?php include 'footer.html'; ?>
+      <!-- /.content-wrapper -->
+            
         </div>
     </body>
 </html>
+
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -111,4 +108,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-

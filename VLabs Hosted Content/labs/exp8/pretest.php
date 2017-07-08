@@ -1,6 +1,6 @@
-<?php
+	<?php
     session_start();
-    $_SESSION["currPage"] = 4;
+    $_SESSION["currPage"] = 3;
 ?>
 <html>
     <head>
@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link href="../../src/Styles.css" rel="stylesheet" />
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -53,7 +56,7 @@
                                     <?php echo $exp_name?><!-- Write your experiment name -->
                                 </a>
                             </li>
-                            <li class="active">Procedure</li>
+                            <li class="active">Pre Test</li>
                         </ol>
                     </section>
                 </nav>
@@ -69,24 +72,79 @@
                     </h1>
                 </section>
                 <!-- Main content -->
-                <section class="content" id="pro" style="font-size: larger">
-                    <h3 style="margin-top:5%">Procedure</h3>
+                <section class="content">
+                    <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
-                        <!--Theory content goes here -->
+                        <!-- Pre Test content goes here -->
+                        <script>
+                            $(document).ready(function () {
+                                $(".optradio1").click(function () {
+                                    ////alert("clicked");
+                                    $("#optradio1Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio1Ans").offset().top-300
+                                    }, 1000);
+                                });
+                                $(".optradio2").click(function () {
+                                    //alert("clicked");
+                                    $("#optradio2Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio2Ans").offset().top-300
+                                    }, 1000);
+                                });
+                                $(".optradio3").click(function () {
+                                    //alert("clicked");
+                                    $("#optradio3Ans").slideDown();
+                                    $('html, body').animate({
+                                        scrollTop: $("#optradio3Ans").offset().top-300
+                                    }, 1000);
+                                });
+
+                            });
+
+            </script>
+              <br>
+           <h3> 1.If A and B are any two sets, then A &#8746; (A &#8745; B) is equal to.</h3>
+              <input class="optradio1" type="radio" name="q1" value="1">
+              A. B
+              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="2">
+              B. A
+              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="3">
+              C. U
+              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="4">
+              D. AB
+              <br><br>
+              <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
+              <br>
+            <h3>  2. What is the Cartesian product of A = {1, 2} and B = {a, b}?</h3>
+              <input class="optradio2" type="radio" name="q2" value="1">
+              A. {(1, a), (1, b), (2, a), (b, b)}
+              <br><br>
+              <input class="optradio2" type="radio" name="q2" value="2">
+              B. {(1, 1), (2, 2), (a, a), (b, b)}
+              <br><br>
+              <input class="optradio2" type="radio" name="q2" value="3">
+              C. {(1, a), (2, a), (1, b), (2, b)}
+              <br><br>
+              <input class="optradio2" type="radio" name="q2" value="4">
+              D. {(1, 1), (a, a), (2, a), (1, b)}
+              <br><br>
+              <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p><br>
+			  
+			<h3>3.A — B will contain elements in ?</h3>
+            <input type="radio" class="optradio3" name="q3" value="1"> A. A not in B<br><br>
+            <input type="radio" class="optradio3" name="q3" value="2"> B. Neither A nor B <br><br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. B not in A<br><br>
+            <input type="radio" class="optradio3" name="q3" value="4"> D. Both A and B<br>      
+            <br />
+            <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
-                        There are namely three sets: Cold, Warm & Hot.<br />
-                        The following procedure is to be followed for the simulation:
+            
+			<br>
                     </p>
-                    <ol>
-                        <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
-                        <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
-                        <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
-                        <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>
-                    </ol>
-                    <p>After the entire simulation is completed, 
-                        you may select other values for each set & I/P and the  run the simulation.</p>
-                                       
                 </section>
                 <!-- /.content -->
             </div>

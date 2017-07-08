@@ -17,34 +17,22 @@
         <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-        <!-- Simulation scripts start-->
-
+        <!-- Custom stylesheet used -->
+        <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
+        <link href="../../src/Styles.css" rel="stylesheet" />
         <!-- jQuery 2.2.3 -->
         <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        
-
-
-        <!--Here is the main script that handles the simulation-->
-         
-        <script type="text/javascript" src="../../src/exp9Simulation.js"></script>
-        <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
-        <link href="../../src/Styles.css" rel="stylesheet" />
-		<style>
-		.animatedLinePurple2{
-    stroke: #7100d5!important;
-    stroke-dasharray: 50;
-    animation: dash 2s linear infinite;
-	}
-		</style>
-
-        <!--These are used for plotting the graphs-->
-        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
 		
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <!-- Simulation scripts start-->
+        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+        <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+        <script src="../../src/exp10Simulation.js"></script>
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -103,17 +91,24 @@
                 </script>
                 <section class="content-header" style="float:right; margin-top:2%">
                     <a href="JavaScript:newPopup('procedure.php');" style="color:green;font-size: 16px"><img src="../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
-                    <br>
-                    <br>
                     <a href="" style="color:green; font-size: 16px"><img src="../../dist/img/fork.png" style="height:20px; width:20px; "></a>
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-					<div id="top_div" >
 					
-							<div id="top_right_div" style="float:left ;margin-left:200px">
+					<div id="top_div" >
+					<div id="top_left_div" style="float:left; font-size:20px;margin-left:50px;"><br><br>
+					 <div id="gpraphAndResult1">
+		
+        <div id="graph1Div" class="jxgbox" style="width:600px; height:300px;"></div>
+		<div id="result1">
+		</div>
+	  </div>
+					
+                        </div>
+							<div id="top_right_div" style="float:left ;margin-left:100px;"><br><br>
 		<table class="table table-striped" style="text-align:center" >
     <thead >
       <tr>
@@ -135,100 +130,90 @@
         <td>Warm</td>
         <td><div id="warm_start_slider" class="sliders"></div>
 		<span class="warm_start_value">50</span></td>
-        <td><div id="warm_end_slider" class="sliders"></div>
+        <td><div id="warm_end_slider"class="slider"></div>
 		<span class="warm_end_value">90</span></td>
       </tr>
       <tr>
         <td>Hot</td>
         <td><div id="hot_start_slider" class="sliders"></div>
 		<span class="hot_start_value">80</span></td>
-        <td><div id="hot_end_slider" class="sliders"></div>
+        <td>
 		<span class="hot_end_value">120</span></td>
       </tr>
 	  <tr>
-        <td>Scalar Input</td>
-        <td><div id="scallar_slider" class="sliders"></div>
-		<span class="scallar_value">55</span></td>
+        <td></td>
         <td> <button  id="main_button" type="button" class="btn btn-primary" onclick="startSimulation1()">Start Simulation</button></td>
+		<td></td>
       </tr>
     </tbody>
-  </table>
+  </table><br><br>
 							</div>
 					</div>
-					<br>
-					<div >
-					<div id="div_for_svg" style="float:left;width:45%">
-					<svg id="graph_svg" width="700" height="500" style="">
-						<line id="x_axis" class="axis" stroke="#000" stroke-width="2" 
-						x1="20" y1="300" x2="600" y2="300" style=""/>
-						<line id="y_axis" class="axis" stroke="#000" stroke-width="2"
-						x1="20" y1="300" x2="20" y2="0" style=""/>
-						<text font-size="20" x="20" y="320">0</text>
-						<text font-size="20" x="550" y="330">Temperature</text>
-						<text font-size="20" x="50" y="20">Degree Of Truth</text>
-						
-						<text font-size="15" x="60" y="305"> | </text>
-						<text font-size="15" x="100" y="305">|</text>
-						<text font-size="15" x="140" y="305">|</text>
-						<text font-size="15" x="180" y="305">|</text>
-						<text font-size="15" x="220" y="305">|</text>
-						<text font-size="15" x="260" y="305">|</text>
-						<text font-size="15" x="300" y="305">|</text>
-						<text font-size="15" x="340" y="305">|</text>
-						<text font-size="15" x="380" y="305">|</text>
-						<text font-size="15" x="420" y="305">|</text>
-						<text font-size="15" x="460" y="305">|</text>
-						<text font-size="15" x="500" y="305">|</text>
-						
-						<text font-size="17" x="5" y="200">1</text>
-						<text font-size="30" x="15" y="200">-</text>
-						
-						<text font-size="17" x="60" y="330">10</text>
-						<text font-size="17" x="100" y="330">20</text>
-						<text font-size="17" x="140" y="330">30</text>
-						<text font-size="17" x="180" y="330">40</text>
-						<text font-size="17" x="220" y="330">50</text>
-						<text font-size="17" x="260" y="330">60</text>
-						<text font-size="17" x="300" y="330">70</text>
-						<text font-size="17" x="340" y="330">80</text>
-						<text font-size="17" x="380" y="330">90</text>
-						<text font-size="17" x="420" y="330">100</text>
-						<text font-size="17" x="460" y="330">110</text>
-						<text font-size="17" x="500" y="330">120</text>
-						
-						<line id="cool_line1" class="line" stroke="#f00" stroke-width="2" 
-						x1="140" y1="300" x2="220" y2="100" style=""/>
-						<line id="cool_line2" class="line" stroke="#f00" stroke-width="2" 
-						x1="220" y1="100" x2="300" y2="300" style=""/>
-						
-						<line id="warm_line1" class="line" stroke="#0f0" stroke-width="2" 
-						x1="220" y1="300" x2="300" y2="100" style=""/>
-						<line id="warm_line2" class="line" stroke="#0f0" stroke-width="2" 
-						x1="300" y1="100" x2="380" y2="300" style=""/>
-						
-						<line id="hot_line1" class="line" stroke="#00f" stroke-width="2" 
-						x1="340" y1="300" x2="420" y2="100" style=""/>
-						<line id="hot_line2" class="line" stroke="#00f" stroke-width="2" 
-						x1="420" y1="100" x2="500" y2="300" style=""/>
-						
-						<line id="interscection_line" class="line" stroke="#00f" stroke-width="2" style=""/>
-						<circle id="circle1" cx="100" cy="100" r="0"/>
-						<circle id="circle2" cx="100" cy="100" r="0"/>
-						<circle id="circle3" cx="100" cy="100" r="0"/>
-                    </svg>
-					</div>
-					<div id="div_for_result" width="400" height="400" style="float:right;width:45%;font-size:17;margin-top:80px;text-align:center"  width="30%" class="">
-					</div>
-					<div style="clear:both; font-size:1px;"></div>
-					</div>
+		<div>
+		<div style="clear:both;">
+		<br><br>
+  <ul class="nav nav-pills" style="font-size:120%;">
+    <li class="active"><a data-toggle="pill" href="#method1">Method 1</a></li>
+    <li><a data-toggle="pill" href="#method2">Method 2</a></li>
+    <li><a data-toggle="pill" href="#method3">Method 3</a></li>
+    <li><a data-toggle="pill" href="#method4">Method 4</a></li>
+    <li><a data-toggle="pill" href="#method5">Method 5</a></li>
+    <li><a data-toggle="pill" href="#method6">Method 6</a></li>
+  </ul>
+  </div>
+  <br>
+  <div class="tab-content" style="font-size:120%;">
+    <div id="method1" class="tab-pane fade in active">
+      <h3> Max-Membership Method</h3>
+      <p>This method is also known as height method and is limited to peak output functions. This method is given by the algebraic expression <br>
+	  µ(z*) >= µ(z) for all z ∊ Z.</p>  <br><b>Note:-</b> In this case since the max membership values of all 3 graphs is the same, there are 3 defuzzified values.
+	  <p id="m1answer" style="font-size:130%"> </p>
+	 
+    </div>
+    <div id="method2" class="tab-pane fade">
+      <h3>Centroid Method</h3>
+      <p>This method is also known as center of mass, center of area or center of gravity . It is the most commonly used defuzzification method. The defuzzified output z* is given by <br>
+		z* = ∫µ(z).zdz / ∫µ(z)dz</p><br>
+		<p id="m2answer" style="font-size:130%"> </p>
+    </div>
+    <div id="method3" class="tab-pane fade">
+      <h3>Weighted Average Method</h3>
+      <p>This method is valid for symmetrical output membership functions only. Each membership function is weighted by its maximum membership value. The output in the case is given by <br>
+z* = ∑µ(z').z' / ∑µ(z') ; <br> where z' is the maximum value of the membership function.</p>
+<p> As the membership function for hot is not symmetrical we are ignoring it in this method.</p>
+<br>
+	<p id="m3answer" style="font-size:130%"> </p>
+    </div>
+    <div id="method4" class="tab-pane fade">
+      <h3>Mean-Max Membership</h3>
+      <p>This method is also knows as middle of the maxima. This is closely related to the max-membership method, except that the locations of the maximum membership can be nonunique. The output here is given by <br>
+z* = ∑z' / n ; <br> where z' is the maximum value of the membership function</p><br>
+<p id="m4answer" style="font-size:130%"> </p>
+    </div>
+	<div id="method5" class="tab-pane fade">
+      <h3>Center of Sums</h3>
+      <p>This method employs the algebraic sum of the individual fuzzy subsets instead of their union. The calculations here are very fast, but the main drawback is that the intersecting areas are added twice. The defuzzified value z* is given by <br> z* = ∫ z*∑µ(z).zdz / ∫ ∑µ(z)dz</p><br>
+	  <p id="m5answer" style="font-size:130%"> </p>
+    </div>
+	<div id="method6" class="tab-pane fade">
+      <h3>Center of Largest Area</h3>
+      <p>This method can be adopted whent the output of at least two convex fuzzy subsets which are not overlapping. The output in this case is baised towwards a side of one membership function. When output fuzzy st has at least two convex regions, then the center of gravity of the convex fuzzy subregion having the largest are is used to obtain the defuzzified value z*. The value is given by<br>
+z* = ∫ µc(z).zdz / ∫ ∑µc(z)dz </p><br>
+	<p id="m6answer" style="font-size:130%"> </p>
+    </div>
+  </div>
+                    
                 </section>                
                 <!-- /.content -->
+				</div>
             </div>
             <?php include 'footer.html'; ?>
             <!-- /.content-wrapper -->
         </div>
     </body>
 </html>
+
+
 
 <!-- Bootstrap 3.3.6 -->
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -238,4 +223,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-
