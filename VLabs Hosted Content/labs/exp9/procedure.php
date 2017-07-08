@@ -79,7 +79,7 @@
                     </p>
                     <ol>
                         <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
+                        <li>Click on <button class="btn btn-success" style="cursor: default;">Start Simulation</button> button.</li>
                         <li>Below the graph you can observe how the I/P is manipulated and the defuzzified value is calculated.</li>
                         <li>You can switch between tabs to see the result for the each of the 6 methods of deffuzifications explained in the <b>Theory</b> section of the experiment.</li>
                         <li>The explaination and the formula of the calculations is provided in the respective tabs for reference purpose.</li>

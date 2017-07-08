@@ -79,13 +79,13 @@
                     </p>
                     <ol>
                         <li>Set the range of each of the 3 sets mentioned above by adjusting the slider to the desired values and see the corresponding change in the graph.</li>
-                        <li>Click on <button class="btn btn-success disabled" style="cursor: default;" disabled>Start Simulation</button> button.</li>
+                        <li>Click on <button class="btn btn-success" style="cursor: default;">Start Simulation</button> button.</li>
                         <li>Now wait and observe how the I/P is mapped on the graph and the membership values are calculated.</li>
                         
                     </ol>
                     <p>After the entire simulation is completed, you will get a popup indicating this completion. 
                         Now you may select other values for each set & I/P and the  run the simulation.</p>
-                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger disabled" style="cursor: default;" disabled>Stop Simulation</button> button.</p>
+                    <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger" style="cursor: default;">Stop Simulation</button> button.</p>
                                         
                 </section>
                 <!-- /.content -->
