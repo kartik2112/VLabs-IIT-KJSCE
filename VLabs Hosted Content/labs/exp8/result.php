@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 2;
+    $_SESSION["currPage"] = 6;
 ?>
 <html>
     <head>
@@ -47,7 +47,7 @@
               <li>
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
               </li>
-              <li class="active">Theory</li>
+              <li class="active">Result</li>
             </ol>
           </section>
         </nav>
@@ -57,17 +57,18 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1 align="center"> <?php echo $exp_name?>
+          <h1 align="center"><?php echo $exp_name?>
             <!-- Write your experiment name -->
           </h1>
         </section>
         <!-- Main content -->
         <section class="content">
-          <h3 style="margin-top:5%">Theory</h3>
+          <h3 style="margin-top:5%">Result</h3>
+          <p class="MsoNormal" style="text-align:justify">
 
-            <p class="MsoNormal" style="text-align:justify">
-              <!--Theory content goes here -->
-            </p>
+            <!-- Result content goes here -->
+            
+          </p>
         </section>
         <!-- /.content -->
       </div>

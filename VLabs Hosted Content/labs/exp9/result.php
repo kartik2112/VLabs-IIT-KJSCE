@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 4;
+    $_SESSION["currPage"] = 6;
 ?>
 <html>
     <head>
@@ -47,13 +47,13 @@
               <li>
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
               </li>
-              <li class="active">Procedure</li>
+              <li class="active">Result</li>
             </ol>
           </section>
         </nav>
       </header>
             <?php include 'pane.php'; ?>
-            <!-- Content Wrapper. Contains page content -->
+             <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -62,12 +62,12 @@
           </h1>
         </section>
         <!-- Main content -->
-        <section class="content" id="pro">
-          <h3 style="margin-top:5%">Procedure</h3>
+        <section class="content">
+          <h3 style="margin-top:5%">Result</h3>
           <p class="MsoNormal" style="text-align:justify">
 
-            <!--Theory content goes here -->
-          
+            <!-- Result content goes here -->
+            
           </p>
         </section>
         <!-- /.content -->

@@ -45,10 +45,16 @@
                                     <a href="exp7/index.php"> Kohonen's Self Organizing Maps </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="expFis/index.php"> Fuzzy Inference System </a>
+                                    <a href="exp8/index.php"> Fuzzification </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="expOcr/index.php"> Optical Character Recognition </a>
+                                    <a href="exp9/index.php"> Defuzzification </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="exp10/index.php"> Fuzzy Inference System </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="exp11/index.php"> Optical Character Recognition </a>
                                 </li>
                             </h3>
                         </ul>

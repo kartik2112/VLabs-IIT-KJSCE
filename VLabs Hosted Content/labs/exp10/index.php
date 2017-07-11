@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION["currPage"] = 7;
+    $_SESSION["currPage"] = 1;
 ?>
 <html>
     <head>
@@ -28,7 +28,7 @@
         ?>
 
         <div class="wrapper">
-        <header class="main-header">
+        	<header class="main-header">
         <!-- Logo -->
         <a href="../explist.php" class="logo">
         <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
@@ -47,34 +47,30 @@
               <li>
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
               </li>
-              <li class="active">Post Test</li>
+              <li class="active">Aim</li>
             </ol>
           </section>
         </nav>
       </header>
             <?php include 'pane.php'; ?>
-            
-            <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1 align="center"><?php echo $exp_name?>
-            <!-- Write your experiment name -->
-          </h1>
-        </section>
-        <!-- Main content -->
-        <section class="content">
-          <h3 style="margin-top:5%">Post Test</h3>
-          <p class="MsoNormal" style="text-align:justify">
-
-            <!-- Post Test content goes here -->
-            
-          </p>
-        </section>
-        <!-- /.content -->
-      </div>
-      <?php include 'footer.html'; ?>
-      <!-- /.content-wrapper -->
+            <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+                <section class="content-header">
+                <h1 align="center">
+                    <?php echo $exp_name?> 
+                </h1>
+                </section>
+                    <!-- Main content -->
+                    <section class="content">
+                    <h3 style="margin-top:5%"> Aim </h3>
+                    <p style="font-size:130%; margin-top:2%">
+                    Simulating how fuzzy logic can be used to infer the time required to run a Washing machine, given the amount dirt and grease on clothes.
+                    <!--Aim of experiment -->
+                    </p>
+                </section>
+            <!-- /.content -->
+            </div>
+            <?php include 'footer.html'; ?>
         </div>
     </body>
 </html>

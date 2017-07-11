@@ -1,0 +1,205 @@
+.add_btn_div button{
+    width: 30px;
+    height: 30px;
+    float: left;
+    font-size: 20px;
+    margin-right: 20px;
+    border: none;
+    background: #AFAFAF;
+    margin-bottom: 10px;
+    outline: none;
+}
+.add_btn_div p{
+    font-size: 17px;
+    float: left;
+}
+.add_btn_div{
+    height: 42px;
+    width: 200px;
+    padding: 5px;
+    margin: 0 10px;
+    float: left;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.add_btn_div:hover{
+    border: 1px solid #777777;
+}
+.descr{
+    width: 100%;
+    margin: auto;
+    padding: 5px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.descr input[type='number']{
+    width: 20%;
+    height: 30px;
+    float: left;
+    margin: auto 2%;
+    text-align: center;
+    background: none;
+    border: 1px solid transparent;
+    transition-duration: 0.5s;
+}
+.descr input[type='number']:hover{
+    transition-duration: 0.5s;
+    background: white;
+    border: 1px solid #999999;
+    border-radius: 5px;
+}
+.descr input[type='text']{
+    float: left;
+    height: 30px;
+    width: 42%;
+    text-align: center;
+}
+.descr button{
+    background: #fa4c4c;
+    width: 25px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    height: 25px;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 2.5px 0;
+}
+.descr button:hover{
+    transition-duration: 1s;
+    border-radius: 0px;
+}
+.descr_box{
+    width:32%;
+    float: left;
+    border: 0.4px solid black;
+    box-shadow: 0.5px 0.5px 4px black;
+    padding: 3px;
+    margin-bottom: 10px;
+    margin-right: 1%;
+}
+.btn-success,.btn-warning{
+    border: none;
+    font-size: 15px;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+.fam td, .fam th{
+    padding: 20px;
+    text-align: center;
+}
+.fam th{
+    background: #cacdd1;
+    color: black;
+}
+#empty{
+    background: none;
+    border: none;
+}
+.fam{
+    margin: auto;
+}
+.fam select{
+    padding: 5px;
+    margin: auto;
+    background: none;
+    border: 1px solid transparent;
+    transition-duration: 0.5s;
+}
+.fam select:hover{
+    background: white;
+    border: 1px solid black;
+    transition-duration: 0.5s;
+    border-radius: 5px;
+}
+.carousel-indicators {
+    bottom: -5px;
+    left: 370px;
+}
+.carousel-inner{
+    height: auto;
+    transition: height 0.15s linear;
+}
+.carousel-indicators li {
+    background-color: #0091ff;
+}
+.formula{
+    text-align: center;
+    white-space: nowrap;
+}
+.equalSign
+{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.numerator{
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+.denominator{
+    border-top: 1px solid black;
+    padding-top: 5px;
+}
+.carousel-indicators .active {
+    background-color: #0781c8;
+}
+.explnRightSide{
+    border-right: 1px solid black;
+    padding-right: 10px;
+}
+.explnLeftSide{
+    border-left: 1px solid black;
+    padding-left: 10px;
+}
+.carousel-control.left{
+    left: -20px;
+}
+.carousel-control.right{
+    right: -210px;
+}
+.m_input{
+    background: transparent;
+    width: 100px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    transition-duration: 0.2s;
+    font-size: 17px;
+}
+.m_label{
+    font-size: 17px;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition-duration: 0.2s;
+    cursor: text;
+}
+.m_input:focus ~ .m_label, .m_input:valid ~ .m_label{
+    font-size: 15px;
+    top: -10px;
+    transition-duration: 0.2s;
+    color: rgba(2, 28, 104, 0.67);
+}
+.m_input:focus{
+    border-bottom: 2px solid rgba(2, 28, 104, 0.67);
+    transition-duration: 0.2s;
+}
+.material-input{
+    position: relative;
+    height: 40px;
+    padding: 10px 0;
+    margin: 10px 30px;
+    float: left;
+}
+.line_input{
+    border: 0.3px solid transparent;
+    background: transparent;
+    border-bottom: 1px solid black;
+    transition-duration: 1s;
+}
+.line_input:hover, .line_input:focus{
+    border: 0.3px solid #999999;
+    background: white;
+    transition-duration: 1s;
+}
