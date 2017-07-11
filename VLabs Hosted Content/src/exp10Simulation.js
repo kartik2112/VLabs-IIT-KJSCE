@@ -1,9 +1,9 @@
 var board;
 var timer1, timer2, timer3,intervalT=2000;
-var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=100,scallar_value=55;
+var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
 $(document).ready(function () {
-	
-   
+
+
 	plotTheGraph();
 	$('html, body').animate({
         scrollTop: $("#top_div").offset().top
@@ -53,7 +53,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	
+
 	 $("#warm_end_slider").slider({
         max: 120,
         min: 0,
@@ -86,7 +86,7 @@ $(document).ready(function () {
 		   plotTheGraph();
         }
     });
-	 
+
 	$("start_simulation_button").click(function(){
        $(this).hide();
     });
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
 function plotTheGraph()
 {
-	 var graphEnds=100;
+	 var graphEnds=120;
 	board = JXG.JSXGraph.initBoard('graph1Div',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
 	var c_s =board.create('line',[[cool_start,0],[(cool_start+cool_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
 	var c_e =board.create('line',[[(cool_start+cool_end)/2,1],[cool_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
@@ -113,7 +113,7 @@ function startSimulation1()
 	method4();
 	method5();
 	method6();
-	
+
 }
 function method1()
 {
@@ -147,7 +147,7 @@ function method2()
 		y2=(m2*c1-m1*c2)/(m2-m1);
 		ans = ans - (d-c)*y2/2;
 	}
-	$("#m2answer").append(" the answer is "+ ans/3);	
+	$("#m2answer").append(" the answer is "+ ans/3);
 }
 
 function method3()
@@ -156,7 +156,7 @@ function method3()
 	var a=(cool_end+cool_start)/2;
 	var b=(warm_end+warm_start)/2;
 	var ans=(a+b)/2;
-	$("#m3answer").append(" the answer is "+ ans);	
+	$("#m3answer").append(" the answer is "+ ans);
 }
 function method4()
 {
@@ -165,7 +165,7 @@ function method4()
 	var b=(warm_end+warm_start)/2;
 	var c= (100+hot_start)/2;
 	var ans=(a+b+c)/3;
-	$("#m4answer").append(" the answer is "+ ans);	
+	$("#m4answer").append(" the answer is "+ ans);
 }
 function method5()
 {
@@ -173,7 +173,7 @@ function method5()
 		var a=(cool_end-cool_start)*(cool_end+cool_start)/2;
 	var b=(warm_end-warm_start)*(warm_end+warm_start)/2;
 	var ans=(a+b)/((cool_end-cool_start)+(warm_end-warm_start));
-	$("#m5answer").append(" the answer is "+ ans);	
+	$("#m5answer").append(" the answer is "+ ans);
 }
 function method6()
 {
@@ -203,5 +203,5 @@ function method6()
 			ans=hot_start+2*(100-hot_start)/3;
 		}
 	}
-	$("#m6answer").append(" the answer is "+ (cool_start+cool_end)/2);	
+	$("#m6answer").append(" the answer is "+ (cool_start+cool_end)/2);
 }
