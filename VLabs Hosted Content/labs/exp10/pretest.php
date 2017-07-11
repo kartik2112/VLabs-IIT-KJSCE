@@ -23,6 +23,7 @@
         <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <link href="../../src/Styles.css" rel="stylesheet" />
         <style>
           .options{
             font-size: 16px;
@@ -91,27 +92,28 @@
             <input type="radio" class="q1" name="q1"/> <p class="options1 options">B. Changing the output value to match the input value to give it an equal balance.</p>
             <input type="radio" class="q1" name="q1"/> <p class="options1 options">C. Having a larger output than the input.</p>
             <input type="radio" class="q1" name="q1"/> <p class="options1 options">D. Having a smaller output than the input.</p>
+            <p id="a1" class="testAns" style="display: none;">Ans is A.</p>
             
             <h3>What are the 2 types of Fuzzy Inference Systems?</h3>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">A. Model-Type and System-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">B. Momfred-Type and Semigi-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">C. Mamdani-Type and Sugeno-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">D. Mihni-Type and Sujgani-Type</p>
+            <p id="a2" class="testAns" style="display: none;">Ans is C.</p>
             
             <h3>What operations are performed during inference in a Fuzzy Inference System?</h3>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">A. Fuzzification</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">B. Defuzzification</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">C. Both A & B</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">D. None of these</p>
+            <p id="a3" class="testAns" style="display: none;">Ans is C.</p>
 
             <h3>If there are 3 descriptors for dirt and 2 descriptors for grease, how many rules must be defined in Fuzzy rule base?</h3>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">A. 5</p>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">B. 6</p>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">C. Depends on implementation</p>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">D. None of these</p>
-            <br>
-            <p id="status"></p>
-            <button style="cursor: no-drop;" id="check" class="btn-success" onclick="check()" disabled>Check</button>
+            <p id="a4" class="testAns" style="display: none;">Ans is B.</p>
           </p>
         </section>
         <!-- /.content -->
@@ -120,58 +122,23 @@
       <!-- /.content-wrapper -->
         </div>
         <script>
-          var answered = [false,false,false,false];
-          function check(){
-            correct = [0,2,2,1];
-            var wrong = 0;
-            for(var q=1;q<=correct.length;q++){
-              var ans1 = document.getElementsByClassName('q'+q);
-              var op = document.getElementsByClassName('options'+q);
-              for(var i=0;i<ans1.length;i++){
-                if(ans1[i].checked && i!=correct[q-1]){
-                  op[i].style.color = "red";
-                  wrong++;
-                }
-              }
-              op[correct[q-1]].style.color = "green";
-              op[correct[q-1]].style.fontWeight = "bold";
-            }
-            if(wrong==0){
-              $("#status").html("All answers correct! Proceed to reading procedure for simulation.");
-              $("#status").css("color","green");
-            }
-            else if(wrong==correct.length){
-              $("#status").html("All answers wrong! Refresh page to try again.");
-              $("#status").css("color","red");
-            }
-            else $("#status").html("You got "+(correct.length-wrong)+" answer(s) correct! Refresh page to try again.");
-          }
-
-          $(document).ready(function(){
-            $(".q1").click(function(){
-              answered[0] = true;
-              validate();
-            });
-            $('.q2').click(function(){
-              answered[1] = true;
-              validate();
-            });
-            $('.q3').click(function(){
-              answered[2] = true;
-              validate();
-            });
-            $('.q4').click(function(){
-              answered[3] = true;
-              validate();
-            });
+          correct = [0,2,2,1];
+          $(".q1").click(function(){
+            $("#a1").slideDown();
+            $("html, body").animate({scrollTop: $("#a1").offset().top - 300});
           });
-
-          function validate(){
-            for(var i=0;i<answered.length;i++) if(answered[i]==false) return;
-            document.getElementById('check').removeAttribute("disabled");
-            document.getElementById('check').style.cursor = "pointer";
-          }
-          $("#check").tooltip({title: "Check my answers", placement: "bottom"});
+          $(".q2").click(function(){
+            $("#a2").slideDown();
+            $("html, body").animate({scrollTop: $("#a2").offset().top - 300});
+          });
+          $(".q3").click(function(){
+            $("#a3").slideDown();
+            $("html, body").animate({scrollTop: $("#a3").offset().top - 300});
+          });
+          $(".q4").click(function(){
+            $("#a4").slideDown();
+            $("html, body").animate({scrollTop: $("#a4").offset().top - 300});
+          });
         </script>
     </body>
 </html>
