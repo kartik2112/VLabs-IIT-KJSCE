@@ -206,6 +206,7 @@ button.displayActivatedButton{
   transition: .4s;
 }
 
+/*
 .slider:before {
   position: absolute;
   content: "";
@@ -217,6 +218,7 @@ button.displayActivatedButton{
   -webkit-transition: .4s;
   transition: .4s;
 }
+*/
 
 input:checked + .slider {
   background-color: #2196F3;
