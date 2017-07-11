@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 function plotGraph(){
     var graphEnds=100;
-    board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
         var end=grease_descriptors[i].end;
@@ -47,7 +47,7 @@ function plotGraph(){
         }
     }
     //Following is to draw graph for Dirt descriptors
-    var board_dirt = JXG.JSXGraph.initBoard('dirt_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    var board_dirt = JXG.JSXGraph.initBoard('dirt_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
         var end=dirt_descriptors[i].end;
@@ -71,7 +71,7 @@ function plotGraph(){
     //Following is to draw graph for Wash time descriptors
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     // console.log(graphEnds);
-    var board_washing = JXG.JSXGraph.initBoard('washing_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
+    var board_washing = JXG.JSXGraph.initBoard('washing_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
 
     for (var i = 0; i < wash_descriptors.length; i++) {
         var start=wash_descriptors[i].start;
@@ -649,7 +649,7 @@ function defuzzify(fuzzyWash)
     var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
     var explnBoards=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
-      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
+      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
       var start=wash_descriptors[i].start;
       var end=wash_descriptors[i].end;
       if(start==999){
@@ -669,7 +669,7 @@ function defuzzify(fuzzyWash)
       }
       explnBoards.push(b);
     }
-    var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
+    var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < wash_descriptors.length; i++) {
         var start=wash_descriptors[i].start;
         var end=wash_descriptors[i].end;

@@ -299,7 +299,7 @@ function learnProc(lrString,inputIndex)
             });
         },14000)
       },1500);
-      
+
 }
 
 function scrollToElement(elem,time){
@@ -326,7 +326,7 @@ function revealBySlideDown(elem,time){
 function plotGraph(lrString){
     points = [];
     lines = [];
-    board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-7, 7, 7, -7]});  //Creates the cartesian graph
+    board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-7, 7, 7, -7],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
 	  var constPointSize=5;
     for(var i=0;i<inputs.length;i++){
         points[i] = board.create('point',[inputs[i][0],inputs[i][1]],{fixed:true,name:''});
