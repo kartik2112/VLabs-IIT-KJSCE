@@ -10,32 +10,32 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../../../dist/css/AdminLTE.css">
+        <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="../../../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <!-- Custom stylesheet used -->
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="style.css">
         <!-- jQuery 2.2.3 -->
-        <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
-        <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
         <!-- Simulation scripts start-->
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
-        <script type="text/javascript" src="../../../plugins/jsxgraphcore.min.js"></script>
+        <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
-        <script src="../../../src/fis_simulation.js"></script>
+        <script src="../../src/fis_simulation.js"></script>
         <!-- <script src="../../../src/canvasjschart.ob.js"></script> -->
     <!-- Simulation scripts end-->
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
-        include '../header.html';
-        include '../lab_name.php';
+        include '../../common/header.html';
+        include 'lab_name.php';
         $lab_name = $_SESSION['lab_name'];
         $exp_name = $_SESSION['exp_name'];
         ?>
@@ -43,7 +43,7 @@
         <div class="wrapper">
         <header class="main-header">
         <!-- Logo -->
-        <a href="../../explist.php" class="logo">
+        <a href="../explist.php" class="logo">
         <p align="center" style="font-size:1em;"><b><?php echo $lab_name?><!-- Write your lab name --></b></p>
     </a>
         <!-- Header Navbar: style can be found in header.less -->
@@ -55,7 +55,7 @@
           <section class="content-header">
             <ol class="breadcrumb">
               <li>
-                <a href="../../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
+                <a href="../explist.php"><i class="fa fa-dashboard"></i><?php echo $lab_name?><!-- Write your lab name --></a>
               </li>
               <li>
                 <a href="#"><?php echo $exp_name?><!-- Write your experiment name --></a>
@@ -65,7 +65,7 @@
           </section>
         </nav>
       </header>
-            <?php include '../pane.php'; ?>
+            <?php include 'pane.php'; ?>
            <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -82,10 +82,10 @@
           }
         </script>
         <section class="content-header" style="float:right; margin-top:2%">
-          <a href="JavaScript:newPopup('../procedure.php');" style="color:green;font-size: 16px"><img src="../../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
+          <a href="JavaScript:newPopup('procedure.php');" style="color:green;font-size: 16px"><img src="../../dist/img/popout.png" style="height:20px; width:20px; "> Pop Up Procedure</a>
           <br>
           <br>
-          <a href="" style="color:green; font-size: 16px"><img src="../../../dist/img/fork.png" style="height:20px; width:20px; "></a>
+          <a href="" style="color:green; font-size: 16px"><img src="../../dist/img/fork.png" style="height:20px; width:20px; "></a>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -291,7 +291,7 @@
         </section>
         <!-- /.content -->
       </div>
-      <?php include '../footer.html'; ?>
+      <?php include 'footer.html'; ?>
       <!-- /.content-wrapper -->
         </div>
     </body>
@@ -299,8 +299,8 @@
 
 <!-- ./wrapper -->
 <!-- Slimscroll -->
-<script src="../../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../../../plugins/fastclick/fastclick.js"></script>
+<script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../../../dist/js/app.min.js"></script>
+<script src="../../dist/js/app.min.js"></script>
