@@ -61,7 +61,7 @@
 
             var changing = 0;
 
-            function editWeights(id,lrString) {
+            function editWeights(id, lrString) {
                 if (changing == 1) {
                     alert('Save the value first');
                     return;
@@ -69,29 +69,29 @@
 
                 changing = 1;
                 sel = id;
-                id = lrString+"_line" + id;
+                id = lrString + "_line" + id;
                 $("#" + id).removeClass("not_sel");
                 $("#" + id).addClass("selected");
                 var x = document.getElementById(id);
-                var e = document.getElementById(lrString+'_SliderOuter');
-                var val = $("#"+lrString+"MainOuterDiv tspan.w" + sel+"text").html();
+                var e = document.getElementById(lrString + '_SliderOuter');
+                var val = $("#" + lrString + "MainOuterDiv tspan.w" + sel + "text").html();
                 //alert("the value is " + val);
-                $("#"+lrString+"_WeightsSlider").slider("value", val);
+                $("#" + lrString + "_WeightsSlider").slider("value", val);
                 var l, t;
                 l = LEFT;
                 e.style.left = l + "px";
                 t = TOP;
                 e.style.top = t + "px";
-                $("#"+lrString+"_SliderOuter").show();
+                $("#" + lrString + "_SliderOuter").show();
             }
 
 
-            function set(id,lrString) {
-                var e = document.getElementById(lrString+'_SliderOuter');
-                $("#"+lrString+"_line" + id).removeClass("selected");
-                $("#"+lrString+"_line" + id).addClass("not_sel");
-                $("#"+lrString+"_SliderOuter").hide();
-                $("#"+lrString+"_WeightsSlider").slider("value", 0, 0);
+            function set(id, lrString) {
+                var e = document.getElementById(lrString + '_SliderOuter');
+                $("#" + lrString + "_line" + id).removeClass("selected");
+                $("#" + lrString + "_line" + id).addClass("not_sel");
+                $("#" + lrString + "_SliderOuter").hide();
+                $("#" + lrString + "_WeightsSlider").slider("value", 0, 0);
                 changing = 0;
             }
 
@@ -134,13 +134,13 @@
                 // Hebbian LR Stuff
                 // Learning Rate Slider
                 $("#hebbLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#hebbLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
+                max: 5,
+                min: 0.2,
+                step: 0.2,
+                slide: function (event, ui) {
+                $("#hebbLRMainOuterDiv span.learningRate").text(ui.value);
+                learningRate = ui.value;
+                }
                 });
                 $("#hebbLRLearningRate_slider").slider("value", learningRate);
                 $("#hebbLRMainOuterDiv span.learningRate").text($("#hebbLRLearningRate_slider").slider("value"));
@@ -148,14 +148,14 @@
 
                 // weight slider
                 $("#hebbLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#hebbLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("hebbLR");
-                    }
+                step: 0.5,
+                max: 5,
+                min: -5,
+                slide: function (event, ui) {
+                $("#hebbLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
+                weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
+                plotGraph("hebbLR");
+                }
                 });
 
 
@@ -164,13 +164,13 @@
                 // Correlation LR Stuff
                 // Learning Rate Slider
                 $("#corrLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#corrLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
+                max: 5,
+                min: 0.2,
+                step: 0.2,
+                slide: function (event, ui) {
+                $("#corrLRMainOuterDiv span.learningRate").text(ui.value);
+                learningRate = ui.value;
+                }
                 });
                 $("#corrLRLearningRate_slider").slider("value", learningRate);
                 $("#corrLRMainOuterDiv span.learningRate").text($("#corrLRLearningRate_slider").slider("value"));
@@ -178,14 +178,14 @@
 
                 // weight slider
                 $("#corrLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#corrLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("corrLR");
-                    }
+                step: 0.5,
+                max: 5,
+                min: -5,
+                slide: function (event, ui) {
+                $("#corrLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
+                weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
+                plotGraph("corrLR");
+                }
                 });*/
 
 
@@ -194,7 +194,7 @@
 
                 // Make lines clickable
                 $(".lines").css("cursor", "pointer");
-                $(".lines").css("pointer-events","auto");
+                $(".lines").css("pointer-events", "auto");
 
                 plotGraph("percLR");
             });
