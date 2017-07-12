@@ -1,14 +1,14 @@
-
+var board;
 var timer1, timer2, timer3,intervalT=2000;
 var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
 $(document).ready(function () {
-    
-	
-	
-    $('html, body').animate({
+
+
+	plotTheGraph();
+	$('html, body').animate({
         scrollTop: $("#top_div").offset().top
     }, 1500);
-																		// sliders
+																		// slidersalert("tt");alert("tt");
     $("#cool_start_slider").slider({
         max: 120,
         min: 0,
@@ -53,7 +53,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	
+
 	 $("#warm_end_slider").slider({
         max: 120,
         min: 0,
@@ -86,192 +86,122 @@ $(document).ready(function () {
 		   plotTheGraph();
         }
     });
-	 $("#hot_end_slider").slider({
-        max: 120,
-        min: 0,
-        step: 5,
-		value :120,
-        slide: function (event, ui) {
-            if(ui.value<=hot_start)
-			{
-				$("#hot_end_slider").slider("value",hot_start);
-				window.alert("end value should be more than start");
-				hot_end=hot_start<120?hot_start+5:120;
-				$(".hot_end_value").text(hot_end);
-			}
-			else
-			{
-            $(".hot_end_value").text(ui.value);
-			hot_end=ui.value;
-			}
-		   plotTheGraph();
-        }
-    });
-	$("#scallar_slider").slider({
-        max: 120,
-        min: 0,
-        step: 5,
-		value :55,
-		animate: "slow",
-        slide: function (event, ui) {
-            $(".scallar_value").text(ui.value);
-			scallar_value=ui.value;	
-		 plotTheGraph();
-        }
-    });
 
 	$("start_simulation_button").click(function(){
        $(this).hide();
     });
 
 });
-function startSimulation1()
-{
-	erasepoints();
-	plotTheGraph();
-	disableSliders();
-	var interLine=$("#interscection_line"); 
-	$("#main_button").text("Stop Simulation");
-	$("#main_button").removeClass("btn-primary");
-	$("#main_button").addClass("btn-danger");
-	$("#main_button").attr("onclick","stopSimulation1()");
-	interLine.addClass("animatedLinePurple2");
-	interLine.attr("x1",20+4*scallar_value);
-	interLine.attr("x2",20+4*scallar_value);
-	interLine.attr("y1",50);
-	interLine.attr("y2",450);
-	timer1=window.setTimeout(function () {
-		
-		interLine.removeClass("animatedLinePurple2");
-		plotThePoints();	
-		stopSimulation1();
-		},intervalT*2);
-	
-}
-function plotThePoints()
-{
-	var flag=false;
-	var stringResult="The temprature is ";
-	if(scallar_value>=cool_start&&scallar_value<=cool_end)
-	{
-		flag=true;
-		if(scallar_value<=(cool_start+cool_end)/2)
-		{
-			
-			$("#circle1").attr("cx",20+4*scallar_value);
-			$("#circle1").attr("cy",300-(( 400/(cool_end-cool_start))*(scallar_value-cool_start)));
-			$("#circle1").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"% cool ";
-		}
-		else
-		{
-			$("#circle1").attr("cx",20+4*scallar_value);
-			$("#circle1").attr("cy",300-(( 400/(cool_end-cool_start))*(cool_end-scallar_value)));
-			$("#circle1").attr("r",5);
-			stringResult=stringResult+Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"% cool ";
-		}
-	}
-	if(scallar_value>=warm_start&&scallar_value<=warm_end)
-	{
-		if(flag)
-		{
-			stringResult=stringResult+"and ";
-		}
-		flag=true;
-		if(scallar_value<=(warm_start+warm_end)/2)
-		{
-			$("#circle2").attr("cx",20+4*scallar_value);
-			$("#circle2").attr("cy",300-(( 400/(warm_end-warm_start))*(scallar_value-warm_start)));
-			$("#circle2").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-warm_start)/(warm_end-warm_start)*200)+"% warm ";
-		}
-		else
-		{
-			$("#circle2").attr("cx",20+4*scallar_value);
-			$("#circle2").attr("cy",300-(( 400/(warm_end-warm_start))*(warm_end-scallar_value)));
-			$("#circle2").attr("r",5);
-			stringResult=stringResult+Math.floor((warm_end-scallar_value)/(warm_end-warm_start)*200)+"% warm ";
-		}	
-	}
-	if(scallar_value>=hot_start&&scallar_value<=hot_end)
-	{
-		if(flag)
-		{
-			stringResult=stringResult+"and ";
-		}
-		if(scallar_value<=(hot_start+hot_end)/2)
-		{
-			$("#circle3").attr("cx",20+4*scallar_value);
-			$("#circle3").attr("cy",300-(( 400/(hot_end-hot_start))*(scallar_value-hot_start)));
-			$("#circle3").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-hot_start)/(hot_end-hot_start)*200)+"% hot";
-		}
-		else
-		{
-			$("#circle3").attr("cx",20+4*scallar_value);
-			$("#circle3").attr("cy",300-(( 400/(hot_end-hot_start))*(hot_start-scallar_value)));
-			$("#circle3").attr("r",5);
-			stringResult=stringResult+Math.floor((hot_end-scallar_value)/(hot_end-cool_start)*200)+"% hot";
-		}
-	}
-	$("#div_for_result").addClass("well");
-	$("#div_for_result").append(""+stringResult);
-}
-function disableSliders()
-{
-	
-	$("#cool_start_slider").slider("disable");
-	$("#cool_end_slider").slider("disable");
-	$("#warm_start_slider").slider("disable");
-	$("#warm_end_slider").slider("disable");
-	$("#hot_start_slider").slider("disable");
-	$("#hot_end_slider").slider("disable");
-	$("#scallar_slider").slider("disable");
-}
-function enableSliders()
-{
-	$("#cool_start_slider").slider("enable");
-	$("#cool_end_slider").slider("enable");
-	$("#warm_start_slider").slider("enable");
-	$("#warm_end_slider").slider("enable");
-	$("#hot_start_slider").slider("enable");
-	$("#hot_end_slider").slider("enable");
-	$("#scallar_slider").slider("enable");
-}
-function erasepoints()
-{
-	$("#circle1").attr("r",0);
-	$("#circle2").attr("r",0);
-	$("#circle3").attr("r",0);
-	$("#div_for_result").removeClass("well");
-	$("#div_for_result").empty();
-}
-function stopSimulation1()
-{
-	window.clearTimeout(timer1);
-	window.clearTimeout(timer2);
-	enableSliders();
-	$("#main_button").text("Start Simulation");
-	$("#main_button").removeClass("btn-danger");
-	$("#main_button").addClass("btn-primary");
-	$("#main_button").attr("onclick","startSimulation1()");
-	var interLine=$("#interscection_line"); 
-	interLine.removeClass("animatedLinePurple2");
-}
+
 function plotTheGraph()
 {
-		
-	
-	$("#cool_line1").attr("x1",20+4*cool_start>0?20+4*cool_start:0);
-	$("#cool_line1").attr("x2",20+2*(cool_start+cool_end));
-	$("#cool_line2").attr("x1",20+2*(cool_end+cool_start));
-	$("#cool_line2").attr("x2",20+4*cool_end);
-	$("#warm_line1").attr("x1",20+4*warm_start);
-	$("#warm_line1").attr("x2",20+2*(warm_start+warm_end));
-	$("#warm_line2").attr("x1",20+2*(warm_start+warm_end));
-	$("#warm_line2").attr("x2",20+4*warm_end);
-	$("#hot_line1").attr("x1",20+4*hot_start);
-	$("#hot_line1").attr("x2",20+2*(hot_end+hot_start));
-	$("#hot_line2").attr("x1",20+2*(hot_end+hot_start));
-	$("#hot_line2").attr("x2",20+4*hot_end);
+	 var graphEnds=120;
+	board = JXG.JSXGraph.initBoard('graph1Div',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+	var c_s =board.create('line',[[cool_start,0],[(cool_start+cool_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
+	var c_e =board.create('line',[[(cool_start+cool_end)/2,1],[cool_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
+	var w_s =board.create('line',[[warm_start,0],[(warm_start+warm_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+	var w_e =board.create('line',[[(warm_start+warm_end)/2,1],[warm_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
+	var h_s =board.create('line',[[hot_start,0],[hot_end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#ff0000',strokeWidth:2});
+}
+
+function startSimulation1()
+{
+//	alert("start");
+	method1();
+	method2();
+	method3();
+	method4();
+	method5();
+	method6();
+
+}
+function method1()
+{
+	$("#m1answer").empty();
+	$("#m1answer").append(" the answer is "+ (cool_start+cool_end)/2+" or "+(warm_end+warm_start)/2+" or "+(hot_start+hot_end)/2);
+}
+function method2()
+{
+	$("#m2answer").empty();
+	var a=cool_end;
+	var b=warm_start;
+	var c=warm_end;
+	var d=hot_start;
+	var ans=((cool_end+cool_start)/2 + (warm_end+warm_start/2) + (hot_end+hot_start)/2);
+	var y1,y2;
+	if(cool_end>warm_start && cool_start<warm_end)
+	{
+		var m1=1/(((cool_start+cool_end)/2)-cool_end);
+		var m2=1/(((warm_start+warm_end)/2)-warm_start);
+		var c1=-m1*cool_end;
+		var c2=-m2*warm_start;
+		y1=(m2*c1-m1*c2)/(m2-m1);
+		ans = ans - (b-a)*y1/2;
+	}
+	if(hot_start<warm_end && cool_start<hot_start)
+	{
+		var m1=1/(((warm_start+warm_end)/2)-warm_end);
+		var m2=1/(100-hot_start);
+		var c1=-m1*warm_end;
+		var c2=-m2*hot_start;
+		y2=(m2*c1-m1*c2)/(m2-m1);
+		ans = ans - (d-c)*y2/2;
+	}
+	$("#m2answer").append(" the answer is "+ ans/3);
+}
+
+function method3()
+{
+	$("#m3answer").empty();
+	var a=(cool_end+cool_start)/2;
+	var b=(warm_end+warm_start)/2;
+	var ans=(a+b)/2;
+	$("#m3answer").append(" the answer is "+ ans);
+}
+function method4()
+{
+	$("#m4answer").empty();
+	var a=(cool_end+cool_start)/2;
+	var b=(warm_end+warm_start)/2;
+	var c= (100+hot_start)/2;
+	var ans=(a+b+c)/3;
+	$("#m4answer").append(" the answer is "+ ans);
+}
+function method5()
+{
+	$("#m5answer").empty();
+		var a=(cool_end-cool_start)*(cool_end+cool_start)/2;
+	var b=(warm_end-warm_start)*(warm_end+warm_start)/2;
+	var ans=(a+b)/((cool_end-cool_start)+(warm_end-warm_start));
+	$("#m5answer").append(" the answer is "+ ans);
+}
+function method6()
+{
+	$("#m6answer").empty();
+	var a=cool_end-cool_start;
+	var b=warm_end-warm_start;
+	var c=(100-hot_start);
+	var ans;
+	if(a<=b)
+	{
+		if(b<c)
+		{
+			ans=hot_start+2*(100-hot_start)/3;
+		}
+		else{
+			ans=(warm_end+warm_start)/2;
+		}
+	}
+	else
+	{
+		if(a<=c)
+		{
+			ans=(cool_end-cool_start)/2;
+		}
+		else
+		{
+			ans=hot_start+2*(100-hot_start)/3;
+		}
+	}
+	$("#m6answer").append(" the answer is "+ (cool_start+cool_end)/2);
 }
