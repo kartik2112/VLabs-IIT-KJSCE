@@ -16,6 +16,7 @@ var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
 var board;
+var max_descriptors_allowed = 4;
 $(document).ready(function(){
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
@@ -105,7 +106,7 @@ function add_descriptor(who){
     //save();
     if(who==1){
         document.getElementById('g_add').removeAttribute('onclick');
-        if(grease_descriptor_ids.length == 5){
+        if(grease_descriptor_ids.length == max_descriptors_allowed){
             alert('Maximum limit for descriptors reached!');
             return;
         }
@@ -139,7 +140,7 @@ function add_descriptor(who){
     // Add a descriptor for Dirt
     else if(who==2){
         document.getElementById('d_add').removeAttribute('onclick');
-        if(dirt_descriptor_ids.length == 5){
+        if(dirt_descriptor_ids.length == max_descriptors_allowed){
             alert('Maximum limit for descriptors reached!');
             return;
         }
@@ -171,7 +172,7 @@ function add_descriptor(who){
     }
     else if(who==3){
         document.getElementById('t_add').removeAttribute('onclick');
-        if(wash_descriptor_ids.length == 5){
+        if(wash_descriptor_ids.length == max_descriptors_allowed){
             alert('Maximum limit for descriptors reached!');
             return;
         }
