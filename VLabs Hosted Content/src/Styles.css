@@ -183,7 +183,7 @@ button.displayActivatedButton{
 
 /* Copied as is from  https://www.w3schools.com/howto/howto_css_switch.asp */
 /* The switch - the box around the slider */
-.switch {
+.switch123 {
   position: relative;
   display: inline-block;
   width: 60px;
@@ -191,10 +191,10 @@ button.displayActivatedButton{
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch123 input {display:none;}
 
 /* The slider */
-.slider {
+.sliderSwitch {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -206,8 +206,7 @@ button.displayActivatedButton{
   transition: .4s;
 }
 
-/*
-.slider:before {
+.sliderSwitch:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -218,28 +217,27 @@ button.displayActivatedButton{
   -webkit-transition: .4s;
   transition: .4s;
 }
-*/
 
-input:checked + .slider {
+input:checked + .sliderSwitch {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus + .sliderSwitch {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .sliderSwitch:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
 /* Rounded sliders */
-.slider.round {
+.sliderSwitch.round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.sliderSwitch.round:before {
   border-radius: 50%;
 }
 
