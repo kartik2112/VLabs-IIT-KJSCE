@@ -321,45 +321,45 @@
 
 
                                         <!--Input texts-->
-                                        <text font-size="20" x="5" y="55">X1</text>
-                                        <text class="changingTextStyle percLRX_inputX1" font-size="20" x="45" y="57" style="stroke: #ff0000;stroke-width: 1px;"></text>
-                                        <text font-size="20" x="5" y="210">X2</text>
-                                        <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;"></text>
-                                        <text font-size="20" x="10" y="360">1</text>
-                                        <!--<text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="355">0</text>-->
+                                        <text font-size="15" x="5" y="55">X1</text>
+                                        <text class="changingTextStyle percLRX_inputX1" font-size="15" x="45" y="57" style="stroke: #ff0000;stroke-width: 1px;"></text>
+                                        <text font-size="15" x="5" y="210">X2</text>
+                                        <text class="changingTextStyle percLRX_inputX2" font-size="15" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;"></text>
+                                        <text font-size="15" x="10" y="360">1</text>
+                                        <!--<text class="changingTextStyle percLRX_inputX3" font-size="15" x="45" y="355">0</text>-->
 
 
-								        <text font-size="20" x="342" y="55">∑</text>
-                                        <text font-size="20" x="342" y="205">∑</text>
-                                        <text font-size="20" x="342" y="355">∑</text>
+								        <text font-size="15" x="342" y="55">∑</text>
+                                        <text font-size="15" x="342" y="205">∑</text>
+                                        <text font-size="15" x="342" y="355">∑</text>
 
                                         <!--Weights text-->
-                                        <text font-size="20"  x="225" y="30" >w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
-                                        <text font-size="20"  x="235" y="75" >w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
-                                        <text font-size="20"  x="303" y="110">w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">1</tspan></text>
-                                        <text font-size="20"  x="285" y="155">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
-                                        <text font-size="20"  x="240" y="195">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
-                                        <text font-size="20"  x="288" y="245">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
-                                        <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">1</tspan></text>
-                                        <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
-                                        <text font-size="20"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">1</tspan></text>
+                                        <text font-size="15"  x="225" y="30" >w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">1</tspan></text>
+                                        <text font-size="15"  x="235" y="75" >w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
+                                        <text font-size="15"  x="303" y="110">w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">1</tspan></text>
+                                        <text font-size="15"  x="285" y="155">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">1</tspan></text>
+                                        <text font-size="15"  x="240" y="185">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">1</tspan></text>
+                                        <text font-size="15"  x="288" y="245">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
+                                        <text font-size="15"  x="305" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">1</tspan></text>
+                                        <text font-size="15"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">1</tspan></text>
+                                        <text font-size="15"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">1</tspan></text>
 
 
                                         <!--u(x) related texts-->
-                                        <text font-size="20" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*1</text>
-                                        <text font-size="20" x="370" y="190">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*1</text>
-                                        <text font-size="20" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*1</text>
+                                        <text font-size="15" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*1</text>
+                                        <text font-size="15" x="370" y="184">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*1</text>
+                                        <text font-size="15" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*1</text>
 
 
                                         <!--y(x) related texts-->
-                                        <text font-size="20" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
-                                        <text class="changingTextStyle percLR_outputO1" font-size="20" x="670" y="80" style="stroke: #3366ff;"></text>
+                                        <text font-size="15" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
+                                        <text class="changingTextStyle percLR_outputO1" font-size="15" x="670" y="80" style="stroke: #3366ff;"></text>
 
-                                        <text font-size="20" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
-                                        <text class="changingTextStyle percLR_outputO2" font-size="20" x="670" y="230" style="stroke: #ff0000;"></text>
+                                        <text font-size="15" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
+                                        <text class="changingTextStyle percLR_outputO2" font-size="15" x="670" y="230" style="stroke: #ff0000;"></text>
 
-                                        <text font-size="20" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
-                                        <text class="changingTextStyle percLR_outputO3" font-size="20" x="670" y="380" style="stroke: #009933;"></text>
+                                        <text font-size="15" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
+                                        <text class="changingTextStyle percLR_outputO3" font-size="15" x="670" y="380" style="stroke: #009933;"></text>
                             </svg>
 
 
