@@ -189,8 +189,7 @@ function resetSimulation(lrString){
 }
 
 
-function startSimulation(lrString){
-    weightMatrix = [[-2, 1, -6.5], [3,2,1], [0,-1,-1.5]];
+function startSimulation(lrString){    
     lineColors = ['#3366ff','#ff0000','#009933'];
     inputs = [[-2,3,1],[-2,2,1],[2,3,1],[2,2,1],[3,4,1],[-2,-2,1],[2,-2,1]];
     desiredOPs = [[1,-1,-1],[1,-1,-1],[-1,1,-1],[-1,1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,1]];
