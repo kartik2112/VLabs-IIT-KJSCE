@@ -147,20 +147,34 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
                             
-                        <h3>4. What will be the output of the following p1=[1 2] t1=1
-                            p2=[-1 2] t2=0,p3=[0 -1] t3=0? <br>
-                    [ 0 are represented with a light circle , and
-the vector whose target is 1 is represented with a dark circle .]</h3>
+                        <h3>4. Which of these following will correctly classify the points as shown in this figure:</h3>
+                        <image src="images/Question.PNG" width="200px"/><br/>
 
-                        <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG"></image><br>
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG" width="200px"/><br>
                     <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG"></image><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG"></image><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG"></image><br><br>
+                    <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
 
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
                     </p>
+                    <b>Hints:-</b> Try these values and verify that these weights will classify all the points correctly. 
+                    Since it is perceptron learning which compares both the actual and desired output. With these inputs, the network weights won't change.
+                    If you set the weights to any other values, the learning will converge leading approximately to these weights.<br/><br/>
+
+                    w<sub>11</sub> = -1.5, 
+                    w<sub>12</sub> = 1, 
+                    w<sub>13</sub> = -3<br/>
+
+                    w<sub>21</sub> = 2.5, 
+                    w<sub>22</sub> = 1, 
+                    w<sub>23</sub> = -5<br/>
+
+                    w<sub>31</sub> = 0, 
+                    w<sub>32</sub> = -1, 
+                    w<sub>33</sub> = -1.5
+                    
                 </section>
                 <!-- /.content -->
         

@@ -155,6 +155,21 @@
 
                         
                     </p>
+
+                    <b>Hints:-</b> Try these values and verify that these weights will classify all the points correctly.
+                    If you set the weights to any other values, the learning will converge leading approximately to these weights.<br/><br/>
+
+                    w<sub>11</sub> = -1.5
+                    w<sub>12</sub> = 1
+                    w<sub>13</sub> = -3
+
+                    w<sub>21</sub> = 2.5
+                    w<sub>22</sub> = 1
+                    w<sub>23</sub> = -5
+
+                    w<sub>31</sub> = 0
+                    w<sub>32</sub> = -1
+                    w<sub>33</sub> = -1.5
                 </section>
                 <!-- /.content -->
         
