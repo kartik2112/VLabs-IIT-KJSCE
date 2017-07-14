@@ -146,10 +146,9 @@
                         <h3>4. A neural network can answer</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. For loop questions<br>
-                    <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.   what-if questions<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C.  IF-then else questions<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. None of these<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B.   what-if questions<br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C.  IF-then else questions<br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. None of these<br>
 
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is B</p>

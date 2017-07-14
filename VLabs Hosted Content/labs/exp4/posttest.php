@@ -58,6 +58,13 @@
                         scrollTop: $("#optradio4Ans").offset().top-300
                     }, 1000);
                 });
+                $(".optradio5").click(function(){
+                    //alert("clicked");
+                    $("#optradio5Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio5Ans").offset().top-300
+                    }, 1000);
+                });
             });
         </script>
     </head>
@@ -151,29 +158,38 @@
                         <image src="images/Question.PNG" width="200px"/><br/>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG" width="200px"/><br>
-                    <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG" width="200px"/><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
+                        <br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG" width="200px"/><br><br>
+                            <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
+                            <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
 
+                            <br />
+                            <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        </p>
+                        <h3>5. What type of activation function is used in this experiment?</h3>
+
+                        <input type="radio" class="optradio5" name="q4" value="1"> A. Hardlimit activation function <br>
+                        <input type="radio" class="optradio5" name="q4" value="2"> B. Softlimit activation function<br>
+                        <input type="radio" class="optradio5" name="q4" value="3"> C. Both A and B<br>
+                        <input type="radio" class="optradio5" name="q4" value="4"> D. none of the above<br>
                         <br />
-                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
-                    </p>
-                    <b>Hints:-</b> Try these values and verify that these weights will classify all the points correctly. 
-                    Since it is perceptron learning which compares both the actual and desired output. With these inputs, the network weights won't change.
-                    If you set the weights to any other values, the learning will converge leading approximately to these weights.<br/><br/>
+                        <p id="optradio5Ans" class="testAns" style="display:none;"> Ans is A</p>
 
-                    w<sub>11</sub> = -1.5, 
-                    w<sub>12</sub> = 1, 
-                    w<sub>13</sub> = -3<br/>
+                        <b>Hints:-</b> Try these values and verify that these weights will classify all the points correctly. 
+                        Since it is perceptron learning which compares both the actual and desired output. With these inputs, the network weights won't change.
+                        If you set the weights to any other values, the learning will converge leading approximately to these weights.<br/><br/>
 
-                    w<sub>21</sub> = 2.5, 
-                    w<sub>22</sub> = 1, 
-                    w<sub>23</sub> = -5<br/>
+                        w<sub>11</sub> = -1.5, 
+                        w<sub>12</sub> = 1, 
+                        w<sub>13</sub> = -3<br/>
 
-                    w<sub>31</sub> = 0, 
-                    w<sub>32</sub> = -1, 
-                    w<sub>33</sub> = -1.5
+                        w<sub>21</sub> = 2.5, 
+                        w<sub>22</sub> = 1, 
+                        w<sub>23</sub> = -5<br/>
+
+                        w<sub>31</sub> = 0, 
+                        w<sub>32</sub> = -1, 
+                        w<sub>33</sub> = -1.5
                     
                 </section>
                 <!-- /.content -->

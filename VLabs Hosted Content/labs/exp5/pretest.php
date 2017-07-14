@@ -152,11 +152,9 @@
                         <h3>4. The network that involves backward links from output to the input and hidden layers is called as ____.</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. Self organizing maps<br>
-                    <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.   Perceptrons<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C.  Recurrent neural network<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D.  Multi layered perceptron<br><br>
-
+                    <input type="radio" class="optradio4" name="q4" value="2"> B.   Perceptrons<br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C.  Recurrent neural network<br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D.  Multi layered perceptron<br>
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is C</p>
                     
