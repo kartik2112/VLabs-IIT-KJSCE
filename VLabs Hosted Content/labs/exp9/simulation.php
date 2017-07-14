@@ -32,7 +32,7 @@
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
         <script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
-        <script src="../../src/exp10Simulation.js"></script>
+        <script src="../../src/exp9Simulation.js"></script>
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">

@@ -82,9 +82,9 @@
                             <li>Sit back and watch as the text is recognized. The results are obtained using <a href="http://tesseract.projectnaptha.com/" target="_blank" class="hyperlink">Google&copy;'s Tesseract OCR JS API</a>. 
                                 The quality of recognition is dependent on this API's performance.</li>
                             <li>You can see the bounding boxes for the words that have been extracted using segmentation by switching this toggle switch ON<br/>
-                                <label class="switch">
+                                <label class="switch123">
                                     <input id="displayCanvasSwitch" type="checkbox" checked="checked">
-                                    <div class="slider round"></div>
+                                    <div class="sliderSwitch round"></div>
                                 </label>
                             </li>
                         </ol>

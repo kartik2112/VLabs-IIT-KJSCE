@@ -30,7 +30,7 @@
 
         <!--Here is the main script that handles the simulation-->
          
-        <script type="text/javascript" src="../../src/exp9Simulation.js"></script>
+        <script type="text/javascript" src="../../src/exp8Simulation.js"></script>
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
         <link href="../../src/Styles.css" rel="stylesheet" />
 		<style>

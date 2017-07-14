@@ -26,23 +26,12 @@
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
-
-        <!--Math.js has been used for easy Matrix handling-->
-        <!--Here is the main script that handles the simulation-->
-        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.13.3/math.min.js"></script>-->
-        <!--<script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>-->
-        
+               
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->
         <link href="../../src/Styles.css" rel="stylesheet" />
 
 
-        <!--These are used for plotting the graphs-->
-        <!--<link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="../../plugins/jsxgraphcore.min.js"></script>-->
-
         <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
-        <!--<script src="http://tenso.rs/tesseract.js"></script>-->
 
         <!-- Simulation scripts end-->
         <style>
@@ -257,9 +246,9 @@
                                 <img id="img1" src="./images/no_img.png" style="position:relative; max-width:100%; display:block;" /><br/>
                                 <div id="displayCanvasSwitchOuter" style="display: none;">
                                     <h4>Bounding Boxes Visibility: </h4> 
-                                    <label class="switch">
+                                    <label class="switch123">
                                         <input id="displayCanvasSwitch" type="checkbox" checked="checked">
-                                        <div class="slider round"></div>
+                                        <div class="sliderSwitch round"></div>
                                     </label>
                                 </div>                                
                             </div>                            
