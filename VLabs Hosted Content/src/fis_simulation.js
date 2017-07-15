@@ -16,7 +16,6 @@ var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
 var board;
-var max_descriptors_allowed = 4;
 $(document).ready(function(){
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
@@ -24,20 +23,9 @@ $(document).ready(function(){
     $("[data-toggle='input']").tooltip();
 });
 
-<<<<<<< HEAD
-function plotTheGraph()
-{
-	 var graphEnds=120;
-	board = JXG.JSXGraph.initBoard('graph1Div',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showNavigation:false,showCopyright:false});
-	var c_s =board.create('line',[[cool_start,0],[(cool_start+cool_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
-	var c_e =board.create('line',[[(cool_start+cool_end)/2,1],[cool_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
-	var w_s =board.create('line',[[warm_start,0],[(warm_start+warm_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
-	var w_e =board.create('line',[[(warm_start+warm_end)/2,1],[warm_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2});
-	var h_s =board.create('line',[[hot_start,0],[hot_end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#ff0000',strokeWidth:2});
-=======
 function plotGraph(){
     var graphEnds=100;
-    board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < grease_descriptors.length; i++) {
         var start=grease_descriptors[i].start;
         var end=grease_descriptors[i].end;
@@ -59,7 +47,7 @@ function plotGraph(){
         }
     }
     //Following is to draw graph for Dirt descriptors
-    var board_dirt = JXG.JSXGraph.initBoard('dirt_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
+    var board_dirt = JXG.JSXGraph.initBoard('dirt_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < dirt_descriptors.length; i++) {
         var start=dirt_descriptors[i].start;
         var end=dirt_descriptors[i].end;
@@ -83,7 +71,7 @@ function plotGraph(){
     //Following is to draw graph for Wash time descriptors
     graphEnds=wash_descriptors[wash_descriptors.length-1].end;
     // console.log(graphEnds);
-    var board_washing = JXG.JSXGraph.initBoard('washing_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
+    var board_washing = JXG.JSXGraph.initBoard('washing_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
 
     for (var i = 0; i < wash_descriptors.length; i++) {
         var start=wash_descriptors[i].start;
@@ -105,7 +93,6 @@ function plotGraph(){
             washing_lines_down.push(board_washing.create('line',[[mid,1],[end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#00ff00',strokeWidth:2}));
         }
     }
->>>>>>> 149c47c6b5ca9ab77b5c5cab42a369941cb6125c
 }
 
 $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
@@ -118,7 +105,7 @@ function add_descriptor(who){
     //save();
     if(who==1){
         document.getElementById('g_add').removeAttribute('onclick');
-        if(grease_descriptor_ids.length == max_descriptors_allowed){
+        if(grease_descriptor_ids.length == 5){
             alert('Maximum limit for descriptors reached!');
             return;
         }
@@ -152,7 +139,7 @@ function add_descriptor(who){
     // Add a descriptor for Dirt
     else if(who==2){
         document.getElementById('d_add').removeAttribute('onclick');
-        if(dirt_descriptor_ids.length == max_descriptors_allowed){
+        if(dirt_descriptor_ids.length == 5){
             alert('Maximum limit for descriptors reached!');
             return;
         }
@@ -184,7 +171,7 @@ function add_descriptor(who){
     }
     else if(who==3){
         document.getElementById('t_add').removeAttribute('onclick');
-        if(wash_descriptor_ids.length == max_descriptors_allowed){
+        if(wash_descriptor_ids.length == 5){
             alert('Maximum limit for descriptors reached!');
             return;
         }
@@ -662,7 +649,7 @@ function defuzzify(fuzzyWash)
     var p1,p2,p3,p4,pc1,pc2,pc3,pc4;
     var explnBoards=[];
     for (var i = 0; i < wash_descriptors.length; i++) {
-      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false});
+      var b=JXG.JSXGraph.initBoard('expln'+i+'_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
       var start=wash_descriptors[i].start;
       var end=wash_descriptors[i].end;
       if(start==999){
@@ -682,7 +669,7 @@ function defuzzify(fuzzyWash)
       }
       explnBoards.push(b);
     }
-    var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1]});
+    var board_washing = JXG.JSXGraph.initBoard('defuzzifierOP_GraphDiv',{axis:true, boundingbox:[-1,1.1,parseInt(graphEnds/10)*10+10,-0.1],showNavigation:false,showCopyright:false});
     for (var i = 0; i < wash_descriptors.length; i++) {
         var start=wash_descriptors[i].start;
         var end=wash_descriptors[i].end;

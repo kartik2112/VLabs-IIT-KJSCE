@@ -97,7 +97,7 @@ $(document).ready(function () {
     });
     $(".OR-inputY-oplay_neuron1-weight").text($("#OR_Gate_w2_slider").slider("value"));
     OR_w2 = $("#OR_Gate_w2_slider").slider("value");
-	
+
 	/*
     Initialize NOT Gate sliders and add listeners to them
     */
@@ -474,7 +474,7 @@ function startSimulation(interval) {
             scrollTop: $("#AND-box").offset().top
         }, 500);
         simulateANDGate(iterationNo, inputXofANDOR.join(","), inputYofANDOR.join(","), parseFloat(AND_w1), parseFloat(AND_w2), parseFloat(AND_threshold), interval);
-    }        
+    }
     else if(gate_id==2){
         $('html, body').animate({
             scrollTop: $("#OR-box").offset().top
@@ -486,7 +486,7 @@ function startSimulation(interval) {
             scrollTop: $("#NOT-box").offset().top
         }, 500);
         simulateNOTGate(iterationNo, inputXofNOT.join(","), parseFloat(NOT_w1), parseFloat(NOT_threshold), interval);
-    
+
 	}
 }
 
@@ -533,7 +533,7 @@ function verifyNOTOutputs() {
 
 function plotANDGraph()
 {
-	var board = JXG.JSXGraph.initBoard('AND-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+	var board = JXG.JSXGraph.initBoard('AND-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
 	var constPointSize=5;
 	var OP1 = board.create('point',[0,0], {size:constPointSize,face:'^',fixed:true});
 	var OP2 = board.create('point',[0,1], {size:constPointSize,face:'^',fixed:true});
@@ -545,7 +545,7 @@ function plotANDGraph()
 
 function plotORGraph()
 {
-	var board = JXG.JSXGraph.initBoard('OR-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+	var board = JXG.JSXGraph.initBoard('OR-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
 	var constPointSize=5;
 	var OP1 = board.create('point',[0,0], {size:constPointSize,face:'^',fixed:true});
 	var OP2 = board.create('point',[0,1], {size:constPointSize,face:'x',fixed:true});
@@ -557,7 +557,7 @@ function plotORGraph()
 
 function plotNOTGraph()
 {
-	var board = JXG.JSXGraph.initBoard('NOT-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+	var board = JXG.JSXGraph.initBoard('NOT-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
 	var constPointSize=5;
 	var OP1 = board.create('point',[0,0], {size:constPointSize,face:'^',fixed:true});
 	var OP2 = board.create('point',[1,0], {size:constPointSize,face:'x',fixed:true});

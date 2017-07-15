@@ -109,7 +109,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -134,7 +134,7 @@ function displayDiv(val){
     else if(val == "corrLR"){
         $("#percLRMainOuterDiv").slideUp(750);
         $("#hebbLRMainOuterDiv").slideUp(750);
-        $("#corrLRMainOuterDiv").slideDown(750);        
+        $("#corrLRMainOuterDiv").slideDown(750);
     }
 
     resetSimulation(val);
@@ -229,7 +229,7 @@ function learnInput(lrString,inputIndex){
 
             var constPointSize = 5;
             $("#"+lrString+"_FirstPartOfExpln").css("display","none");
-            $("#"+lrString+"_SecondPartOfExpln").css("display","none");    
+            $("#"+lrString+"_SecondPartOfExpln").css("display","none");
 
             $(".changingBlocks").fadeOut(300);
 
@@ -325,7 +325,7 @@ function learnInput(lrString,inputIndex){
 
                 revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.summationVector", 6000);
 
-                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);        
+                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);
 
                 //Display desired Output vector
                 for (var i = 0; i < input.length; i++) {
@@ -339,7 +339,7 @@ function learnInput(lrString,inputIndex){
                     revealByFadeIn("#"+lrString+"_SecondPartOfExpln table.outputVector", 0);
                     $("#"+lrString+"_SecondPartOfExpln").slideDown(500);
 
-                    //Reveal individual Elements one by one            
+                    //Reveal individual Elements one by one
                     revealByFadeIn("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
                     scrollToElement("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
 
@@ -475,7 +475,7 @@ function learnInput(lrString,inputIndex){
 
             var constPointSize = 5;
             $("#"+lrString+"_FirstPartOfExpln").css("display","none");
-            $("#"+lrString+"_SecondPartOfExpln").css("display","none");    
+            $("#"+lrString+"_SecondPartOfExpln").css("display","none");
 
             $(".changingBlocks").fadeOut(300);
 
@@ -578,7 +578,7 @@ function learnInput(lrString,inputIndex){
 
                 revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.summationVector", 6000);
 
-                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);        
+                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);
 
                 //Display desired Output vector
                 for (var i = 0; i < input.length; i++) {
@@ -593,7 +593,7 @@ function learnInput(lrString,inputIndex){
                     scrollToElement("#"+lrString+"_SecondPartOfExpln table.outputVector", 0);
                     $("#"+lrString+"_SecondPartOfExpln").slideDown(500);
 
-                    //Reveal individual Elements one by one            
+                    //Reveal individual Elements one by one
                     revealByFadeIn("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
                     scrollToElement("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
 
@@ -713,7 +713,7 @@ function learnInput(lrString,inputIndex){
                     }, 16000);
                 }, 15000));
             }, 5000));
-        
+
     }
     else if(lrString == "corrLR"){
 
@@ -726,7 +726,7 @@ function learnInput(lrString,inputIndex){
 
             var constPointSize = 5;
             $("#"+lrString+"_FirstPartOfExpln").css("display","none");
-            $("#"+lrString+"_SecondPartOfExpln").css("display","none");    
+            $("#"+lrString+"_SecondPartOfExpln").css("display","none");
 
             $(".changingBlocks").fadeOut(300);
 
@@ -822,7 +822,7 @@ function learnInput(lrString,inputIndex){
 
                 revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.summationVector", 6000);
 
-                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);        
+                revealByFadeIn("#"+lrString+"_FirstPartOfExpln table.outputVector", 8000);
 
                 //Display desired Output vector
                 for (var i = 0; i < input.length; i++) {
@@ -837,7 +837,7 @@ function learnInput(lrString,inputIndex){
                     scrollToElement("#"+lrString+"_SecondPartOfExpln table.outputVector", 0);
                     $("#"+lrString+"_SecondPartOfExpln").slideDown(500);
 
-                    //Reveal individual Elements one by one            
+                    //Reveal individual Elements one by one
                     revealByFadeIn("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
                     scrollToElement("#"+lrString+"_SecondPartOfExpln table.desiredOutputVector", 2000);
 
@@ -865,7 +865,7 @@ function learnInput(lrString,inputIndex){
                         var weightChangedFlag = false;
 
                         for (var i = 0; i < input.length; i++) {
-                            
+
                             var tempVal = parseFloat((weightMatrix[calcnIndex][i] + learningRate * (desiredOPs[inputIndex][calcnIndex]) * input[i]).toFixed(4));
                             $("#"+lrString+"CalcnExplnFor_i_" + calcnIndex + " table.newWtVector tr." + i + " td.0").text(tempVal);             //Changes new weight vectors in carousel
                             $("#"+lrString+"_SecondPartOfExpln table.newWtVectorW" + calcnIndex + " tr.0 td." + i).text(tempVal);               //Changes new weight vectors displayed after carousel
@@ -958,8 +958,8 @@ function learnInput(lrString,inputIndex){
                 }, 15000));
             }, 5000));
         }
-    
-    
+
+
 }
 
 function scrollToElement(elem,time){
@@ -968,7 +968,7 @@ function scrollToElement(elem,time){
         $('html, body').animate({
             scrollTop: $(elem).offset().top
         }, 1500);
-    },time));    
+    },time));
 }
 
 function revealByFadeIn(elem,time){
@@ -986,9 +986,9 @@ function revealBySlideDown(elem,time){
 function plotGraph(lrString){
     points = [];
     lines = [];
-    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-4, 5, 4, -3]});  //Creates the cartesian graph
+    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-4, 5, 4, -3],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
 	var constPointSize=5;
-	
+
     for(var i=0;i<inputs.length;i++){
         points[i] = board.create('point',[inputs[i][0],inputs[i][1]], {size:constPointSize,face:desiredOPsProps[i][0],fixed:true, color: desiredOPsProps[i][1]});
     }
@@ -996,7 +996,7 @@ function plotGraph(lrString){
     for(var i=0;i<weightMatrix.length;i++){
         lines[i] = board.create('line', [weightMatrix[i][2], weightMatrix[i][0], weightMatrix[i][1]], { strokeColor: lineColors[i], fixed: true });
         ineq = board.create('inequality', [lines[i]], {inverse:true, fillColor: lineColors[i]});
-        
+
     }
 
 }

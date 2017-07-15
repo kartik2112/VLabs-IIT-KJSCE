@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION["currPage"]=5;
-?> 
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -17,8 +17,8 @@ $_SESSION["currPage"]=5;
   <link rel="stylesheet" href="../../dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-  
-  
+
+
   <!-- jQuery 2.2.3 -->
   <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -121,7 +121,7 @@ $_SESSION["currPage"]=5;
 
           document.getElementById('r4').style.background = "transparent";
           document.getElementById('start').innerHTML = "Start simulation";
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
           OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
@@ -208,8 +208,8 @@ $_SESSION["currPage"]=5;
           document.getElementById('reset').style.display = "none";
 
           counter = 0;
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] ,showNavigation:false,showCopyright:false});  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -221,8 +221,8 @@ $_SESSION["currPage"]=5;
       }
 
       function start_ebp() {
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -441,8 +441,8 @@ $_SESSION["currPage"]=5;
           counter = 0;
 
           /* Creates the cartesian graph */
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -519,8 +519,8 @@ $_SESSION["currPage"]=5;
               document.getElementById('start').innerHTML = "Test next input";
 
               //Re-plot the graph
-              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-              board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
+              board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showNavigation:false,showCopyright:false});
               OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
               OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
               OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
@@ -632,7 +632,7 @@ $_SESSION["currPage"]=5;
           document.getElementById('out' + (index + 1)).innerHTML = y;
           z1 = z2 = y = y1 = y2 = 0;
       }
-  </script> 
+  </script>
 
   <style type="text/css">
     #truth td{
@@ -711,8 +711,8 @@ $_SESSION["currPage"]=5;
       <section class="content-header">
         <h1 align="center"><?php echo $exp_name?></h1>
         <!-- Write your experiment name -->
-          
-           
+
+
             <!--Simulation content goes here -->
 
       </section>
@@ -869,7 +869,7 @@ $_SESSION["currPage"]=5;
               <h5 id="acc" style="display: none;border: 1px solid black;color: #f3bb43;text-align: center;padding: 3px;background:  #222d32;"><span id="acc_title">Accuracy of network: </span><span id="acc_val">0%</span></h5>
             </div>
           </div>
-              
+
           <div class="ebp_content_only" style="width: 240px;height: 290px;">
             <h5 style="float: left;margin: 0;width: 140px">
               Set Learning rate: &nbsp;<span id="learn">1</span>
@@ -906,7 +906,7 @@ $_SESSION["currPage"]=5;
               <div style="width: 48%;float: right;">
                 <h3 style="text-align: center;width: 300px;">After conversion of Feature space to image space</h3>
                 <div id="box1" class="jxgbox" style="width:300px; height:300px;float: right;"></div>
-              </div>              
+              </div>
             </div>
           </div>
 
