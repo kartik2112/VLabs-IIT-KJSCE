@@ -110,7 +110,7 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
-        var x = document.getElementById('g_d_'+grease_descriptor_ids[n_descriptor_grease-1]);
+        var x = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
         var prevStart=Number(parseInt(elems[0].value));
@@ -144,7 +144,7 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
-        var x = document.getElementById('d_d_'+dirt_descriptor_ids[n_descriptor_dirt-1]);
+        var x = document.getElementById('d_d_'+dirt_descriptor_ids[dirt_descriptor_ids.length-1]);
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
         var prevStart=Number(parseInt(elems[0].value));
@@ -176,7 +176,7 @@ function add_descriptor(who){
             alert('Maximum limit for descriptors reached!');
             return;
         }
-        var x = document.getElementById('t_d_'+wash_descriptor_ids[n_descriptor_wash-1]);
+        var x = document.getElementById('t_d_'+wash_descriptor_ids[wash_descriptor_ids.length-1]);
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
         var prevStart=Number(parseInt(elems[0].value));
