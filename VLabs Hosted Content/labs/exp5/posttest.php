@@ -53,6 +53,13 @@
                         scrollTop: $("#optradio4Ans").offset().top-300
                     }, 1000);
                 });
+                $(".optradio5").click(function(){
+                    //alert("clicked");
+                    $("#optradio5Ans").slideDown();
+                    $('html, body').animate({
+                        scrollTop: $("#optradio5Ans").offset().top-300
+                    }, 1000);
+                });
             });
         </script>
     </head>
@@ -145,16 +152,39 @@
                         <h3>4. Which of the following is the correct definition of the anti neuron theory ?</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. An increase in synaptic efficacy arises from the presynaptic cell's repeated and persistent stimulation of the postsynaptic cell. <br>
-                    <br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.   dictating reduction of the strength of synaptic connectivity between neurons following a scenario in which a neuron directly contributes to production of an action potential in another neuron<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. Both A and B<br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. none of the above<br><br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B.   dictating reduction of the strength of synaptic connectivity between neurons following a scenario in which a neuron directly contributes to production of an action potential in another neuron<br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. Both A and B<br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. none of the above<br>
 
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is B</p>
 
+                        <h3>5. What type of activation function is used in this experiment?</h3>
+
+                        <input type="radio" class="optradio5" name="q4" value="1"> A. Hardlimit activation function <br>
+                        <input type="radio" class="optradio5" name="q4" value="2"> B. Softlimit activation function<br>
+                        <input type="radio" class="optradio5" name="q4" value="3"> C. Both A and B<br>
+                        <input type="radio" class="optradio5" name="q4" value="4"> D. none of the above<br>
+                        <br />
+                        <p id="optradio5Ans" class="testAns" style="display:none;"> Ans is B</p>
+
                         
                     </p>
+
+                    <b>Hints:-</b> Try these values and verify that these weights will classify all the points correctly.
+                    If you set the weights to any other values, the learning will converge leading approximately to these weights.<br/><br/>
+
+                    w<sub>11</sub> = -1.5, 
+                    w<sub>12</sub> = 1, 
+                    w<sub>13</sub> = -3<br/>
+
+                    w<sub>21</sub> = 2.5, 
+                    w<sub>22</sub> = 1, 
+                    w<sub>23</sub> = -5<br/>
+
+                    w<sub>31</sub> = 0, 
+                    w<sub>32</sub> = -1, 
+                    w<sub>33</sub> = -1.5
                 </section>
                 <!-- /.content -->
         

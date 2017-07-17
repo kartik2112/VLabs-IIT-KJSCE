@@ -1,12 +1,12 @@
 var board;
 var timer1, timer2, timer3,intervalT=2000;
-var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
+var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=100,scallar_value=55;
 $(document).ready(function () {
-
-
+	
+   
 	plotTheGraph();
 	$('html, body').animate({
-        scrollTop: $("#top_div").offset().top
+        scrollTop: $("#sim").offset().top
     }, 1500);
 																		// slidersalert("tt");alert("tt");
     $("#cool_start_slider").slider({
@@ -21,7 +21,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	 $("#cool_end_slider").slider({
+	$("#cool_end_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -42,7 +42,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	 $("#warm_start_slider").slider({
+	$("#warm_start_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -53,8 +53,8 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-
-	 $("#warm_end_slider").slider({
+	
+	$("#warm_end_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -72,21 +72,21 @@ $(document).ready(function () {
 				$(".warm_end_value").text(ui.value);
 				warm_end=ui.value;
 			}
-		   plotTheGraph();
+		  plotTheGraph();
         }
     });
-	 $("#hot_start_slider").slider({
-        max: 120,
+	$("#hot_start_slider").slider({
+        max: 100,
         min: 0,
         step: 5,
 		value :80,
         slide: function (event, ui) {
             $(".hot_start_value").text(ui.value);
            hot_start=ui.value;
-		   plotTheGraph();
+		  plotTheGraph();
         }
     });
-
+	 
 	$("start_simulation_button").click(function(){
        $(this).hide();
     });
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
 function plotTheGraph()
 {
-	 var graphEnds=120;
+	var graphEnds=100;
 	board = JXG.JSXGraph.initBoard('graph1Div',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1]});
 	var c_s =board.create('line',[[cool_start,0],[(cool_start+cool_end)/2,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
 	var c_e =board.create('line',[[(cool_start+cool_end)/2,1],[cool_end,0]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#0000ff',strokeWidth:2});
@@ -113,21 +113,56 @@ function startSimulation1()
 	method4();
 	method5();
 	method6();
-
+	$('html, body').animate({
+        scrollTop: $("#methods").offset().top
+    }, 2000);
+	
 }
 function method1()
 {
 	$("#m1answer").empty();
-	$("#m1answer").append(" the answer is "+ (cool_start+cool_end)/2+" or "+(warm_end+warm_start)/2+" or "+(hot_start+hot_end)/2);
+	$("#m1final").empty();
+	document.getElementById("m1answer").style.color = "red";
+	var data="<h4 style='color:black'>DATA:</h4>";
+	
+	var strTemp="<h4 style='color:black'>Here we have to consider the maximum value of the set having the maximum membership value.</h4> MAX {1, 1, 1}<br>";
+	strTemp = strTemp + "Since all three sets have equal maximum membership value, there are 3 possible Defuzzified Values.<br>";
+	strTemp = strTemp + "MAX {(Cool_Start + Cool_End) &divide 2 , (Warm_Start + Warm_End) &divide 2 , (Hot_End)}<br>";
+	strTemp = strTemp + "MAX {("+cool_start+" + "+cool_end+") &divide 2 , ("+warm_start+" + "+warm_end+") &divide 2 , "+hot_end+"}<br>";
+	strTemp = strTemp + "MAX {"+(cool_start+cool_end)/2+" , "+(warm_end+warm_start)/2+" , "+(hot_end+hot_end)/2+"}<br>";
+	var s=" <h4 style='color:black'>The Defuzzified value is <span style='color:red'>"+ (cool_start+cool_end)/2+" or "+(warm_end+warm_start)/2+" or "+(hot_end)+"</span>.</h4>";
+	strTemp=strTemp;
+	var timer1=window.setTimeout(function () {
+		$("#m1answer").addClass("well");
+		$("#m1answer").append(""+strTemp);
+		},2000);
+	var timer1=window.setTimeout(function () {
+		$("#m1final").addClass("well");
+		$("#m1final").append(""+s);
+		},3000);
+		
 }
 function method2()
 {
 	$("#m2answer").empty();
+	$("#m2final").empty();
+	document.getElementById("m2answer").style.color = "red";
+	var data="<h4 style='color:black'>DATA:</h4>";
+	var temp=data+"Cool : Start = "+cool_start+ " , End = "+cool_end+"<br>";
+	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
+	var sol="<h4 style='color:black'>SOLUTION:</h4>";
+	temp=temp+sol;
 	var a=cool_end;
 	var b=warm_start;
 	var c=warm_end;
 	var d=hot_start;
-	var ans=((cool_end+cool_start)/2 + (warm_end+warm_start/2) + (hot_end+hot_start)/2);
+	var area1=(cool_end+cool_start)/2;
+	var area2=(warm_end+warm_start/2);
+	var area3=(warm_end+warm_start/2);
+	temp = temp+"Total Area = [( cool_end + cool_start ) &divide 2 + (warm_end+warm_start) &divide 2 + (hot_end+hot_start) &divide 2] &divide (1 + 1 + 1)<br>";
+	temp=temp+"Total Area = [( "+cool_end+" + "+cool_start+" ) &divide 2 + ( "+warm_end+" + "+warm_start+") &divide 2 + ( "+hot_end+" + "+hot_start+") &divide 2] &divide 3<br>";
+	var ans=(((cool_end+cool_start)/2 + (warm_end+warm_start)/2 + (hot_end+hot_start)/2))/3;
+	temp=temp+"Total Area: "+ans.toFixed(2)+"<br>";
 	var y1,y2;
 	if(cool_end>warm_start && cool_start<warm_end)
 	{
@@ -136,7 +171,11 @@ function method2()
 		var c1=-m1*cool_end;
 		var c2=-m2*warm_start;
 		y1=(m2*c1-m1*c2)/(m2-m1);
-		ans = ans - (b-a)*y1/2;
+		temp=temp+"Overlapping Area: "+Math.abs((b-a)*y1/2).toFixed(2)+"<br>";
+		temp=temp+"Ans = Total Area - Overlapping Area<br>";
+		temp=temp+"Ans = "+ans.toFixed(2)+" - "+Math.abs((b-a)*y1/2).toFixed(2)+"<br>";
+		ans = ans - Math.abs((b-a)*y1/2).toFixed(2);
+		temp = temp+"Ans = "+ans.toFixed(2)+"<br>";
 	}
 	if(hot_start<warm_end && cool_start<hot_start)
 	{
@@ -145,51 +184,198 @@ function method2()
 		var c1=-m1*warm_end;
 		var c2=-m2*hot_start;
 		y2=(m2*c1-m1*c2)/(m2-m1);
-		ans = ans - (d-c)*y2/2;
+		temp=temp+"Overlapping Area: "+Math.abs((d-c)*y2/2).toFixed(2)+"<br>";
+		temp=temp+"Ans = Total Area - Overlapping Area<br>";
+		temp=temp+"Ans = "+ans.toFixed(2)+" - "+Math.abs((d-c)*y2/2).toFixed(2)+"<br>";
+		ans = ans - Math.abs((d-c)*y2/2).toFixed(2);
+		temp = temp+"Ans = "+ans.toFixed(2);
 	}
-	$("#m2answer").append(" the answer is "+ ans/3);
+	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
+	temp=temp;
+	var timer1=window.setTimeout(function () {
+		$("#m2answer").addClass("well");
+		$("#m2answer").append(""+temp);
+		},2000);
+	var timer1=window.setTimeout(function () {
+		$("#m2final").addClass("well");
+		$("#m2final").append(""+s);
+		},3000);	
 }
 
 function method3()
 {
 	$("#m3answer").empty();
+	$("#m3final").empty();
+	var data="<h4 style='color:black'>DATA:</h4>";
+	
+	var temp=data+"Cool: Start = "+cool_start+", End = "+cool_end+"<br>";
+	temp=temp+"Warm: Start = "+warm_start+", End = "+warm_end+"<br>";
+	
+	var sol="<h4 style='color:black'>SOLUTION:</h4>";
+	temp=temp+sol;
+	
+	temp=temp+"a = (cool_start+cool_end) &divide 2 <br>";
+	temp=temp+"a = ("+cool_start+"+"+cool_end+") &divide 2 <br>"
+	
+	
+	
+	document.getElementById("m3answer").style.color = "red";
 	var a=(cool_end+cool_start)/2;
+	temp=temp+"a = "+a+" <br>";
+	temp=temp+"b = (warm_start+warm_end) &divide 2 <br>";
+	temp=temp+"b = ("+warm_start+"+"+warm_end+") &divide 2 <br>"
 	var b=(warm_end+warm_start)/2;
+	temp=temp+"b = "+b+" <br>";
 	var ans=(a+b)/2;
-	$("#m3answer").append(" the answer is "+ ans);
+	temp=temp+"value = (a+b)&divide 2 <br>";
+	temp=temp+"value = ("+a+"+"+b+") &divide 2 <br> ";
+	temp=temp+"value = "+ans.toFixed(2);
+	
+	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
+	temp=temp;
+	
+	var timer1=window.setTimeout(function () {
+		$("#m3answer").addClass("well");
+		$("#m3answer").append(""+temp);
+		},2000);
+	var timer1=window.setTimeout(function () {
+		$("#m3final").addClass("well");
+		$("#m3final").append(""+s);
+		},3000);	
+
+	document.getElementById("m3answer").style.color = "red";
+	$("#m3answer").append();	
 }
 function method4()
 {
 	$("#m4answer").empty();
+	$("#m4final").empty();
+	var data="<h4 style='color:black'>DATA:</h4>";
+	
+	var temp=data+"Cool: Start="+cool_start+", End = "+cool_end+"<br>";
+	temp=temp+"Warm: Start = "+warm_start+", End = "+warm_end+"<br>";
+	temp=temp+"Hot: Start = "+hot_start+", End: 100<br>";
+	
+	var sol="<h4 style='color:black'>SOLUTION:</h4>";
+	temp=temp+sol;
+	
+	temp=temp+"a = (cool_start+cool_end) &divide 2 <br>";
+	temp=temp+"a = ("+cool_start+"+"+cool_end+") &divide 2 <br>"
+	
+	document.getElementById("m4answer").style.color = "red";
 	var a=(cool_end+cool_start)/2;
+	temp=temp+"a = "+a+" <br>";
+	temp=temp+"b = (warm_start+warm_end) &divide 2 <br>";
+	temp=temp+"b = ("+warm_start+"+"+warm_end+") &divide 2 <br>"
+	
 	var b=(warm_end+warm_start)/2;
+	temp=temp+"b = "+b+" <br>";
+	
+	temp=temp+"c = (hot_start+hot_end) &divide 2 <br>";
+	temp=temp+"c = ("+hot_start+"+100) &divide 2 <br>";
+	
 	var c= (100+hot_start)/2;
+	temp=temp+"c = "+c+" <br>";
+
+	
 	var ans=(a+b+c)/3;
-	$("#m4answer").append(" the answer is "+ ans);
+	
+	temp=temp+"value = (a+b+c) &divide 3 <br>";
+	temp=temp+"value = ("+a+"+"+b+"+"+c+") &divide 2 <br> ";
+	temp=temp+"value = "+ans.toFixed(2);
+	
+	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
+	temp=temp;
+	
+	
+	var timer1=window.setTimeout(function () {
+		$("#m4answer").addClass("well");
+		$("#m4answer").append(""+temp);
+		},2000);
+	var timer1=window.setTimeout(function () {
+		$("#m4final").addClass("well");
+		$("#m4final").append(""+s);
+		},3000);	
+
+	document.getElementById("m4answer").style.color = "red";
+	$("#m4answer").append();
+		
 }
 function method5()
 {
 	$("#m5answer").empty();
+	$("#m5final").empty();
+	var data="<h4 style='color:black'>DATA:</h4>";
+	var temp=data+"Cool : Start = "+cool_start+ " , End = "+cool_end+"<br>";
+	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
+	var sol="<h4 style='color:black'>SOLUTION:</h4>";
+	temp=temp+sol;
+	temp=temp+"a = ( cool_end - cool_start ) * ( cool_end + cool_start ) &divide 2<br>";
+	temp=temp+"a = ( "+cool_end+" - "+cool_start+") * ( "+cool_end+"+"+cool_start+" ) &divide 2 <br>";
+	
+	
+	
+	document.getElementById("m5answer").style.color = "red";
 		var a=(cool_end-cool_start)*(cool_end+cool_start)/2;
+		temp=temp+"a = "+a+"<br>";
 	var b=(warm_end-warm_start)*(warm_end+warm_start)/2;
+	temp=temp+"b = (warm_end-warm_start) &times (warm_end+warm_start) &divide 2<br>";
+	temp=temp+"b = ("+warm_end+"-"+warm_start+") &times ("+warm_end+"+"+warm_start+") &divide 2 <br>";
+	temp=temp+"b = "+b+"<br>";
+	temp=temp+"value = (a+b) &divide [(cool_end-cool_start)+(warm_end-warm_start)] <br>";
+	temp=temp+"value = ("+a+"+"+b+") &divide [("+cool_end+"-"+cool_start+")+("+warm_end+"-"+warm_start+")]<br>";
+	
+	
 	var ans=(a+b)/((cool_end-cool_start)+(warm_end-warm_start));
-	$("#m5answer").append(" the answer is "+ ans);
+	temp=temp+"value = "+ans.toFixed(2);
+	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
+	temp=temp;
+	var timer1=window.setTimeout(function () {
+		$("#m5answer").addClass("well");
+		$("#m5answer").append(""+temp);
+		},2000);
+	var timer1=window.setTimeout(function () {
+		$("#m5final").addClass("well");
+		$("#m5final").append(""+s);
+		},3000);	
+
+	document.getElementById("m5answer").style.color = "red";
+	$("#m5answer").append();
+	
 }
 function method6()
 {
 	$("#m6answer").empty();
+	$("#m6final").empty();
+	document.getElementById("m6answer").style.color = "red";
+	var data="<h4 style='color:black'>DATA:</h4>";
+	
+	var temp=data+"Cool: Start="+cool_start+", End = "+cool_end+"<br>";
+	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
+	temp=temp+"Hot : Start = "+hot_start+" , End: 100<br>";
+	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	var a=cool_end-cool_start;
+	temp=temp+sol;
 	var b=warm_end-warm_start;
+	
 	var c=(100-hot_start);
+	
 	var ans;
 	if(a<=b)
 	{
 		if(b<c)
 		{
 			ans=hot_start+2*(100-hot_start)/3;
+			temp=temp+"Ans = hot_start + 2 &times ( hot_end - hot_start ) &divide 3 <br>";
+			temp=temp+"Ans = "+hot_start+" +2 &times ( "+hot_end+" - "+hot_start+" ) &divide 3 <br>";
+			temp=temp+"Ans="+ans.toFixed(2);
 		}
-		else{
+		else
+		{
 			ans=(warm_end+warm_start)/2;
+			temp=temp+"Ans = ( warm_end + warm_start ) &divide 2 <br> ";
+			temp=temp+"Ans = ( "+warm_end+" + "+warm_start+" ) &divide 2 <br>";
+			temp=temp+"Ans = "+ans.toFixed(2);
 		}
 	}
 	else
@@ -197,11 +383,26 @@ function method6()
 		if(a<=c)
 		{
 			ans=(cool_end-cool_start)/2;
+			temp=temp+"ans=(cool_end-cool_start) &divide 2 <br>";
+			temp=temp+"ans=("+cool_end+"-"+cool_start+") &divide 2 <br>";
+			temp=temp+"ans="+ans.toFixed(2);			
 		}
 		else
 		{
 			ans=hot_start+2*(100-hot_start)/3;
+			temp=temp+"ans=hot_start+2*(hot_end-hot_start) &divide 3<br>";
+			temp=temp+"ans="+hot_start+"+2*(100-"+hot_start+") &divide 3 <br>";
+			temp=temp+"ans="+ans.toFixed(2);
 		}
 	}
-	$("#m6answer").append(" the answer is "+ (cool_start+cool_end)/2);
+	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
+	temp=temp;
+	var timer1=window.setTimeout(function () {
+		$("#m6answer").addClass("well");
+		$("#m6answer").append(""+temp);
+		},2000);
+		var timer1=window.setTimeout(function () {
+		$("#m6final").addClass("well");
+		$("#m6final").append(""+s);
+		},3000);	
 }

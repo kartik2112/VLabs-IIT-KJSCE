@@ -187,7 +187,7 @@
 
                         </div>
                     </p>
-                                    
+                    <b>* </b> Hint for this simulation in order to obtain the correct classification is given in the Post Test Section.     
                 </section>
                 <!-- /.content -->
             </div>

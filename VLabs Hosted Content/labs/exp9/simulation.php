@@ -95,10 +95,10 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <h3 style="margin-top:5%">Simulation</h3>
+                    <h3 style="margin-top:5%" id="sim">Simulation</h3>
                     <!--Simulation content goes here -->
 					
-					<div id="top_div" >
+					<div id="top_div" style="margin-top:-30px">
 					<div id="top_left_div" style="float:left; font-size:20px;margin-left:50px;"><br><br>
 					 <div id="gpraphAndResult1">
 		
@@ -138,19 +138,19 @@
         <td><div id="hot_start_slider" class="sliders"></div>
 		<span class="hot_start_value">80</span></td>
         <td>
-		<span class="hot_end_value">120</span></td>
+		<span class="hot_end_value">100</span></td>
       </tr>
 	  <tr>
         <td></td>
-        <td> <button  id="main_button" type="button" class="btn btn-primary" onclick="startSimulation1()">Start Simulation</button></td>
+        <td> <button  id="main_button" type="button" class="btn btn-primary" onclick="startSimulation1()" style="margin-top: 10px">Start Simulation</button></td>
 		<td></td>
       </tr>
     </tbody>
-  </table><br><br>
+  </table><br>
 							</div>
 					</div>
 		<div>
-		<div style="clear:both;">
+		<div style="clear:both;" id="methods">
 		<br><br>
   <ul class="nav nav-pills" style="font-size:120%;">
     <li class="active"><a data-toggle="pill" href="#method1">Method 1</a></li>
@@ -166,40 +166,50 @@
     <div id="method1" class="tab-pane fade in active">
       <h3> Max-Membership Method</h3>
       <p>This method is also known as height method and is limited to peak output functions. This method is given by the algebraic expression <br>
-	  µ(z*) >= µ(z) for all z ∊ Z.</p>  <br><b>Note:-</b> In this case since the max membership values of all 3 graphs is the same, there are 3 defuzzified values.
-	  <p id="m1answer" style="font-size:130%"> </p>
-	 
+	  µ(z*) >= µ(z) for all z ∊ Z.</p>
+	  <p id="m1answer" style="font-size:100%"> </p>
+      <div id="m1final" class="">
+	   </div>
     </div>
     <div id="method2" class="tab-pane fade">
       <h3>Centroid Method</h3>
-      <p>This method is also known as center of mass, center of area or center of gravity . It is the most commonly used defuzzification method. The defuzzified output z* is given by <br>
+      <p>This method is also known as center of mass, center of area or center of gravity . It is the most commonly used defuzzification method. Basically it is the centroid of the area under the graph plotted by the intersection of all the sets. The defuzzified output z* is given by <br>
 		z* = ∫µ(z).zdz / ∫µ(z)dz</p><br>
-		<p id="m2answer" style="font-size:130%"> </p>
+		<p id="m2answer" style="font-size:100%"> </p>
+        <div id="m2final" class="">
+       </div>
     </div>
     <div id="method3" class="tab-pane fade">
       <h3>Weighted Average Method</h3>
       <p>This method is valid for symmetrical output membership functions only. Each membership function is weighted by its maximum membership value. The output in the case is given by <br>
 z* = ∑µ(z').z' / ∑µ(z') ; <br> where z' is the maximum value of the membership function.</p>
 <p> As the membership function for hot is not symmetrical we are ignoring it in this method.</p>
-<br>
-	<p id="m3answer" style="font-size:130%"> </p>
+	<p id="m3answer" style="font-size:100%"> </p>
+    <div id="m3final" class="">
+       </div>
     </div>
     <div id="method4" class="tab-pane fade">
       <h3>Mean-Max Membership</h3>
       <p>This method is also knows as middle of the maxima. This is closely related to the max-membership method, except that the locations of the maximum membership can be nonunique. The output here is given by <br>
 z* = ∑z' / n ; <br> where z' is the maximum value of the membership function</p><br>
-<p id="m4answer" style="font-size:130%"> </p>
+<p id="m4answer" style="font-size:100%"> </p>
+<div id="m4final" class="">
+       </div>
     </div>
 	<div id="method5" class="tab-pane fade">
       <h3>Center of Sums</h3>
       <p>This method employs the algebraic sum of the individual fuzzy subsets instead of their union. The calculations here are very fast, but the main drawback is that the intersecting areas are added twice. The defuzzified value z* is given by <br> z* = ∫ z*∑µ(z).zdz / ∫ ∑µ(z)dz</p><br>
-	  <p id="m5answer" style="font-size:130%"> </p>
+	  <p id="m5answer" style="font-size:100%"> </p>
+      <div id="m5final" class="">
+       </div>
     </div>
 	<div id="method6" class="tab-pane fade">
       <h3>Center of Largest Area</h3>
       <p>This method can be adopted whent the output of at least two convex fuzzy subsets which are not overlapping. The output in this case is baised towwards a side of one membership function. When output fuzzy st has at least two convex regions, then the center of gravity of the convex fuzzy subregion having the largest are is used to obtain the defuzzified value z*. The value is given by<br>
 z* = ∫ µc(z).zdz / ∫ ∑µc(z)dz </p><br>
-	<p id="m6answer" style="font-size:130%"> </p>
+	<p id="m6answer" style="font-size:100%"> </p>
+    <div id="m6final" class="">
+       </div>
     </div>
   </div>
                     

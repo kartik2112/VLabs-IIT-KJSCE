@@ -233,7 +233,7 @@
                     <form action="#">
                         <!--<input type="text" id="url" placeholder="Image URL" />-->
                         <input type="file" id="fileInput" class="btn btn-warning" style="display:inline-block;"/>                        
-                        <input type="submit" class="btn btn-success" id="go_button" value="Run" /> 
+                        <input type="button" class="btn btn-success" id="go_button" value="Run" /> 
                         &emsp;<a href="./images/test1.jpg" download target="_blank"><img src="./images/dl_Link.png" height="40px" class="dlImage" data-toggle="tooltip" data-placement="top" title="Download Sample Image 1 for OCR"/></a>
                         &emsp;<a href="./images/test2.jpg" download target="_blank"><img src="./images/dl_Link.png" height="40px" class="dlImage" data-toggle="tooltip" data-placement="top" title="Download Sample Image 2 for OCR"/></a>
                         <br><br>

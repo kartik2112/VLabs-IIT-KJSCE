@@ -118,7 +118,7 @@
                     <h3 style="margin-top:5%">Post Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->                        
-						<h3>1.The lambyda(&#955;)-cut set of relation A is given by ?</h3><br>
+						<h3>1.The lambda(&#955;)-cut set of relation A is given by ?</h3><br>
                         <input type="radio" class="optradio1" name="q1" value="1">A. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>=&#955;</sub>}<br><br>
                         <input type="radio" class="optradio1" name="q1" value="2">B. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>&#955;</sub>}<br><br>
                         <input type="radio" class="optradio1" name="q1" value="3">C. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)=&#955;</sub>}<br><br>
