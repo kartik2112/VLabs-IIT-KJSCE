@@ -33,18 +33,18 @@
         <script type="text/javascript" src="../../src/exp8Simulation.js"></script>
         <!--Here is the main CSS file that adds more touch to the simulation and other stuff-->    
         <link href="../../src/Styles.css" rel="stylesheet" />
-		<style>
-		.animatedLinePurple2{
+        <style>
+        .animatedLinePurple2{
     stroke: #7100d5!important;
     stroke-dasharray: 50;
     animation: dash 2s linear infinite;
-	}
-		</style>
+    }
+        </style>
 
         <!--These are used for plotting the graphs-->
         <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
-		
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
+        
         <!-- Simulation scripts end-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -108,13 +108,13 @@
                     <a href="" style="color:green; font-size: 16px"><img src="../../dist/img/fork.png" style="height:20px; width:20px; "></a>
                 </section>
                 <!-- Main content -->
-                <section class="content">
-                    <h3 style="margin-top:5%">Simulation</h3>
+                <section class="content" >
+                    <h3 style="margin-top:5%" id="sim">Simulation</h3>
                     <!--Simulation content goes here -->
-					<div id="top_div" >
-					
-							<div id="top_right_div" style="float:left ;margin-left:200px">
-		<table class="table table-striped" style="text-align:center" >
+                    <div id="top_div" >
+                    
+                            <div id="top_right_div" style="float:left ;margin-left:102px">
+        <table class="table table-striped" style="text-align:center" >
     <thead >
       <tr>
         <th>Parameter</th>
@@ -126,101 +126,103 @@
       <tr>
         <td>Cool</td>
         <td width="200"><div id="cool_start_slider" class="sliders"></div>
-		<span class="cool_start_value">30</span>		
-		</td>
+        <span class="cool_start_value">30</span>        
+        </td>
         <td width="200"><div id="cool_end_slider" class="sliders"></div>
-		<span class="cool_end_value">70</span></td>
-	  </tr>
+        <span class="cool_end_value">70</span></td>
+      </tr>
       <tr>
         <td>Warm</td>
         <td><div id="warm_start_slider" class="sliders"></div>
-		<span class="warm_start_value">50</span></td>
+        <span class="warm_start_value">50</span></td>
         <td><div id="warm_end_slider" class="sliders"></div>
-		<span class="warm_end_value">90</span></td>
+        <span class="warm_end_value">90</span></td>
       </tr>
       <tr>
         <td>Hot</td>
         <td><div id="hot_start_slider" class="sliders"></div>
-		<span class="hot_start_value">80</span></td>
+        <span class="hot_start_value">80</span></td>
         <td><div id="hot_end_slider" class="sliders"></div>
-		<span class="hot_end_value">120</span></td>
+        <span class="hot_end_value">120</span></td>
       </tr>
-	  <tr>
+      <tr>
         <td>Scalar Input</td>
         <td><div id="scallar_slider" class="sliders"></div>
-		<span class="scallar_value">55</span></td>
+        <span class="scallar_value">55</span></td>
         <td> <button  id="main_button" type="button" class="btn btn-primary" onclick="startSimulation1()">Start Simulation</button></td>
       </tr>
     </tbody>
   </table>
-							</div>
-					</div>
-					<br>
-					<div >
-					<div id="div_for_svg" style="float:left;width:45%">
-					<svg id="graph_svg" width="700" height="500" style="">
-						<line id="x_axis" class="axis" stroke="#000" stroke-width="2" 
-						x1="20" y1="300" x2="600" y2="300" style=""/>
-						<line id="y_axis" class="axis" stroke="#000" stroke-width="2"
-						x1="20" y1="300" x2="20" y2="0" style=""/>
-						<text font-size="20" x="20" y="320">0</text>
-						<text font-size="20" x="550" y="330">Temperature</text>
-						<text font-size="20" x="50" y="20">Degree Of Truth</text>
-						
-						<text font-size="15" x="60" y="305"> | </text>
-						<text font-size="15" x="100" y="305">|</text>
-						<text font-size="15" x="140" y="305">|</text>
-						<text font-size="15" x="180" y="305">|</text>
-						<text font-size="15" x="220" y="305">|</text>
-						<text font-size="15" x="260" y="305">|</text>
-						<text font-size="15" x="300" y="305">|</text>
-						<text font-size="15" x="340" y="305">|</text>
-						<text font-size="15" x="380" y="305">|</text>
-						<text font-size="15" x="420" y="305">|</text>
-						<text font-size="15" x="460" y="305">|</text>
-						<text font-size="15" x="500" y="305">|</text>
-						
-						<text font-size="17" x="5" y="200">1</text>
-						<text font-size="30" x="15" y="200">-</text>
-						
-						<text font-size="17" x="60" y="330">10</text>
-						<text font-size="17" x="100" y="330">20</text>
-						<text font-size="17" x="140" y="330">30</text>
-						<text font-size="17" x="180" y="330">40</text>
-						<text font-size="17" x="220" y="330">50</text>
-						<text font-size="17" x="260" y="330">60</text>
-						<text font-size="17" x="300" y="330">70</text>
-						<text font-size="17" x="340" y="330">80</text>
-						<text font-size="17" x="380" y="330">90</text>
-						<text font-size="17" x="420" y="330">100</text>
-						<text font-size="17" x="460" y="330">110</text>
-						<text font-size="17" x="500" y="330">120</text>
-						
-						<line id="cool_line1" class="line" stroke="#f00" stroke-width="2" 
-						x1="140" y1="300" x2="220" y2="100" style=""/>
-						<line id="cool_line2" class="line" stroke="#f00" stroke-width="2" 
-						x1="220" y1="100" x2="300" y2="300" style=""/>
-						
-						<line id="warm_line1" class="line" stroke="#0f0" stroke-width="2" 
-						x1="220" y1="300" x2="300" y2="100" style=""/>
-						<line id="warm_line2" class="line" stroke="#0f0" stroke-width="2" 
-						x1="300" y1="100" x2="380" y2="300" style=""/>
-						
-						<line id="hot_line1" class="line" stroke="#00f" stroke-width="2" 
-						x1="340" y1="300" x2="420" y2="100" style=""/>
-						<line id="hot_line2" class="line" stroke="#00f" stroke-width="2" 
-						x1="420" y1="100" x2="500" y2="300" style=""/>
-						
-						<line id="interscection_line" class="line" stroke="#00f" stroke-width="2" style=""/>
-						<circle id="circle1" cx="100" cy="100" r="0"/>
-						<circle id="circle2" cx="100" cy="100" r="0"/>
-						<circle id="circle3" cx="100" cy="100" r="0"/>
+                            </div>
+                    </div>
+                    <br>
+                    <div >
+                    <div id="div_for_svg" style="float:left;width:45%">
+                    <svg id="graph_svg" width="700" height="500" style="">
+                        <line id="x_axis" class="axis" stroke="#000" stroke-width="2" 
+                        x1="20" y1="300" x2="600" y2="300" style=""/>
+                        <line id="y_axis" class="axis" stroke="#000" stroke-width="2"
+                        x1="20" y1="300" x2="20" y2="0" style=""/>
+                        <text font-size="20" x="20" y="320">0</text>
+                        <text font-size="20" x="540" y="330">Temperature</text>
+                        <text font-size="20" x="40" y="20">Degree Of Truth</text>
+                        
+                        <text font-size="15" x="60" y="305"> | </text>
+                        <text font-size="15" x="100" y="305">|</text>
+                        <text font-size="15" x="140" y="305">|</text>
+                        <text font-size="15" x="180" y="305">|</text>
+                        <text font-size="15" x="220" y="305">|</text>
+                        <text font-size="15" x="260" y="305">|</text>
+                        <text font-size="15" x="300" y="305">|</text>
+                        <text font-size="15" x="340" y="305">|</text>
+                        <text font-size="15" x="380" y="305">|</text>
+                        <text font-size="15" x="420" y="305">|</text>
+                        <text font-size="15" x="460" y="305">|</text>
+                        <text font-size="15" x="500" y="305">|</text>
+                        
+                        <text font-size="17" x="5" y="100">1</text>
+                        <text font-size="30" x="15" y="110">-</text>
+                        
+                        <text font-size="17" x="60" y="330">10</text>
+                        <text font-size="17" x="100" y="330">20</text>
+                        <text font-size="17" x="140" y="330">30</text>
+                        <text font-size="17" x="180" y="330">40</text>
+                        <text font-size="17" x="220" y="330">50</text>
+                        <text font-size="17" x="260" y="330">60</text>
+                        <text font-size="17" x="300" y="330">70</text>
+                        <text font-size="17" x="340" y="330">80</text>
+                        <text font-size="17" x="380" y="330">90</text>
+                        <text font-size="17" x="420" y="330">100</text>
+                        <text font-size="17" x="460" y="330">110</text>
+                        <text font-size="17" x="500" y="330">120</text>
+                        
+                        <line id="cool_line1" class="line" stroke="#f00" stroke-width="2" 
+                        x1="140" y1="300" x2="220" y2="100" style=""/>
+                        <line id="cool_line2" class="line" stroke="#f00" stroke-width="2" 
+                        x1="220" y1="100" x2="300" y2="300" style=""/>
+                        
+                        <line id="warm_line1" class="line" stroke="#0f0" stroke-width="2" 
+                        x1="220" y1="300" x2="300" y2="100" style=""/>
+                        <line id="warm_line2" class="line" stroke="#0f0" stroke-width="2" 
+                        x1="300" y1="100" x2="380" y2="300" style=""/>
+                        
+                        <line id="hot_line1" class="line" stroke="#00f" stroke-width="2" 
+                        x1="340" y1="300" x2="420" y2="100" style=""/>
+                        <line id="hot_line2" class="line" stroke="#00f" stroke-width="2" 
+                        x1="420" y1="100" x2="500" y2="300" style=""/>
+                        
+                        <line id="interscection_line" class="line" stroke="#00f" stroke-width="2" style=""/>
+                        <circle id="circle1" cx="100" cy="100" r="0"/>
+                        <circle id="circle2" cx="100" cy="100" r="0"/>
+                        <circle id="circle3" cx="100" cy="100" r="0"/>
                     </svg>
-					</div>
-					<div id="div_for_result" width="400" height="400" style="float:right;width:45%;font-size:17;margin-top:80px;text-align:center"  width="30%" class="">
-					</div>
-					<div style="clear:both; font-size:1px;"></div>
-					</div>
+                    </div>
+                    <div id="calc" width="350" height="200" style="float:right;width:44%;margin-top:-255px;text-align:center; font-size: 16px" class="" >
+                    </div>
+                    <div id="div_for_result" width="350" height="200" style="float:right;width:44%;font-size:17;margin-top:0px;text-align:center"   class="">
+                    </div>
+                    <div style="clear:both; font-size:1px;"></div>
+                    </div>
                 </section>                
                 <!-- /.content -->
             </div>

@@ -1,12 +1,12 @@
 
-var timer1, timer2, timer3,intervalT=2000;
+var timer1, timer2, timer3,intervalT=2000,strCalc="";
 var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
 $(document).ready(function () {
-    
 	
 	
+
     $('html, body').animate({
-        scrollTop: $("#top_div").offset().top
+        scrollTop: $("#sim").offset().top
     }, 1500);
 																		// sliders
     $("#cool_start_slider").slider({
@@ -128,8 +128,11 @@ $(document).ready(function () {
 function startSimulation1()
 {
 	erasepoints();
+	strCalc=" ";
 	plotTheGraph();
 	disableSliders();
+	$("#calc").hide();
+	$("#div_for_result").hide();
 	var interLine=$("#interscection_line"); 
 	$("#main_button").text("Stop Simulation");
 	$("#main_button").removeClass("btn-primary");
@@ -138,41 +141,58 @@ function startSimulation1()
 	interLine.addClass("animatedLinePurple2");
 	interLine.attr("x1",20+4*scallar_value);
 	interLine.attr("x2",20+4*scallar_value);
-	interLine.attr("y1",50);
-	interLine.attr("y2",450);
+	interLine.attr("y1",75);
+	interLine.attr("y2",325);
 	timer1=window.setTimeout(function () {
 		
 		interLine.removeClass("animatedLinePurple2");
 		plotThePoints();	
 		stopSimulation1();
-		},intervalT*2);
+		},intervalT);
 	
 }
 function plotThePoints()
 {
 	var flag=false;
-	var stringResult="The temprature is ";
+	document.getElementById("calc").style.color = "blue";
+	if(scallar_value<cool_start){
+		alert("Invalid Input. Choose another value and try again!");
+	}
+	else{
+	document.getElementById("div_for_result").style.color = "red";
+	strCalc=document.getElementById("calc").innerHTML = "";
+	var stringResult="<b>The temperature is ";
 	if(scallar_value>=cool_start&&scallar_value<=cool_end)
 	{
+		strCalc = "<h4 style='color:black'>Membership in Cool set</h4>";
 		flag=true;
 		if(scallar_value<=(cool_start+cool_end)/2)
 		{
 			
 			$("#circle1").attr("cx",20+4*scallar_value);
-			$("#circle1").attr("cy",300-(( 400/(cool_end-cool_start))*(scallar_value-cool_start)));
+			$("#circle1").attr("cy",300-((400/(cool_end-cool_start))*(scallar_value-cool_start)));
 			$("#circle1").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"% cool ";
+			stringResult=stringResult+Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"% Cool ";
+			strCalc = strCalc +"<b>(Scalar_Value - Cool_Start) &times 200 &divide (Cool_End - Cool_Start)<br>= ("+(scallar_value)+"-"+(cool_start)+") &times 200 &divide"+(cool_end)+"-"+(cool_start)+"<br>= ";
+			strCalc = strCalc + (scallar_value-cool_start)+" &times 200 &divide"+(cool_end-cool_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"</b><br>";
+
 		}
 		else
 		{
+
 			$("#circle1").attr("cx",20+4*scallar_value);
 			$("#circle1").attr("cy",300-(( 400/(cool_end-cool_start))*(cool_end-scallar_value)));
 			$("#circle1").attr("r",5);
-			stringResult=stringResult+Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"% cool ";
+			stringResult=stringResult+Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"% Cool ";
+			strCalc = strCalc +"<b>(Cool_End - Scalar_Value) &times 200 &divide (Cool_End - Cool_Start)<br>= ("+(cool_end)+"-"+(scallar_value)+") &times 200 &divide ("+(cool_end)+"-"+(cool_start)+")<br>= ";
+			strCalc = strCalc + (cool_end-scallar_value)+" &times 200 /"+(cool_end-cool_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"</b><br>";
 		}
 	}
 	if(scallar_value>=warm_start&&scallar_value<=warm_end)
 	{
+		strCalc = strCalc+"<h4 style='color:black'>Membership in Warm set</h4>";
 		if(flag)
 		{
 			stringResult=stringResult+"and ";
@@ -183,18 +203,28 @@ function plotThePoints()
 			$("#circle2").attr("cx",20+4*scallar_value);
 			$("#circle2").attr("cy",300-(( 400/(warm_end-warm_start))*(scallar_value-warm_start)));
 			$("#circle2").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-warm_start)/(warm_end-warm_start)*200)+"% warm ";
+			stringResult=stringResult+Math.floor((scallar_value-warm_start)/(warm_end-warm_start)*200)+"% Warm ";
+			strCalc = strCalc +"<b>(Scalar_Value - Warm_Start) &times 200 &divide (Warm_End - Warm_Start)<br>= ("+(scallar_value)+"-"+(warm_start)+") &times 200 &divide ("+(warm_end)+"-"+(warm_start)+")<br>= ";
+			strCalc = strCalc + (scallar_value-warm_start)+" &times 200 &divide "+(warm_end-warm_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((scallar_value-warm_start)/(warm_end-warm_start)*200)+"</b><br>";
+
 		}
 		else
 		{
 			$("#circle2").attr("cx",20+4*scallar_value);
 			$("#circle2").attr("cy",300-(( 400/(warm_end-warm_start))*(warm_end-scallar_value)));
 			$("#circle2").attr("r",5);
-			stringResult=stringResult+Math.floor((warm_end-scallar_value)/(warm_end-warm_start)*200)+"% warm ";
-		}	
+			stringResult=stringResult+Math.floor((warm_end-scallar_value)/(warm_end-warm_start)*200)+"% Warm ";
+			strCalc = strCalc +"<b>(Warm_End - Scalar_Value) &divide (Warm_End - Warm_Start) &times 200<br>= ("+(warm_end)+"-"+(scallar_value)+") &times 200 &divide "+(warm_end)+"-"+(warm_start)+")<br>= ";
+			strCalc = strCalc + (warm_end-scallar_value)+" &times 200 &divide "+(warm_end-warm_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((warm_end-scallar_value)/(warm_end-warm_start)*200)+"</b><br>";
+
+		}
+			
 	}
 	if(scallar_value>=hot_start&&scallar_value<=hot_end)
 	{
+		strCalc = strCalc+"<h4 style='color:black'>Membership in Hot set</h4>";
 		if(flag)
 		{
 			stringResult=stringResult+"and ";
@@ -204,18 +234,39 @@ function plotThePoints()
 			$("#circle3").attr("cx",20+4*scallar_value);
 			$("#circle3").attr("cy",300-(( 400/(hot_end-hot_start))*(scallar_value-hot_start)));
 			$("#circle3").attr("r",5);
-			stringResult=stringResult+Math.floor((scallar_value-hot_start)/(hot_end-hot_start)*200)+"% hot";
+			stringResult=stringResult+Math.floor((scallar_value-hot_start)/(hot_end-hot_start)*200)+"% Hot";
+			strCalc = strCalc +"<b>(Scalar_Value - Hot_Start) &times 200 &divide (Hot_End - Hot_Start)<br>= ("+(scallar_value)+"-"+(hot_start)+") &times 200 &divide ("+(hot_end)+"-"+(hot_start)+")<br>= ";
+			strCalc = strCalc + (scallar_value-hot_start)+" &times 200 &divide "+(hot_end-hot_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((scallar_value-hot_start)/(hot_end-hot_start)*200)+"</b><br>";
 		}
 		else
 		{
 			$("#circle3").attr("cx",20+4*scallar_value);
-			$("#circle3").attr("cy",300-(( 400/(hot_end-hot_start))*(hot_start-scallar_value)));
+			$("#circle3").attr("cy",300-((400/(hot_end-hot_start))*(hot_start-scallar_value)));
 			$("#circle3").attr("r",5);
-			stringResult=stringResult+Math.floor((hot_end-scallar_value)/(hot_end-cool_start)*200)+"% hot";
+			stringResult=stringResult+Math.floor((hot_end-scallar_value)/(hot_end-hot_start)*200)+"% Hot";
+			strCalc = strCalc +"<b>(Hot_End - Scalar_Value) &times 200 &divide (Hot_End - Hot_Start)<br>= ("+(hot_end)+"-"+(scallar_value)+") &times 200 &divide ("+(hot_end)+"-"+(hot_start)+")<br>= ";
+			strCalc = strCalc + (hot_end-scallar_value)+" &times 200 &divide "+(hot_end-hot_start)+"<br>= ";
+			strCalc = strCalc + Math.floor((hot_end-scallar_value)/(hot_end-hot_start)*200)+"</b><br>";
 		}
+		
 	}
-	$("#div_for_result").addClass("well");
-	$("#div_for_result").append(""+stringResult);
+	stringResult = stringResult+"</b>"
+	$("#calc").show();
+	$("#div_for_result").show();
+	var timer4=window.setTimeout(function () {
+		$("#calc").addClass("well");
+		$("#calc").append(""+strCalc);
+		},intervalT);
+	var timer5=window.setTimeout(function () {
+		$("#div_for_result").addClass("well");
+		$("#div_for_result").append(""+stringResult);
+		},intervalT*2.5);
+	var timer5=window.setTimeout(function () {
+		alert("Simulation Complete. Observe the calculations carefully and you may try again for any desired input value!")
+		},intervalT*2.8);
+
+}
 }
 function disableSliders()
 {
@@ -260,8 +311,6 @@ function stopSimulation1()
 }
 function plotTheGraph()
 {
-		
-	
 	$("#cool_line1").attr("x1",20+4*cool_start>0?20+4*cool_start:0);
 	$("#cool_line1").attr("x2",20+2*(cool_start+cool_end));
 	$("#cool_line2").attr("x1",20+2*(cool_end+cool_start));
