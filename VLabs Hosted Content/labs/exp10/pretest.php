@@ -94,21 +94,21 @@
             <input type="radio" class="q1" name="q1"/> <p class="options1 options">D. Having a smaller output than the input.</p>
             <p id="a1" class="testAns" style="display: none;">Ans is A.</p>
             
-            <h3>What are the 2 types of Fuzzy Inference Systems?</h3>
+           <!-- <h3>What are the 2 types of Fuzzy Inference Systems?</h3>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">A. Model-Type and System-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">B. Momfred-Type and Semigi-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">C. Mamdani-Type and Sugeno-Type</p>
             <input type="radio" class="q2" name="q2"/> <p class="options2 options">D. Mihni-Type and Sujgani-Type</p>
-            <p id="a2" class="testAns" style="display: none;">Ans is C.</p>
+            <p id="a2" class="testAns" style="display: none;">Ans is C.</p>  -->
             
-            <h3>What operations are performed during inference in a Fuzzy Inference System?</h3>
+            <h3>2. What operations are performed during inference in a Fuzzy Inference System?</h3>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">A. Fuzzification</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">B. Defuzzification</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">C. Both A & B</p>
             <input type="radio" class="q3" name="q3"/> <p class="options3 options">D. None of these</p>
             <p id="a3" class="testAns" style="display: none;">Ans is C.</p>
 
-            <h3>If there are 3 descriptors for dirt and 2 descriptors for grease, how many rules must be defined in Fuzzy rule base?</h3>
+            <h3>3. If there are 3 descriptors for dirt and 2 descriptors for grease, how many rules must be defined in Fuzzy rule base?</h3>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">A. 5</p>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">B. 6</p>
             <input type="radio" class="q4" name="q4"/> <p class="options4 options">C. Depends on implementation</p>

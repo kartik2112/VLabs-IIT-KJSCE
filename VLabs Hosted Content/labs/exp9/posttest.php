@@ -138,7 +138,7 @@
                         <br />
                         <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is c</p>
                     </p>
-                        <h3>3.Consider s fuzzy set A <sub>&#816;</sub> ={ 0.2/x1, 0.3/x2, 0.4/x3, 0.7/x4 , 0.1/x5 } then (A)<sub>0.3</sub> is given by</h3>
+                        <h3>3.Consider s fuzzy set A = { 0.2/x1, 0.3/x2, 0.4/x3, 0.7/x4 , 0.1/x5 } then (A)<sub>0.3</sub> is given by</h3>
                        
                         <input type="radio" class="optradio3" name="q3" value="1"> A. (A)<sub>0.3</sub>={ x1, x5 }<br><br>
                         <input type="radio" class="optradio3" name="q3" value="2"> B. (A)<sub>0.3</sub>={ x2, x3, x4 } <br><br>
@@ -147,7 +147,7 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
                             
-                        <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>
+                       <!-- <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>
                         <img src="images/dfinal.PNG"><br><br>
 						
                         <input type="radio" class="optradio4" name="q2" value="1"> A. z<sup>*</sup>=1.2<br><br>
@@ -155,7 +155,7 @@
                         <input type="radio" class="optradio4" name="q2" value="3"> C. z<sup>*</sup>=4.6<br><br>
                         <input type="radio" class="optradio4" name="q2" value="4"> D. z<sup>*</sup>=5.41<br><br>
                         <br />
-                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p> -->
                     </p>
                 </section>
                 <!-- /.content -->

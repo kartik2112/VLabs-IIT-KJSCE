@@ -104,10 +104,10 @@
 
             </script>
             <br>
-            <h3>1.If A={ 0/x1,0.4/x2,1/x3,0.5/x4 } and B={ 1/x1,0.5/x2,1/x3,0.6/x4 } then &#956 <sub>A &#8745; B</sub> </h3>
-            <input type="radio" class="optradio1" name="q4" value="1"> A. &#956 <sub>A&#8745;B</sub>={ 0.6/X1, 0.8/X2, 1/X3, 0.2/X4 } <br><br>
-            <input type="radio" class="optradio1" name="q4" value="2"> B. &#956 <sub>A&#8745;B</sub>={ 0/X1, 0.5/X2, 1/X3, 0.6/X4 }  <br><br>
-            <input type="radio" class="optradio1" name="q4" value="3"> C. &#956 <sub>A&#8745;B</sub>={ 1/X1, 0.5/X2, 1/X3, 0.6/X4 } <br><br>
+            <h3>1.If A={ 0 &divide x1,0.4 &divide x2,1 &divide x3,0.5 &divide x4 } and B={ 1 &divide x1,0.5 &divide x2,1 &divide x3,0.6 &divide x4 } then &#956 <sub>A &#8745; B</sub> </h3>
+            <input type="radio" class="optradio1" name="q4" value="1"> A. &#956 <sub>A&#8745;B</sub>={ 0.6 &divide X1, 0.8 &divide X2, 1 &divide X3, 0.2 &divide X4 } <br><br>
+            <input type="radio" class="optradio1" name="q4" value="2"> B. &#956 <sub>A&#8745;B</sub>={ 0 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 }  <br><br>
+            <input type="radio" class="optradio1" name="q4" value="3"> C. &#956 <sub>A&#8745;B</sub>={ 1 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 } <br><br>
             <input type="radio" class="optradio1" name="q4" value="4"> D. &#956 <sub>A&#8745;B</sub>={ 0/X1, 0.4/X2, 1/X3, 0.5/X4 } <br><br>
              <br>
             <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>

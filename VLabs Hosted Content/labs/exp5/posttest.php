@@ -133,11 +133,11 @@
                     
                         <input type="radio" class="optradio2" name="q2" value="1"> A. It is very much time dependant<br>
                         <input type="radio" class="optradio2" name="q2" value="2"> B. It is strongly interacting<br>
-                        <input type="radio" class="optradio2" name="q2" value="3"> C. None of the above<br>
-                        <input type="radio" class="optradio2" name="q2" value="4"> D. Both A and B<br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. Both A and B<br>
+                        <input type="radio" class="optradio2" name="q2" value="4"> D. None of the above<br>
 
                         <br />
-                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is D</p>
+                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p>
 
                         <h3>3. Unsupervised hebbian rule is also known as</h3>
                     
