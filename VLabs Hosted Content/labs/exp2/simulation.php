@@ -121,7 +121,7 @@ $_SESSION["currPage"]=5;
 
           document.getElementById('r4').style.background = "transparent";
           document.getElementById('start').innerHTML = "Start simulation";
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
           OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
@@ -208,8 +208,8 @@ $_SESSION["currPage"]=5;
           document.getElementById('reset').style.display = "none";
 
           counter = 0;
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -221,8 +221,8 @@ $_SESSION["currPage"]=5;
       }
 
       function start_ebp() {
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });  //Creates the cartesian graph
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -441,8 +441,8 @@ $_SESSION["currPage"]=5;
           counter = 0;
 
           /* Creates the cartesian graph */
-          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+          board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
+          board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           constPointSize = 5;
           OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
@@ -519,8 +519,8 @@ $_SESSION["currPage"]=5;
               document.getElementById('start').innerHTML = "Test next input";
 
               //Re-plot the graph
-              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
-              board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5] });
+              board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
+              board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
               OP1 = board.create('point', [0, 0], { size: constPointSize, face: 'x', fixed: true });
               OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
               OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });

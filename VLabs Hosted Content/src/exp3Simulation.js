@@ -240,7 +240,7 @@ function verifyANDOutputs() {
 
 function plotANDGraph()
 {
-	var board = JXG.JSXGraph.initBoard('AND-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5]});  //Creates the cartesian graph
+	var board = JXG.JSXGraph.initBoard('AND-box',{axis:true, boundingbox:[-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
 	var constPointSize=5;
 	var OP1 = board.create('point',[1.0000,0.1353], {size:constPointSize,face:'x',fixed:true});
 	var OP2 = board.create('point',[0.3678,0.3678], {size:constPointSize,face:'^',fixed:true});
