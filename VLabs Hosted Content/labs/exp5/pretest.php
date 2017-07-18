@@ -111,10 +111,10 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
-                        <h3>1. What are the advantages of neural networks over conventional computers?
-                            <br/>(i) They have the ability to learn by example
+                        <h3>1. What are the advantages of neural networks over conventional computers?</h3>
+                            <h4>(i) They have the ability to learn by example
                             <br/>(ii) They are more fault tolerant
-                            <br/>(iii)They are more suited for real time operation due to their high ‘computational’ rates</h3>
+                            <br/>(iii)They are more suited for real time operation due to their high ‘computational’ rates</h4>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. (i) and (ii) are true<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B.(i) and (iii) are true<br>
@@ -123,14 +123,12 @@
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is C</p>
                         
-                        <h3>2. Which of the following is true?
-                            <br/>Single layer associative neural networks do not have the ability to:
+                        <h3>2. Which of the following is true?</h3>
+                            <h4>Single layer associative neural networks do not have the ability to:
                             <br/>(i) perform pattern recognition
                             <br/>(ii) find the parity of a picture
-                            <br/>(iii)determine whether two or more shapes in a picture are connected or not
-
-                    </h3>
-                    
+                            <br/>(iii)determine whether two or more shapes in a picture are connected or not</h4>
+                                        
                         <input type="radio" class="optradio2" name="q2" value="1"> A. (ii) and (iii) are true<br>
                         <input type="radio" class="optradio2" name="q2" value="2"> B. (ii) is true<br>
                         <input type="radio" class="optradio2" name="q2" value="3"> C. All of the mentioned <br>
