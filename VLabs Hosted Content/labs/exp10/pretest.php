@@ -126,18 +126,22 @@
           $(".q1").click(function(){
             $("#a1").slideDown();
             $("html, body").animate({scrollTop: $("#a1").offset().top - 300});
+            $('.q1').attr('disabled','disabled');
           });
           $(".q2").click(function(){
             $("#a2").slideDown();
             $("html, body").animate({scrollTop: $("#a2").offset().top - 300});
+            $('.q2').attr('disabled','disabled');
           });
           $(".q3").click(function(){
             $("#a3").slideDown();
             $("html, body").animate({scrollTop: $("#a3").offset().top - 300});
+            $('.q3').attr('disabled','disabled');
           });
           $(".q4").click(function(){
             $("#a4").slideDown();
             $("html, body").animate({scrollTop: $("#a4").offset().top - 300});
+            $('.q4').attr('disabled','disabled');
           });
         </script>
     </body>

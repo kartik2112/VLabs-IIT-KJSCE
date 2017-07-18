@@ -84,6 +84,7 @@
                                     $('html, body').animate({
                                         scrollTop: $("#optradio1Ans").offset().top-300
                                     }, 1000);
+                                    $('.optradio1').attr('disabled','disabled');
                                 });
                                 $(".optradio2").click(function () {
                                     //alert("clicked");
@@ -91,6 +92,7 @@
                                     $('html, body').animate({
                                         scrollTop: $("#optradio2Ans").offset().top-300
                                     }, 1000);
+                                    $('.optradio2').attr('disabled','disabled');
                                 });
                                 $(".optradio3").click(function () {
                                     //alert("clicked");
@@ -98,6 +100,7 @@
                                     $('html, body').animate({
                                         scrollTop: $("#optradio3Ans").offset().top-300
                                     }, 1000);
+                                    $('.optradio3').attr('disabled','disabled');
                                 });
 
                             });
