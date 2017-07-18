@@ -1,4 +1,3 @@
-
 var timer1, timer2, timer3,intervalT=2000,strCalc="";
 var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
 $(document).ready(function () {
@@ -21,7 +20,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	 $("#cool_end_slider").slider({
+	$("#cool_end_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -42,7 +41,7 @@ $(document).ready(function () {
            plotTheGraph();
         }
     });
-	 $("#warm_start_slider").slider({
+	$("#warm_start_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -54,7 +53,7 @@ $(document).ready(function () {
         }
     });
 	
-	 $("#warm_end_slider").slider({
+	$("#warm_end_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -72,10 +71,10 @@ $(document).ready(function () {
 				$(".warm_end_value").text(ui.value);
 				warm_end=ui.value;
 			}
-		   plotTheGraph();
+		  plotTheGraph();
         }
     });
-	 $("#hot_start_slider").slider({
+	$("#hot_start_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -83,10 +82,10 @@ $(document).ready(function () {
         slide: function (event, ui) {
             $(".hot_start_value").text(ui.value);
            hot_start=ui.value;
-		   plotTheGraph();
+		  plotTheGraph();
         }
     });
-	 $("#hot_end_slider").slider({
+	$("#hot_end_slider").slider({
         max: 120,
         min: 0,
         step: 5,
@@ -104,7 +103,7 @@ $(document).ready(function () {
             $(".hot_end_value").text(ui.value);
 			hot_end=ui.value;
 			}
-		   plotTheGraph();
+		  plotTheGraph();
         }
     });
 	$("#scallar_slider").slider({
@@ -116,7 +115,7 @@ $(document).ready(function () {
         slide: function (event, ui) {
             $(".scallar_value").text(ui.value);
 			scallar_value=ui.value;	
-		 plotTheGraph();
+		plotTheGraph();
         }
     });
 
@@ -131,6 +130,7 @@ function startSimulation1()
 	strCalc=" ";
 	plotTheGraph();
 	disableSliders();
+	
 	$("#calc").hide();
 	$("#div_for_result").hide();
 	var interLine=$("#interscection_line"); 
@@ -154,6 +154,9 @@ function startSimulation1()
 function plotThePoints()
 {
 	var flag=false;
+	$('html, body').animate({
+        scrollTop: $(document).height()
+    }, 5000);
 	document.getElementById("calc").style.color = "blue";
 	if(scallar_value<cool_start){
 		alert("Invalid Input. Choose another value and try again!");
@@ -174,7 +177,7 @@ function plotThePoints()
 			$("#circle1").attr("r",5);
 			stringResult=stringResult+Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"% Cool ";
 			strCalc = strCalc +"<b>(Scalar_Value - Cool_Start) &times 200 &divide (Cool_End - Cool_Start)<br>= ("+(scallar_value)+"-"+(cool_start)+") &times 200 &divide"+(cool_end)+"-"+(cool_start)+"<br>= ";
-			strCalc = strCalc + (scallar_value-cool_start)+" &times 200 &divide"+(cool_end-cool_start)+"<br>= ";
+			strCalc = strCalc + (scallar_value-cool_start)+" &times 200 &divide "+(cool_end-cool_start)+"<br>= ";
 			strCalc = strCalc + Math.floor((scallar_value-cool_start)/(cool_end-cool_start)*200)+"</b><br>";
 
 		}
@@ -186,7 +189,7 @@ function plotThePoints()
 			$("#circle1").attr("r",5);
 			stringResult=stringResult+Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"% Cool ";
 			strCalc = strCalc +"<b>(Cool_End - Scalar_Value) &times 200 &divide (Cool_End - Cool_Start)<br>= ("+(cool_end)+"-"+(scallar_value)+") &times 200 &divide ("+(cool_end)+"-"+(cool_start)+")<br>= ";
-			strCalc = strCalc + (cool_end-scallar_value)+" &times 200 /"+(cool_end-cool_start)+"<br>= ";
+			strCalc = strCalc + (cool_end-scallar_value)+" &times 200 &divide "+(cool_end-cool_start)+"<br>= ";
 			strCalc = strCalc + Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"</b><br>";
 		}
 	}
@@ -258,6 +261,7 @@ function plotThePoints()
 		$("#calc").addClass("well");
 		$("#calc").append(""+strCalc);
 		},intervalT);
+
 	var timer5=window.setTimeout(function () {
 		$("#div_for_result").addClass("well");
 		$("#div_for_result").append(""+stringResult);

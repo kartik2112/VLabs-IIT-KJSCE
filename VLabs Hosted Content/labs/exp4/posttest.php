@@ -147,7 +147,7 @@
                         <h3>3. What is the limitation of perceptron learning rule?</h3>
                     
                         <input type="radio" class="optradio3" name="q3" value="1"> A. No limitation it can solve almost any problem<br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. it is a weak algorithm<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. It is a weak algorithm<br>
                         <input type="radio" class="optradio3" name="q3" value="3"> C. It can only solve problems which are linearly seperable<br>
                         <input type="radio" class="optradio3" name="q3" value="4"> D. It cannot converge to a correct solution,even if there exists a solution<br>      
 
@@ -160,12 +160,11 @@
                         <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG" width="200px"/><br>
                         <br>
                         <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG" width="200px"/><br><br>
-                            <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
-                            <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
 
-                            <br />
-                            <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
-                        </p>
+                        <br />
+                        <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>
                         <h3>5. What type of activation function is used in this experiment?</h3>
 
                         <input type="radio" class="optradio5" name="q4" value="1"> A. Hardlimit activation function <br>

@@ -147,9 +147,9 @@ function method2()
 	$("#m2answer").empty();
 	$("#m2final").empty();
 	document.getElementById("m2answer").style.color = "red";
-	var data="<h4 style='color:black'>DATA:</h4>";
-	var temp=data+"Cool : Start = "+cool_start+ " , End = "+cool_end+"<br>";
-	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
+	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
+	var temp=data+"<tr><th>Cool</th><td>"+cool_start+ "</td><td>"+cool_end+"</td></tr>";
+	temp=temp+"<tr><th>Warm</th><td>"+warm_start+"</td><td>"+warm_end+"</td></tr></table>";
 	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	temp=temp+sol;
 	var a=cool_end;
@@ -206,10 +206,10 @@ function method3()
 {
 	$("#m3answer").empty();
 	$("#m3final").empty();
-	var data="<h4 style='color:black'>DATA:</h4>";
+	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
 	
-	var temp=data+"Cool: Start = "+cool_start+", End = "+cool_end+"<br>";
-	temp=temp+"Warm: Start = "+warm_start+", End = "+warm_end+"<br>";
+	var temp=data+"<tr><th>Cool</th><td>"+cool_start+"</td><td>"+cool_end+"</td></tr>";
+	temp=temp+"<tr><th>Warm</th><td>"+warm_start+"</td><td>"+warm_end+"</td></tr></table>";
 	
 	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	temp=temp+sol;
@@ -250,11 +250,11 @@ function method4()
 {
 	$("#m4answer").empty();
 	$("#m4final").empty();
-	var data="<h4 style='color:black'>DATA:</h4>";
+	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
 	
-	var temp=data+"Cool: Start="+cool_start+", End = "+cool_end+"<br>";
-	temp=temp+"Warm: Start = "+warm_start+", End = "+warm_end+"<br>";
-	temp=temp+"Hot: Start = "+hot_start+", End: 100<br>";
+	var temp=data+"<tr><th>Cool</th><td>"+cool_start+ "</td><td>"+cool_end+"</td></tr>";
+	temp=temp+"<tr><th>Warm</th><td>"+warm_start+"</td><td>"+warm_end+"</td></tr>";
+	temp=temp+"<tr><th>Hot</th><td>"+hot_start+"</td><td>100</td></tr></table>";
 	
 	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	temp=temp+sol;
@@ -305,9 +305,9 @@ function method5()
 {
 	$("#m5answer").empty();
 	$("#m5final").empty();
-	var data="<h4 style='color:black'>DATA:</h4>";
-	var temp=data+"Cool : Start = "+cool_start+ " , End = "+cool_end+"<br>";
-	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
+	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
+	var temp=data+"<tr><th>Cool</th><td>"+cool_start+ "</td><td>"+cool_end+"</td></tr>";
+	temp=temp+"<tr><th>Warm</th><td>"+warm_start+"</td><td>"+warm_end+"</td></tr></table>";
 	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	temp=temp+sol;
 	temp=temp+"a = ( cool_end - cool_start ) * ( cool_end + cool_start ) &divide 2<br>";
@@ -348,11 +348,11 @@ function method6()
 	$("#m6answer").empty();
 	$("#m6final").empty();
 	document.getElementById("m6answer").style.color = "red";
-	var data="<h4 style='color:black'>DATA:</h4>";
+	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
 	
-	var temp=data+"Cool: Start="+cool_start+", End = "+cool_end+"<br>";
-	temp=temp+"Warm : Start = "+warm_start+" , End = "+warm_end+"<br>";
-	temp=temp+"Hot : Start = "+hot_start+" , End: 100<br>";
+	var temp=data+"<tr><th>Cool</th><td>"+cool_start+ "</td><td>"+cool_end+"</td></tr>";
+	temp=temp+"<tr><th>Warm</th><td>"+warm_start+"</td><td>"+warm_end+"</td></tr>";
+	temp=temp+"<tr><th>Hot</th><td>"+hot_start+"</td><td>100</td></tr></table>";
 	var sol="<h4 style='color:black'>SOLUTION:</h4>";
 	var a=cool_end-cool_start;
 	temp=temp+sol;

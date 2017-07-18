@@ -81,7 +81,7 @@
                         <h3>Types of activation functions:-</h3>
                         <b>1. Hard-limit Activation Function</b>
                         <br /><br /><img src="images/hardlimit.png" /><br /><br />
-                        <b>2. Sigmoidal Activation Function</b>
+                        <b>2. Soft-limit (Sigmoidal) Activation Function</b>
                         <br /><br /><img src="images/sigmoid.png" /><br /><br />
                         <b>3. Piecewise Linear Activation Function</b>
                         <br /><br /><img src="images/piecewise.png" /><br /><br />

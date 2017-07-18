@@ -111,14 +111,14 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
-                                                                        <h3>1. What are the advantages of neural networks over conventional computers?
-                                                                            <br/>(i) They have the ability to learn by example
-                                                                            <br/>(ii) They are more fault tolerant
-                                                                            <br/>(iii)They are more suited for real time operation due to their high ‘computational’ rates</h3>
+                        <h3>1. What are the advantages of neural networks over conventional computers?
+                            <br/>(i) They have the ability to learn by example
+                            <br/>(ii) They are more fault tolerant
+                            <br/>(iii)They are more suited for real time operation due to their high ‘computational’ rates</h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. (i) and (ii) are true<br>
                         <input type="radio" class="optradio1" name="q1" value="2">B.(i) and (iii) are true<br>
-                        <input type="radio" class="optradio1" name="q1" value="3">C. all the above mentioned<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. All the above mentioned<br>
                         <input type="radio" class="optradio1" name="q1" value="4">D. None<br>
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is C</p>
@@ -131,7 +131,7 @@
 
                     </h3>
                     
-                        <input type="radio" class="optradio2" name="q2" value="1"> A.  (ii) and (iii) are true<br>
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. (ii) and (iii) are true<br>
                         <input type="radio" class="optradio2" name="q2" value="2"> B. (ii) is true<br>
                         <input type="radio" class="optradio2" name="q2" value="3"> C. All of the mentioned <br>
                         <input type="radio" class="optradio2" name="q2" value="4"> D.  None of the mentioned<br>
@@ -151,8 +151,8 @@
                             
                         <h3>4. The network that involves backward links from output to the input and hidden layers is called as ____.</h3>
 
-                        <input type="radio" class="optradio4" name="q4" value="1"> A. Self organizing maps<br>
-                    <input type="radio" class="optradio4" name="q4" value="2"> B.   Perceptrons<br>
+                        <input type="radio" class="optradio4" name="q4" value="1"> A.  Self organizing maps<br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B.  Perceptrons<br>
                         <input type="radio" class="optradio4" name="q4" value="3"> C.  Recurrent neural network<br>
                         <input type="radio" class="optradio4" name="q4" value="4"> D.  Multi layered perceptron<br>
                         <br />
