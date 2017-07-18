@@ -71,6 +71,7 @@ table.truthTable th{
 
 table.truthTable td,th{
     text-align: center;
+    padding: 5px;
 }
 
 div.highlightDiv{

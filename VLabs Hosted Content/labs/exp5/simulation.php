@@ -101,36 +101,6 @@
                 //displayWeightsInNeuralNet("percLR");
                 displayWeightsInNeuralNet("hebbLR");
 
-                /*
-                // Perceptron LR Stuff
-                // Learning Rate Slider
-                $("#percLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#percLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
-                });
-                $("#percLRLearningRate_slider").slider("value", learningRate);
-                $("#percLRMainOuterDiv span.learningRate").text($("#percLRLearningRate_slider").slider("value"));
-                learningRate = $("#percLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#percLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#percLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("percLR");
-                    }
-                });
-                */
-
-
 
                 // Hebbian LR Stuff
                 // Learning Rate Slider
@@ -159,37 +129,6 @@
                     }
                 });
 
-
-
-                /*
-                // Correlation LR Stuff
-                // Learning Rate Slider
-                $("#corrLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#corrLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
-                });
-                $("#corrLRLearningRate_slider").slider("value", learningRate);
-                $("#corrLRMainOuterDiv span.learningRate").text($("#corrLRLearningRate_slider").slider("value"));
-                learningRate = $("#corrLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#corrLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#corrLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("corrLR");
-                    }
-                });
-                */
-                
 
                 $('[data-toggle="tooltip"]').tooltip();
 
@@ -469,7 +408,7 @@
                                             , D = 
                                         </div>
                                         <div style="display: inline-block">
-                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector O">
+                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector D">
                                                 <tr class="0"><td class="0">0</td></tr>
                                                 <tr class="1"><td class="0">0</td></tr>
                                                 <tr class="2"><td class="0">0</td></tr>

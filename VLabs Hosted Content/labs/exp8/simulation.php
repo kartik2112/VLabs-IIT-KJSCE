@@ -158,7 +158,7 @@
                     <br>
                     <div >
                     <div id="div_for_svg" style="float:left;width:45%">
-                    <svg id="graph_svg" width="700" height="500" style="">
+                    <svg id="graph_svg" width="700" height="400" style="">
                         <line id="x_axis" class="axis" stroke="#000" stroke-width="2" 
                         x1="20" y1="300" x2="600" y2="300" style=""/>
                         <line id="y_axis" class="axis" stroke="#000" stroke-width="2"
@@ -217,11 +217,11 @@
                         <circle id="circle3" cx="100" cy="100" r="0"/>
                     </svg>
                     </div>
-                    <div id="calc" width="350" height="200" style="float:right;width:44%;margin-top:-255px;text-align:center; font-size: 16px" class="" >
-                    </div>
-                    <div id="div_for_result" width="350" height="200" style="float:right;width:44%;font-size:17;margin-top:0px;text-align:center"   class="">
-                    </div>
                     <div style="clear:both; font-size:1px;"></div>
+                    </div>
+                    <div id="calc" class="" style="font-size: 16px">
+                    </div>
+                    <div id="div_for_result" class="" style="font-size: 16px">
                     </div>
                 </section>                
                 <!-- /.content -->

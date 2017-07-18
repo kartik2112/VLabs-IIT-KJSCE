@@ -114,7 +114,7 @@
                         <h3>1. An associative network is </h3>
 
                         <input type="radio" class="optradio1" name="q1" value="1">A. A neural network that contains no loop<br>
-                        <input type="radio" class="optradio1" name="q1" value="2">B.A neural network that contains feedback<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. A neural network that contains feedback<br>
                         <input type="radio" class="optradio1" name="q1" value="3">C. A neural network that has only one loop<br>
                         <input type="radio" class="optradio1" name="q1" value="4">D. None<br>
                         <br />
