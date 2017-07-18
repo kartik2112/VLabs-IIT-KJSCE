@@ -122,6 +122,7 @@
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
                     
+
                         <h3>2. OCR (Optical Character Recognition) uses NLP ( Natural Language Processing ).</h3>
                     
                         <input type="radio" class="optradio2" name="q2" value="1"> A. True<br>
