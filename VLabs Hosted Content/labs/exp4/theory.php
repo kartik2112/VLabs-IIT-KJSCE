@@ -122,7 +122,7 @@
                         <br>
                         </p>
                         
-                        <p>According to <b>Perceptron</b> Learning Rule,
+                        <p>According to <b>Perceptron</b> Learning Rule,</p>
                         <br>
                         <br>
                         <br>
@@ -136,123 +136,359 @@
                         <b>Consider an example</b>
                         <br>
                         <br>
-                        Let the 3 input vectors be x<sub>1</sub> = [1 -2 0 -1] , x<sub>2</sub> = [0 1.5 -0.5 -1] and x<sub>3</sub> = [-1 1 0.5 -1] and the initial weight vector w<sub>1</sub> be [1 -1 0 0.5]. The learning constant is assumed to be c = 0.1. The teacher's desired responses for x<sub>l</sub>, x<sub>2</sub>, x<sub>3</sub> are d<sub>l</sub> = - 1, d<sub>2</sub> = - 1, and d<sub>3</sub> = 1, respectively. 
+                        We will demonstrate the learning rule for 1 input of 1st iteration.
+                        Let the input vector be 
+                            <table class="matrix changingBlocks inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X"><tr class="0"><td class="0">-2</td><td class="1">3</td><td class="2">1</td></tr></table> 
+                            and the initial weight matrix, W be<br/>
+                            <table class="matrix changingBlocks weightMatrix" data-toggle="tooltip" data-placement="bottom" title="Weight Matrix W">
+                                <tr class="0"><td class="0">-2</td><td class="1">1</td><td class="2">-6.5</td></tr>
+                                <tr class="1"><td class="0">3</td><td class="1">2</td><td class="2">1</td></tr>
+                                <tr class="2"><td class="0">0</td><td class="1">-1</td><td class="2">-1.5</td></tr>
+                            </table>                           
+                            The learning constant is assumed to be η = 0.1. 
+                            The desired response for this input X is D = <table class="matrix changingBlocks inputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector D"><tr class="0"><td class="0">1</td><td class="1">-1</td><td class="2">-1</td></tr></table>
+                            Here, the activation function used is <b>bipolar hard-limit activation function</b>.
 
                     
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      <svg id="percLR_svg" width="700" height="400" style="margin-left: 200px">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
+                            <svg id="percLR_svg" width="700" height="400" style="margin-left: 200px">
                                         <!--Neural Network connections-->
-                                        <line id="percLR_line11" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(11,'percLR')" x1="50" y1="50" x2="350" y2="50" style=""/>
-                                        <line id="percLR_line12" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(12,'percLR')" x1="50" y1="200" x2="350" y2="50" style=""/>
-                                        <line id="percLR_line13" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(13,'percLR')" x1="50" y1="350" x2="350" y2="50" style=""/>
+                                        <line id="percLR_line11" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="50" x2="350" y2="50"/>
+                                        <line id="percLR_line12" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="200" x2="350" y2="50"/>
+                                        <line id="percLR_line13" class="not_sel percLRNeur_1_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="350" x2="350" y2="50"/>
 
-                                        <line id="percLR_line21" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21,'percLR')" x1="50" y1="50" x2="350" y2="200" style=""/>
-                                        <line id="percLR_line22" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(22,'percLR')" x1="50" y1="200" x2="350" y2="200" style=""/>
-                                        <line id="percLR_line23" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(23,'percLR')" x1="50" y1="350" x2="350" y2="200" style=""/>
+                                        <line id="percLR_line21" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="50" x2="350" y2="200"/>
+                                        <line id="percLR_line22" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="200" x2="350" y2="200"/>
+                                        <line id="percLR_line23" class="not_sel percLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="350" x2="350" y2="200"/>
 
-                                        <line id="percLR_line31" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(31,'percLR') "x1="50" y1="50" x2="350" y2="350" style=""/>
-                                        <line id="percLR_line32" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(32,'percLR')" x1="50" y1="200" x2="350" y2="350" style=""/>
-                                        <line id="percLR_line33" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(33,'percLR')" x1="50" y1="350" x2="350" y2="350" style=""/>
+                                        <line id="percLR_line31" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="50" x2="350" y2="350"/>
+                                        <line id="percLR_line32" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="200" x2="350" y2="350"/>
+                                        <line id="percLR_line33" class="not_sel percLRNeur_3_lines lines" stroke="#ff6a00" stroke-width="5" x1="50" y1="350" x2="350" y2="350"/>
 
-                                        <!-- @@@@@-->
+								        <!-- @@@@@-->
                                         <line class="StdLine percLRNeur_1_lines" x1="350" y1="50" x2="610" y2="50" style=""/>
                                         <line class="StdLine percLRNeur_2_lines" x1="350" y1="200" x2="610" y2="200" style=""/>
                                         <line class="StdLine percLRNeur_3_lines" x1="350" y1="350" x2="610" y2="350" style=""/>
-                                        <!-- @@@@@-->
-                                         
-                                        <line id="corrLR_line21" class="not_sel corrLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21,'corrLR')" x1="350" y1="50" x2="610" y2="50" style=""/>
-                                        <line id="corrLR_line21" class="not_sel corrLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21,'corrLR')" x1="350" y1="200" x2="610" y2="200" style=""/>
-                                        <line id="corrLR_line21" class="not_sel corrLRNeur_2_lines lines" stroke="#ff6a00" stroke-width="5"  onclick="editWeights(21,'corrLR')" x1="350" y1="350" x2="610" y2="350" style=""/>
+								        <!-- @@@@@-->
+
 
                                         <!--Neural Network nodes-->
                                         <circle class="StdCircle" cx="50" cy="50" r="20"/>
                                         <circle class="StdCircle" cx="50" cy="200" r="20"/>
                                         <circle class="StdCircle" cx="50" cy="350" r="20"/>
-                                        <!-- @@@@@ -->
+								        <!-- @@@@@ -->
 
                                         <circle class="StdCircle" cx="350" cy="50" r="20"/>
                                         <circle class="StdCircle" cx="350" cy="200" r="20"/>
                                         <circle class="StdCircle" cx="350" cy="350" r="20"/>
 
-                                        <!-- @@@@@  -->
-                                        <image x="610" y="25"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                                        <image x="610" y="175"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
-                                        <image x="610" y="325"  height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+								        <!-- @@@@@  -->
+                                        <image x="610" y="25" height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                        <image x="610" y="175" height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
+                                        <image x="610" y="325" height="50" width="50" xlink:href="../images/bipolar_threshold.png" style="padding: 10px;fill: #00b8ff"/>
 
 
 
 
                                         <!--Input texts-->
-                                        <text font-size="20" x="5" y="55">X1</text>
-                                        <text class="changingTextStyle percLRX_inputX1" font-size="20" x="45" y="57" style="stroke: #ff0000;stroke-width: 1px;"></text>
-                                        <text font-size="20" x="5" y="210">X2</text>
-                                        <text class="changingTextStyle percLRX_inputX2" font-size="20" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;"></text>
-                                        <text font-size="20" x="10" y="360">X3</text>
-                                        <!--<text class="changingTextStyle percLRX_inputX3" font-size="20" x="45" y="355">0</text>-->
+                                        <text font-size="15" x="5" y="55">X1</text>
+                                        <text class="changingTextStyle percLRX_inputX1" font-size="15" x="45" y="57" style="stroke: #ff0000;stroke-width: 1px;">-2</text>
+                                        <text font-size="15" x="5" y="210">X2</text>
+                                        <text class="changingTextStyle percLRX_inputX2" font-size="15" x="45" y="207" style="stroke: #ff0000;stroke-width: 1px;">3</text>
+                                        <text font-size="15" x="10" y="360">1</text>
+                                        <!--<text class="changingTextStyle percLRX_inputX3" font-size="15" x="45" y="355">0</text>-->
 
 
-                                        <text font-size="20" x="342" y="55">∑</text>
-                                        <text font-size="20" x="342" y="205">∑</text>
-                                        <text font-size="20" x="342" y="355">∑</text>
+								        <text font-size="15" x="342" y="55">∑</text>
+                                        <text font-size="15" x="342" y="205">∑</text>
+                                        <text font-size="15" x="342" y="355">∑</text>
 
                                         <!--Weights text-->
-                                        <text font-size="20"  x="225" y="30" >w<tspan baseline-shift="sub">11</tspan><tspan class="w11text"></tspan></text>
-                                        <text font-size="20"  x="235" y="75" >w<tspan baseline-shift="sub">12</tspan><tspan class="w12text"></tspan></text>
-                                        <text font-size="20"  x="303" y="110">w<tspan baseline-shift="sub">13</tspan><tspan class="w13text"></tspan></text>
-                                        <text font-size="20"  x="285" y="155">w<tspan baseline-shift="sub">21</tspan><tspan class="w21text"></tspan></text>
-                                        <text font-size="20"  x="240" y="195">w<tspan baseline-shift="sub">22</tspan><tspan class="w22text"></tspan></text>
-                                        <text font-size="20"  x="288" y="245">w<tspan baseline-shift="sub">23</tspan><tspan class="w23text"></tspan></text>
-                                        <text font-size="20"  x="300" y="300">w<tspan baseline-shift="sub">31</tspan><tspan class="w31text"></tspan></text>
-                                        <text font-size="20"  x="195" y="320">w<tspan baseline-shift="sub">32</tspan><tspan class="w32text"></tspan></text>
-                                        <text font-size="20"  x="225" y="370">w<tspan baseline-shift="sub">33</tspan><tspan class="w33text"></tspan></text>
+                                        <text font-size="15" x="225" y="30">w<tspan baseline-shift="sub">11</tspan>=<tspan class="w11text">-2</tspan></text>
+                                        <text font-size="15" x="235" y="75">w<tspan baseline-shift="sub">12</tspan>=<tspan class="w12text">1</tspan></text>
+                                        <text font-size="15" x="303" y="110">w<tspan baseline-shift="sub">13</tspan>=<tspan class="w13text">-6.5</tspan></text>
+                                        <text font-size="15" x="285" y="155">w<tspan baseline-shift="sub">21</tspan>=<tspan class="w21text">3</tspan></text>
+                                        <text font-size="15" x="240" y="185">w<tspan baseline-shift="sub">22</tspan>=<tspan class="w22text">2</tspan></text>
+                                        <text font-size="15" x="288" y="245">w<tspan baseline-shift="sub">23</tspan>=<tspan class="w23text">1</tspan></text>
+                                        <text font-size="15" x="305" y="300">w<tspan baseline-shift="sub">31</tspan>=<tspan class="w31text">0</tspan></text>
+                                        <text font-size="15" x="195" y="320">w<tspan baseline-shift="sub">32</tspan>=<tspan class="w32text">-1</tspan></text>
+                                        <text font-size="15" x="225" y="370">w<tspan baseline-shift="sub">33</tspan>=<tspan class="w33text">-1.5</tspan></text>
 
 
                                         <!--u(x) related texts-->
-                                        <text font-size="20" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*X3</text>
-                                        <text font-size="20" x="370" y="190">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*X3</text>
-                                        <text font-size="20" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*X3</text>
+                                        <text font-size="15" x="370" y="35">= w<tspan baseline-shift="sub">11</tspan>*X1 + w<tspan baseline-shift="sub">12</tspan>*X2 + w<tspan baseline-shift="sub">13</tspan>*1</text>
+                                        <text font-size="15" x="370" y="184">= w<tspan baseline-shift="sub">21</tspan>*X1 + w<tspan baseline-shift="sub">22</tspan>*X2 + w<tspan baseline-shift="sub">23</tspan>*1</text>
+                                        <text font-size="15" x="370" y="335">= w<tspan baseline-shift="sub">31</tspan>*X1 + w<tspan baseline-shift="sub">32</tspan>*X2 + w<tspan baseline-shift="sub">33</tspan>*1</text>
 
 
                                         <!--y(x) related texts-->
-                                        <text font-size="20" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
-                                        <text class="changingTextStyle percLR_outputO1" font-size="20" x="670" y="80" style="stroke: #3366ff;"></text>
+                                        <text font-size="15" x="665" y="50" style="stroke: #3366ff;stroke-width: 1px;">O1</text>
+                                        <text class="changingTextStyle percLR_outputO1" font-size="15" x="670" y="80" style="stroke: #3366ff;"></text>
 
-                                        <text font-size="20" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
-                                        <text class="changingTextStyle percLR_outputO2" font-size="20" x="670" y="230" style="stroke: #ff0000;"></text>
+                                        <text font-size="15" x="665" y="200" style="stroke: #ff0000;stroke-width: 1px;">O2</text>
+                                        <text class="changingTextStyle percLR_outputO2" font-size="15" x="670" y="230" style="stroke: #ff0000;"></text>
 
-                                        <text font-size="20" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
-                                        <text class="changingTextStyle percLR_outputO3" font-size="20" x="670" y="380" style="stroke: #009933;"></text>
+                                        <text font-size="15" x="665" y="350" style="stroke: #009933;stroke-width: 1px;">O3</text>
+                                        <text class="changingTextStyle percLR_outputO3" font-size="15" x="670" y="380" style="stroke: #009933;"></text>
                             </svg>
                          
                         <br>
                         <br>
+                        <div>
+                            Here, the activation function used is <span style="font-size: larger; font-weight: bolder">signum</span>:<br/>
+                            sgn( x ) = 1 , &nbsp; x >= 0<br/>
+                            &emsp;&emsp;&emsp; = -1 , &nbsp; x < 0
+                        </div>
                         <p id="pid">
-                                                 The learning according to the perceptron learning rule progresses as follows
-                        <br>
-                        <br>
-                        <b>Step 1 :</b> 
-                        <br>
-                        Input is x<sub>l</sub>, desired output is d<sub>l</sub>: 
-                        <br>
-                        <br>
-                        net<sub>1</sub>=w<sub>1</sub><sup>T</sup>X<sub>1</sub>
-                        <br>
-                        <br>
-                        Correction in this step is necessary since d<sub>1</sub> is not equal to sgn(2.5). We thus obtain updated weight vector 
-                        <br>
-                        <br>
-                        w<sub>2</sub>= w<sub>1</sub> + 0.1(-1-1)X<sub>1</sub>
-                        <br>
-                        <br>
-                        Plugging in numerical values we obtain  
-                        <br>
-                        <br>
-                        w<sub>2</sub> = [1 -1 0 0.5] - 0.2 [1 -2 0 -1] = [0.8 -0.6 0 0.7]
-                        <br>
-                        <br>
+                            Learning according to the perceptron learning rule progresses as follows
+                        </p>
+                        &emsp;O = sgn( W x X )<br/>
+
+                        <div class="centerPosOperatorsForMatrices" style="margin-right: 0px!important;">O &nbsp; = </div>
+
+                        <div class="centerPosOperatorsForMatrices">sgn(</div>
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks weightMatrix" data-toggle="tooltip" data-placement="bottom" title="Weight Matrix W">
+                                <tr class="0"><td class="0">-2</td><td class="1">1</td><td class="2">-6.5</td></tr>
+                                <tr class="1"><td class="0">3</td><td class="1">2</td><td class="2">1</td></tr>
+                                <tr class="2"><td class="0">0</td><td class="1">-1</td><td class="2">-1.5</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="centerPosOperatorsForMatrices">
+                                X
+                        </div>
+
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
+                                <tr class="0"><td class="0">-2</td></tr>
+                                <tr class="1"><td class="0">3</td></tr>
+                                <tr class="2"><td class="0">1</td></tr>
+                            </table>
+                        </div>
+                        <div class="centerPosOperatorsForMatrices">)</div>
+
+                        <div class="centerPosOperatorsForMatrices" style="margin-left: 0px!important; margin-right: 0px!important;">
+                                =
+                        </div>
+
+                        <div class="centerPosOperatorsForMatrices">sgn(</div>
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks summationVector" data-toggle="tooltip" data-placement="bottom" title="∑ Vector">
+                                <tr class="0"><td class="0">0.5</td></tr>
+                                <tr class="1"><td class="0">1</td></tr>
+                                <tr class="2"><td class="0">-4.5</td></tr>
+                            </table>
+                        </div>
+                        <div class="centerPosOperatorsForMatrices">)</div>
+
+                        <div class="centerPosOperatorsForMatrices" style="margin-left: 0px!important;">
+                                = &nbsp;
+                        </div>
+
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks outputVector" data-toggle="tooltip" data-placement="bottom" title="Actual Output Vector O">
+                                <tr class="0"><td class="0">1</td></tr>
+                                <tr class="1"><td class="0">1</td></tr>
+                                <tr class="2"><td class="0">-1</td></tr>
+                            </table>
+                        </div><br/>
+                        <div class="centerPosOperatorsForMatrices">
+                            O =
+                        </div>
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks outputVector" data-toggle="tooltip" data-placement="bottom" title="Actual Output Vector O">
+                                <tr class="0"><td class="0">1</td></tr>
+                                <tr class="1"><td class="0">1</td></tr>
+                                <tr class="2"><td class="0">-1</td></tr>
+                            </table>
+                        </div>
+                        <div class="centerPosOperatorsForMatrices">
+                            , D =
+                        </div>
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector D">
+                                <tr class="0"><td class="0">1</td></tr>
+                                <tr class="1"><td class="0">-1</td></tr>
+                                <tr class="2"><td class="0">-1</td></tr>
+                            </table>
+                        </div><br/>
+
+                        <div class="revealText1 changingBlocks">According to Perceptron Learning Rule : <span style="font-size: larger; font-weight: bolder">ΔW<sub>i</sub> = η ( D<sub>i</sub> - O<sub>i</sub> ) X</span> </div>
+                        <div class="revealText2 changingBlocks">Hence, W<sub>i,new</sub> = W<sub>i,old</sub> + η ( D<sub>i</sub> - O<sub>i</sub> ) X </div>
+                        <div class="revealText3 changingBlocks">The calculations for weight vector for each classifier neuron are as shown below:</div>
+                        <br/>
+
+                        <div id="all_percLRWtChngeCalcns_Carousel" class="carousel slide changingBlocks" data-ride="carousel" style="width: 550px;">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#all_percLRWtChngeCalcns_Carousel" data-slide-to="0" class="active" data-toggle="tooltip" data-placement="bottom" title="Weight Calculations for i=1"></li>
+                                <li data-target="#all_percLRWtChngeCalcns_Carousel" data-slide-to="1" data-toggle="tooltip" data-placement="bottom" title="Weight Calculations for i=2"></li>
+                                <li data-target="#all_percLRWtChngeCalcns_Carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom" title="Weight Calculations for i=3"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" style="margin: auto; height: 400px; width: 350px; border-radius: 2px; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); background-color: #F1F7F8">
+                                <div class="item active" style="padding: 15px;">
+                                        <div id="percLRCalcnExplnFor_i_0" style="background-color: rgb(205, 255, 175);">
+                                                <div><h3>For i = 1, D<sub>1</sub> = <span class="Di">1</span>, O<sub>1</sub> = <span class="Oi">1</span></h3></div><br/><br/>
+
+                                                <div class="centerPosOperatorsForMatrices">W<sub>1,new</sub> = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W1,old">
+                                                        <tr class="0"><td class="0">-2</td></tr>
+                                                        <tr class="1"><td class="0">1</td></tr>
+                                                        <tr class="2"><td class="0">-6.5</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">0.1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output">1</span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output">1</span> ) ) </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
+                                                        <tr class="0"><td class="0">-2</td></tr>
+                                                        <tr class="1"><td class="0">3</td></tr>
+                                                        <tr class="2"><td class="0">1</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> </div>
+                                                <br/><br/>
+                                                <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W1,new">
+                                                        <tr class="0"><td class="0">-2</td></tr>
+                                                        <tr class="1"><td class="0">1</td></tr>
+                                                        <tr class="2"><td class="0">-6.5</td></tr>
+                                                    </table>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item" style="padding: 15px;">
+                                        <div id="percLRCalcnExplnFor_i_1" style="background-color: rgb(255, 214, 214);">
+                                                <div><h3>For i = 2, D<sub>2</sub> = <span class="Di">-1</span>, O<sub>2</sub> = <span class="Oi">1</span></h3></div><br/><br/>
+
+                                                <div class="centerPosOperatorsForMatrices">W<sub>2,new</sub> = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W2,old">
+                                                        <tr class="0"><td class="0">3</td></tr>
+                                                        <tr class="1"><td class="0">2</td></tr>
+                                                        <tr class="2"><td class="0">1</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">0.1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output">-1</span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output">1</span> ) ) </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
+                                                        <tr class="0"><td class="0">-2</td></tr>
+                                                        <tr class="1"><td class="0">3</td></tr>
+                                                        <tr class="2"><td class="0">1</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> </div>
+                                                <br/><br/>
+                                                <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W2,new">
+                                                        <tr class="0"><td class="0">4.6</td></tr>
+                                                        <tr class="1"><td class="0">-0.4</td></tr>
+                                                        <tr class="2"><td class="0">0.2</td></tr>
+                                                    </table>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="item" style="padding: 15px;">
+                                        <div id="percLRCalcnExplnFor_i_2" style="background-color: rgb(205, 255, 175);">
+                                                <div><h3>For i = 3, D<sub>3</sub> = <span class="Di">-1</span>, O<sub>3</sub> = <span class="Oi">-1</span></h3></div><br/><br/>
+
+                                                <div class="centerPosOperatorsForMatrices">W<sub>3,new</sub> = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix indWeightVector" data-toggle="tooltip" data-placement="bottom" title="Old Weight Vector W3,old">
+                                                        <tr class="0"><td class="0">0</td></tr>
+                                                        <tr class="1"><td class="0">-1</td></tr>
+                                                        <tr class="2"><td class="0">-1.5</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> + <span class="learningRate" data-toggle="tooltip" data-placement="bottom" title="Learning Rate η">0.1</span> ( ( <span class="Di" data-toggle="tooltip" data-placement="bottom" title="ith Desired Output">-1</span> ) - ( <span class="Oi" data-toggle="tooltip" data-placement="bottom" title="ith Actual Output">-1</span> ) ) </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix inputVector" data-toggle="tooltip" data-placement="bottom" title="Input Vector X">
+                                                        <tr class="0"><td class="0">-2</td></tr>
+                                                        <tr class="1"><td class="0">3</td></tr>
+                                                        <tr class="2"><td class="0">1</td></tr>
+                                                    </table>
+                                                </div>
+                                                <div class="centerPosOperatorsForMatrices"> </div>
+                                                <br/><br/>
+                                                <div class="centerPosOperatorsForMatrices">&emsp;&emsp;&emsp; = </div>
+
+                                                <div style="display: inline-block">
+                                                    <table class="matrix newWtVector" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W3,new">
+                                                        <tr class="0"><td class="0">0</td></tr>
+                                                        <tr class="1"><td class="0">-1</td></tr>
+                                                        <tr class="2"><td class="0">-1.5</td></tr>
+                                                    </table>
+                                                </div>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#all_percLRWtChngeCalcns_Carousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" style="color: #006ed7"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#all_percLRWtChngeCalcns_Carousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" style="color: #006ed7"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+                        <br/>
+                        <div class="revealNewWtLine0 changingBlocks">In the carousel, the cards with <span style="background-color: #CDFFAF">green background</span> indicate the corresponding <b>weight vector has not changed</b> whereas
+                            the cards with <span style="background-color: #FFD6D6">red background</span> indicate the corresponding <b>weight vector has changed</b>.
+                        </div>
+
+                        <div class="revealNewWtLine1 changingBlocks">Hence, the new weight vectors are (Refer to the carousel above) : </div>
+
+                        <div class="centerPosOperatorsForArrays">  <div class="revealNewWtLine2 changingBlocks">W<sub>1,new</sub> = </div>  </div>
+                        <div style="display: inline-block">
+                            <table class="matrix newWtVectorW0 changingBlocks" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W1,new">
+                                <tr class="0"><td class="0">-2</td><td class="1">1</td><td class="2">-6.5</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="centerPosOperatorsForArrays">  <div class="revealNewWtLine3 changingBlocks">W<sub>2,new</sub> = </div>  </div>
+                        <div style="display: inline-block">
+                            <table class="matrix newWtVectorW1 changingBlocks" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W2,new">
+                                <tr class="0"><td class="0">4.6</td><td class="1">-0.4</td><td class="2">0.2</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="centerPosOperatorsForArrays">  <div class="revealNewWtLine4 changingBlocks">W<sub>3,new</sub> = </div>  </div>
+                        <div style="display: inline-block">
+                            <table class="matrix newWtVectorW2 changingBlocks" data-toggle="tooltip" data-placement="bottom" title="New Weight Vector W3,new">
+                                <tr class="0"><td class="0">0</td><td class="1">-1</td><td class="2">-1.5</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="revealNewWtLine5 changingBlocks">Thus, the new weight matrix becomes: </div>
+                        &emsp;&emsp;&emsp;
+                        <div style="display: inline-block">
+                            <table class="matrix changingBlocks newWeightMatrix" data-toggle="tooltip" data-placement="bottom" title="New Weight Matrix W">
+                                <tr class="0"><td class="0">-2</td><td class="1">1</td><td class="2">-6.5</td></tr>
+                                <tr class="1"><td class="0">4.6</td><td class="1">-0.4</td><td class="2">0.2</td></tr>
+                                <tr class="2"><td class="0">0</td><td class="1">-1</td><td class="2">-1.5</td></tr>
+                            </table>
+                        </div>
+                        <div class="revealNewWtLine6 changingBlocks" style="font-size: x-large; color: rgb(210, 38, 38);">The weight matrix has <b>changed</b> and hence the graph will also change.</div>
+                        
                         Similarly calculate for each input vector and update the weight vector correspondingly.
-                        <br>
-                        <br>
-                        The final weight vector after considering all inputs is [0.6 -0.4 0.1 0.5].
                 </section>
                 <!-- /.content -->
             </div>

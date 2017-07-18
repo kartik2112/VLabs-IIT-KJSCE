@@ -130,66 +130,6 @@
 
 
 
-                /*
-                // Hebbian LR Stuff
-                // Learning Rate Slider
-                $("#hebbLRLearningRate_slider").slider({
-                max: 5,
-                min: 0.2,
-                step: 0.2,
-                slide: function (event, ui) {
-                $("#hebbLRMainOuterDiv span.learningRate").text(ui.value);
-                learningRate = ui.value;
-                }
-                });
-                $("#hebbLRLearningRate_slider").slider("value", learningRate);
-                $("#hebbLRMainOuterDiv span.learningRate").text($("#hebbLRLearningRate_slider").slider("value"));
-                learningRate = $("#hebbLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#hebbLR_WeightsSlider").slider({
-                step: 0.5,
-                max: 5,
-                min: -5,
-                slide: function (event, ui) {
-                $("#hebbLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                plotGraph("hebbLR");
-                }
-                });
-
-
-
-
-                // Correlation LR Stuff
-                // Learning Rate Slider
-                $("#corrLRLearningRate_slider").slider({
-                max: 5,
-                min: 0.2,
-                step: 0.2,
-                slide: function (event, ui) {
-                $("#corrLRMainOuterDiv span.learningRate").text(ui.value);
-                learningRate = ui.value;
-                }
-                });
-                $("#corrLRLearningRate_slider").slider("value", learningRate);
-                $("#corrLRMainOuterDiv span.learningRate").text($("#corrLRLearningRate_slider").slider("value"));
-                learningRate = $("#corrLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#corrLR_WeightsSlider").slider({
-                step: 0.5,
-                max: 5,
-                min: -5,
-                slide: function (event, ui) {
-                $("#corrLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                plotGraph("corrLR");
-                }
-                });*/
-
-
-
                 $('[data-toggle="tooltip"]').tooltip();
 
                 // Make lines clickable
@@ -264,16 +204,7 @@
                 <section class="content">
                     <h3 style="margin-top:5%">Simulation</h3>
                     <!--Simulation content goes here -->
-
-                    <!--<div class="form-group" style="display: inline-block;">
-                        <label for="selLR">Select Learning Rule:</label>
-                        <select class="form-control" id="selLR" onchange="displayDiv(this.value)" style="width: 250px">
-                            <option value="percLR" selected>Perceptron Learning Rule</option>
-                            <option value="hebbLR">Hebbian Learning Rule</option>
-                            <option value="corrLR">Correlation Learning Rule</option>
-                        </select>
-                    </div>-->
-
+                    
                     <div id="percLRMainOuterDiv">
                             <p>&rarr; Click on any line to change its weight. This will also update the regions in the graph.</p>
                             <p>&rarr; You cannot change the parameters once you've started simulations.</p>
@@ -462,7 +393,7 @@
                                             , D =
                                         </div>
                                         <div style="display: inline-block">
-                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector O">
+                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector D">
                                                 <tr class="0"><td class="0">0</td></tr>
                                                 <tr class="1"><td class="0">0</td></tr>
                                                 <tr class="2"><td class="0">0</td></tr>

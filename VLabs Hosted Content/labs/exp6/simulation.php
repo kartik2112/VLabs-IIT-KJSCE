@@ -101,66 +101,6 @@
                 //displayWeightsInNeuralNet("percLR");
                 displayWeightsInNeuralNet("corrLR");
 
-                /*
-                // Perceptron LR Stuff
-                // Learning Rate Slider
-                $("#percLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#percLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
-                });
-                $("#percLRLearningRate_slider").slider("value", learningRate);
-                $("#percLRMainOuterDiv span.learningRate").text($("#percLRLearningRate_slider").slider("value"));
-                learningRate = $("#percLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#percLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#percLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("percLR");
-                    }
-                });
-
-
-
-
-                // Hebbian LR Stuff
-                // Learning Rate Slider
-                $("#hebbLRLearningRate_slider").slider({
-                    max: 5,
-                    min: 0.2,
-                    step: 0.2,
-                    slide: function (event, ui) {
-                        $("#hebbLRMainOuterDiv span.learningRate").text(ui.value);
-                        learningRate = ui.value;
-                    }
-                });
-                $("#hebbLRLearningRate_slider").slider("value", learningRate);
-                $("#hebbLRMainOuterDiv span.learningRate").text($("#hebbLRLearningRate_slider").slider("value"));
-                learningRate = $("#hebbLRLearningRate_slider").slider("value");
-
-                // weight slider
-                $("#hebbLR_WeightsSlider").slider({
-                    step: 0.5,
-                    max: 5,
-                    min: -5,
-                    slide: function (event, ui) {
-                        $("#hebbLRMainOuterDiv tspan.w" + sel + "text").text(ui.value);
-                        weightMatrix[(sel / 10).toFixed(0) - 1][sel % 10 - 1] = parseInt(ui.value);
-                        plotGraph("hebbLR");
-                    }
-                });
-                */
-
-
 
                 // Correlation LR Stuff
                 // Learning Rate Slider
@@ -454,7 +394,7 @@
                                             , D = 
                                         </div>
                                         <div style="display: inline-block">
-                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector O">
+                                            <table class="matrix changingBlocks desiredOutputVector" data-toggle="tooltip" data-placement="bottom" title="Desired Output Vector D">
                                                 <tr class="0"><td class="0">0</td></tr>
                                                 <tr class="1"><td class="0">0</td></tr>
                                                 <tr class="2"><td class="0">0</td></tr>
