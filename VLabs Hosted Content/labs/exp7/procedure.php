@@ -83,7 +83,7 @@
                             <li>After making changes as needed, click <button class="btn btn-success">Start Simulation</button> button. Now each input as highlighted in the graph will be chosen and classified into one of the three clusters.</li>
                             <li>If you want to stop the simulation in between you can do so by clicking the <button class="btn btn-danger">Stop Simulation</button> button. </li>
                             <li>After each input is completely processed, the <button class="btn btn-warning" >Apply next I/P value</button> button will get activated. 
-                            Click on this button to classify the next input.</li>
+                            Click on this button to classify the next input.</li><br><br>
                         <li>The weights of only the winning neuron (whose cluster centroid is closest to the input) are changed. Other neuron's weights remain the same.</li>
                         <li>You can see the cluster of each input in the table provided below the model. The cluster of each consequent input will get updated as they get classified.</li>
                         <li>The graph also gets updated each time an input is assigned a cluster.</li>

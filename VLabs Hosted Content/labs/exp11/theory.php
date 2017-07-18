@@ -249,7 +249,19 @@
                                 Tesseract uses its dictionary to influence the character segmentation step, for improved accuracy.
                             </li>
                         </ol>
-                        The OCR result can be stored in the standardised ALTO format, a dedicated XML schema .
+                        The OCR result can be stored in the standardised ALTO format, a dedicated XML schema .<br><br><h4>Below is shown the working of Tesseract ( One of the OCR Engines, developed by Google. )</h4><br>
+                        <h3><b>Tesseract OCR</b></h3><br>
+                        Tesseract was originally developed at Hewlett-Packard Laboratories, Later developed by Google since 2006.<br>   Tesseract has unicode (UTF-8) support, and can recognize more than 100 languages (out of the box) .Tesseract supports various output formats.<br>
+                        <h4><b>Here is How it works :-</b></h4><br>
+                        The first step is a connected component analysis in which outlines of the components are stored.<br>
+
+                        This is a computationally expensive design decision at the time, but has a significant advantage: by inspection of the nesting of outlines, and the number of child and grandchild outlines, it is simple to detect inverse text and recognize it as easily as black-on-white text.<br><br>
+                        At this stage, outlines are gathered together, purely by nesting, into Blobs. Blobs are organized into text lines, and the lines and regions are analyzed for fixed pitch or proportional text.<br>
+                        Text lines are broken into words differently according to the kind of character spacing. Fixed pitch text is chopped immediately by character cells.Proportional text is broken into words using definite spaces and fuzzy spaces.<br><br>
+
+                        Recognition then proceeds as a two-pass process.<br>
+
+                        In the first pass, an attempt is made to recognize each word in turn. Each word that is satisfactory is passed to an adaptive classifier as training data. The adaptive classifier then gets a chance to more accurately recognize text lower down the page. Since the adaptive classifier may have learned something useful too late to make a contribution near the top of the page, a second pass is run over the page, in which words that were not recognized well enough are recognized again. A final phase resolves fuzzy spaces, and checks alternative hypotheses for the x-height to locate small-cap text.
                     </p>
                 </section>
                 <!-- /.content -->

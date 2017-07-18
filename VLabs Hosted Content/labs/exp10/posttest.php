@@ -121,7 +121,7 @@
             <h3>3. What is another name for Fuzzy Inference Systems?</h3>
             <input type="radio" class="optradio3" name="q3" value="1"> A. Fuzzy Expert System.<br>
             <input type="radio" class="optradio3" name="q3" value="2"> B. Fuzzy Logic Controller.<br>
-            <input type="radio" class="optradio3" name="q3" value="3"> C. All of the above.<br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. Both A and B.<br>
             <input type="radio" class="optradio3" name="q3" value="4"> D. None of the above.<br>
             <br />
             <p id="optradio3Ans" class="testAns" style="display:none;">Ans is C</p>

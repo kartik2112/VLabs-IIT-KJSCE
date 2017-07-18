@@ -122,17 +122,9 @@
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
-                        <h3>2. Correlation learning rule is similar to which rule</h3>
-                    
-                        <input type="radio" class="optradio2" name="q2" value="1"> A. Hebbian learning rule<br>
-                        <input type="radio" class="optradio2" name="q2" value="2"> B. Instar learning rule<br>
-                        <input type="radio" class="optradio2" name="q2" value="3"> C. Anti-hebbian learning rule<br>
-                        <input type="radio" class="optradio2" name="q2" value="4"> D. Perceptron learning rule<br>
+                        
 
-                        <br />
-                        <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
-
-                        <h3>3. In correlation learning rule weights are usually initailized with?</h3>
+                        <h3>2. In correlation learning rule weights are usually initailized with?</h3>
                     
                         <input type="radio" class="optradio3" name="q3" value="1"> A. zeros <br>
                         <input type="radio" class="optradio3" name="q3" value="2"> B. ones<br>
@@ -142,7 +134,7 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                             
-                        <h3>4. What type of activation function is used in this experiment?</h3>
+                        <h3>3. What type of activation function is used in this experiment?</h3>
 
                         <input type="radio" class="optradio4" name="q4" value="1"> A. Hardlimit activation function <br>
                         <input type="radio" class="optradio4" name="q4" value="2"> B. Softlimit activation function<br>

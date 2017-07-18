@@ -147,12 +147,12 @@
                         <br />
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
                             
-                        <h3>4.If A={ 0/x1,0.4/x2,1/x3,0.5/x4 } and B={ 1/x1,0.5/x2,1/x3,0.6/x4 } then &#956 <sub>AuB</sub> </h3>
+                        <h3>4.If A={ 0 &divide x1, 0.4 &divide x2, 1 &divide x3, 0.5 &divide x4 } and B={ 1 &divide x1,0.5 &divide x2,1 &divide x3,0.6 &divide x4 } then &#956 <sub>AuB</sub> </h3>
 
-                        <input type="radio" class="optradio4" name="q4" value="1"> A. &#956 <sub>AuB</sub>={ 0.6/X1, 0.8/X2, 1/X3, 0.2/X4 } <br><br>
-                        <input type="radio" class="optradio4" name="q4" value="2"> B. &#956 <sub>AuB</sub>={ 0.9/X1, 0.7/X2, 0.1/X3, 1/X4 }  <br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. &#956 <sub>AuB</sub>={ 1/X1, 0.5/X2, 1/X3, 0.6/X4 } <br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. &#956 <sub>AuB</sub>={ 1/X1, 0.9/X2, 0.6/X3, 0.1/X4 } <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. &#956 <sub>AuB</sub>={ 0.6 &divide X1, 0.8 &divide X2, 1 &divide X3, 0.2 &divide X4 } <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B. &#956 <sub>AuB</sub>={ 0.9 &divide X1, 0.7 &divide X2, 0.1 &divide X3, 1 &divide X4 }  <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. &#956 <sub>AuB</sub>={ 1 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 } <br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. &#956 <sub>AuB</sub>={ 1 &divide X1, 0.9 &divide X2, 0.6 &divide X3, 0.1 &divide X4 } <br><br>
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is C</p>
                     </p>
