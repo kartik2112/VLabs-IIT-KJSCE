@@ -861,7 +861,7 @@ function revealBySlideDown(elem,time){
 function plotGraph(lrString){
     points = [];
     lines = [];
-    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-4, 5, 4, -3]});  //Creates the cartesian graph
+    var board = JXG.JSXGraph.initBoard(lrString+'GraphDiv',{axis:true, boundingbox:[-4, 5, 4, -3],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
 	var constPointSize=5;
 	
     for(var i=0;i<inputs.length;i++){
