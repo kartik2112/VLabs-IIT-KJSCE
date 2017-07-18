@@ -119,10 +119,10 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Post Test content goes here -->                        
 						<h3>1.The lambda(&#955;)-cut set of relation A is given by ?</h3><br>
-                        <input type="radio" class="optradio1" name="q1" value="1">A. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="2">B. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="3">C. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)=&#955;</sub>}<br><br>
-                        <input type="radio" class="optradio1" name="q1" value="4">D. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)<=&#955;</sub>}<br><br>
+                        <input type="radio" class="optradio1" name="q1" value="1">A. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>=&#955;</sub>}<br>
+                        <input type="radio" class="optradio1" name="q1" value="2">B. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)>&#955;</sub>}<br>
+                        <input type="radio" class="optradio1" name="q1" value="3">C. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)=&#955;</sub>}<br>
+                        <input type="radio" class="optradio1" name="q1" value="4">D. A<sub>&#955;</sub>={x|&#956;<sub>A</sub>(x)<=&#955;</sub>}<br>
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
@@ -131,20 +131,19 @@
 						<h3>i. Weighted average method.</h3>
 						<h3>ii. Mean-max Method.</h3>
 						
-                        <input type="radio" class="optradio2" name="q4" value="1"> A. Both i and ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="2"> B. Only i <br><br>
-                        <input type="radio" class="optradio2" name="q4" value="3"> C. Only ii<br><br>
-                        <input type="radio" class="optradio2" name="q4" value="4"> D. None of these <br><br>
+                        <input type="radio" class="optradio2" name="q4" value="1"> A. Both i and ii<br>
+                        <input type="radio" class="optradio2" name="q4" value="2"> B. Only i <br>
+                        <input type="radio" class="optradio2" name="q4" value="3"> C. Only ii<br>
+                        <input type="radio" class="optradio2" name="q4" value="4"> D. None of these <br>
                         <br />
                         <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is c</p>
                     </p>
                         <h3>3.Consider s fuzzy set A = { 0.2/x1, 0.3/x2, 0.4/x3, 0.7/x4 , 0.1/x5 } then (A)<sub>0.3</sub> is given by</h3>
                        
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. (A)<sub>0.3</sub>={ x1, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. (A)<sub>0.3</sub>={ x2, x3, x4 } <br><br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. (A)<sub>0.3</sub>={ x1, x2, x5 }<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. (A)<sub>0.3</sub>={ x3, x4 }<br>      
-                        <br />
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. (A)<sub>0.3</sub>={ x1, x5 }<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. (A)<sub>0.3</sub>={ x2, x3, x4 } <br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. (A)<sub>0.3</sub>={ x1, x2, x5 }<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. (A)<sub>0.3</sub>={ x3, x4 }<br>  
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
                             
                        <!-- <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>

@@ -106,7 +106,7 @@
               
             
               <br>
-            1. If the value of 1/(2*σ<sup>2</sup>) increases in activation function then the size of graph  ?<br>
+              <h3>1. If the value of 1/(2*σ<sup>2</sup>) increases in activation function then the size of graph  ?</h3>
               <input class="optradio1" type="radio" name="q1" value="1">
               A. Decreases
               <br>
@@ -121,7 +121,7 @@
               <br>
               <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
               <br>
-            2. How many hidden layers are there in RBFN?<br>
+              <h3>2. How many hidden layers are there in RBFN?</h3>
               <input class="optradio2" type="radio" name="q2" value="1">
               A. 0
               <br>
@@ -137,7 +137,7 @@
               <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p><br>
             
 			<br>
-            3. RBF neuron activation function is given by ?<br>
+            <h3>3. RBF neuron activation function is given by ?</h3>
               <input class="optradio3" type="radio" name="q3" value="1">
                     A. &#934(x)=e<sup>(-&#946 &times ||x- &#956||<sup>2</sup>)</sup>
               <br>

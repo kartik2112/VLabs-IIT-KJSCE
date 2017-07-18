@@ -107,7 +107,7 @@
               
             
               <br>
-              1. Why RBFN is better than Multi layer Perceptron (MLP)?<br>
+              <h3>1. Why RBFN is better than Multi layer Perceptron (MLP)?</h3>
               <input class="optradio1" type="radio" name="q1" value="1">
               A. Because RBFN performs classification by measuring the input’s similarity to the examples from the training set
               <br>
@@ -120,7 +120,8 @@
               <input class="optradio1" type="radio" name="q1" value="4">
               D. None of these
               <br><p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p><br>
-              2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?<br>
+              
+              <h3>2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?</h3>
               <input class="optradio2" type="radio" name="q2" value="1">
               A. The response will increase exponentially
               <br>
@@ -134,7 +135,8 @@
               D. The response will not change
               <br><p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               <br>
-              3.What are the two stages in radial basis function network ?<br>
+
+              <h3>3.What are the two stages in radial basis function network ?</h3>
               <input class="optradio3" type="radio" name="q3" value="1">
               A. Stage 1: establish a centre and a radii for the RBF layer.<br>
 			  &emsp;&emsp;Stage 2: Discover the weights for the output layer.

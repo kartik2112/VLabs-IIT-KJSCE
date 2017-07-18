@@ -137,9 +137,9 @@
                         <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
                     </p>
                         <h3>3.Considering a graphical representation of the `tallness' of people using its appropriate member function, which of the following combinations are true ?</h3>
-                        <h3>i. TALL is usually the fuzzy subset.</h3>
-                        <h3>ii. HEIGHT is usually the fuzzy set.</h3>
-                        <h3>iii. PEOPLE is usually the universe of discourse.</h3><br>
+                        <h4>i. TALL is usually the fuzzy subset.</h4>
+                        <h4>ii. HEIGHT is usually the fuzzy set.</h4>
+                        <h4>iii. PEOPLE is usually the universe of discourse.</h4><br>
                         <input type="radio" class="optradio3" name="q3" value="1"> A. i, ii & iii<br>
                         <input type="radio" class="optradio3" name="q3" value="2"> B. i & ii only <br>
                         <input type="radio" class="optradio3" name="q3" value="3"> C. i, iii only<br>

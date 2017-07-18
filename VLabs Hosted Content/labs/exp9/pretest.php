@@ -105,35 +105,30 @@
             </script>
             <br>
             <h3>1.If A={ 0 &divide x1,0.4 &divide x2,1 &divide x3,0.5 &divide x4 } and B={ 1 &divide x1,0.5 &divide x2,1 &divide x3,0.6 &divide x4 } then &#956 <sub>A &#8745; B</sub> </h3>
-            <input type="radio" class="optradio1" name="q4" value="1"> A. &#956 <sub>A&#8745;B</sub>={ 0.6 &divide X1, 0.8 &divide X2, 1 &divide X3, 0.2 &divide X4 } <br><br>
-            <input type="radio" class="optradio1" name="q4" value="2"> B. &#956 <sub>A&#8745;B</sub>={ 0 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 }  <br><br>
-            <input type="radio" class="optradio1" name="q4" value="3"> C. &#956 <sub>A&#8745;B</sub>={ 1 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 } <br><br>
-            <input type="radio" class="optradio1" name="q4" value="4"> D. &#956 <sub>A&#8745;B</sub>={ 0/X1, 0.4/X2, 1/X3, 0.5/X4 } <br><br>
+            <input type="radio" class="optradio1" name="q4" value="1"> A. &#956 <sub>A&#8745;B</sub>={ 0.6 &divide X1, 0.8 &divide X2, 1 &divide X3, 0.2 &divide X4 } <br>
+            <input type="radio" class="optradio1" name="q4" value="2"> B. &#956 <sub>A&#8745;B</sub>={ 0 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 }  <br>
+            <input type="radio" class="optradio1" name="q4" value="3"> C. &#956 <sub>A&#8745;B</sub>={ 1 &divide X1, 0.5 &divide X2, 1 &divide X3, 0.6 &divide X4 } <br>
+            <input type="radio" class="optradio1" name="q4" value="4"> D. &#956 <sub>A&#8745;B</sub>={ 0 &divide X1, 0.4 &divide X2, 1 &divide X3, 0.5 &divide X4 } <br>
              <br>
             <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is D</p>
              <br>
             <h3>2. What is the main difference between probability and fuzzy logic ?</h3><br>
               <input class="optradio2" type="radio" name="q2" value="1">
-              A.  Fuzzy logic is probability in disguise.
-              <br><br>
+              A.  Fuzzy logic is probability in disguise.<br>
               <input class="optradio2" type="radio" name="q2" value="2">
-              B. Fuzzy logic is the likelihood of an event occuring and probablility is the extent of that event.
-              <br><br>
+              B. Fuzzy logic is the likelihood of an event occuring and probablility is the extent of that event.<br>
               <input class="optradio2" type="radio" name="q2" value="3">
-              C. Probability is ADDITIVE, meaning all its values must add up to one.
-              <br><br>
+              C. Probability is ADDITIVE, meaning all its values must add up to one.<br>
               <input class="optradio2" type="radio" name="q2" value="4">
-              D. Probability dissipates with decreasing information.
-              <br><br>
+              D. Probability dissipates with decreasing information.<br>
               <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p><br>
 			<br>
 			<h3>3.The bounded sum (A &#8853; B) of two fuzzy set A<sub>&#816;</sub> and BA<sub>&#816;</sub> is defined as </h3>
                        
-                        <input type="radio" class="optradio3" name="q3" value="1"> A. &#956; <sub>A<sub>&#816;</sub> &#8853; B<sub>&#816;</sub></sub>(x)=min{1,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)}<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="2"> B. &#956; <sub>A<sub>&#816;</sub> &#8857; B<sub>&#816;</sub></sub>(x)=max{0,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)} <br><br>
-                        <input type="radio" class="optradio3" name="q3" value="3"> C. &#956; <sub>A<sub>&#816;</sub> + B<sub>&#816;</sub></sub>(x)=&#956; <sub>A<sub>&#816;</sub></sub>(x)+&#956; <sub>B<sub>&#816;</sub></sub>(x)-&#956; <sub>A<sub>&#816;</sub></sub>(x).&#956; <sub>B<sub>&#816;</sub></sub>(x)<br><br>
-                        <input type="radio" class="optradio3" name="q3" value="4"> D. None of these<br>      
-                        <br />
+                        <input type="radio" class="optradio3" name="q3" value="1"> A. &#956; <sub>A<sub>&#816;</sub> &#8853; B<sub>&#816;</sub></sub>(x)=min{1,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)}<br>
+                        <input type="radio" class="optradio3" name="q3" value="2"> B. &#956; <sub>A<sub>&#816;</sub> &#8857; B<sub>&#816;</sub></sub>(x)=max{0,&#956; <sub>A</sub>(x) + &#956; <sub>B</sub>(x)} <br>
+                        <input type="radio" class="optradio3" name="q3" value="3"> C. &#956; <sub>A<sub>&#816;</sub> + B<sub>&#816;</sub></sub>(x)=&#956; <sub>A<sub>&#816;</sub></sub>(x)+&#956; <sub>B<sub>&#816;</sub></sub>(x)-&#956; <sub>A<sub>&#816;</sub></sub>(x).&#956; <sub>B<sub>&#816;</sub></sub>(x)<br>
+                        <input type="radio" class="optradio3" name="q3" value="4"> D. None of these<br>
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
              

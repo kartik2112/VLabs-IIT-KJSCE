@@ -105,41 +105,28 @@
             </script>
               <br>
            <h3> 1.If A and B are any two sets, then A &#8746; (A &#8745; B) is equal to.</h3>
-              <input class="optradio1" type="radio" name="q1" value="1">
-              A. B
-              <br><br>
-              <input class="optradio1" type="radio" name="q1" value="2">
-              B. A
-              <br><br>
-              <input class="optradio1" type="radio" name="q1" value="3">
-              C. U
-              <br><br>
-              <input class="optradio1" type="radio" name="q1" value="4">
-              D. AB
-              <br><br>
+              <input class="optradio1" type="radio" name="q1" value="1">A. B<br>
+              <input class="optradio1" type="radio" name="q1" value="2">B. A<br>
+              <input class="optradio1" type="radio" name="q1" value="3">C. U<br>
+              <input class="optradio1" type="radio" name="q1" value="4">D. AB<br>
               <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
               <br>
             <h3>  2. What is the Cartesian product of A = {1, 2} and B = {a, b}?</h3>
               <input class="optradio2" type="radio" name="q2" value="1">
-              A. {(1, a), (1, b), (2, a), (b, b)}
-              <br><br>
+              A. {(1, a), (1, b), (2, a), (b, b)}<br>
               <input class="optradio2" type="radio" name="q2" value="2">
-              B. {(1, 1), (2, 2), (a, a), (b, b)}
-              <br><br>
+              B. {(1, 1), (2, 2), (a, a), (b, b)}<br>
               <input class="optradio2" type="radio" name="q2" value="3">
-              C. {(1, a), (2, a), (1, b), (2, b)}
-              <br><br>
+              C. {(1, a), (2, a), (1, b), (2, b)}<br>
               <input class="optradio2" type="radio" name="q2" value="4">
-              D. {(1, 1), (a, a), (2, a), (1, b)}
-              <br><br>
+              D. {(1, 1), (a, a), (2, a), (1, b)}<br>
               <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is C</p><br>
 			  
 			<h3>3.A — B will contain elements in ?</h3>
-            <input type="radio" class="optradio3" name="q3" value="1"> A. A not in B<br><br>
-            <input type="radio" class="optradio3" name="q3" value="2"> B. Neither A nor B <br><br>
-            <input type="radio" class="optradio3" name="q3" value="3"> C. B not in A<br><br>
-            <input type="radio" class="optradio3" name="q3" value="4"> D. Both A and B<br>      
-            <br />
+            <input type="radio" class="optradio3" name="q3" value="1"> A. A not in B<br>
+            <input type="radio" class="optradio3" name="q3" value="2"> B. Neither A nor B <br>
+            <input type="radio" class="optradio3" name="q3" value="3"> C. B not in A<br>
+            <input type="radio" class="optradio3" name="q3" value="4"> D. Both A and B<br> 
             <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
             
