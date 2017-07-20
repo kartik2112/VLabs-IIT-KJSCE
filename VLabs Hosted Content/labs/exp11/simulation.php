@@ -31,7 +31,8 @@
         <link href="../../src/Styles.css" rel="stylesheet" />
 
 
-        <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+        <!--<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>-->
+        <script type="text/javascript" src="../../src/tesseract.js"></script> 
 
         <!-- Simulation scripts end-->
         <style>
