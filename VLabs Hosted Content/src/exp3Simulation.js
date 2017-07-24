@@ -120,8 +120,8 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
     /*
     Set animations on lines
     */
-    $(".AND-XVal").text(realInputX[iterationNo]);
-    $(".AND-YVal").text(realInputY[iterationNo]);
+    $(".AND-X1Val").text(realInputX[iterationNo]);
+    $(".AND-Y1Val").text(realInputY[iterationNo]);
 	$("#AND-inputX-oplay_neuron2").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
 	$("#AND-inputY-oplay_neuron2").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
 	$("#AND-inputX-oplay_neuron3").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
@@ -135,6 +135,8 @@ function simulateANDGate(iterationNo, inputX, inputY, w1, w2, threshold, interva
 	/* Calculate intermediate, u(x) */
     $("#AND-inputX-oplay_neuron1").addClass(inputX[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
     $("#AND-inputY-oplay_neuron1").addClass(inputY[iterationNo] == 1 ? "animatedLineGreen" : "animatedLinePurple");
+	    $(".AND-XVal").text(inputX[iterationNo]);
+    $(".AND-YVal").text(inputY[iterationNo]);
 	$("#AND-n1x-value").text("= " +inputX[iterationNo]);
 	$("#AND-n2x-value").text("= " + inputY[iterationNo]);
     var ux = w1 * inputX[iterationNo] + w2 * inputY[iterationNo];
