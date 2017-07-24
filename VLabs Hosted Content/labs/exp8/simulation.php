@@ -40,10 +40,6 @@
     animation: dash 2s linear infinite;
     }
         </style>
-
-        <!--These are used for plotting the graphs-->
-        <link rel = "stylesheet" type = "text/css" href = "http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.5/jsxgraphcore.js"></script>
         
         <!-- Simulation scripts end-->
     </head>
