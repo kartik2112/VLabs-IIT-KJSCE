@@ -97,7 +97,7 @@
                                 <li>The <b>input (point)</b> that will be processed is <b>highlighted in the graph</b>.</li>
                                 <li>The inputs i.e. X and Y coordinates of this point are indicated in the neural network. The third input is always 1 which acts as a bias.</li>
                                 <li>The <b>weight matrix, input vector</b>(X-coordinate, Y-coordinate, 1) for this iteration are <b>displayed</b>.</li>
-                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.png" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
+                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.PNG" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
                                 <li>The appropriate <b>activation function</b> is applied at the next layer of nodes <img src="../images/bipolar_threshold.png" height="50" width="50" alt="O/P Node Image"/> to this summation vector, thus forming the <b>output vector</b>. 
                                     In this experiment, activation function applied is signum.</li>
                                 <li>The actual output vector as obtained from the above calculations and the desired output vector are shown side by side for comparison. 
@@ -108,7 +108,7 @@
                                 <li>The <b>background color of the card</b> in the carousel will be <span style="background-color: #FFD6D6">red if the corresponding node's weight vector has changed</span>.
                                     The background color of the card in the carousel will be <span style="background-color: #CDFFAF">green if the corresponding node's weight vector has not changed.</li>
                                 <li>The individual weight vectors are written together as the <b>weight matrix</b>. 
-                                    If atleast one of the constituent weight vectors has got modified then new weight matrix will be different from that of the older one.</li>
+                                    If atleast one of the constituent weight vectors has got modified, then new weight matrix will be different from that of the older one.</li>
                                 <li>Now these <b>changes are reflected in the graph and in the neural network</b>.</li>
                                 <li>The <button class="btn btn-warning" >Apply next I/P value</button> button gets activated to apply the next input combination.</li>
                                 <li><b>As you can see the regions are converging towards correct classification after each iteration. 

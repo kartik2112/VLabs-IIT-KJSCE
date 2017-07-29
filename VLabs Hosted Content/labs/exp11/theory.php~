@@ -148,7 +148,8 @@
                                     <li>
                                         <b>Explicit Segmentation: </b>In explicit approaches one tries to identify the smallest possible word segments (primitive segments) that may be smaller than letters, but surely cannot be segmented further. 
                                         Later in the recognition process these primitive segments are assembled into letters based on input from the character recognizer. 
-                                        The advantage of the first strategy is that it is robust and quite straightforward, but is not very flexible.                                        
+                                        The advantage of the first strategy is that it is robust and quite straightforward, but is not very flexible. 
+                                        <!--<img style="display:block;margin-left: 10%;" src="./images/theory/expl_segmentation.png" width="420px" alt="Pic"/><br/>-->
                                         <div style="display:block;margin-left: 5%">
                                             <img src="./images/theory/segmentation_1.jpg" width="400px" alt="Pic"/>
                                             <img src="./images/arrow.png" width="100px" alt="Pic"/>

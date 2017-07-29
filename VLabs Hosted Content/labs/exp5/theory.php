@@ -273,7 +273,7 @@
                                 Desired output D given as [1 -1 -1]
                                 <br>
                                 <br>
-                                Now as we know, <b style="font-size: larger">ΔWi = η ( O<sub>i</sub> ) X</b>
+                                Now as we know, <b style="font-size: larger">ΔW<sub>i</sub> = η ( O<sub>i</sub> ) X</b>
                         <br>
                                 W<sub>new</sub> = W<sub>old</sub> + ΔW
                                 <br>
