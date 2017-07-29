@@ -84,7 +84,7 @@
                         
                     </ol>
                     <p>After the entire simulation is completed, you will get a popup indicating this completion. 
-                        Now you may select other values for each set & I/P and the  run the simulation.</p>
+                        Now you may select other values for each set & I/P and then run the simulation.</p>
                     <p>At any point of time during the simulation you can stop the simulation by clicking on the <button class="btn btn-danger" style="cursor: default;">Stop Simulation</button> button.</p>
                                         
                 </section>
