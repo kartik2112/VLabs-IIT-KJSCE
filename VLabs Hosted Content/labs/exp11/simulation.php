@@ -52,7 +52,7 @@
                         if (result.text == "") {
                             alert("The selected image is of poor quality! No text has been detected! To see the recognition in action either upload a clearer image or use the downloadable images provided on this page!");
                         }
-                        document.getElementById("ocr_results").innerHTML = result.html;
+                        document.getElementById("ocr_results").innerHTML = result.text;
                         console.log(result);
                         $("#ocr_results").fadeIn(1000);
                         $("#loadingImg").slideUp(500);
@@ -105,7 +105,7 @@
                     reader.readAsDataURL(elem.files[0]);
                 }
                 else {
-                    alert("File format not supported");
+                    alert("File format not supported\nOnly .jpg, .jpeg, .bmp, .png Formats are Supported");
                     elem.value = '';
                     document.getElementById('img1').src = './images/no_img.png';
                 }
@@ -143,6 +143,10 @@
                     console.log(canv);
                     console.log(img);
                     if ($("#img1").attr("src") != './images/no_img.png') {
+                    	$("#successImg").css("display", "none");
+	                    $("#statusProgressBarOuter").css("display", "none");
+	                    $("#ocr_results").html("");
+	                    
                         $('html, body').animate({
                             scrollTop: $("#cvs").offset().top
                         }, 300);

@@ -37,6 +37,9 @@ $_SESSION["currPage"]=5;
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <script type="text/javascript">
+        /*
+            These add sliders to each line, for threshold, for bias and learning rate.      
+        */
 
       $(function () {
           $(".sliders").slider({
@@ -78,15 +81,16 @@ $_SESSION["currPage"]=5;
       var counter, board, constPointSize, OP1, OP2, OP3, OP4, x1, x2, z, testOneX, testOneY, testTwoX, testTwoY, w11, w12, w21, w22, v1, v2, b1, b2, b3, theta, flag, erroneousCount, errorRate;
 
       //These variables are used only for Multi Layer Perceptron
-      var mlp_s_w11 = 0, mlp_s_w12 = 0, mlp_s_w21 = 0, mlp_s_w22 = 0, mlp_s_v1 = 0, mlp_s_v2 = 0, mlp_s_b1 = 0, mlp_s_b2 = 0, mlp_s_b3 = 0, mlp_s_theta = 0;
+      var mlp_saved_w11 = 0, mlp_saved_w12 = 0, mlp_saved_w21 = 0, mlp_saved_w22 = 0, mlp_saved_v1 = 0, mlp_saved_v2 = 0, mlp_saved_b1 = 0, mlp_saved_b2 = 0, mlp_saved_b3 = 0, mlp_saved_theta = 0;
 
       //These variables are used only for Error Back Propogation.
-      var s_w11 = 0, s_w12 = 0, s_w21 = 0, s_w22 = 0, s_v1 = 0, s_v2 = 0, s_b1 = 0, s_b2 = 0, s_b3 = 0, s_learningRate = 1, s_iter = 1000, sim, learningRate, e = Math.E, iter, iterations = -1, outs = [], outs_hidden_1 = [], outs_hidden_2 = [];
+      var ebp_saved_w11 = 0, ebp_saved_w12 = 0, ebp_saved_w21 = 0, ebp_saved_w22 = 0, ebp_saved_v1 = 0, ebp_saved_v2 = 0, ebp_saved_b1 = 0, ebp_saved_b2 = 0, ebp_saved_b3 = 0, ebp_saved_learning_rate = 1, ebp_saved_no_of_iterations = 1000, sim, learningRate, e = Math.E, iter, iterations = -1, outs = [], outs_hidden_1 = [], outs_hidden_2 = [];
 
+      //This function is used when we change from Multi-layer Perceptron to Error Back Propogation or vice versa.
       function changeMode() {
-          var m = document.getElementById('m');
+          var simulation_mode = document.getElementById('m');
 
-          if (m.value == "mlp") {
+          if (simulation_mode.value == "mlp") {
               document.getElementById('start').setAttribute("onclick", "start_mlp()");
               document.getElementById('thresh_title').style.display = "block";
               document.getElementById('img_thresh').setAttribute("onclick", "editThreshold()");
@@ -132,81 +136,91 @@ $_SESSION["currPage"]=5;
           }
       }
 
+      //This function saves weights before changing mode. So testing on different sets of weights can be done.
       function save_weights_ebp() {
-          s_w11 = parseFloat(document.getElementById('t1').innerHTML);
-          s_w12 = parseFloat(document.getElementById('t2').innerHTML);
-          s_b1 = parseFloat(document.getElementById('b1').innerHTML);
+          ebp_saved_w11 = parseFloat(document.getElementById('t1').innerHTML);
+          ebp_saved_w12 = parseFloat(document.getElementById('t2').innerHTML);
+          ebp_saved_b1 = parseFloat(document.getElementById('b1').innerHTML);
 
-          s_w21 = parseFloat(document.getElementById('t3').innerHTML);
-          s_w22 = parseFloat(document.getElementById('t4').innerHTML);
-          s_b2 = parseFloat(document.getElementById('b2').innerHTML);
+          ebp_saved_w21 = parseFloat(document.getElementById('t3').innerHTML);
+          ebp_saved_w22 = parseFloat(document.getElementById('t4').innerHTML);
+          ebp_saved_b2 = parseFloat(document.getElementById('b2').innerHTML);
 
-          s_v1 = parseFloat(document.getElementById('t5').innerHTML);
-          s_v2 = parseFloat(document.getElementById('t6').innerHTML);
-          s_b3 = parseFloat(document.getElementById('b3').innerHTML);
+          ebp_saved_v1 = parseFloat(document.getElementById('t5').innerHTML);
+          ebp_saved_v2 = parseFloat(document.getElementById('t6').innerHTML);
+          ebp_saved_b3 = parseFloat(document.getElementById('b3').innerHTML);
 
-          s_learningRate = parseFloat(document.getElementById('learn').innerHTML);
+          ebp_saved_learning_rate = parseFloat(document.getElementById('learn').innerHTML);
           theta = parseFloat(document.getElementById('thresh').innerHTML);
-          s_iter = parseFloat(document.getElementById('iter').value);
+          ebp_saved_no_of_iterations = parseFloat(document.getElementById('iter').value);
 
           init_ebp();
           start_ebp();
       }
-
+      
+      // Save weights. Applicable only to MLP.
       function save_weights_mlp() {
-          mlp_s_w11 = parseFloat(document.getElementById('t1').innerHTML);
-          mlp_s_w12 = parseFloat(document.getElementById('t2').innerHTML);
-          mlp_s_b1 = parseFloat(document.getElementById('b1').innerHTML);
+          mlp_saved_w11 = parseFloat(document.getElementById('t1').innerHTML);
+          mlp_saved_w12 = parseFloat(document.getElementById('t2').innerHTML);
+          mlp_saved_b1 = parseFloat(document.getElementById('b1').innerHTML);
 
-          mlp_s_w21 = parseFloat(document.getElementById('t3').innerHTML);
-          mlp_s_w22 = parseFloat(document.getElementById('t4').innerHTML);
-          mlp_s_b2 = parseFloat(document.getElementById('b2').innerHTML);
+          mlp_saved_w21 = parseFloat(document.getElementById('t3').innerHTML);
+          mlp_saved_w22 = parseFloat(document.getElementById('t4').innerHTML);
+          mlp_saved_b2 = parseFloat(document.getElementById('b2').innerHTML);
 
-          mlp_s_v1 = parseFloat(document.getElementById('t5').innerHTML);
-          mlp_s_v2 = parseFloat(document.getElementById('t6').innerHTML);
-          mlp_s_b3 = parseFloat(document.getElementById('b3').innerHTML);
+          mlp_saved_v1 = parseFloat(document.getElementById('t5').innerHTML);
+          mlp_saved_v2 = parseFloat(document.getElementById('t6').innerHTML);
+          mlp_saved_b3 = parseFloat(document.getElementById('b3').innerHTML);
 
-          mlp_s_theta = parseFloat(document.getElementById('thresh').innerHTML);
+          mlp_saved_theta = parseFloat(document.getElementById('thresh').innerHTML);
       }
 
       function init_ebp() {
-
+          // Unhighlight the last row in the outputs table. Useful if navigated from mlp to ebp.
           document.getElementById('r4').style.background = "transparent";
           $("#acc_title").html("Root mean square error: ");
-
+          
           document.getElementById('start').innerHTML = "Start simulation";
+          
+          // --- Enter saved weights, biases, iterations, learning rate & threshold ---
+          w11 = document.getElementById('t1').innerHTML = ebp_saved_w11;
+          w12 = document.getElementById('t2').innerHTML = ebp_saved_w12;
+          b1 = document.getElementById('b1').innerHTML = ebp_saved_b1;
 
-          w11 = document.getElementById('t1').innerHTML = s_w11;
-          w12 = document.getElementById('t2').innerHTML = s_w12;
-          b1 = document.getElementById('b1').innerHTML = s_b1;
+          w21 = document.getElementById('t3').innerHTML = ebp_saved_w21;
+          w22 = document.getElementById('t4').innerHTML = ebp_saved_w22;
+          b2 = document.getElementById('b2').innerHTML = ebp_saved_b2;
 
-          w21 = document.getElementById('t3').innerHTML = s_w21;
-          w22 = document.getElementById('t4').innerHTML = s_w22;
-          b2 = document.getElementById('b2').innerHTML = s_b2;
+          v1 = document.getElementById('t5').innerHTML = ebp_saved_v1;
+          v2 = document.getElementById('t6').innerHTML = ebp_saved_v2;
+          b3 = document.getElementById('b3').innerHTML = ebp_saved_b3;
 
-          v1 = document.getElementById('t5').innerHTML = s_v1;
-          v2 = document.getElementById('t6').innerHTML = s_v2;
-          b3 = document.getElementById('b3').innerHTML = s_b3;
+          learningRate = document.getElementById('learn').innerHTML = ebp_saved_learning_rate;
+          iter = document.getElementById('iter').value = ebp_saved_no_of_iterations;
+          // ---------------------------------------------------------------------------
 
-          learningRate = document.getElementById('learn').innerHTML = s_learningRate;
-          iter = document.getElementById('iter').value = s_iter;
-
+          // Display elements specific to EBP simulation
           var ebp_elems = document.getElementsByClassName('ebp_content_only');
           for (var i = 0; i < ebp_elems.length; i++) {
               ebp_elems[i].style.display = "block";
           }
-
+          
+          // Empty the output table.
           for (var i = 1; i <= 4; i++) {
               document.getElementById('out' + i).innerHTML = "-";
               document.getElementById('h1' + i).innerHTML = "-";
               document.getElementById('h2' + i).innerHTML = "-";
           }
+
+          // Hide Accuracy and graphs
           document.getElementById('acc_val').innerHTML = 0;
           document.getElementById('acc').style.display = "none";
           document.getElementById('grph').style.display = "none";
-
+          
+          // Hide the reset button.
           document.getElementById('reset').style.display = "none";
 
+          // --- Initialize graph ---
           counter = 0;
           board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
           board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
@@ -218,9 +232,11 @@ $_SESSION["currPage"]=5;
           x1 = [0, 0, 1, 1];
           x2 = [0, 1, 0, 1];
           z = [0, 1, 1, 0];
+          // ------------------------
       }
 
       function start_ebp() {
+          // -- This part initializes the graph --
           board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});  //Creates the cartesian graph
           board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           constPointSize = 5;
@@ -228,7 +244,9 @@ $_SESSION["currPage"]=5;
           OP2 = board.create('point', [0, 1], { size: constPointSize, face: '^', fixed: true });
           OP3 = board.create('point', [1, 0], { size: constPointSize, face: '^', fixed: true });
           OP4 = board.create('point', [1, 1], { size: constPointSize, face: 'x', fixed: true });
+          //--------------------------------------
 
+          // -- This part handles results & other objects which hide during simulation --
           document.getElementById('bef_thresh_op_txt').style.display = "none";
           document.getElementById('after_threshold_op').style.display = "none";
           document.getElementById('grph').style.display = "none";
@@ -239,6 +257,7 @@ $_SESSION["currPage"]=5;
           document.getElementById('acc').style.display = "none";
           document.getElementById('msg').innerHTML = "Calculating.. This might take a few minutes.";
           document.getElementById('start').setAttribute("disabled", "disabled");
+          // ----------------------------------------------------------------------------
 
           z1 = z2 = y = y1 = y2 = yin = 0;
 
@@ -250,13 +269,15 @@ $_SESSION["currPage"]=5;
           }
           $("#w" + i).addClass('animatedLineGreen');
 
-
+          // Start calculations. This starts after 1s.
           setTimeout(function () {
               for (var i = iterations + 1; i < iter; i++) {
-                  var set_op = false;
+                  var set_op = false;                       //To pause & show output?
                   errorRate = 0;
+                  // For each input
                   for (counter = 0; counter < 4; counter++) ebp(counter);
-
+                  
+                  // The last iteration has been finished!
                   if (i == iter - 1) {
                       var reset = document.getElementById('reset');
                       reset.style.display = "block";
@@ -267,6 +288,7 @@ $_SESSION["currPage"]=5;
 
                       set_op = true;
                   }
+                  // Pausing simulation after {10k, 1 lakh, 10 lakh and 1 crore} iterations to view current output
                   else if (i == 10000 || i == 100000 || i == 1000000 || i == 10000000) {
                       var reset = document.getElementById('reset');
                       reset.style.display = "block";
@@ -275,9 +297,11 @@ $_SESSION["currPage"]=5;
 
                       set_op = true;
                   }
-
+                  
+                  // To show output
                   if (set_op == true) {
-
+                      
+                      // Remove animated lines
                       setTimeout(function () {
                           var p;
                           for (p = 1; p <= 6; p++) {
@@ -286,7 +310,8 @@ $_SESSION["currPage"]=5;
                           $("#w" + p).removeClass('animatedLineGreen');
                           iterations++;
                       }, 1000);
-
+                      
+                      // Display relevant outputs
                       var msg = document.getElementById('msg');
                       msg.innerHTML = "No. of iterations completed: " + (i);
                       if (i != iter) msg.innerHTML += ". Check how the weights affect the decision boundaries and the solution below. Click the button below to continue.";
@@ -299,7 +324,7 @@ $_SESSION["currPage"]=5;
                           }
                       }
 
-                      //Set weights on weight lines
+                      // Show weights on weight lines
                       for (var wt = 1; wt <= 6; wt++) {
                           var weight = document.getElementById("t" + wt);
                           switch (wt) {
@@ -318,17 +343,18 @@ $_SESSION["currPage"]=5;
                           }
                       }
 
-                      //Set biases
+                      // Show biases
                       document.getElementById('b1').innerHTML = b1.toFixed(3);
                       document.getElementById('b2').innerHTML = b2.toFixed(3);
                       document.getElementById('b3').innerHTML = b3.toFixed(3);
 
-                      //Set intermediate output
+                      // Show intermediate output
                       document.getElementById('bef_thresh_op').innerHTML = yin.toFixed(3);
 
-                      //Set final output
+                      // Show final output
                       document.getElementById('op').innerHTML = y.toFixed(3);
-
+                      
+                      // Show output of hidden neurons
                       for (var j = 0; j < 4; j++) document.getElementById('out' + (j + 1)).innerHTML = outs[j].toFixed(3);
                       for (var ctr = 1; ctr <= 4; ctr++) {
                           console.log(outs_hidden_1[ctr] + " " + outs_hidden_2[ctr - 1]);
@@ -336,7 +362,7 @@ $_SESSION["currPage"]=5;
                           document.getElementById('h2' + ctr).innerHTML = outs_hidden_2[ctr - 1].toFixed(3);
                       }
 
-
+                      // Update both the graphs (i.e. update the decision boundaries)
                       for (j = 0; j < outs_hidden_1.length; j++) {
                           if (z[j] == 0)
                               var finalPoints = board1.create('point', [outs_hidden_1[j], outs_hidden_2[j]], { size: constPointSize, face: 'x', fixed: true, name: 'Group 0' });
@@ -346,18 +372,23 @@ $_SESSION["currPage"]=5;
                       decisionBoundary1 = board.create('line', [b1, Number(w11), Number(w21)], { fixed: true });
                       decisionBoundary2 = board.create('line', [b2, Number(w12), Number(w22)], { fixed: true });
                       finalBoundary = board1.create('line', [b3, Number(v1), Number(v2)], { fixed: true });
-
+                      
+                      // Show the graph after changing data
                       document.getElementById('grph').style.display = "block";
                       break;
                   }
 
                   iterations++;
               }
-
+              
+              // Show output before applying threshold.
               document.getElementById('bef_thresh_op_txt').style.display = "block";
+              // Show output after applying threshold.
               document.getElementById('after_threshold_op').style.display = "block";
+              // Display final accuracy rate object
               document.getElementById('acc').style.display = "block";
-
+              
+              // Calculating & displaying the rms error rate
               rms = Math.sqrt(errorRate / 4);
               rms = rms * 100;
 
@@ -416,19 +447,21 @@ $_SESSION["currPage"]=5;
       }
 
       function init_mlp() {
+         
+          // --- Enter saved weights, biases, threshold values ---
+          document.getElementById('t1').innerHTML = mlp_saved_w11;
+          document.getElementById('t2').innerHTML = mlp_saved_w12;
+          document.getElementById('b1').innerHTML = mlp_saved_b1;
 
-          document.getElementById('t1').innerHTML = mlp_s_w11;
-          document.getElementById('t2').innerHTML = mlp_s_w12;
-          document.getElementById('b1').innerHTML = mlp_s_b1;
+          document.getElementById('t3').innerHTML = mlp_saved_w21;
+          document.getElementById('t4').innerHTML = mlp_saved_w22;
+          document.getElementById('b2').innerHTML = mlp_saved_b2;
 
-          document.getElementById('t3').innerHTML = mlp_s_w21;
-          document.getElementById('t4').innerHTML = mlp_s_w22;
-          document.getElementById('b2').innerHTML = mlp_s_b2;
-
-          document.getElementById('t5').innerHTML = mlp_s_v1;
-          document.getElementById('t6').innerHTML = mlp_s_v2;
-          document.getElementById('b3').innerHTML = mlp_s_b3;
-          document.getElementById('thresh').innerHTML = mlp_s_theta;
+          document.getElementById('t5').innerHTML = mlp_saved_v1;
+          document.getElementById('t6').innerHTML = mlp_saved_v2;
+          document.getElementById('b3').innerHTML = mlp_saved_b3;
+          document.getElementById('thresh').innerHTML = mlp_saved_theta;
+          // -----------------------------------------------------
 
           //Hide all elements unique to EBP.
           var ebp_elems = document.getElementsByClassName('ebp_content_only');
@@ -440,7 +473,7 @@ $_SESSION["currPage"]=5;
 
           counter = 0;
 
-          /* Creates the cartesian graph */
+          /* --- Creates the cartesian graph --- */
           board = JXG.JSXGraph.initBoard('box', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           board1 = JXG.JSXGraph.initBoard('box1', { axis: true, boundingbox: [-0.5, 2, 2, -0.5],showCopyright:false,showNavigation:false});
           constPointSize = 5;
@@ -457,7 +490,7 @@ $_SESSION["currPage"]=5;
 
           testTwoX = 1;
           testTwoY = 0;
-
+          /* ----------------------------------- */
           flag = true;
           erroneousCount = 0;
 
@@ -469,7 +502,8 @@ $_SESSION["currPage"]=5;
       }
 
       function start_mlp() {
-
+          
+          // Show graph and set weights
           document.getElementById('grph').style.display = "block";
 
           w11 = parseFloat(document.getElementById('t1').innerHTML);
@@ -579,13 +613,16 @@ $_SESSION["currPage"]=5;
       }
 
       function mlp(index) {
+          // Show outputs before and after applying threshold values.
           document.getElementById('bef_thresh_op_txt').style.display = "block";
           document.getElementById('after_threshold_op').style.display = "block";
           counter++;
-
+          
+          // The hidden layer outputs
           var z11 = x1[index] * w11 + x2[index] * w21 - b1;
           var z22 = x1[index] * w12 + x2[index] * w22 - b2;
-
+          
+          // Apply threshold
           z1 = z11; z2 = z22;
 
           y1 = Number(z1);
@@ -600,17 +637,20 @@ $_SESSION["currPage"]=5;
           else
               y2 = 0;
 
+          // Calculate final output.
           var yin1 = y1 * v1 + y2 * v2 - b3;
           yin = yin1;
 
           yin = Number(yin);
           document.getElementById('bef_thresh_op').innerHTML = yin;
-
+          
+          // Apply threshold on final output
           if (yin >= theta)
               y = 1;
           else
               y = 0;
-
+         
+          // Calculate errors and update graphs.
           if (z[index] == 1)
               HiddenLayerOP = board1.create('point', [y1, y2], { size: constPointSize, face: '^', fixed: true });
           else
@@ -891,7 +931,7 @@ $_SESSION["currPage"]=5;
 
           <br>
 
-          <button style="float: left;margin-right: 10px;" id="start" class="btn btn-success" onclick="start_mlp();">Start simulation</button>
+          <button style="float: left;margin-right: 10px;clear: both;" id="start" class="btn btn-success" onclick="start_mlp();">Start simulation</button>
           <button id="reset" class="btn btn-success ebp_content_only" style="background: red;" onclick="document.getElementById('start').setAttribute('onclick','save_weights_ebp()');init_ebp();">Reset</button>
 
           <br>

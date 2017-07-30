@@ -149,9 +149,9 @@
 
                                 <!--Input texts-->
                                 <text font-size="20" x="15" y="55">X</text>
-                                <text class="changingTextStyle AND-XVal" font-size="20" x="45" y="55"></text>
+                                <text class="changingTextStyle AND-X1Val" font-size="20" x="45" y="55"></text>
                                 <text font-size="20" x="15" y="255">Y</text>
-                                <text class="changingTextStyle AND-YVal" font-size="20" x="45" y="255"></text>
+                                <text class="changingTextStyle AND-Y1Val" font-size="20" x="45" y="255"></text>
                                 <text font-size="20" x="150" y="45">0</text>
                                 <text font-size="20" x="150" y="100">0</text>
 								<text font-size="20" x="150" y="220">1</text>
