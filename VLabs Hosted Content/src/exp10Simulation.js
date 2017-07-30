@@ -1159,7 +1159,7 @@ function back(){
 }
 
 /**
- * @function check_vals ~ This function performs validation for HTML input element ~
+ * @function check_vals ~ This function performs validation for HTML input element in STEP 3 ~
  * @param elem  The HTML input element we want to perform validation on.
  */
 function check_vals(elem){

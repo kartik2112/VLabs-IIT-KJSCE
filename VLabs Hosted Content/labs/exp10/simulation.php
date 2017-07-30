@@ -199,7 +199,7 @@
                   <button>+</button>
                   <p>Add descriptor</p>
                 </div>
-                <p id="t_txt" style="float: right;margin: 10px;">Total: <span id="t_no">4</span></p>
+                <p id="t_txt" style="float: right;margin: 10px;color:red;">Total: <span id="t_no">4</span></p>
               </div>
               <div style="clear: both;">
                 <button id="save" class="btn-warning btn-md" onclick="save();" data-toggle="tooltip" title="You will see the effect of your changes below">View changes</button>
