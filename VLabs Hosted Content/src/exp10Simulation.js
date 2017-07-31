@@ -1,6 +1,28 @@
-var n_descriptor_grease = 3;    //To keep track for new id assignment
+/**
+ * Note: 
+ * 1> Initially, we have given 3 descriptors for variables Grease & Dirt and 4 descriptors for variable Wash.
+ * 2> Variables related to them have been initialized accordingly.
+ * 3> <variable> refers to each Dirt, Grease & Wash.
+ * 4> Good luck scanning the code!
+ * 
+ * Variables defined here:
+ 
+ * -- General--
+ 
+ * n_descriptor_<variable>:     To keep track of new id to be used when creating a descriptor.
+ * <variable>_descriptor_ids:   Keeps track of all ids used by descriptors.
+ * <variable>_descriptors:      Keeps track of all descriptors of that variable.
+ * max_descriptors_allowed:     Maximum limit of descriptors allowed. Change this value to increase the limit. (4 was selected so that user would enter 4x4 values in Step 2. 5x5 onwards will be inconvenient)
+ 
+ * --Related to graphs--
+
+ * board:                   ?
+ * <variable>_lines_up:     ?
+ * <variable>_lines_down:   ?
+ */
+var n_descriptor_grease = 3;
 var n_descriptor_dirt = 3, n_descriptor_wash = 4;
-var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3,4];  //To keep track of ids of each descriptor
+var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3,4];
 var dirt_descriptors = [{id:1,name:"Low",start:999,end:65},
                     {id:2,name:"Medium",start:15,end:75},
                     {id:3,name:"High",start:50,end:100}];
@@ -17,6 +39,8 @@ var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
 var board;
 var max_descriptors_allowed = 4;
+
+//This segment sets tooltips on descriptor elements
 $(document).ready(function(){
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
@@ -101,22 +125,34 @@ $(".descr input[type='number']").tooltip({placement: "right"});
 $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
 $("#save").tooltip({placement: 'bottom'});
 
+/** @function add_descriptor    ~ This function gets triggered when Add descriptor is clicked ~
+ * @param who   {value: meaning} => {1:Grease, 2:dirt, 3:wash}
+ * 
+ * Note to the one reading this function:
+ * 1> All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
+ */
+
 function add_descriptor(who){
-    // Add a descriptor for Grease.
-    //save();
+    // Grease
     if(who==1){
+        // Disable 'Add descriptor' until descriptor fully added.
         document.getElementById('g_add').removeAttribute('onclick');
+        // Prompt if max amount reached
         if(grease_descriptor_ids.length == max_descriptors_allowed){
             alert('Maximum limit for descriptors reached!');
             return;
         }
+        // Get the last descriptor
         var x = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
+        // ---------- This segment calculates average of limits of previous descriptor to adjust the start limit for new descriptor ----------
         var prevStart=Number(parseInt(elems[0].value));
         m=parseInt((prevStart+100)/2);
         console.log(prevStart+";"+m);
+        // **---------- Now m has the start value ----------**
         n_descriptor_grease++;
+        // ---------- This segment creates the new descriptor ----------
         var div = document.createElement("div");
         div.setAttribute("class","descr");
         div.style.display = "none";
@@ -124,20 +160,28 @@ function add_descriptor(who){
         div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100" disabled title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_1');
         parent.appendChild(div);
+        // **------------------------------------------------------------**
 
+        // ---------- Adjust the value of previous descriptor, end = m + 1 ----------
         var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
         var inp_elem = prev.children[2];
         inp_elem.removeAttribute("placeholder");
         inp_elem.removeAttribute('disabled');
         inp_elem.value = m+1;
+        // **----------------------------------------------------------------------**
 
+        // Add the new descriptor to the descriptor collection.
         grease_descriptor_ids.push(n_descriptor_grease);
+        // Animate
         $("#g_d_"+n_descriptor_grease).fadeIn(700);
+        // Enable 'Add Descriptor' button
         setTimeout(function(){document.getElementById('g_add').setAttribute('onclick','add_descriptor(1);');},700);
+        // Update total no. of descriptors in 'Total: <value>' field
         $("#g_no").html(grease_descriptor_ids.length);
-        if(grease_descriptor_ids.length==5) $("#g_txt").css('color','red');
+        // Indicate max limit reached
+        if(grease_descriptor_ids.length==max_descriptors_allowed) $("#g_txt").css('color','red');
     }
-    // Add a descriptor for Dirt
+    // Dirt
     else if(who==2){
         document.getElementById('d_add').removeAttribute('onclick');
         if(dirt_descriptor_ids.length == max_descriptors_allowed){
@@ -168,8 +212,9 @@ function add_descriptor(who){
         $("#d_d_"+n_descriptor_dirt).fadeIn(700);
         setTimeout(function(){document.getElementById('d_add').setAttribute('onclick','add_descriptor(2);');},700);
         $("#d_no").html(dirt_descriptor_ids.length);
-        if(dirt_descriptor_ids.length==5) $("#d_txt").css('color','red');
+        if(dirt_descriptor_ids.length==max_descriptors_allowed) $("#d_txt").css('color','red');
     }
+    // Wash
     else if(who==3){
         document.getElementById('t_add').removeAttribute('onclick');
         if(wash_descriptor_ids.length == max_descriptors_allowed){
@@ -200,34 +245,68 @@ function add_descriptor(who){
         $("#t_d_"+n_descriptor_wash).fadeIn(700);
         setTimeout(function(){document.getElementById('t_add').setAttribute('onclick','add_descriptor(3);');},700);
         $("#t_no").html(wash_descriptor_ids.length);
-        if(wash_descriptor_ids.length==5) $("#t_txt").css('color','red');
+        if(wash_descriptor_ids.length==max_descriptors_allowed) $("#t_txt").css('color','red');
     }
+    
+    // Add tooltips to new ones too!
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
     $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
 }
 
+/** @function rem_descriptor    ~ This function removes a descriptor ~
+ * 
+ * @param  who      {value,meaning} => {'g':Grease, 'd':dirt, 'w':wash}
+ * @param  which    id of the descriptor to be removed.
+ * 
+ * Note to the one reading this function:
+ * All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
+ */
 function rem_descriptor(who,which){
     if(who=='g'){
-        var parent = document.getElementById('descrs_1')
+        // Get the container div which contains all descriptors
+        var parent = document.getElementById('descrs_1');
+
+        // Get that descriptor to be removed.
         var elem = document.getElementById('g_d_'+which);
+
+        // Make it disappear!
         $("#g_d_"+which).fadeOut(700);
+
+        // Update 'Total: <something>' field
         $("#g_no").html(grease_descriptor_ids.length-1);
+
+        // If max descriptor was reached, now bring it back to normal i.e. from red to black.
         $("#g_txt").css('color','inherit');
+
+        // Disable remove button of that descriptor.
         document.getElementById('g'+which).removeAttribute('onclick');
+
+        // 1 ---------- This segment actually removes the descriptor ----------
         setTimeout(function(){
+            // Remove that descriptor from the container div.
             parent.removeChild(elem);
             var index = grease_descriptor_ids.indexOf(which);
+
+            // Remove 1 element starting from index.
             grease_descriptor_ids.splice(index,1);
+
+            /* 2 ---------- This segment will make the end value of 
+            previous descriptor infinity if the descriptor we are removing is last ---------- */
             if(which == n_descriptor_grease) {
                 var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
+
+                // End value of previous descriptor obtained.
                 var inp_elem = prev.children[2];
+
                 inp_elem.setAttribute("placeholder","100");
                 inp_elem.value = "";
                 inp_elem.setAttribute("disabled","disabled");
                 n_descriptor_grease--;
             }
+            // 2 **----------------------------------------**
         },900);
+        // 1 **------------------------------------------------------------**
     }
     else if(who == 'd'){
         var parent = document.getElementById('descrs_2')
@@ -273,10 +352,18 @@ function rem_descriptor(who,which){
     }
 }
 
+/**
+ * @function save   ~ This function collects values from each descriptors and updates into the graph ~
+ * 
+ * Please note that refilling of descriptor arrays of any variable is exactly identical, so refer first section for documentation.
+ */
 function save(){
+    // Empty the descriptors array.
     dirt_descriptors = [];
     grease_descriptors = [];
     wash_descriptors = [];
+
+    // 1 ---------- This segment fills the grease descriptor array ----------
     for (var i = 0; i < grease_lines_up.length; i++) {
       board.removeObject(grease_lines_up[i]);
     }
@@ -286,20 +373,35 @@ function save(){
     }
     grease_lines_down=[];
     for(var i=0;i<grease_descriptor_ids.length;i++){
+        // 2 ---------- This segment refills the descriptor array of the corresponding variable ----------
         var x = document.getElementById('g_d_'+grease_descriptor_ids[i]);
+
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
-
+        
+        // Get start value of descriptor
         var s = parseInt(elems[0].value);
+
+        // Name of descriptor
         var n = elems[1].value;
         if(n=="") n = "Grease Descriptor #"+(i+1);
         var e = parseInt(elems[2].value);
-        if(i == 0) s = 999; //Because start value of first descriptor is not defined
-        if(i==grease_descriptor_ids.length-1) e = 100;  //Because end value of last descriptor is not defined
+
+        // Because start value of first descriptor is not defined, we will set it to 999, which is considered infinity here.
+        if(i == 0) s = 999;
+        
+        //Because end value of last descriptor is not defined, we will set it to 999.
+        if(i==grease_descriptor_ids.length-1) e = 100;
+
+        // Create the descriptor and append it into its variable array.
         var descriptor = {'id': grease_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         grease_descriptors.push(descriptor);
-        //console.log(grease_descriptors[i].name);
+        // 2 **------------------------------------------------------------**
     }
+    // 1 **--------------------------------------------------------------------------------**
+
+    // ---------- This segment refills dirt descriptors array ----------
+
     for (var i = 0; i < dirt_lines_up.length; i++) {
       board.removeObject(dirt_lines_up[i]);
     }
@@ -325,6 +427,10 @@ function save(){
         var descriptor = {'id': dirt_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         dirt_descriptors.push(descriptor);
     }
+
+    // **--------------------------------------------------**
+
+    // This segment refills the wash descriptor array ----------
     for (var i = 0; i < washing_lines_up.length; i++) {
       board.removeObject(washing_lines_up[i]);
     }
@@ -351,62 +457,98 @@ function save(){
         wash_descriptors.push(descriptor);
     }
 
+    // **--------------------------------------------------**
+
+    // Replot graph
     plotGraph();
 }
 
+/**
+ * @function table  ~ This function is responsible for creating the FAM table in STEP 2 ~
+ */
 function table(){
+    // ---------- This segment adds elements for dropdown in each cell from wash descriptor array ----------
     var option_content = "";
     for(var k=0;k<wash_descriptors.length;k++){
         option_content += "<option value='"+wash_descriptors[k].id+"'>"+wash_descriptors[k].name+"</option>";
     }
+    // **--------------------------------------------------**
 
+    // Creating the FAM table.
     var htm_to_add='<p style="text-align: center;">Table</p>'+'<div>'+'<table class="fam" border="1">'
+
+    // ---------- This segment fills up the FAM table with headers & content ----------
     for(var i=-1;i<dirt_descriptors.length;i++){
-        htm_to_add+='<tr>'
+        htm_to_add+='<tr>';
         for(var j=-1;j<grease_descriptors.length;j++){
             if(i==-1){
-                if(j==-1) htm_to_add += "<th id='empty'>Grease descriptors &rarr;<br>Dirt descriptors &darr;</th>"
+                // First row first column, describes which descriptors are where.
+                if(j==-1) htm_to_add += "<th id='empty'>Grease descriptors &rarr;<br>Dirt descriptors &darr;</th>";
+
+                // First row, add Grease descriptors in row headers.
                 else htm_to_add += "<th>"+grease_descriptors[j].name+"</th>";
             }
             else if(j==-1){
+                // First column, add Dirt descriptors in column headers.
                 htm_to_add += "<th>"+dirt_descriptors[i].name+"</th>";
             }
+
+            // 'option_content' variable contains dropdown options comprising of wash descriptor names.
             else htm_to_add += "<td class='selector' title='Output descriptor for "+grease_descriptors[j].name+" grease and "+dirt_descriptors[i].name+" dirt'><select id='sel"+i+j+"'>"+option_content+"</select></td>";
         }
         htm_to_add+='</tr>'
     }
     htm_to_add+='</table>'+'</div>';
     document.getElementById("table_data").innerHTML=htm_to_add;
+    // **--------------------------------------------------**
 
-    if(dirt_descriptors.length > 4 || grease_descriptors.length > 4){
-        $('.fam td').css("padding","13px");
-    }
+    // if(dirt_descriptors.length > 4 || grease_descriptors.length > 4){
+    //     $('.fam td').css("padding","13px");
+    // }
 }
 
+/**
+ * @function hide_instrs    ~ This function is used to hide instructions ~
+ * @param  arg  {value: meaning} => {1: 'Function has been called from STEP 1: Adding descriptors for each variable', <anything_else>: 'When we click "continue" button'}
+ */
 function hide_instrs(arg){
     $('#instr_div').fadeOut(500);
     if(arg==1){
+        // "Show instructions" comes back!
         setTimeout(function(){
             $("#show_instr").css('visibility','visible');
         },600);
         return;
     }
+
+    // Going to STEP 1
     setTimeout(function(){
         $("#title").html("Step 1: Describe our inputs and outputs");
         $('#descriptor_div').fadeIn(500);
         $('#hide_instr').html("Hide");
         document.getElementById('hide_instr').setAttribute('onclick','hide_instrs(1);');
     },1000);
+
+    // Plot initial graph.
     plotGraph();
 }
 
+/**
+ * @function show_instrs    ~ This function shows instructions when "Show instructions" is clicked in STEP 1 ~
+ */
 function show_instrs(){
     $("#instr_div").fadeIn(700);
     $("#show_instr").css('visibility','hidden');
 }
 
+/**
+ * @function next   ~ Go to STEP 2 ~
+ */
 function next(){
+    // Save all descriptors first.
     save();
+
+    // STEP 1 div container fades out & STEP 2 div container fades in.
     $('#descriptor_div').fadeOut(800);
     setTimeout(function(){
         $('#matrix_div').fadeIn(800);
@@ -415,7 +557,9 @@ function next(){
     },1000);
 }
 
-
+/**
+ * @function edit_descr ~ Go back from STEP 2 and come back to STEP 1 ~
+ */
 function edit_descr(){
     var msg = confirm('You will lose all progress you made in this page. Continue?');
     if(msg==true){
@@ -425,13 +569,18 @@ function edit_descr(){
     }
 }
 
+/**
+ * @function proceed    ~ Store dropdown selections from FAM into 'inference_table' & goto STEP 3 ~
+ */
 var inference_table = [];
 function proceed(){
     inference_table = [];
     for(var i=0;i<dirt_descriptors.length;i++){
         var inference_row = [];
         for(var j=0;j<grease_descriptors.length;j++){
+            // Gets each dropdown
             var x = document.getElementById('sel'+i+j);
+
             inference_row.push(x.value);
         }
         inference_table.push(inference_row);
@@ -447,6 +596,11 @@ var fuzzyGrease=[];
 var fuzzyDirt=[];
 var fuzzyWash=[];
 
+/**
+ * @function fuzzify    ~ ? ~
+ * @param  g    ?
+ * @param  d    ?
+ */
 function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
     var inputs = document.getElementsByClassName('m_input');
     for(var i=0;i<inputs.length;i++){
@@ -622,6 +776,11 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
         defuzzify(fuzzyWash);
     },4500);
 }
+
+/**
+ * @function defuzzify  ~ ? ~
+ * @param fuzzyWash ?
+ */
 function defuzzify(fuzzyWash)
 {
     $("#defuzz-description").fadeIn(800);
@@ -990,12 +1149,19 @@ function defuzzify(fuzzyWash)
     document.getElementById('Final_result').innerHTML=finalRes;
 }
 
+/**
+ * @function back   ~ Go back to STEP 2 ~
+ */
 function back(){
     $('#trial_div').fadeOut(1200);
     $('#matrix_div').fadeIn(1200);
     $("#title").html("Step 2: Deciding the wash time...");
 }
 
+/**
+ * @function check_vals ~ This function performs validation for HTML input element in STEP 3 ~
+ * @param elem  The HTML input element we want to perform validation on.
+ */
 function check_vals(elem){
     var x = elem.value;
     if(x>100) x=100;

@@ -1,15 +1,31 @@
+//lrString will be set to KSOMGraphDiv everywhere in this file.
+//Used so that code portability is easier from the Learning Rules to KSOM experiment.
+//For more details refer the simulation.php in exp7.
+
+//Initial settings
 var savedWeightMatrix = [[1,3],[1,2],[5,1]];
 var weightMatrix = [[1,3],[1,2],[5,1]];
 var inputs = [[2,2],[2.5,2.5],[3,2],[0.5,1],[1,0.5],[1,4],[2,4.5]];
+// The 'x' is the class denoted by red crosses,
+// The '+' is the class denoted by blue pluses,
+// The '<>' is the class denoted by green diamonds.
 var clusterCenterDenotions=[['x','#004c64'],['+','#a10900'],['<>','#0d6032']];
+//The initial learning rate.
 var learningRate=0.2;
 var sel = 1;
+//Used for timing purposes.
+//Timing purposes mhanje the step by step display of the KSOM procedure.
 var timers=[];
+//simulationStart tells whether the simulation is in progress or not.
 var simulationStart=false;
+//Points clusterCenters and board store the values returned by JSXGraph functions.
+//They store all information about the points and the cluster centers; always initialized in the plotGraph() call.
 var points = [];
 var clusterCenters = [];
 var board;
+//If change needs to be made on graph, more wise to change the properties of one element in these arrays, than call the plotGraph() repeatedly.
 
+//The function displays the weights on the neural network.
 function displayWeightsInNeuralNet(lrString){
     for (var i = 0; i < weightMatrix.length; i++) {
         for (var j = 0; j < weightMatrix[i].length; j++) {
@@ -18,6 +34,7 @@ function displayWeightsInNeuralNet(lrString){
     }
 }
 
+//Used to reset the simulation; all the simulation variables and the SVG elements are reset to initial value.
 function resetSimulation(lrString){
     for (var i = 0; i < timers.length;i++ ){
         clearTimeout(timers[i]);
@@ -65,7 +82,7 @@ function resetSimulation(lrString){
     simulationStart=false;
 }
 
-
+//Starts the simulation.
 function startSimulation(lrString){
     inputs = [[2,2],[2.5,2.5],[3,2],[0.5,1],[1,0.5],[1,4],[2,4.5]];
     var clusterCenterDenotions=[['x','#3366ff'],['+','#1231da'],['<>','#009933']];
@@ -102,6 +119,7 @@ function startSimulation(lrString){
 
 }
 
+//Shows the entire procedure of KSOM operation.
 function learnProc(lrString,inputIndex)
 {
       var results = document.getElementsByClassName('noshow');
@@ -299,9 +317,10 @@ function learnProc(lrString,inputIndex)
             });
         },14000)
       },1500);
-      
+
 }
 
+// All timings and animations are handled by @dev-td7.
 function scrollToElement(elem,time){
     if (time == null) time = 0;
     timers.push(window.setTimeout(function(){
@@ -323,6 +342,8 @@ function revealBySlideDown(elem,time){
     }, time));
 }
 
+//Plotting of Graph.
+//Beware that points[] and clusterCenters[] are reset in this function. Call wisely as might incur overhead.
 function plotGraph(lrString){
     points = [];
     lines = [];
