@@ -40,6 +40,9 @@ For running this labs run the labmenu.php file located at the following path :-
 
 Press the Explore button and You will have the entire experiment list consisting of all the 11 Experiments.
 
+If you want 
+<img style="display: inline" src="http://www.iitb.ac.in/sites/all/themes/touchm/logo.png" />
+
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
 
