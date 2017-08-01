@@ -31,6 +31,15 @@ All the .js files required for simulation of the labs are located in the followi
 The above path consists of all the .js files used for simulation which named according to their experiment number.
 #### Please do not make any changes in tesseract.js file.
 
+## Running 
+
+Please make sure that you have an active internet connection, failing which would result in malfunctioning of a few experiments.
+
+For running this labs run the labmenu.php file located at the following path :-
+#### VLabs-IIT-KJSCE\VLabs Hosted Content\labmenu.php
+
+Press the Explore button and You will have the entire experiment list consisting of all the 11 Experiments.
+
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
 
