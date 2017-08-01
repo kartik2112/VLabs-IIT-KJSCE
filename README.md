@@ -23,6 +23,14 @@ In order to access the labs here is the path to be followed :-
 
 The above mentioned link will give you the access to all the 11 Labs.
 
+All the .js files used for Simulations of the the Labs can be accessed via the following path :-
+#### Labs-IIT-KJSCE\VLabs Hosted Content\src\
+
+The above path consists of all the .js files required for simulation and are named according to the Experiment number.
+#### Please do not make any kind of changes in the tesseract.js file.
+
+The above mentioned path also consist of style.css folder which has all the code required for Styling Elements.
+
 
 
 ## References
