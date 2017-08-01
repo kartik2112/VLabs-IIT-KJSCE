@@ -40,7 +40,7 @@ For running this labs run the labmenu.php file located at the following path :-
 
 Press the Explore button and You will have the entire experiment list consisting of all the 11 Experiments.
 
-If you want 
+If you want to go to next experiment then click on Machine leanring Lab in the Navigation Bar as indicated below : After clicking it the experiment list will be opened from where the other experiments can be browsed. 
 
 <img style="display: inline" src="labchange.png" />
 
