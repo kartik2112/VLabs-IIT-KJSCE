@@ -14,7 +14,16 @@ For running the labs using Xampp, Please clone the repository directly into the 
 For running the labs using Web Matrix, then just clone it into your preferred directory following which, Labs can be directly launched from the Web Matrix Software.
 
 For running the labs using Wamp, Please clone the repository directly into the www folder in Wamp directory:-
-#### C:\wamp\www\ 
+#### C:\wamp\www\
+
+## Contents
+
+In order to access the labs here is the path to be followed :-
+#### VLabs-IIT-KJSCE\VLabs Hosted Content\labs\
+
+The above mentioned link will give you the access to all the 11 Labs.
+
+
 
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
