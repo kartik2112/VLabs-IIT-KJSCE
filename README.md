@@ -14,7 +14,24 @@ For running the labs using Xampp, Please clone the repository directly into the 
 For running the labs using Web Matrix, then just clone it into your preferred directory following which, Labs can be directly launched from the Web Matrix Software.
 
 For running the labs using Wamp, Please clone the repository directly into the www folder in Wamp directory:-
-#### C:\wamp\www\ 
+#### C:\wamp\www\
+
+## Contents
+
+In order to access the labs here is the path to be followed :-
+#### VLabs-IIT-KJSCE\VLabs Hosted Content\labs\
+
+The above mentioned link will give you the access to all the 11 Labs.
+
+All the .js files used for Simulations of the the Labs can be accessed via the following path :-
+#### Labs-IIT-KJSCE\VLabs Hosted Content\src\
+
+The above path consists of all the .js files required for simulation and are named according to the Experiment number.
+#### Please do not make any kind of changes in the tesseract.js file.
+
+The above mentioned path also consist of style.css folder which has all the code required for Styling Elements.
+
+
 
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
