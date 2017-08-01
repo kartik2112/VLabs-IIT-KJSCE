@@ -42,7 +42,7 @@ Press the Explore button and You will have the entire experiment list consisting
 
 If you want 
 
-<img style="display: inline" src="C:\xampp\htdocs\VLabs-IIT-KJSCE\VLabs Hosted Content\images\labchange.png" />
+<img style="display: inline" src="labchange.png" />
 
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
