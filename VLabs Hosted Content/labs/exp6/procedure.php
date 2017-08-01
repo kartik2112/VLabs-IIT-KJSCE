@@ -81,14 +81,14 @@
                             <li>Change the initial weights of the neural network if you want to by clicking on the links connecting the input nodes to summation nodes. You can see the weight changes in the alongside graph.</li>
                             <li><b>Once the simulation is started, these can't be changed</b>.</li>
                             <li>After making changes as needed, click <button class="btn btn-success">Start Simulation</button> button. Now each input as highlighted in the graph will be chosen and learnt using the learning algorithm.</li>
-                            <li>If you want to stop the simulation in between you can do so by clicking the <button class="btn btn-danger">Stop Simulation</button> button. </li>
+                            <li>If you want to stop the simulation in between, you can do so by clicking the <button class="btn btn-danger">Stop Simulation</button> button. </li>
                             <li>After each input is completely processed, the <button class="btn btn-warning" >Apply next I/P value</button> button will get activated. 
                                 Click on this button to learn using the next input.</li>
                             <li><b>As you will see the regions will converge towards correct classification after each iteration. 
                                 For correct classification, the regions should be such that for each input, the output of only one neuron should be +1 and that of other neurons should be -1. 
                                 Thus, in the graph, each point should fall under one region only. Initially, they will fall under multiple regions. 
                                 But as you will see, the position of the regions changes after every iteration so that each point falls under one region only.</b></li>
-                            <li><b>Thus you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
+                            <li><b>Thus, you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
                         </ol>
 
                         <div id="expln">
@@ -97,7 +97,7 @@
                                 <li>The <b>input (point)</b> that will be processed is <b>highlighted in the graph</b>.</li>
                                 <li>The inputs i.e. X and Y coordinates of this point are indicated in the neural network. The third input is always 1 which acts as a bias.</li>
                                 <li>The <b>weight matrix, input vector</b>(X-coordinate, Y-coordinate, 1) for this iteration are <b>displayed</b>.</li>
-                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.png" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
+                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.PNG" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
                                 <li>The appropriate <b>activation function</b> is applied at the next layer of nodes <img src="../images/bipolar_threshold.png" height="50" width="50" alt="O/P Node Image"/> to this summation vector, thus forming the <b>output vector</b>. 
                                     In this experiment, activation function applied is signum.</li>
                                 <li>The actual output vector as obtained from the above calculations and the desired output vector are shown side by side for comparison. 
@@ -114,7 +114,7 @@
                                     For correct classification, the regions should be such that for each input, each point should fall under one region only. 
                                     Initially, they were falling under multiple regions. 
                                     But as you can see, the position of the regions changes after every iteration so that each point falls under one region only.</b></li>
-                                <li><b>Thus you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
+                                <li><b>Thus, you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
                             </ol>
                         </div>
 

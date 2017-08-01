@@ -1,14 +1,22 @@
 var board;
 var timer1, timer2, timer3,intervalT=2000;
+
+//Slider Defaults
+
 var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=100,scallar_value=55;
+
+
 $(document).ready(function () {
 	
-   
+   	
+
 	plotTheGraph();
 	$('html, body').animate({
         scrollTop: $("#sim").offset().top
     }, 1500);
-																		// slidersalert("tt");alert("tt");
+
+	//Sliders
+
     $("#cool_start_slider").slider({
         max: 120,
         min: 0,
@@ -93,6 +101,8 @@ $(document).ready(function () {
 
 });
 
+//Plotting the initial lines on the graph.
+
 function plotTheGraph()
 {
 	var graphEnds=100;
@@ -104,9 +114,11 @@ function plotTheGraph()
 	var h_s =board.create('line',[[hot_start,0],[hot_end,1]],{straightFirst:false,fixed:true, straightLast:false,strokeColor:'#ff0000',strokeWidth:2});
 }
 
+//Function when the users clicks the Start Simulation button.
+
 function startSimulation1()
 {
-//	alert("start");
+
 	method1();
 	method2();
 	method3();
@@ -118,20 +130,28 @@ function startSimulation1()
     }, 2000);
 	
 }
+
+//Method 1
+
 function method1()
 {
+	//StrTemp is the string that stores the calculation part.
+	//s stores the final answer.
+
+
 	$("#m1answer").empty();
 	$("#m1final").empty();
 	document.getElementById("m1answer").style.color = "red";
 	var data="<h4 style='color:black'>DATA:</h4>";
 	
+	//Finding the set having the maximum value of membership and defuzzified value is the value on x-axis corresponding to it.
+
 	var strTemp="<h4 style='color:black'>Here we have to consider the maximum value of the set having the maximum membership value.</h4> MAX {1, 1, 1}<br>";
 	strTemp = strTemp + "Since all three sets have equal maximum membership value, there are 3 possible Defuzzified Values.<br>";
 	strTemp = strTemp + "MAX {(Cool_Start + Cool_End) &divide 2 , (Warm_Start + Warm_End) &divide 2 , (Hot_End)}<br>";
 	strTemp = strTemp + "MAX {("+cool_start+" + "+cool_end+") &divide 2 , ("+warm_start+" + "+warm_end+") &divide 2 , "+hot_end+"}<br>";
 	strTemp = strTemp + "MAX {"+(cool_start+cool_end)/2+" , "+(warm_end+warm_start)/2+" , "+(hot_end+hot_end)/2+"}<br>";
 	var s=" <h4 style='color:black'>The Defuzzified value is <span style='color:red'>"+ (cool_start+cool_end)/2+" or "+(warm_end+warm_start)/2+" or "+(hot_end)+"</span>.</h4>";
-	strTemp=strTemp;
 	var timer1=window.setTimeout(function () {
 		$("#m1answer").addClass("well");
 		$("#m1answer").append(""+strTemp);
@@ -142,8 +162,15 @@ function method1()
 		},3000);
 		
 }
+
+//Method 2
+
 function method2()
 {
+	//temp stores the calculation part.
+	//s stores the final answer.
+
+
 	$("#m2answer").empty();
 	$("#m2final").empty();
 	document.getElementById("m2answer").style.color = "red";
@@ -164,6 +191,9 @@ function method2()
 	var ans=(((cool_end+cool_start)/2 + (warm_end+warm_start)/2 + (hot_end+hot_start)/2))/3;
 	temp=temp+"Total Area: "+ans.toFixed(2)+"<br>";
 	var y1,y2;
+
+	//Finding the overlapping area between the cool and the warm sets.
+
 	if(cool_end>warm_start && cool_start<warm_end)
 	{
 		var m1=1/(((cool_start+cool_end)/2)-cool_end);
@@ -177,6 +207,9 @@ function method2()
 		ans = ans - Math.abs((b-a)*y1/2).toFixed(2);
 		temp = temp+"Ans = "+ans.toFixed(2)+"<br>";
 	}
+
+	//Finding the area between the hot and the warm sets.
+
 	if(hot_start<warm_end && cool_start<hot_start)
 	{
 		var m1=1/(((warm_start+warm_end)/2)-warm_end);
@@ -202,8 +235,14 @@ function method2()
 		},3000);	
 }
 
+//Method 3
+
 function method3()
 {
+	//temp is the string that stores the calculations.
+	//s stores the final answer.
+
+
 	$("#m3answer").empty();
 	$("#m3final").empty();
 	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
@@ -217,7 +256,7 @@ function method3()
 	temp=temp+"a = (cool_start+cool_end) &divide 2 <br>";
 	temp=temp+"a = ("+cool_start+"+"+cool_end+") &divide 2 <br>"
 	
-	
+	//Finding the maximum membership value of a set and assigning weight according to the membership value.
 	
 	document.getElementById("m3answer").style.color = "red";
 	var a=(cool_end+cool_start)/2;
@@ -246,8 +285,15 @@ function method3()
 	document.getElementById("m3answer").style.color = "red";
 	$("#m3answer").append();	
 }
+
+//Method 4
+
 function method4()
 {
+	//temp is the string that stores the calculations.
+	//s stores the final answer.
+
+
 	$("#m4answer").empty();
 	$("#m4final").empty();
 	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
@@ -263,6 +309,9 @@ function method4()
 	temp=temp+"a = ("+cool_start+"+"+cool_end+") &divide 2 <br>"
 	
 	document.getElementById("m4answer").style.color = "red";
+
+	//Finding the mean of the set where the set is having the maximum membership value.
+
 	var a=(cool_end+cool_start)/2;
 	temp=temp+"a = "+a+" <br>";
 	temp=temp+"b = (warm_start+warm_end) &divide 2 <br>";
@@ -277,6 +326,8 @@ function method4()
 	var c= (100+hot_start)/2;
 	temp=temp+"c = "+c+" <br>";
 
+
+	//Finding the mean of the set where the set is having the maximum membership value.
 	
 	var ans=(a+b+c)/3;
 	
@@ -301,8 +352,16 @@ function method4()
 	$("#m4answer").append();
 		
 }
+
+//Method 5
+
 function method5()
 {
+
+	//temp is the string that stores the calculations.
+	//s stores the final answer.
+
+
 	$("#m5answer").empty();
 	$("#m5final").empty();
 	var data="<h4 style='color:black'>DATA:</h4><table class='truthTable'><tr><th></th><th>Start</th><th>End</th></tr>";
@@ -313,11 +372,10 @@ function method5()
 	temp=temp+"a = ( cool_end - cool_start ) * ( cool_end + cool_start ) &divide 2<br>";
 	temp=temp+"a = ( "+cool_end+" - "+cool_start+") * ( "+cool_end+"+"+cool_start+" ) &divide 2 <br>";
 	
-	
-	
+
 	document.getElementById("m5answer").style.color = "red";
-		var a=(cool_end-cool_start)*(cool_end+cool_start)/2;
-		temp=temp+"a = "+a+"<br>";
+	var a=(cool_end-cool_start)*(cool_end+cool_start)/2;
+	temp=temp+"a = "+a+"<br>";
 	var b=(warm_end-warm_start)*(warm_end+warm_start)/2;
 	temp=temp+"b = (warm_end-warm_start) &times (warm_end+warm_start) &divide 2<br>";
 	temp=temp+"b = ("+warm_end+"-"+warm_start+") &times ("+warm_end+"+"+warm_start+") &divide 2 <br>";
@@ -326,6 +384,8 @@ function method5()
 	temp=temp+"value = ("+a+"+"+b+") &divide [("+cool_end+"-"+cool_start+")+("+warm_end+"-"+warm_start+")]<br>";
 	
 	
+	//Finding the area of all similar sets sets.
+
 	var ans=(a+b)/((cool_end-cool_start)+(warm_end-warm_start));
 	temp=temp+"value = "+ans.toFixed(2);
 	var s="<h4 style='color:black'> The Defuzzified value is : <span style='color:red'>"+ans.toFixed(2)+"</span></h4>";
@@ -343,8 +403,16 @@ function method5()
 	$("#m5answer").append();
 	
 }
+
+//Method 6
+
 function method6()
 {
+	//temp is the string that stores the calculations.
+	//s stores the final answer.
+
+
+
 	$("#m6answer").empty();
 	$("#m6final").empty();
 	document.getElementById("m6answer").style.color = "red";
@@ -359,10 +427,14 @@ function method6()
 	var b=warm_end-warm_start;
 	
 	var c=(100-hot_start);
-	
+
+	//Finding the set with the largest area.
+
 	var ans;
+	//If cool < warm
 	if(a<=b)
-	{
+	{	
+		//If hot > warm
 		if(b<c)
 		{
 			ans=hot_start+2*(100-hot_start)/3;
@@ -378,8 +450,10 @@ function method6()
 			temp=temp+"Ans = "+ans.toFixed(2);
 		}
 	}
+	//Else
 	else
-	{
+	{	
+		//If cool < hot 
 		if(a<=c)
 		{
 			ans=(cool_end-cool_start)/2;

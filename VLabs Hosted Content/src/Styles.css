@@ -1,3 +1,5 @@
+/* Animated Lines are used to create the flowing animation in neural networks */
+
 .animatedLine{
     stroke-dasharray: 100;
     animation: dash 2s linear infinite;
@@ -42,6 +44,9 @@
     }
 }
 
+
+
+/* These are properties of elements used in neural network */
 .StdLine{
     stroke: #ff6a00;
     stroke-width:5;
@@ -55,6 +60,10 @@
     fill: #ff0000;
 }
 
+
+
+
+/* This is the formatting all the tables use */
 table.truthTable{
   	border-collapse: collapse;
 }
@@ -155,7 +164,7 @@ button.displayActivatedButton{
 
 
 
-
+/* positioning of matrices and arrays that are created using the above definitions and not Latex */
 .centerPosOperatorsForMatrices{
     display: inline-block;
     margin-left: 10px;
@@ -241,6 +250,8 @@ input:checked + .sliderSwitch:before {
 .sliderSwitch.round:before {
   border-radius: 50%;
 }
+
+
 
 
 .hyperlink{

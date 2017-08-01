@@ -143,6 +143,10 @@
                     console.log(canv);
                     console.log(img);
                     if ($("#img1").attr("src") != './images/no_img.png') {
+                    	$("#successImg").css("display", "none");
+	                    $("#statusProgressBarOuter").css("display", "none");
+	                    $("#ocr_results").html("");
+	                    
                         $('html, body').animate({
                             scrollTop: $("#cvs").offset().top
                         }, 300);

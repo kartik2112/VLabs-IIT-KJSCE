@@ -88,6 +88,11 @@ function stopSimulation() {
 function resetCompleteSimulation() {
     resetSimulationPart();
     if(gate_id==1){
+    	$("#ANDNextButton").unbind("click");
+    	$("#ANDNextButton").addClass("disabled");
+		$("#ANDNextButton").attr("disabled","disabled");
+		$("#ANDNextButton").removeClass("displayActivatedButton");
+    	
         $(".AND-TT-rows").removeClass("highlightTTRow");
         $(".AND-TT-OP-rows").text("");
     }

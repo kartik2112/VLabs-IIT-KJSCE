@@ -206,12 +206,27 @@ This will remove highlights from the currently visible truth table and reset the
 function resetCompleteSimulation() {
     resetSimulationPart();
     if (gate_id == 1) {
+    	$("#ANDNextButton").unbind("click");
+    	$("#ANDNextButton").addClass("disabled");
+		$("#ANDNextButton").attr("disabled", "disabled");
+		$("#ANDNextButton").removeClass("displayActivatedButton");
+		
         $(".AND-TT-rows").removeClass("highlightTTRow");
         $(".AND-TT-OP-rows").text("");
     } else if (gate_id == 2) {
+    	$("#ORNextButton").unbind("click");
+    	$("#ORNextButton").addClass("disabled");
+		$("#ORNextButton").attr("disabled", "disabled");
+		$("#ORNextButton").removeClass("displayActivatedButton");
+		
         $(".OR-TT-rows").removeClass("highlightTTRow");
         $(".OR-TT-OP-rows").text("");
     } else if (gate_id == 3) {
+    	$("#NOTNextButton").unbind("click");
+    	$("#NOTNextButton").addClass("disabled");
+		$("#NOTNextButton").attr("disabled", "disabled");
+		$("#NOTNextButton").removeClass("displayActivatedButton");
+		
         $(".NOT-TT-rows").removeClass("highlightTTRow");
         $(".NOT-TT-OP-rows").text("");
     }

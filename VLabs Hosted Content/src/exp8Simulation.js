@@ -1,13 +1,16 @@
 var timer1, timer2, timer3,intervalT=2000,strCalc="";
-var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
-$(document).ready(function () {
-	
-	
 
+//slider defaults
+
+var cool_start=30,cool_end=70,warm_start=50,warm_end=90,hot_start=80,hot_end=120,scallar_value=55;
+
+$(document).ready(function () {
     $('html, body').animate({
         scrollTop: $("#sim").offset().top
     }, 1500);
-																		// sliders
+
+	//sliders
+
     $("#cool_start_slider").slider({
         max: 120,
         min: 0,
@@ -124,6 +127,9 @@ $(document).ready(function () {
     });
 
 });
+
+//Simulation Function
+
 function startSimulation1()
 {
 	erasepoints();
@@ -153,11 +159,18 @@ function startSimulation1()
 }
 function plotThePoints()
 {
+	//Scroll to solution after poltting points.
+	//StrCalc is the string that store the final answer.
+	//Flag tells whether the scalar input belongs to a particular set or not.
+
 	var flag=false;
 	$('html, body').animate({
         scrollTop: $(document).height()
     }, 5000);
 	document.getElementById("calc").style.color = "blue";
+
+    //Checking whether Scalar input > Cool_Start which should technically be the smallest value of all the start and end points.
+	
 	if(scallar_value<cool_start){
 		alert("Invalid Input. Choose another value and try again!");
 	}
@@ -165,6 +178,9 @@ function plotThePoints()
 	document.getElementById("div_for_result").style.color = "red";
 	strCalc=document.getElementById("calc").innerHTML = "";
 	var stringResult="<b>The temperature is ";
+
+	//Checking whether scalar value has any membership in the cool set or not
+
 	if(scallar_value>=cool_start&&scallar_value<=cool_end)
 	{
 		strCalc = "<h4 style='color:black'>Membership in Cool set</h4>";
@@ -193,6 +209,9 @@ function plotThePoints()
 			strCalc = strCalc + Math.floor((cool_end-scallar_value)/(cool_end-cool_start)*200)+"</b><br>";
 		}
 	}
+
+	//Checking whether scalar value has any membership in the warm set or not
+	
 	if(scallar_value>=warm_start&&scallar_value<=warm_end)
 	{
 		strCalc = strCalc+"<h4 style='color:black'>Membership in Warm set</h4>";
@@ -225,6 +244,9 @@ function plotThePoints()
 		}
 			
 	}
+
+	//Checking whether scalar value has any membership in the hot set or not
+
 	if(scallar_value>=hot_start&&scallar_value<=hot_end)
 	{
 		strCalc = strCalc+"<h4 style='color:black'>Membership in Hot set</h4>";
@@ -254,6 +276,9 @@ function plotThePoints()
 		}
 		
 	}
+
+	//Displaying the result
+
 	stringResult = stringResult+"</b>"
 	$("#calc").show();
 	$("#div_for_result").show();
@@ -272,6 +297,9 @@ function plotThePoints()
 
 }
 }
+
+//Function to disable the sliders when simulation is going on.
+
 function disableSliders()
 {
 	
@@ -283,6 +311,9 @@ function disableSliders()
 	$("#hot_end_slider").slider("disable");
 	$("#scallar_slider").slider("disable");
 }
+
+//Function to enable the sliders once the simulation is done so that next set of inputs can be applied.
+
 function enableSliders()
 {
 	$("#cool_start_slider").slider("enable");
@@ -293,6 +324,9 @@ function enableSliders()
 	$("#hot_end_slider").slider("enable");
 	$("#scallar_slider").slider("enable");
 }
+
+//Erasing previously plotted points on the graph.
+
 function erasepoints()
 {
 	$("#circle1").attr("r",0);
@@ -301,6 +335,9 @@ function erasepoints()
 	$("#div_for_result").removeClass("well");
 	$("#div_for_result").empty();
 }
+
+//Stopping the simulation when the Stop Simulation button is pressed.
+
 function stopSimulation1()
 {
 	window.clearTimeout(timer1);
@@ -313,6 +350,9 @@ function stopSimulation1()
 	var interLine=$("#interscection_line"); 
 	interLine.removeClass("animatedLinePurple2");
 }
+
+//Plotting the lines on the graph.
+
 function plotTheGraph()
 {
 	$("#cool_line1").attr("x1",20+4*cool_start>0?20+4*cool_start:0);

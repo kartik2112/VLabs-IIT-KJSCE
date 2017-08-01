@@ -1,24 +1,44 @@
 /**
- * Note: 
+ * Note:
  * 1> Initially, we have given 3 descriptors for variables Grease & Dirt and 4 descriptors for variable Wash.
  * 2> Variables related to them have been initialized accordingly.
  * 3> <variable> refers to each Dirt, Grease & Wash.
  * 4> Good luck scanning the code!
- * 
+ *
  * Variables defined here:
- 
+
  * -- General--
- 
+
  * n_descriptor_<variable>:     To keep track of new id to be used when creating a descriptor.
  * <variable>_descriptor_ids:   Keeps track of all ids used by descriptors.
  * <variable>_descriptors:      Keeps track of all descriptors of that variable.
  * max_descriptors_allowed:     Maximum limit of descriptors allowed. Change this value to increase the limit. (4 was selected so that user would enter 4x4 values in Step 2. 5x5 onwards will be inconvenient)
- 
+
  * --Related to graphs--
 
- * board:                   ?
- * <variable>_lines_up:     ?
- * <variable>_lines_down:   ?
+ * board:  returned by JSXGraph method on initial creation of graph for grease.
+ * board_dirt: returned by JSXGraph method on initial creation of graph for dirt.
+ * board_washing: returned by JSXGraph method on initial creation of graph for washing time.
+ * <variable>_lines_up: correspond to the lines like these:
+                /
+              /
+            /
+          /
+        /
+      /
+    /
+  /
+ * <variable>_lines_down: corresponds to lines like these:
+  \
+    \
+      \
+        \
+          \
+            \
+  The variable corresponds to the graph to which they belong.
+  All of these have been made so that for a change in the graph only these variables may be altered but the entire graph need not be redrawn.
+  Advisable to change the properties within these variables, as redrawing graph involves call which will incur large overhead if calls are made on each and every change.
+  How to change the properties? -> http://jsxgraph.uni-bayreuth.de/docs/
  */
 var n_descriptor_grease = 3;
 var n_descriptor_dirt = 3, n_descriptor_wash = 4;
@@ -48,6 +68,7 @@ $(document).ready(function(){
     $("[data-toggle='input']").tooltip();
 });
 
+//Makes the graphs on Step 1 page.
 function plotGraph(){
     var graphEnds=100;
     board = JXG.JSXGraph.initBoard('grease_GraphDiv',{axis:true, boundingbox:[-1,1.1,graphEnds+10,-0.1],showCopyright:false,showNavigation:false});
@@ -127,7 +148,7 @@ $("#save").tooltip({placement: 'bottom'});
 
 /** @function add_descriptor    ~ This function gets triggered when Add descriptor is clicked ~
  * @param who   {value: meaning} => {1:Grease, 2:dirt, 3:wash}
- * 
+ *
  * Note to the one reading this function:
  * 1> All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
  */
@@ -247,7 +268,7 @@ function add_descriptor(who){
         $("#t_no").html(wash_descriptor_ids.length);
         if(wash_descriptor_ids.length==max_descriptors_allowed) $("#t_txt").css('color','red');
     }
-    
+
     // Add tooltips to new ones too!
     $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
     $(".descr input[type='number']").tooltip({placement: "right"});
@@ -255,10 +276,10 @@ function add_descriptor(who){
 }
 
 /** @function rem_descriptor    ~ This function removes a descriptor ~
- * 
+ *
  * @param  who      {value,meaning} => {'g':Grease, 'd':dirt, 'w':wash}
  * @param  which    id of the descriptor to be removed.
- * 
+ *
  * Note to the one reading this function:
  * All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
  */
@@ -291,7 +312,7 @@ function rem_descriptor(who,which){
             // Remove 1 element starting from index.
             grease_descriptor_ids.splice(index,1);
 
-            /* 2 ---------- This segment will make the end value of 
+            /* 2 ---------- This segment will make the end value of
             previous descriptor infinity if the descriptor we are removing is last ---------- */
             if(which == n_descriptor_grease) {
                 var prev = document.getElementById('g_d_'+grease_descriptor_ids[grease_descriptor_ids.length-1]);
@@ -354,7 +375,7 @@ function rem_descriptor(who,which){
 
 /**
  * @function save   ~ This function collects values from each descriptors and updates into the graph ~
- * 
+ *
  * Please note that refilling of descriptor arrays of any variable is exactly identical, so refer first section for documentation.
  */
 function save(){
@@ -378,7 +399,7 @@ function save(){
 
         // Retreive the start value, end value and name of descriptor related HTML elements
         var elems = x.children;
-        
+
         // Get start value of descriptor
         var s = parseInt(elems[0].value);
 
@@ -389,7 +410,7 @@ function save(){
 
         // Because start value of first descriptor is not defined, we will set it to 999, which is considered infinity here.
         if(i == 0) s = 999;
-        
+
         //Because end value of last descriptor is not defined, we will set it to 999.
         if(i==grease_descriptor_ids.length-1) e = 100;
 
@@ -597,11 +618,12 @@ var fuzzyDirt=[];
 var fuzzyWash=[];
 
 /**
- * @function fuzzify    ~ ? ~
- * @param  g    ?
- * @param  d    ?
+ * @function fuzzify    ~ Generates fuzzy input from the grease and dirt percentages. ~
+ * @param  g    Grease percentage taken as input
+ * @param  d    Dirt percentage taken as input
+ * Both g and d are passed from the form on exp10/simulation.php. AND THAT IS HOW IT SHOULD BE.
  */
-function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percentages.
+function fuzzify(g,d){
     var inputs = document.getElementsByClassName('m_input');
     for(var i=0;i<inputs.length;i++){
         if(inputs[i].value == "") inputs[i].value = "0";
@@ -741,6 +763,11 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
     for (var i = 0; i < wash_descriptors.length; i++) {
       fuzzyWash.push({'id':wash_descriptors[i].id,'name':wash_descriptors[i].name,'fuzzyVal':0});
     }
+    /*
+    * fuzzyGrease and fuzzyWash are arrays which hold the fuzzy sets for grease and dirt.
+    * The next two for loops apply the 'Extension principle' on these two sets to give the fuzzyWash array, storing fuzzy set for the washing time.
+    * This is the core of the fuzzification process. ANY CHANGES HERE WILL SURELY ALTER THE ENTIRE OUTPUT.
+    */
     for (var i = 0; i < fuzzyGrease.length; i++) {
       for (var j = 0; j < fuzzyDirt.length; j++) {
           var colIndex=fuzzyGrease[i].id-1;
@@ -773,13 +800,14 @@ function fuzzify(g,d){ //Generates fuzzy input from the grease and dirt percenta
         $("#FIS_Carousel").fadeIn(800);
         $("#Final_calculation").fadeIn(400);
         $("#Final_result").fadeIn(400);
+        //Do not change this order, else timing gochi.
         defuzzify(fuzzyWash);
     },4500);
 }
 
 /**
- * @function defuzzify  ~ ? ~
- * @param fuzzyWash ?
+ * @function defuzzify  ~ Generates the defuzzified output from the fuzzy set. ~
+ * @param fuzzyWash Fuzzy set of washing time.
  */
 function defuzzify(fuzzyWash)
 {
