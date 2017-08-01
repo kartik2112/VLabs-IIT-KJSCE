@@ -36,6 +36,10 @@ function displayWeightsInNeuralNet(lrString){
 
 //Used to reset the simulation; all the simulation variables and the SVG elements are reset to initial value.
 function resetSimulation(lrString){
+    // Enable start simulation & hide Stop Simulation button.
+    $("#KSOMStartSimButton").css("display","inline-block");
+    $("#KSOMStopSimButton").css("display","none");
+
     for (var i = 0; i < timers.length;i++ ){
         clearTimeout(timers[i]);
     }
@@ -84,6 +88,10 @@ function resetSimulation(lrString){
 
 //Starts the simulation.
 function startSimulation(lrString){
+    // Hide the start simulation button & show Stop Simulation button.
+    $("#KSOMStartSimButton").css("display","none");
+    $("#KSOMStopSimButton").css("display","inline-block");
+
     inputs = [[2,2],[2.5,2.5],[3,2],[0.5,1],[1,0.5],[1,4],[2,4.5]];
     var clusterCenterDenotions=[['x','#3366ff'],['+','#1231da'],['<>','#009933']];
     //displayWeightsInNeuralNet(lrString);
@@ -122,85 +130,88 @@ function startSimulation(lrString){
 //Shows the entire procedure of KSOM operation.
 function learnProc(lrString,inputIndex)
 {
-      var results = document.getElementsByClassName('noshow');
-      $(".noshow").fadeOut(1);
-      for(var i=0;i<results.length;i++){
-          results[i].innerHTML = "";
-      }
-      document.getElementById("op1").style.fill="#ff0000";
-      document.getElementById("op2").style.fill="#ff0000";
-      document.getElementById("op3").style.fill="#ff0000";
-      var res = document.getElementById("input");
-      res.innerHTML="<p class='resContent'><b>Calculations:</b></p>";
-      document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
-      document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
-      points[inputIndex].size(10);
-      points[inputIndex].fillColor("#00ff00");
-      points[inputIndex].strokeColor("#000000");
-      if(inputIndex!=0){
-          document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
-          document.getElementById('cluster_row'+inputIndex).style.border = "inherit";
-      }
-      $('html, body').animate({
-          scrollTop: $("#KSOMGraphDiv").offset().top
-      });
+    // Disable the Stop Simulation button
+    $("#KSOMStopSimButton").attr("disabled","disabled");
 
-      //Blinking point
-      setTimeout(function(){
+    var results = document.getElementsByClassName('noshow');
+    $(".noshow").fadeOut(1);
+    for(var i=0;i<results.length;i++){
+        results[i].innerHTML = "";
+    }
+    document.getElementById("op1").style.fill="#ff0000";
+    document.getElementById("op2").style.fill="#ff0000";
+    document.getElementById("op3").style.fill="#ff0000";
+    var res = document.getElementById("input");
+    res.innerHTML="<p class='resContent'><b>Calculations:</b></p>";
+    document.getElementById("x").innerHTML="x="+inputs[inputIndex][0];
+    document.getElementById("y").innerHTML="y="+inputs[inputIndex][1];
+    points[inputIndex].size(10);
+    points[inputIndex].fillColor("#00ff00");
+    points[inputIndex].strokeColor("#000000");
+    if(inputIndex!=0){
+        document.getElementById('cluster_row'+inputIndex).style.background = "inherit";
+        document.getElementById('cluster_row'+inputIndex).style.border = "inherit";
+    }
+    $('html, body').animate({
+        scrollTop: $("#KSOMGraphDiv").offset().top
+    });
+
+    //Blinking point
+    setTimeout(function(){
         points[inputIndex].size(5);
         points[inputIndex].fillColor("#ff0000");
         points[inputIndex].strokeColor("#ff0000");
-      },500);
-      setTimeout(function(){
+    },500);
+    setTimeout(function(){
         points[inputIndex].size(10);
         points[inputIndex].fillColor("#00ff00");
         points[inputIndex].strokeColor("#000000");
-      },900);
+    },900);
 
-      // Show what is the input!
-      var input_content="";
-      var input_content="<p class='resContent'>"+"Input sample into consideration: ("+inputs[inputIndex]+")"+"</p>";
-      res.innerHTML += input_content;
-      setTimeout(function(){
-          $('html, body').animate({
-              scrollTop: $("#finalClusterOutput").offset().top
-          });
-      },1500);
+    // Show what is the input!
+    var input_content="";
+    var input_content="<p class='resContent'>"+"Input sample into consideration: ("+inputs[inputIndex]+")"+"</p>";
+    res.innerHTML += input_content;
+    setTimeout(function(){
+        $('html, body').animate({
+            scrollTop: $("#finalClusterOutput").offset().top
+        });
+    },1500);
 
-      setTimeout(function(){
-          $("#input").fadeIn(800);
-      },2500);
+    setTimeout(function(){
+        $("#input").fadeIn(800);
+    },2500);
 
-      /* ------ This displays the initial weight matrix ------ */
-      res = document.getElementById('weightMatrix');
-      var init_weight_content = "<p class='resContent'>The initial weight matrix:</p>";
-      // Division for weight matrix.
-      init_weight_content += "<div style=\"display: inline-block\"> <table class=\"matrix changingBlocks weightMatrix\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Weight Matrix W\">";
-      for(var i=0;i<3;i++){
-        init_weight_content += "<tr>";
-        for(var j=0;j<2;j++){
-            init_weight_content += "<td>"+weightMatrix[i][j]+"</td>";
-        }
-        init_weight_content += "</tr>";
-      }
-      init_weight_content += "</table></div>";
+    /* ------ This displays the initial weight matrix ------ */
+    res = document.getElementById('weightMatrix');
+    var init_weight_content = "<p class='resContent'>The initial weight matrix:</p>";
+    // Division for weight matrix.
+    init_weight_content += "<div style=\"display: inline-block\"> <table class=\"matrix changingBlocks weightMatrix\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Weight Matrix W\">";
+    for(var i=0;i<3;i++){
+    init_weight_content += "<tr>";
+    for(var j=0;j<2;j++){
+        init_weight_content += "<td>"+weightMatrix[i][j]+"</td>";
+    }
+    init_weight_content += "</tr>";
+    }
+    init_weight_content += "</table></div>";
 
-      // Display the matrix
-      setTimeout(function() {
-          res.innerHTML += init_weight_content + "<br/><br/>";
-          $("#weightMatrix").fadeIn(800);
-          $('html, body').animate({
-              scrollTop: $("#weightMatrix").offset().top
-          });
-      },4500);
+    // Display the matrix
+    setTimeout(function() {
+        res.innerHTML += init_weight_content + "<br/><br/>";
+        $("#weightMatrix").fadeIn(800);
+        $('html, body').animate({
+            scrollTop: $("#weightMatrix").offset().top
+        });
+    },4500);
 
-      /* --------------------------------------------------- */
+    /* --------------------------------------------------- */
 
-      setTimeout(function(){
+    setTimeout(function(){
         $("line."+lrString+"Neur_1_lines").addClass("animatedLineRegionBlue");
         $("line."+lrString+"Neur_2_lines").addClass("animatedLineRegionRed");
-      },0);
-      setTimeout(function(){
+    },0);
+    setTimeout(function(){
         var distancesFromClusterCenters=[];
         // var header3=document.createElement("h3");
         // theDiv.appendChild(header3);
@@ -233,7 +244,7 @@ function learnProc(lrString,inputIndex)
             document.getElementById('distFromCentre').innerHTML = dist_content + "<br/>";
             $("#distFromCentre").fadeIn(800);
             $('html, body').animate({
-              scrollTop: $("#distFromCentre").offset().top
+                scrollTop: $("#distFromCentre").offset().top
             });
         },4500);
 
@@ -247,7 +258,7 @@ function learnProc(lrString,inputIndex)
             $("#clusterCentre"+(J_min+1)).css("background","#fa8686");
             $("#clusterCentre"+(J_min+1)).css("border","2px solid black")
             $('html, body').animate({
-              scrollTop: $("#neuronWeightChange").offset().top
+                scrollTop: $("#neuronWeightChange").offset().top
             });
         },7000);
 
@@ -275,7 +286,7 @@ function learnProc(lrString,inputIndex)
             document.getElementById('updatedWeight').innerHTML += new_weight_content + "<br/>";
             $("#updatedWeight").fadeIn(800);
             $('html, body').animate({
-              scrollTop: $("#updatedWeight").offset().top
+                scrollTop: $("#updatedWeight").offset().top
             });
             document.getElementById('cluster'+(inputIndex+1)).innerHTML = (J_min+1);
             $("#cluster_row"+(inputIndex+1)).css("background","#fa8686");
@@ -289,7 +300,7 @@ function learnProc(lrString,inputIndex)
             $("#"+lrString+"NextButton").unbind("click");
 
             $('html, body').animate({
-              scrollTop: $("#finalClusterOutput").offset().top
+                scrollTop: $("#finalClusterOutput").offset().top
             });
 
             document.getElementById("op"+(J_min+1)).style.fill="#00ff00";
@@ -309,14 +320,20 @@ function learnProc(lrString,inputIndex)
                 $("#"+lrString+"NextButton").click(function () {
                     learnProc(lrString, inputIndex + 1);
                 });
+
+                // Enable Stop Simulation button.
+                $("#KSOMStopSimButton").removeAttr("disabled");
+
+                // If all inputs processed, enable start simulation button.
+                if(inputIndex == inputs.length) $("#KSOMStartSimButton").css("display","inline-block");
             }
         },12500);
         setTimeout(function(){
             $('html, body').animate({
-              scrollTop: $("#KSOMGraphDiv").offset().top
+                scrollTop: $("#KSOMGraphDiv").offset().top
             });
-        },14000)
-      },1500);
+        },14000);
+    },1500);
 
 }
 
