@@ -29,7 +29,7 @@ All the .js files required for simulation of the labs are located in the followi
 #### VLabs-IIT-KJSCE\VLabs Hosted Content\src
 
 The above path consists of all the .js files used for simulation which named according to their experiment number.
-#### Please do not make any changes in tesseract,js file.
+#### Please do not make any changes in tesseract.js file.
 
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
