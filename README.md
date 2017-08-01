@@ -1,12 +1,35 @@
 # VLabs-IIT-KJSCE
 #### This is a part of Virtual Labs project (intiated by IITB), contributed by K. J. Somaiya College Of Engineering
 
-This lab will deal with experiments related to Neural Networks
+This lab consists of all the experiments related to Machine Learning and Fuzzy Lab which are to be hosted on the Virtual Lab Platform.
 
 ### Project discussion for programming [here](https://github.com/kartik2112/VLabs-IIT-KJSCE/projects/1)
 
 ## Usage
 Host [this folder](https://github.com/kartik2112/VLabs-IIT-KJSCE/blob/master/VLabs%20Hosted%20Content/) using your PHP hosting service (Xampp/Wamp/IIS(Webmatrix))
+
+For running the labs using Xampp, Please clone the repository directly into the htdocs folder in Xampp directory :-
+
+#### C:\xampp\htdocs\
+
+For running the labs using Web Matrix, then just clone it into your preferred directory following which, Labs can be directly launched from the Web Matrix Software.
+
+For running the labs using Wamp, Please clone the repository directly into the www folder in Wamp directory:-
+
+#### C:\wamp\www\
+
+## Data
+
+In order to access all the Lab .php files here is the path :-
+#### VLabs-IIT-KJSCE\VLabs Hosted Content\labs
+
+The above mentioned path will give you the access to all the 11 Labs.
+
+All the .js files required for simulation of the labs are located in the following directory :-
+#### VLabs-IIT-KJSCE\VLabs Hosted Content\src
+
+The above path consists of all the .js files used for simulation which named according to their experiment number.
+#### Please do not make any changes in tesseract,js file.
 
 ## References
 [Community Docs Gitlab](http://vlabs.iitb.ac.in/gitlab/Community-Docs/about_newlabs)
