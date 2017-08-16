@@ -79,16 +79,15 @@
                     </p>
                     <b> Developed By :-</b><br>
                     <ol>
-                        <li>Manmath Paste</li>
-                        <li>Nitin Mishra</li>
-                        <li>Meet Mukadam</li>
-                        <li>Kartik Shenoy</li>
-                        <li>Vinay Pandya</li> 
-                        <li>Abhishek Ananthakrishnan</li>                       
-                        <li>Varun Rao</li>
+                        <li>Abhishek Ananthakrishnan</li>
                         <li>Abhishek Mahajani</li>
-                        <li>Tejas Dastane</li>               
-                        
+                        <li>Kartik Shenoy</li>
+                        <li>Manmath Paste</li>                        
+                        <li>Meet Mukadam</li>
+                        <li>Nitin Mishra</li>
+                        <li>Tejas Dastane</li>
+                        <li>Varun Rao</li>
+                        <li>Vinay Pandya</li>                        
                     </ol>
                 </section>
                 <!-- /.content -->

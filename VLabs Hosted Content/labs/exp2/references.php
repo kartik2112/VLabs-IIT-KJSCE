@@ -74,15 +74,15 @@
               <li> <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
             <b>Developed by:</b>
               <ol>
-                <li>Abhishek Mahajani</li>
-                <li>Tejas Dastane</li>
-                <li>Varun Rao</li>
-                <li>Kartik Shenoy</li>
-                <li>Meet Mukadam</li>
-                <li>Vinay Pandya</li>
-                <li>Abhishek Ananthakrishnan</li>
-                <li>Manmath Paste</li>
-                <li>Nitin Mishra</li>
+                  <li>Abhishek Ananthakrishnan</li>
+                  <li>Abhishek Mahajani</li>
+                  <li>Kartik Shenoy</li>
+                  <li>Manmath Paste</li>                        
+                  <li>Meet Mukadam</li>
+                  <li>Nitin Mishra</li>
+                  <li>Tejas Dastane</li>
+                  <li>Varun Rao</li>
+                  <li>Vinay Pandya</li>                        
               </ol>
           </p>
         </section>
