@@ -219,7 +219,6 @@ function add_descriptor(who){
         // ---------- This segment calculates average of limits of previous descriptor to adjust the start limit for new descriptor ----------
         var prevStart=Number(parseInt(elems[0].value));
         m=parseInt((prevStart+100)/2);
-        console.log(prevStart+";"+m);
         // **---------- Now m has the start value ----------**
         n_descriptor_grease++;
         // ---------- This segment creates the new descriptor ----------
@@ -227,7 +226,7 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","g_d_"+n_descriptor_grease);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100" disabled title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" onfocus = "disable_buttons(1)" onblur = "enable_buttons(1)" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" onfocus = "disable_buttons(1)" onblur = "enable_buttons(1)" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100" disabled title="When descriptor\'s membership value reaches zero"/><button id="g'+n_descriptor_grease+'" onclick="rem_descriptor(\'g\','+n_descriptor_grease+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_1');
         parent.appendChild(div);
         // **------------------------------------------------------------**
@@ -237,6 +236,8 @@ function add_descriptor(who){
         var inp_elem = prev.children[2];
         inp_elem.removeAttribute("placeholder");
         inp_elem.removeAttribute('disabled');
+        inp_elem.onfocus = function(){disable_buttons(1)};
+        inp_elem.onblur = function(){enable_buttons(1)};
         inp_elem.value = m+1;
         // **----------------------------------------------------------------------**
 
@@ -268,7 +269,7 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","d_d_"+n_descriptor_dirt);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100"  title="When descriptor\'s membership value reaches zero" disabled/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'" onfocus = "disable_buttons(2)" onblur = "enable_buttons(2)" title="When descriptor\'s membership value begins to rise"/><input class="line_input" onfocus = "disable_buttons(2)" onblur = "enable_buttons(2)" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="100"  title="When descriptor\'s membership value reaches zero" disabled/><button id="d'+n_descriptor_dirt+'" onclick="rem_descriptor(\'d\','+n_descriptor_dirt+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_2');
         parent.appendChild(div);
 
@@ -276,6 +277,8 @@ function add_descriptor(who){
         var inp_elem = prev.children[2];
         inp_elem.removeAttribute("placeholder");
         inp_elem.removeAttribute('disabled');
+        inp_elem.onfocus = function(){disable_buttons(2)};
+        inp_elem.onblur = function(){enable_buttons(2)};
         inp_elem.value = m+1;
 
         dirt_descriptor_ids.push(n_descriptor_dirt);
@@ -301,7 +304,7 @@ function add_descriptor(who){
         div.setAttribute("class","descr");
         div.style.display = "none";
         div.setAttribute("id","t_d_"+n_descriptor_wash);
-        div.innerHTML = '<input type="number" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="120" disabled title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
+        div.innerHTML = '<input type="number" onfocus = "disable_buttons(3)" onblur = "enable_buttons(3)" max="100" min="0" value="'+m+'"  title="When descriptor\'s membership value begins to rise"/><input class="line_input" onfocus = "disable_buttons(3)" onblur = "enable_buttons(3)" type="text" placeholder="Name of descriptor"/><input type="number" max="100" min="0" placeholder="120" disabled title="When descriptor\'s membership value reaches zero"/><button id="t'+n_descriptor_wash+'" onclick="rem_descriptor(\'t\','+n_descriptor_wash+');"><b>-</b></button>';
         var parent = document.getElementById('descrs_3');
         parent.appendChild(div);
 
@@ -309,6 +312,8 @@ function add_descriptor(who){
         var inp_elem = prev.children[2];
         inp_elem.removeAttribute("placeholder");
         inp_elem.removeAttribute('disabled');
+        inp_elem.onfocus = function(){disable_buttons(3)};
+        inp_elem.onblur = function(){enable_buttons(3)};
         inp_elem.value = m+1;
 
         wash_descriptor_ids.push(n_descriptor_wash);

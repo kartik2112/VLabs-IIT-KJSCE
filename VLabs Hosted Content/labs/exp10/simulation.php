@@ -121,7 +121,7 @@
                       else{
                           document.writeln('<input onfocus = "disable_buttons(1)" onblur = "enable_buttons(1)" type="number" max="100" min="0" value='+grease_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
+                      document.writeln("<input class='line_input' onfocus = \"disable_buttons(1)\" onblur = \"enable_buttons(1)\" type=\"text\" placeholder=\"Name of descriptor\" value="+grease_descriptors[i].name+" />");
                       if(i==grease_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"g3\" onclick=\"rem_descriptor('g',3)\"><b>-</b></button>");
                       else document.writeln("<input onfocus='disable_buttons(1)' onblur = 'enable_buttons(1)' type=\"number\" max=\"100\" min=\"0\" value="+grease_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
@@ -150,7 +150,7 @@
                       else{
                           document.writeln('<input type="number" max="100" min="0" value='+dirt_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value="+dirt_descriptors[i].name+" />");
+                      document.writeln("<input class='line_input' onfocus = \"disable_buttons(2)\" onblur = \"enable_buttons(2)\" type=\"text\" placeholder=\"Name of descriptor\" value="+dirt_descriptors[i].name+" />");
                       if(i==dirt_descriptors.length-1) document.writeln("<input type=\"number\" max=\"100\" min=\"0\" placeholder=\"100\" disabled title=\"When descriptor's membership value reaches zero\" /><button id=\"d3\" onclick=\"rem_descriptor('d',3)\"><b>-</b></button>");
                       else document.writeln("<input onfocus = \"disable_buttons(2)\" onblur = \"enable_buttons(2)\" type=\"number\" max=\"100\" min=\"0\" value="+dirt_descriptors[i].end+" title=\"When descriptor's membership value reaches zero\" />");
                       document.writeln("</div>");
@@ -178,7 +178,7 @@
                       else{
                           document.writeln('<input onfocus = "disable_buttons(3)" onblur = "enable_buttons(3)" type="number" max="100" min="0" value='+wash_descriptors[i].start+' title="When descriptor\'s membership value begins to rise" />');
                       }
-                      document.writeln("<input class='line_input' type=\"text\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
+                      document.writeln("<input class='line_input' type=\"text\" onfocus = \"disable_buttons(3)\" onblur = \"enable_buttons(3)\" placeholder=\"Name of descriptor\" value='"+wash_descriptors[i].name+"' />");
                       if(i>=wash_descriptors.length-2) {
                         var str_to_put = "<input type=\"number\" max=\"100\" min=\"0\" ";
                         if(i == wash_descriptors.length-1){
