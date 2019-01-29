@@ -56,7 +56,7 @@ var wash_descriptors = [{id:1,name:"Low",start:999,end:45},
                     {id:2,name:"Medium",start:35,end:55},
                     {id:3,name:"High",start:45,end:75},
                     {id:4,name:"Very High",start:65,end:120}];
-                    
+
 var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
@@ -149,6 +149,13 @@ $(".descr input[type='number']").tooltip({placement: "right"});
 $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
 $("#save").tooltip({placement: 'bottom'});
 
+/** @function disable_buttons    ~ This function gets triggered when a descriptor input comes under focus. ~
+ * @param who   {value: meaning} => {1:Grease, 2:dirt, 3:wash}
+ *
+ * Note to the one reading this function:
+ * 1> All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
+ */
+
 function disable_buttons(who)
 {
     if(who == 1)
@@ -164,6 +171,13 @@ function disable_buttons(who)
         document.getElementById('t_add').style.visibility = "hidden";
     }
 }
+
+/** @function enable_buttons    ~ This function gets triggered when a descriptor input goes out of focus. ~
+ * @param who   {value: meaning} => {1:Grease, 2:dirt, 3:wash}
+ *
+ * Note to the one reading this function:
+ * 1> All the parts of this function (i.e. who==<something> part) are exactly identical. So, comments in first section apply to all!
+ */
 
 function enable_buttons(who)
 {
