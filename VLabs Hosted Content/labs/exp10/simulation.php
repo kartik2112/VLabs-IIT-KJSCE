@@ -96,7 +96,7 @@
               <ul>
                 <li>Edit the name of descriptors for each variable.</li>
                 <li>You can also edit the starting and ending values for each descriptor.</li>
-                <li><b>You can only add upto 5 descriptors for any variable.</b></li>
+                <li><b>You can only add upto <span id="max_desc"></span> descriptors for any variable.</b></li>
                 <li>Format of a descriptor: (start value) (Descriptor name) (end value)</li>
                 <li>The maximum value for Grease & Dirt input is 100%, and wash time can be a maximum of 120 mins.</li>
                 <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button</li>

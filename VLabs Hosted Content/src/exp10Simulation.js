@@ -69,6 +69,7 @@ $(document).ready(function(){
     $(".descr input[type='number']").tooltip({placement: "right"});
     $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
     $("[data-toggle='input']").tooltip();
+    document.getElementById("max_desc").innerHTML = max_descriptors_allowed;
 });
 
 //Makes the graphs on Step 1 page.
