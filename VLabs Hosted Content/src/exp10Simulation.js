@@ -43,17 +43,20 @@
 var n_descriptor_grease = 3;
 var n_descriptor_dirt = 3, n_descriptor_wash = 4;
 var dirt_descriptor_ids = [1,2,3], grease_descriptor_ids = [1,2,3], wash_descriptor_ids = [1,2,3,4];
-var dirt_descriptors = [{id:1,name:"Low",start:999,end:65},
-                    {id:2,name:"Medium",start:15,end:75},
-                    {id:3,name:"High",start:50,end:100}];
 
 var grease_descriptors = [{id:1,name:"Low",start:999,end:45},
                       {id:2,name:"Medium",start:15,end:85},
                       {id:3,name:"High",start:55,end:100}];
+
+var dirt_descriptors = [{id:1,name:"Low",start:999,end:45},
+                        {id:2,name:"Medium",start:15,end:85},
+                        {id:3,name:"High",start:55,end:100}];
+
 var wash_descriptors = [{id:1,name:"Low",start:999,end:45},
                     {id:2,name:"Medium",start:35,end:55},
                     {id:3,name:"High",start:45,end:75},
                     {id:4,name:"Very High",start:65,end:120}];
+                    
 var grease_lines_up=[],grease_lines_down=[];
 var dirt_lines_up=[],dirt_lines_down=[];
 var washing_lines_up=[],washing_lines_down=[];
@@ -145,6 +148,38 @@ $(".descr input[type='text']").tooltip({title: 'Edit descriptor name'});
 $(".descr input[type='number']").tooltip({placement: "right"});
 $(".descr button").tooltip({title: 'Remove descriptor', placement: 'right'});
 $("#save").tooltip({placement: 'bottom'});
+
+function disable_buttons(who)
+{
+    if(who == 1)
+    {
+        document.getElementById('g_add').style.visibility = "hidden";
+    }
+    if(who == 2)
+    {
+        document.getElementById('d_add').style.visibility = "hidden";
+    }
+    if(who == 3)
+    {
+        document.getElementById('t_add').style.visibility = "hidden";
+    }
+}
+
+function enable_buttons(who)
+{
+    if(who == 1)
+    {
+        document.getElementById('g_add').style.visibility = "visible";
+    }
+    if(who == 2)
+    {
+        document.getElementById('d_add').style.visibility = "visible";
+    }
+    if(who == 3)
+    {
+        document.getElementById('t_add').style.visibility = "visible";
+    }
+}
 
 /** @function add_descriptor    ~ This function gets triggered when Add descriptor is clicked ~
  * @param who   {value: meaning} => {1:Grease, 2:dirt, 3:wash}
@@ -477,7 +512,6 @@ function save(){
         var descriptor = {'id': wash_descriptor_ids[i], 'name': n, 'start': s, 'end': e};
         wash_descriptors.push(descriptor);
     }
-
     // **--------------------------------------------------**
 
     // Replot graph
