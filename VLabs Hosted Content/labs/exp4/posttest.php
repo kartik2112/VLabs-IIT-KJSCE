@@ -160,13 +160,13 @@
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is C</p>
                             
                         <h3>4. Which of these following will correctly classify the points as shown in this figure:</h3>
-                        <image src="images/Question.PNG" width="200px"/><br/>
+                        <image src="images/Question.png" width="200px"/><br/>
 
-                        <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.PNG" width="200px"/><br>
+                        <input type="radio" class="optradio4" name="q4" value="1"> A. <image src="images/option1.png" width="200px"/><br>
                         <br>
-                        <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.PNG" width="200px"/><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.PNG" width="200px"/><br><br>
-                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.PNG" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="2"> B.  <image src="images/option2.png" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="3"> C. <image src="images/option3.png" width="200px"/><br><br>
+                        <input type="radio" class="optradio4" name="q4" value="4"> D. <image src="images/option4.png" width="200px"/><br><br>
 
                         <br />
                         <p id="optradio4Ans" class="testAns" style="display:none;"> Ans is D</p>

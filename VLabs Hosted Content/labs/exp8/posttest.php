@@ -132,10 +132,10 @@
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is B</p>
                         
                         <h3>2.Which of the following graphs yields the result of the operation A OR B.</h3>
-                        <img src="images/ques21.PNG"><br><br>
-                        <input type="radio" class="optradio2" name="q2" value="1"> A. <image src="images/que2a.PNG"></image><br><br>
-                        <input type="radio" class="optradio2" name="q2" value="2"> B.  <image src="images/ques2b.PNG"></image><br><br>
-                        <input type="radio" class="optradio2" name="q2" value="3"> C. <image src="images/ques2c.PNG"></image><br><br>
+                        <img src="images/ques21.png"><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="1"> A. <image src="images/que2a.png"></image><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="2"> B.  <image src="images/ques2b.png"></image><br><br>
+                        <input type="radio" class="optradio2" name="q2" value="3"> C. <image src="images/ques2c.png"></image><br><br>
                         <input type="radio" class="optradio2" name="q2" value="4"> D. None Of the above<br><br>
                         <br />
                         <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p>
