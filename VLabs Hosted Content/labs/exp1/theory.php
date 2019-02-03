@@ -140,7 +140,7 @@
                         Z' = 1<br /><br />
 
                         Thus we can plot a graph as shown below where ^ represents 0 and X represents 1.<br /><br />
-                        <img src="images/SS1.PNG" alt="SS1"/><br/><br/>
+                        <img src="images/SS1.png" alt="SS1"/><br/><br/>
                         
                         Here, the line represents the decision boundary which seperates the 2 classes.
                         <b>The decision boundary will seperate the 2 classes if similar points lie on the same side of the decision boundary.</b>
@@ -157,7 +157,7 @@
                         But, if the decision boundary is such that similar points are not on the same side of the line then it is not the correct decision boundary.
                         For e.g, consider the following image:<br/><br/>
                         
-                        <img src="images/SS2.PNG" alt="SS2"/><br/><br/>
+                        <img src="images/SS2.png" alt="SS2"/><br/><br/>
                         
                         Here, the equation of the line will be: <br/><br/>
                         

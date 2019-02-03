@@ -97,7 +97,7 @@
                                 <li>The <b>input (point)</b> that will be processed is <b>highlighted in the graph</b>.</li>
                                 <li>The inputs i.e. X and Y coordinates of this point are indicated in the neural network. The third input is always 1 which acts as a bias.</li>
                                 <li>The <b>weight matrix, input vector</b>(X-coordinate, Y-coordinate, 1) for this iteration are <b>displayed</b>.</li>
-                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.PNG" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
+                                <li>Matrix multiplication is done to find the <b>sum of inputs at all the summing junctions</b> <img src="../images/summing_junction.png" alt="Summing Junction"/>. This is represented as the <b>summation vector</b>.</li>
                                 <li>The appropriate <b>activation function</b> is applied at the next layer of nodes <img src="../images/bipolar_threshold.png" height="50" width="50" alt="O/P Node Image"/> to this summation vector, thus forming the <b>output vector</b>. 
                                     In this experiment, activation function applied is signum.</li>
                                 <li>The actual output vector as obtained from the above calculations and the desired output vector are shown side by side for comparison. 

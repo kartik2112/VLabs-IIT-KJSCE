@@ -131,7 +131,7 @@
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p>
                         
                         <h3>2.Which of the following  defuzzification method would be suitable for a given problem </h3>
-						<img src="images/defuzzi1.PNG"><br><br>
+						<img src="images/defuzzi1.png"><br><br>
 						<h3>i. Weighted average method.</h3>
 						<h3>ii. Mean-max Method.</h3>
 						
@@ -151,7 +151,7 @@
                         <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is B</p>
                             
                        <!-- <h3>4.What is the value of z<sup>*</sup> using Weighted-average Method?</h3><br>
-                        <img src="images/dfinal.PNG"><br><br>
+                        <img src="images/dfinal.png"><br><br>
 						
                         <input type="radio" class="optradio4" name="q2" value="1"> A. z<sup>*</sup>=1.2<br><br>
                         <input type="radio" class="optradio4" name="q2" value="2"> B. z<sup>*</sup>=0.0<br><br>

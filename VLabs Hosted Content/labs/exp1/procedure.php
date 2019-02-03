@@ -92,10 +92,10 @@
                     <p>
                         <b>E.g.</b> In the following plot, <b>similar points are not on the same side of the line</b>. 
                         Hence, the weights and threshold chosen provide an <b>incorrect output</b> for the corresponding Gate.<br/>
-                        <img src="images/SS2.PNG" alt="SS2"/><br/>
+                        <img src="images/SS2.png" alt="SS2"/><br/>
                         <b>E.g.</b> In the following plot, <b>similar points are on the same side of the line</b>. 
                         Hence, the weights and threshold chosen provide a <b>correct output</b> for the corresponding Gate.<br/>
-                        <img src="images/SS1.PNG" alt="SS1"/><br/>
+                        <img src="images/SS1.png" alt="SS1"/><br/>
                         <b>Note:</b> If you choose negative weights and negative threshold, then the decision boundary might recognize similar points in same class. 
                         But here the output will be for opposite class. To see this, try -1 as weights and -1.5 as threshold in AND Gate simulation. This will give incorrect outputs.<br><br>
                         
