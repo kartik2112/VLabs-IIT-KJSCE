@@ -18,7 +18,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <link href="../../src/Styles.css" rel="stylesheet" />
-        <script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>
+        <script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>        
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -112,7 +112,7 @@
                            <br>
                            
                            Here the activation function used is tan sigmoid:</p>
-                           <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
+                           <!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
                                     <mi>f( x )</mi> <mo>=</mo>
                                     <mrow>
                                         <mfrac>
@@ -128,7 +128,8 @@
                                         <mo>-</mo>
                                         <mn>1</mn>
                                     </mrow>
-                                </math>
+                                </math> -->
+                            <img src="./images/sigmoid_function.png"/>
                         <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
                                <svg id="corrLR_svg" width="700" height="400" style="margin-left: 200px">

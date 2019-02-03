@@ -313,7 +313,7 @@
 
                             <div>
                                 Here, the activation function used is <span style="font-size: larger; font-weight: bolder">tan sigmoid</span>:<br/>
-                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
+                                <!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
                                     <mi>f( x )</mi> <mo>=</mo>
                                     <mrow>
                                         <mfrac>
@@ -329,7 +329,8 @@
                                         <mo>-</mo>
                                         <mn>1</mn>
                                     </mrow>
-                                </math>
+                                </math> -->
+                                <img src="./images/sigmoid_function.png"/>
                             </div>
 
                             <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" class="hyperlink">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" class="hyperlink">click here</a> or hover your mouse over them.
