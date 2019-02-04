@@ -50,4 +50,4 @@ If you want to go to next experiment then click on Machine leanring Lab in the N
 [Vlab tool](http://vlabs.iitb.ac.in/vlab_tool/main_index.php)
 
 
-<img style="display: inline" src="http://www.iitb.ac.in/sites/all/themes/touchm/logo.png" width="150"/>&nbsp;&nbsp;&nbsp; <img style="display: inline" src="https://www.somaiya.edu/assets/arigel_general/img/footer/footericon1.png" height="150" width="150"/>
+<img style="display: inline" src="http://www.iitb.ac.in/sites/all/themes/touchm/logo.png" width="150"/>&nbsp;&nbsp;&nbsp; <img style="display: inline" src="http://www.somaiya.edu/assets/arigel_general/img/footer/footericon1.png" height="150" width="150"/>
