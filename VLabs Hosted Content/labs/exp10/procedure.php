@@ -70,7 +70,7 @@
                      <br>
                      <b>Step 1</b>
                      <ol>
-                     <li> We can edit the descriptor name, start and end value of the descriptor. Also we can add more descriptors upto a total count of 5. The maximum value for greese and dirt input is 100% and for the washing time it is 120 mins.
+                     <li> We can edit the descriptor name, start and end value of the descriptor. Also we can add more descriptors upto a total count of 4. The maximum value for greese and dirt input is 100% and for the washing time it is 120 mins.
                      <li>To see changes in the graph, press the <button class="btn-warning btn-sm">View changes</button> button.</li>
                      <br>
                      <li>To proceed to the next step, press the <button data-toggle="tooltip" title="" class="btn-success btn-md" onclick="next();">Continue &rarr;</button> button.
