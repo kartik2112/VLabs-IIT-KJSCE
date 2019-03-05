@@ -109,7 +109,7 @@
               
             
               <br>
-              <h3>1. If the value of 1/(2*σ<sup>2</sup>) increases in activation function then the size of graph  ?</h3>
+              <h3>1. If the value of 1/(2*σ<sup>2</sup>) increases in activation function then the size of graph?</h3>
               <input class="optradio1" type="radio" name="q1" value="1">
               A. Decreases
               <br>
@@ -140,7 +140,7 @@
               <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p><br>
             
 			<br>
-            <h3>3. RBF neuron activation function is given by ?</h3>
+            <h3>3. RBF neuron activation function is given by ____</h3>
               <input class="optradio3" type="radio" name="q3" value="1">
                     A. &#934(x)=e<sup>(-&#946 &times ||x- &#956||<sup>2</sup>)</sup>
               <br>

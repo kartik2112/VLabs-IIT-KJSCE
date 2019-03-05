@@ -74,20 +74,9 @@
                     <h3 style="margin-top:5%">References</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Reference content goes here -->
+                         <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
                          <li> <a href="http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/" target="_blank" class="hyperlink">http://mccormickml.com/2013/08/15/radial-basis-function-network-rbfn-tutorial/</a></li>
               <li> <a href="https://en.wikipedia.org/wiki/Radial_basis_function" target="_blank" class="hyperlink">https://en.wikipedia.org/wiki/Radial_basis_function</a></li>
-              <b>Developed by:</b>
-                    <ol>
-                        <li>Abhishek Ananthakrishnan</li>
-                        <li>Abhishek Mahajani</li>
-                        <li>Kartik Shenoy</li>
-                        <li>Manmath Paste</li>                        
-                        <li>Meet Mukadam</li>
-                        <li>Nitin Mishra</li>
-                        <li>Tejas Dastane</li>
-                        <li>Varun Rao</li>
-                        <li>Vinay Pandya</li>                        
-                    </ol>
                     </p>
                 </section>
                 <!-- /.content -->

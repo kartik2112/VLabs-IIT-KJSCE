@@ -124,7 +124,7 @@
               D. None of these
               <br><p id="optradio1Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               
-              <h3>2. If  the  difference  between  the  input  and  the  prototype  increases ,what will be the effect  on the total response?</h3>
+              <h3>2. If  the  difference  between  the  input  and  the  prototype  increases, then what will be the effect on the total response?</h3>
               <input class="optradio2" type="radio" name="q2" value="1">
               A. The response will increase exponentially
               <br>
@@ -139,21 +139,21 @@
               <br><p id="optradio2Ans" class="testAns" style="display:none;"> Ans is A</p><br>
               <br>
 
-              <h3>3.What are the two stages in radial basis function network ?</h3>
+              <h3>3. What are the two stages in the radial basis function network?</h3>
               <input class="optradio3" type="radio" name="q3" value="1">
-              A. Stage 1: establish a centre and a radii for the RBF layer.<br>
+              A. Stage 1: establish a centre and radii for the RBF layer.<br>
 			  &emsp;&emsp;Stage 2: Discover the weights for the output layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="2">
               B. Stage 1: Discover the weights for the output layer.<br>
-			  &emsp;&emsp;Stage 2: establish a centre and a radii for the RBF layer.
+			  &emsp;&emsp;Stage 2: establish a centre and radii for the RBF layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="3">
               C. Stage 1: establish a centre for the RBF layer.<br>
-			  &emsp;&emsp;Stage 2: establish a radii for the RBF layer.
+			  &emsp;&emsp;Stage 2: establish radii for the RBF layer.
               <br>
               <input class="optradio3" type="radio" name="q3" value="4">
-              D. Stage 1: establish a centre and a radii for the RBF layer.<br>
+              D. Stage 1: establish a centre and radii for the RBF layer.<br>
 			  &emsp;&emsp;Stage 2: Discover the weights for the hidden layer.
               <br><p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p><br>
             
