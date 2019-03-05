@@ -69,21 +69,11 @@
           <p class="MsoNormal" style="text-align:justify">
 
            <!--Reference content goes here -->
+            <li>Jacek M. Zurada, "<em>Introduction to Neural Networks.</em>"<br /></li>
+            <li>S. N. Deepa & S. N. Sivanandam, "<em>Principles of Soft Computing.</em>"</li>
             <li> <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Multilayer_perceptron</a></li>
-              <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
-              <li> <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
-            <b>Developed by:</b>
-              <ol>
-                  <li>Abhishek Ananthakrishnan</li>
-                  <li>Abhishek Mahajani</li>
-                  <li>Kartik Shenoy</li>
-                  <li>Manmath Paste</li>                        
-                  <li>Meet Mukadam</li>
-                  <li>Nitin Mishra</li>
-                  <li>Tejas Dastane</li>
-                  <li>Varun Rao</li>
-                  <li>Vinay Pandya</li>                        
-              </ol>
+            <li> <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Feedforward_neural_network</a></li>
+            <li> <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank" class="hyperlink">  https://en.wikipedia.org/wiki/Backpropagation</a></li>
           </p>
         </section>
         <!-- /.content -->

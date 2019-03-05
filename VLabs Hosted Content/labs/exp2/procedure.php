@@ -67,23 +67,23 @@
           <p class="MsoNormal" style="text-align:justify">
               
               <br><br>
-              <b>1.</b>	Aim is to implement MLP Algorithms on Ex-OR Gate.<br>
+              <b>1.</b>	The aim is to implement MLP Algorithms on Ex-OR Gate.<br>
               <b>2.</b>	Firstly, Select the algorithm which is to be implemented i.e. FeedForward or Error Back Propagation.<br>
               <b>3.</b>	Enter the weights, bias, threshold values.<br>
               <b>4.</b>	Enter the number of iterations (Epochs) and the learning rate of the system ( Only in case of EBPMLP ).<br>
-              <b>5.</b>	Depending on the algorithm chosen and the input values given following things could be observed :-<br></p>
+              <b>5.</b>	Depending on the algorithm chosen and the input values are given, the following things could be observed:-<br></p>
             <div style="margin-left:1.5em">
             <p>
               <b>   a.</b>	Start the simulation.  <button class="btn btn-success" style="cursor: default;">Start Simulation</button><br>
               <b>   b.</b>	Simulation of the model will be generated.<br>
               <b>   c.</b>	Stepwise calculation of different intermediate and final outputs will be visible during the real-time simulation.<br>
-                <b>   d.</b>	Moreover Graph will be plotted according to the weights and threshold values chosen so as to understand how the clustering of different group takes place.<br></p></div>
+                <b>   d.</b>	Moreover, graph will be plotted according to the weights and threshold values are chosen so as to understand how the clustering of the different group takes place.<br></p></div>
             <p>
               <b>6.</b>	After understanding the whole simulation for 1 input, then Apply the next set of inputs.  <button class="btn btn-warning" style="cursor: default;">Apply next set of I/P values</button><br>
-              <b>7.</b>	Successively the changed weight and bias values will be shown for clear understanding of EBPMLP.<br>
+              <b>7.</b>	Successively the changed weight and bias values will be shown for a clear understanding of EBPMLP.<br>
               <b>8.</b>	If proper inputs of weight and bias are not provided then a hint having all the appropriate input values is also given to observe the correct simulation of the algorithm.<br>
               <b>9.</b>	Later, Answer the Post Test questions to ascertain the correctness of your  understanding.<br><br><br>
-              <b>Note:</b>The simulation for error back propogation may hang if the number of iterations entered is greater than or equal to 100000. The answer will come, albeit with a minimal delay
+              <b>Note: </b>The simulation for error back propagation may hang if the number of iterations entered is greater than or equal to 100000. The answer will come, albeit with a minimal delay
               <p>* Hints to get correct output are provided in the Post Test section.</p>
 
             <!--Theory content goes here -->

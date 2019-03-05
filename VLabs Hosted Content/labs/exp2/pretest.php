@@ -107,7 +107,7 @@
                     <h3 style="margin-top:5%">Pre Test</h3>
                     <p class="MsoNormal" style="text-align:justify">
                         <!-- Pre Test content goes here -->
-                            <h3>How many Layers can be there in FeedForward or EBPMLP algorithms?</h3>
+                            <h3>1.  How many Layers can be there in FeedForward or EBPMLP algorithms?</h3>
                             <input class="optradio1" type="radio" name="q1" value="1"> A. 3<br>
                             <input class="optradio1" type="radio" name="q1" value="2"> B. 1 or more<br />
                             <input class="optradio1" type="radio" name="q1" value="3"> C. 2 or more<br />
@@ -116,21 +116,19 @@
                             <p id="optradio1Ans" class="testAns" style="display:none;">Ans is D</p>
                         
                         <div>
-                            <h3>2. Can Ex-OR gate be implemented using single layer perceptron ?</h3>
+                            <h3>2.  Can Ex-OR gate be implemented using single layer perceptron?</h3>
                             <input class="optradio2" type="radio" name="q2" value="1"> A. Yes<br>
                             <input class="optradio2" type="radio" name="q2" value="2"> B. No<br>
-                            <input class="optradio2" type="radio" name="q2" value="3"> C. Cannot be determined<br>
-                            <input class="optradio2" type="radio" name="q2" value="4"> D. Maybe<br>
                             <br>
                             <p id="optradio2Ans" class="testAns" style="display:none;"> Ans is B</p>
                         </div>
 
                         <div>
                             <h3>3.	Neural Networks are complex ______________ with many parameters.</h3>
-                            <input class="optradio3" type="radio" name="q3" value="1"> A. Linear Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="2"> B. Non-Linear Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="3"> C. Discrete Functions<br>
-                            <input class="optradio3" type="radio" name="q3" value="4"> D. Exponential Functions<br>
+                            <input class="optradio3" type="radio" name="q3" value="1"> A. linear functions<br>
+                            <input class="optradio3" type="radio" name="q3" value="2"> B. non-linear functions<br>
+                            <input class="optradio3" type="radio" name="q3" value="3"> C. discrete functions<br>
+                            <input class="optradio3" type="radio" name="q3" value="4"> D. exponential functions<br>
                             <br>
                             <p id="optradio3Ans" class="testAns" style="display:none;"> Ans is A</p>
                         </div>
@@ -156,4 +154,3 @@
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
-
