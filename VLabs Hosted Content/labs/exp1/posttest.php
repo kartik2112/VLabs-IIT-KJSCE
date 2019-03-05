@@ -192,7 +192,7 @@
                         </div>
                             
                         <div>
-                            <h3>4. Which of the following Gates cannot be implemented using single layer perceptron model?</h3>
+                            <h3>4. Which of the following Gates cannot be implemented using a single layer perceptron model?</h3>
                             <div class="radio">
                                 <label><input type="radio" name="Q4" class="optradio4" id="Q41"><table class="table-condensed" style="text-align: center;">
                                             <tr><th>A. AND</th></tr>

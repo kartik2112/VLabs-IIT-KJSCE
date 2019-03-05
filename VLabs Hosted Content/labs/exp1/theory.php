@@ -74,7 +74,7 @@
                     <p class="MsoNormal" style="text-align:justify">
                         <!--Theory content goes here -->
                         <h3>Activation functions:- </h3>
-                        <b>In computational networks, the activation function of a node defines the output of that node given an input or set of inputs.</b>
+                        <b>In computational networks, the activation function of a node defines the output of that node given input or set of inputs.</b>
                         <br /><br /><img src="images/artificial_nn.png" height="190px" width="400px;" /><br />
                         Fig 1. General structure of an artificial neural network with a single perceptron.
                         <br /><br />
@@ -142,16 +142,16 @@
                         Thus we can plot a graph as shown below where ^ represents 0 and X represents 1.<br /><br />
                         <img src="images/SS1.png" alt="SS1"/><br/><br/>
                         
-                        Here, the line represents the decision boundary which seperates the 2 classes.
-                        <b>The decision boundary will seperate the 2 classes if similar points lie on the same side of the decision boundary.</b>
+                        Here, the line represents the decision boundary which separates the 2 classes.
+                        <b>The decision boundary will separate the 2 classes if similar points lie on the same side of the decision boundary.</b>
                         Here, the equation of the line will be: <br/><br/>
                                                
                         <i>X+Y=0.5</i><br/><br/>
                         
-                        Thus, as you can see point (0,0) will have X+Y < 0.5 and will lie on the origin side of the line.<br/>
+                        Thus, as you can see the point (0,0) will have X+Y < 0.5 and will lie on the origin side of the line.<br/>
                         While points (0,1), (1,0), (1,1) will have X+Y > 0.5 and will lie on the non origin side of the line.<br/><br/>
                         Also, from truth table, (0,0) has OR output 0 and (0,1), (1,0), (1,1) have OR outputs 1.
-                        This is why we can say that this <b>decision boundary correctly classifies the points.</b> In the simulation you can try various values of w1, w2 and threshold 
+                        This is why we can say that this <b>decision boundary correctly classifies the points.</b> In the simulation, you can try various values of w1, w2 and threshold 
                         and find that there are many such decision boundaries that can correctly classify these points.<br/><br/>
                         
                         But, if the decision boundary is such that similar points are not on the same side of the line then it is not the correct decision boundary.
@@ -163,8 +163,8 @@
                         
                         <i>X+Y=1.5</i><br/><br/>
                         
-                        Thus, as you can see point (0,0), (0,1), (1,0) will have X+Y < 1.5 and will lie on the origin side of the line.<br/>
-                        While points (1,1) will have X+Y > 1.5 and will lie on the non origin side of the line.<br/>
+                        Thus, as you can see the points (0,0), (0,1), (1,0) will have X+Y < 1.5 and will lie on the origin side of the line.<br/>
+                        While a point (1,1) will have X+Y > 1.5 and will lie on the non origin side of the line.<br/>
                         But from truth table, (0,0) has OR output 0 and (0,1), (1,0), (1,1) have OR outputs 1. 
                         This is the reason why this <b>decision boundary is incorrect.</b>
                         
