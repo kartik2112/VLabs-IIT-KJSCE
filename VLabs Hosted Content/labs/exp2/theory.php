@@ -85,9 +85,9 @@
                             The importance of this process is that, as the network is trained, the neurons in the intermediate layers organize themselves in such a way that the different neurons learn to recognize different characteristics of the total input space. After training, when an arbitrary input pattern is present which contains noise or is incomplete, neurons in the hidden layer of the network will respond with an active output if the new input contains a pattern that resembles a feature that the individual neurons have learned to recognize during their training.<br>
                             Backpropagation requires a known, desired output for each input value in order to calculate the loss function gradient – it is therefore usually considered to be a supervised learning method; nonetheless, it is also used in some unsupervised networks such as auto encoders. It is a generalization of the delta rule to multi-layered feedforward networks, made possible by using the chain rule to iteratively compute gradients for each layer. Backpropagation requires that the activation function used by the artificial neurons (or "nodes") be differentiable.<br><br></p>
                     
-                            <img src="EBP.jpg" style="width:404px;height:300px;">
+                            <img src="EBP.jpg">
                             <p><br>
-                            <b>It Consists of 2 Phases :-</b><br><br>
+                            <b>The backpropagation process consists of 2 phases :-</b><br><br>
                             <b>Phase 1: Propagation</b><br>
                             Each propagation involves the following steps:<br>
                             <b>1.</b>	Forward propagation of a training pattern's input through the neural network in order to generate the network's output value(s).<br>
