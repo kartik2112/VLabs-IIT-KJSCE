@@ -115,7 +115,7 @@
                                     For correct classification, the regions should be such that for each input, each point should fall under one region only. 
                                     Initially, they were falling under multiple regions. 
                                     But as you can see, the position of the regions changes after every iteration so that each point falls under one region only.</b></li>
-                                <li><b>Thus you can consider the aim to be colors of the regions should match the colors of the points that they cover. And the regions should cover all the same color points.</b></li>
+                                <li><b>Thus you can consider the aim to be colours of the regions should match the colours of the points that they cover. And the regions should cover all the same colour points.</b></li>
                             </ol>
                         </div>
 

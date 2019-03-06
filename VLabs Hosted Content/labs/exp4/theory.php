@@ -77,13 +77,13 @@
                         <p>In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. It is a type of linear classifier, i.e. a classification algorithm that makes its predictions based on a linear predictor function combining a set of weights with the feature vector. The algorithm allows for online learning, in that it processes elements in the training set one at a time.</p>
                         <br>
                         <p>
-                            Perceptrons are trained on examples of desired behavior. The desired behavior can be summarized by a set of input, output pairs 
+                            Perceptrons are trained on examples of desired behaviour. The desired behaviour can be summarized by a set of input, output pairs 
                             <br>
                             <br>
                             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p1t1, p2t2, p3t3, p4t4...pntn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
                             <br>
                             <br>
-                            where <b>p</b> is an input to the network and <b>t</b> is the corresponding correct (target) output. The objective is to reduce the error <b>e</b>, which is the difference 
+                            where <b>p</b> is the input to the network and <b>t</b> is the corresponding correct (target) output. The objective is to reduce the error <b>e</b>, which is the difference 
                         <b>t-a</b> between the neuron response <b>a</b>, and the target vector <b>t</b>. The perceptron learning rule calculates desired changes to the perceptron's weights and biases given an input vector <b>p</b>, and the associated error <b>e</b>. The target vector t must contain values of either <b>-1</b> or <b>1</b>, as perceptrons (with signum activation functions) can only output such values.
                         </p>
                         <br>
