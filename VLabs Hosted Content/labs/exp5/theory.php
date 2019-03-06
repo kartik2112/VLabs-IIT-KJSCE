@@ -19,6 +19,21 @@
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <link href="../../src/Styles.css" rel="stylesheet" />
         <script type="text/javascript" async src="https://example.com/MathJax.js?config=MML_CHTML"></script>        
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+                tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+                TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
+                messageStyle: "none"
+            });
+        </script>    
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            .mjx-chtml{
+                text-align: left !important;
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -112,6 +127,7 @@
                            <br>
                            
                            Here the activation function used is tan sigmoid:</p>
+                           \[f(x) = \frac{2}{1+e^{-x}}-1\]
                            <!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
                                     <mi>f( x )</mi> <mo>=</mo>
                                     <mrow>
@@ -129,7 +145,7 @@
                                         <mn>1</mn>
                                     </mrow>
                                 </math> -->
-                            <img src="./images/sigmoid_function.png"/>
+                            <!-- <img src="./images/sigmoid_function.png"/> -->
                         <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
                                <svg id="corrLR_svg" width="700" height="400" style="margin-left: 200px">

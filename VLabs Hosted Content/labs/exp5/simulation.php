@@ -50,6 +50,9 @@
               stroke: #0e95ca;
               stroke-dasharray: 7px;
             }
+            .mjx-chtml{
+                text-align: left !important;
+            }
         </style>
 
         <script type="text/javascript">
@@ -138,7 +141,17 @@
 
                 plotGraph("hebbLR");
             });     
-    </script>
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+                tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+                TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
+                messageStyle: "none"
+            });
+        </script>    
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <?php
@@ -313,6 +326,7 @@
 
                             <div>
                                 Here, the activation function used is <span style="font-size: larger; font-weight: bolder">tan sigmoid</span>:<br/>
+                                \[f(x) = \frac{2}{1+e^{-x}}-1\]
                                 <!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline-block">
                                     <mi>f( x )</mi> <mo>=</mo>
                                     <mrow>
@@ -330,7 +344,7 @@
                                         <mn>1</mn>
                                     </mrow>
                                 </math> -->
-                                <img src="./images/sigmoid_function.png"/>
+                                <!-- <img src="./images/sigmoid_function.png"/> -->
                             </div>
 
                             <div>To understand what calculations are happening check <a href="JavaScript:newPopup('procedure.php#expln');" class="hyperlink">this popup</a> and to understand the representations of vectors and matrices <a href="JavaScript:newPopup('procedure.php#repn');" class="hyperlink">click here</a> or hover your mouse over them.
