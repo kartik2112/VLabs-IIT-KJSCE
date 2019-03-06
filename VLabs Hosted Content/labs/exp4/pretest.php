@@ -125,7 +125,7 @@
                         <br />
                         <p id="optradio1Ans" class="testAns" style="display:none;"> Ans is C</p>
 
-                        <h3>2. Which of the following are applications of machine learning ?</h3>
+                        <h3>2. Which of the following are applications of machine learning?</h3>
                     
                         <input type="radio" class="optradio2" name="q2" value="1"> A. Weather prediction<br>
                         <input type="radio" class="optradio2" name="q2" value="2"> B. Anomaly detection<br>
