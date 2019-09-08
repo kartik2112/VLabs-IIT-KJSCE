@@ -3,6 +3,8 @@
 
 This lab consists of all the experiments related to Machine Learning and Fuzzy Lab which are to be hosted on the Virtual Lab Platform.
 
+### Website is live at: [IITB VLabs - Machine Learning Lab](http://vlabs.iitb.ac.in/vlabs-dev/labs/machine_learning/index.php)
+
 ### Project discussion for programming [here](https://github.com/kartik2112/VLabs-IIT-KJSCE/projects/1)
 
 ## Usage
